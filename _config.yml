@@ -92,6 +92,7 @@ search:
   format: html
   limit: 10000
 
+#github: git@github.com:thinkexist1989/hexo.git,origin
 backup:
     type: git
     theme: landscape,next
