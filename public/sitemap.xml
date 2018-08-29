@@ -2,42 +2,56 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://www.yluoblog.cn/about/index.html</loc>
+    <loc>http://yluo.name/2017/10/17/hexo_intro/</loc>
+    
+    <lastmod>2018-08-29T14:35:55.010Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2018/04/14/linux_windows/</loc>
+    
+    <lastmod>2018-08-29T14:10:07.143Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2018/04/14/Git_intro/</loc>
+    
+    <lastmod>2018-08-29T13:18:51.695Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/about/index.html</loc>
     
     <lastmod>2018-03-07T09:54:15.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.yluoblog.cn/2017/10/17/Hexo+Github%20Pages%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</loc>
-    
-    <lastmod>2017-11-24T02:43:36.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.yluoblog.cn/2017/10/18/How-To-Writing-Academic-Essay/</loc>
+    <loc>http://yluo.name/2017/10/18/academic_essay/</loc>
     
     <lastmod>2017-11-20T03:58:50.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.yluoblog.cn/2017/10/18/%E5%AD%A6%E6%9C%AF%E8%AE%BA%E6%96%87%E8%AF%8D%E6%B1%87%E6%80%BB%E7%BB%93/</loc>
+    <loc>http://yluo.name/2017/10/18/academic_essay_words/</loc>
     
     <lastmod>2017-10-20T12:25:06.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.yluoblog.cn/categories/index.html</loc>
+    <loc>http://yluo.name/categories/index.html</loc>
     
     <lastmod>2017-10-15T15:51:21.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://www.yluoblog.cn/tags/index.html</loc>
+    <loc>http://yluo.name/tags/index.html</loc>
     
     <lastmod>2017-10-15T15:36:59.000Z</lastmod>
     
