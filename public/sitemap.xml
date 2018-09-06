@@ -2,23 +2,58 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yluo.name/2018/09/02/network_1/</loc>
+    
+    <lastmod>2018-09-06T15:47:12.666Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2018/09/06/network_2/</loc>
+    
+    <lastmod>2018-09-06T15:45:59.750Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yluo.name/2017/10/17/hexo_intro/</loc>
     
-    <lastmod>2018-08-29T14:35:55.010Z</lastmod>
+    <lastmod>2018-09-02T16:37:33.323Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yluo.name/2018/04/14/linux_windows/</loc>
     
-    <lastmod>2018-08-29T14:10:07.143Z</lastmod>
+    <lastmod>2018-09-02T16:37:20.723Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yluo.name/2018/04/14/Git_intro/</loc>
     
-    <lastmod>2018-08-29T13:18:51.695Z</lastmod>
+    <lastmod>2018-09-02T16:36:47.446Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2017/10/18/academic_essay_words/</loc>
+    
+    <lastmod>2018-09-02T16:36:27.766Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2017/10/18/academic_essay/</loc>
+    
+    <lastmod>2018-09-02T16:35:57.870Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2018/08/30/ros_1/</loc>
+    
+    <lastmod>2018-09-02T16:35:10.677Z</lastmod>
     
   </url>
   
@@ -26,20 +61,6 @@
     <loc>http://yluo.name/about/index.html</loc>
     
     <lastmod>2018-03-07T09:54:15.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yluo.name/2017/10/18/academic_essay/</loc>
-    
-    <lastmod>2017-11-20T03:58:50.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yluo.name/2017/10/18/academic_essay_words/</loc>
-    
-    <lastmod>2017-10-20T12:25:06.000Z</lastmod>
     
   </url>
   

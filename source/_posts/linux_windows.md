@@ -1,6 +1,8 @@
 ---
 title: Linux与Windows双系统搭建
 date: 2018-4-14 20:32:00
+categories:
+ - Software
 tags: 
  - tutorials
  - practise
