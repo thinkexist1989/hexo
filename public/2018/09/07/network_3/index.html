@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="summary,network," />
 
 
 
@@ -88,13 +88,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="DécouVerte">
-<meta property="og:url" content="http://yluo.name/archives/2018/04/index.html">
+<meta name="description" content="现在由于我们每个人的手机、电脑、平板电脑等设备都有接入互联网的要求，可是我们家里通常只有一路网线入户，为了解决这个问题我们家里现在都会购买一台无线路由器，将这根入户网线连接到路由器的WAN口之后，便可以通过路由器上的LAN口或者WIFI接入来上网了。这时候我们查看一下我们设备的IP地址，通常为192.168.1.110这种形式，可是我们登陆ip138.com这种IP查询网站时，显示的却是类似96.">
+<meta name="keywords" content="summary,network">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络初探（三）：路由里的小搬运工—NAT">
+<meta property="og:url" content="http://yluo.name/2018/09/07/network_3/index.html">
 <meta property="og:site_name" content="DécouVerte">
+<meta property="og:description" content="现在由于我们每个人的手机、电脑、平板电脑等设备都有接入互联网的要求，可是我们家里通常只有一路网线入户，为了解决这个问题我们家里现在都会购买一台无线路由器，将这根入户网线连接到路由器的WAN口之后，便可以通过路由器上的LAN口或者WIFI接入来上网了。这时候我们查看一下我们设备的IP地址，通常为192.168.1.110这种形式，可是我们登陆ip138.com这种IP查询网站时，显示的却是类似96.">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-09-07T06:21:32.900Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="DécouVerte">
+<meta name="twitter:title" content="计算机网络初探（三）：路由里的小搬运工—NAT">
+<meta name="twitter:description" content="现在由于我们每个人的手机、电脑、平板电脑等设备都有接入互联网的要求，可是我们家里通常只有一路网线入户，为了解决这个问题我们家里现在都会购买一台无线路由器，将这根入户网线连接到路由器的WAN口之后，便可以通过路由器上的LAN口或者WIFI接入来上网了。这时候我们查看一下我们设备的IP地址，通常为192.168.1.110这种形式，可是我们登陆ip138.com这种IP查询网站时，显示的却是类似96.">
 
 
 
@@ -124,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://yluo.name/archives/2018/04/"/>
+  <link rel="canonical" href="http://yluo.name/2018/09/07/network_3/"/>
 
 
 
 
 
-  <title>归档 | DécouVerte</title>
+  <title>计算机网络初探（三）：路由里的小搬运工—NAT | DécouVerte</title>
   
 
 
@@ -149,7 +154,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -287,111 +292,235 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
-
-      <span class="archive-page-counter">
-        
-        
-        
-          
-        
-        嗯..! 目前共计 9 篇日志。 继续努力。
-      </span>
-
-      
-
-        
-        
-        
-
-        
-          
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
-
-        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yluo.name/2018/09/07/network_3/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Yang Luo">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://oxuze83b3.bkt.clouddn.com/image/materials/doudou.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DécouVerte">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/04/14/Git_intro/" itemprop="url">
-              
-                <span itemprop="name">Git分布式版本控制系统使用心得</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">计算机网络初探（三）：路由里的小搬运工—NAT</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-14T20:32:00+08:00"
-              content="2018-04-14" >
-          04-14
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-09-07T13:05:00+08:00">
+                2018-09-07
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Computer-Network/" itemprop="url" rel="index">
+                    <span itemprop="name">Computer Network</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/04/14/linux_windows/" itemprop="url">
-              
-                <span itemprop="name">Linux与Windows双系统搭建</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-04-14T20:32:00+08:00"
-              content="2018-04-14" >
-          04-14
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
+      
+        <p>现在由于我们每个人的手机、电脑、平板电脑等设备都有接入互联网的要求，可是我们家里通常只有一路网线入户，为了解决这个问题我们家里现在都会购买一台无线路由器，将这根入户网线连接到路由器的WAN口之后，便可以通过路由器上的LAN口或者WIFI接入来上网了。这时候我们查看一下我们设备的IP地址，通常为<code>192.168.1.110</code>这种形式，可是我们登陆<a href="http://ip138.com" target="_blank" rel="external">ip138.com</a>这种IP查询网站时，显示的却是类似<code>96.46.185.33</code>这样的IP，为什么本机显示的IP地址和IP查询网站上显示的IP不一样呢？到底是哪里出现了问题？其实这两个IP显示的都没错，这是因为我们路由器有一个小搬运工—NAT的存在，可是NAT的功能是什么？存在的意义是什么？这就要先从我们的IP地址说起。</p>
+<h1 id="公网IP与私有IP"><a href="#公网IP与私有IP" class="headerlink" title="公网IP与私有IP"></a>公网IP与私有IP</h1><p>之前的博客里提过，IP地址是一串32比特的字符串，每8比特用一个<code>.</code>隔开，可表示为xx.xx.xx.xx，IP地址又有公网IP和私有IP之分，负责分配IP地址的机构预留了三块专有地址，作为私有IP地址供内部组网使用：</p>
+<ul>
+<li>A类：10.0.0.0～10.255.255.255/8</li>
+<li>B类：172.16.0.0～172.31.255.255/12</li>
+<li>C类：192.168.0.0～192.168.255.255/16</li>
+</ul>
+<p>IP地址是互联网设备的身份证，也就是每个接入互联网的设备都必须具备唯一的IP地址，这个唯一的IP地址就是公网IP。具备公网IP地址的设备就像是有了具体的门牌号，我们可以直接利用公网IP来和这个设备进行通信。可是IP地址是珍贵的资源，全世界只有20亿左右的IP地址资源，若以现在的互联网发展速度，是无法为每一台设备都分配一个公网IP地址的。但是由于互联网通信协议的要求，每个接入互联网的设备必须具备唯一的公网IP，因此为了解决这个冲突，NAT就应运而生了。</p>
+<h1 id="什么是NAT"><a href="#什么是NAT" class="headerlink" title="什么是NAT"></a>什么是NAT</h1><p>NAT(Network Address Translation，网络地址转换) ，用于将一整个内部网络通过一个公网IP连接进互联网。我们家里的路由器都具备NAT的功能，也就是将我们分配给我们的设备私有IP转换为公网IP接入互联网，从而实现只具备私有IP的设备也可以接入互联网的功能。</p>
+<h1 id="NAT工作过程"><a href="#NAT工作过程" class="headerlink" title="NAT工作过程"></a>NAT工作过程</h1><p>NAT的工作开始要从用户连接上路由器之后开始说起。当用户A利用手机WIFI连接上路由器后，通过路由器内置的DHCP服务器，会自动为用户分配以下信息：</p>
+<ul>
+<li>IP地址：192.168.1.100</li>
+<li>子网掩码：255.255.255.0</li>
+<li>缺省网关：192.168.1.1</li>
+<li>DNS服务器：192.168.1.1</li>
+</ul>
+<p>用户A的手机在局域网下的IP(192.168.1.100)是唯一的，但这个IP是私有IP地址，无法直接连接互联网，可是现在用户A在手机上打开了浏览器，想要访问公网IP为2.2.2.2的服务器上的网页，于是乎一个隐藏在路由器内部的小搬运工—NAT即将登场了。</p>
+<h2 id="1-客户端的IP报文发送给路由器"><a href="#1-客户端的IP报文发送给路由器" class="headerlink" title="1 客户端的IP报文发送给路由器"></a>1 客户端的IP报文发送给路由器</h2><p>用户A的手机浏览器会填写一个包含以下信息的报文发送给路由器：</p>
+<ul>
+<li>目的地：2.2.2.2</li>
+<li>目的端口：80</li>
+<li>发送方地址：192.168.1.100</li>
+<li>发送方端口：1234</li>
+</ul>
+<h2 id="2-小搬运工NAT出场"><a href="#2-小搬运工NAT出场" class="headerlink" title="2 小搬运工NAT出场"></a>2 小搬运工NAT出场</h2><p>路由器收到了从192.168.1.100这个IP发送过来的报文，可是它不能直接将这个报文发送到互联网中，因为192.168.1.100这个IP是一个私有IP，若原封不动地发送上去的话，是无法收到2.2.2.2返回信息的。路由器的WAN是连接着互联网的，具有公有IP 1.1.1.1。于是路由器就请来了小搬运工NAT，将这个报文做了一些修改：</p>
+<ul>
+<li>目的地：2.2.2.2</li>
+<li>目的端口：80</li>
+<li>发送方地址：1.1.1.1</li>
+<li>发送方端口：6789</li>
+</ul>
+<p>我们发现，NAT将报文中的发送方地址和端口修改成了路由器的公网IP 1.1.1.1，并且将端口号换成了6789。于是这个报文的发送方就具备了公网IP，于是便可以顺利的接收从2.2.2.2返回的消息了。</p>
+<p>但这还没有结束，如果NAT只是简单的修改了发送方的地址和端口之后便撒手不管了，那么就算2.2.2.2返回了消息，可也只是路由器接收到了消息，路由器下面可能连接着数十个私有IP的设备，那这个消息到底应该转发给谁呢？</p>
+<h2 id="3-NAT会作记录"><a href="#3-NAT会作记录" class="headerlink" title="3 NAT会作记录"></a>3 NAT会作记录</h2><p>小搬运工NAT有一个好习惯，就是每次修改了发送方地址和端口之后，都会用小本把这个改动记录下来，这就是地址转换表，每次路由器呼叫NAT来进行一次地址转换，NAT都会细心的把这个改动记录下来，这个记录大致是如下形式：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">公网IP</th>
+<th style="text-align:center">私有IP</th>
+<th style="text-align:center">路由器端口号</th>
+<th style="text-align:center">主机端口号</th>
+<th style="text-align:center">存活时间（秒）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">2.2.2.2</td>
+<td style="text-align:center">192.168.1.100</td>
+<td style="text-align:center">6789</td>
+<td style="text-align:center">1234</td>
+<td style="text-align:center">300</td>
+</tr>
+<tr>
+<td style="text-align:center">3.3.3.3</td>
+<td style="text-align:center">192.168.1.106</td>
+<td style="text-align:center">12859</td>
+<td style="text-align:center">5896</td>
+<td style="text-align:center">300</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="4-NAT将服务器报文转发给私有IP下的设备"><a href="#4-NAT将服务器报文转发给私有IP下的设备" class="headerlink" title="4 NAT将服务器报文转发给私有IP下的设备"></a>4 NAT将服务器报文转发给私有IP下的设备</h2><p>正是因为有了地址转换表的存在，当服务器2.2.2.2将用户A的手机想要得到的报文返回时，NAT会参照地址转换表中的内容，将相应的报文转发给局域网下具有私有IP的手机，手机就可以和互联网通信啦！</p>
+<h1 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h1><p>NAT的一系列动作，都是悄无声息的在路由器中完成的，甚至让很多人忘记了它的存在。这就是为什么我们在本地电脑上查看IP是私有IP，而在查询IP的网站<a href="http://ip138.com" target="_blank" rel="external">ip138.com</a>下查询到的却是公网IP了，全部都是NAT这个小搬运工在后面捣的鬼！可是我们要感谢NAT，要是没有它，我们的电脑可能就要被困在路由器的小黑屋中，无法和互联网中的世界联系啦！</p>
+
+      
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/summary/" rel="tag"><i class="fa fa-tag"></i>summary</a>
+          
+            <a href="/tags/network/" rel="tag"><i class="fa fa-tag"></i>network</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/06/network_2/" rel="next" title="计算机网络初探（二）：自动配置上网信息的DHCP服务器">
+                <i class="fa fa-chevron-left"></i> 计算机网络初探（二）：自动配置上网信息的DHCP服务器
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -399,6 +528,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -419,8 +552,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -507,6 +649,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#公网IP与私有IP"><span class="nav-number">1.</span> <span class="nav-text">公网IP与私有IP</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是NAT"><span class="nav-number">2.</span> <span class="nav-text">什么是NAT</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#NAT工作过程"><span class="nav-number">3.</span> <span class="nav-text">NAT工作过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-客户端的IP报文发送给路由器"><span class="nav-number">3.1.</span> <span class="nav-text">1 客户端的IP报文发送给路由器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-小搬运工NAT出场"><span class="nav-number">3.2.</span> <span class="nav-text">2 小搬运工NAT出场</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-NAT会作记录"><span class="nav-number">3.3.</span> <span class="nav-text">3 NAT会作记录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-NAT将服务器报文转发给私有IP下的设备"><span class="nav-number">3.4.</span> <span class="nav-text">4 NAT将服务器报文转发给私有IP下的设备</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#写在后面"><span class="nav-number">4.</span> <span class="nav-text">写在后面</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -651,6 +809,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
 
   
 
@@ -1023,26 +1185,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
