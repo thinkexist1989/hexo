@@ -290,7 +290,7 @@ highlight_theme: normal
 # Arial | Tahoma | Helvetica | Times New Roman | Courier New | Verdana | Georgia | Palatino | Garamond | Comic Sans MS | Trebuchet MS
 # ---------------------------------------------------------------
 font:
-  enable: false
+  enable: true
 
   # Uri of fonts host. E.g. //fonts.googleapis.com (Default).
   host:
@@ -323,8 +323,8 @@ font:
   # Fallback to `global` font settings.
   logo:
     external: true
-    family:
-    size:
+    family: Mr Dafoe
+    size: 45
 
   # Font settings for <code> and code blocks.
   codes:
@@ -684,13 +684,13 @@ pace: true
 pace_theme: pace-theme-minimal
 
 # Canvas-nest 添加动态背景
-canvas_nest: true
+canvas_nest: false
 
 # three_waves
 three_waves: false
 
 # canvas_lines
-canvas_lines: false
+canvas_lines: true
 
 # canvas_sphere
 canvas_sphere: false
