@@ -5,7 +5,7 @@ type: "about"
 ### <font color=Darkorange><i class="fa fa-user"></i>  个人信息</font>
 
 
-<center><img src="http://oxuze83b3.bkt.clouddn.com/image/materials/doudou.jpg" width="100px"/>
+<center><img src="doudou.jpg" width="100px"/>
 
 <table width="100%" cellpadding="0" cellspacing="0" style="font-size:15px">
 	<tr valign="top">

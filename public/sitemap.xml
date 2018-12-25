@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yluo.name/2018/12/20/make_latex/</loc>
+    
+    <lastmod>2018-12-25T03:01:55.906Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2018/11/01/vim_intro/</loc>
+    
+    <lastmod>2018-12-25T03:01:44.366Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/about/index.html</loc>
+    
+    <lastmod>2018-12-25T02:54:27.040Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yluo.name/2018/09/07/network_3/</loc>
     
     <lastmod>2018-09-07T06:21:32.900Z</lastmod>
@@ -61,13 +82,6 @@
     <loc>http://yluo.name/2018/08/30/ros_1/</loc>
     
     <lastmod>2018-09-02T16:35:10.677Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yluo.name/about/index.html</loc>
-    
-    <lastmod>2018-03-07T09:54:15.000Z</lastmod>
     
   </url>
   

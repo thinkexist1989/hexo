@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yluo.name/"/>
-  <updated>2018-09-07T06:21:32.900Z</updated>
+  <updated>2018-12-25T03:01:55.906Z</updated>
   <id>http://yluo.name/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>编写Makefile，利用make编译LaTeX</title>
+    <link href="http://yluo.name/2018/12/20/make_latex/"/>
+    <id>http://yluo.name/2018/12/20/make_latex/</id>
+    <published>2018-12-20T08:37:00.000Z</published>
+    <updated>2018-12-25T03:01:55.906Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="待写"><a href="#待写" class="headerlink" title="待写"></a>待写</h1>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;待写&quot;&gt;&lt;a href=&quot;#待写&quot; class=&quot;headerlink&quot; title=&quot;待写&quot;&gt;&lt;/a&gt;待写&lt;/h1&gt;
+      
+    
+    </summary>
+    
+      <category term="Software" scheme="http://yluo.name/categories/Software/"/>
+    
+    
+      <category term="tutorials" scheme="http://yluo.name/tags/tutorials/"/>
+    
+      <category term="practise" scheme="http://yluo.name/tags/practise/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>VIM学习笔记（一）</title>
+    <link href="http://yluo.name/2018/11/01/vim_intro/"/>
+    <id>http://yluo.name/2018/11/01/vim_intro/</id>
+    <published>2018-11-01T08:08:00.000Z</published>
+    <updated>2018-12-25T03:01:44.366Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>作为一个半资深程序员，不会使用VIM这种大神级的文本编辑器，总感觉到心里有一丝丝的羞愧～～正好赶上这段空闲时间，便在网上买了一本《Practical VIM》，从头开始对VIM进行一下系统的学习。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;作为一个半资深程序员，不会使用VIM这种大神级的文本编辑器，总感觉到心里有一丝丝的羞愧～～正好赶上这段空闲时间，便在网上买了
+      
+    
+    </summary>
+    
+      <category term="Software" scheme="http://yluo.name/categories/Software/"/>
+    
+    
+      <category term="tutorials" scheme="http://yluo.name/tags/tutorials/"/>
+    
+      <category term="practise" scheme="http://yluo.name/tags/practise/"/>
+    
+  </entry>
   
   <entry>
     <title>计算机网络初探（三）：路由里的小搬运工—NAT</title>
@@ -135,19 +189,19 @@
   </entry>
   
   <entry>
-    <title>Git分布式版本控制系统使用心得</title>
-    <link href="http://yluo.name/2018/04/14/Git_intro/"/>
-    <id>http://yluo.name/2018/04/14/Git_intro/</id>
+    <title>Linux与Windows双系统搭建</title>
+    <link href="http://yluo.name/2018/04/14/linux_windows/"/>
+    <id>http://yluo.name/2018/04/14/linux_windows/</id>
     <published>2018-04-14T12:32:00.000Z</published>
-    <updated>2018-09-02T16:36:47.446Z</updated>
+    <updated>2018-09-02T16:37:20.723Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>Git对于经常写代码的码农同志们并不陌生，几乎是必备的工具之一。由于本人现在经常参与机器人相关的项目，需要管理大量的项目代码。之前一直在电脑保存各式各样的代码版本，时间一长根本记不住每个版本之间的区别和改动，这才入了Git的坑，在了解了Git的工作原理和基本操作之后，便一发不可收拾，真后悔没有早些了解这个神奇的工具。下面我就以我对Git的了解介绍一下什么是Git以及Git的基本使用方法。</p><h1 id="什么是Git？"><a href="#什么是Git？" class="headerlink" title="什么是Git？"></a>什么是Git？</h1><p>Git专业的叫法是：一种分布式版本控制系统。很多人不了解分布式版本控制系统的概念，没关系，我会用一种通俗的方式解释一下。</p><p>假设你现在要开发一个程序，你已经写好了一份代码，但是这份代码有很多BUG，而且功能也很不完善，你需要不断的修改这份代码，并且需要记录每次的改动，以便万一哪次改错了可以恢复之前的版本，如果没有Git，你会怎么做？</p><p>很简单，我可以把每次的代码文件名后面加一个版本号，假设是code1，code2，…..，code100 等等。如果我修改过100次，那么就需要在电脑上保留100份代码，怎么样？是不是很简单？而且很直观，我还可以在每次修改的代码文件里加入一些修改的描述，比如此次修改了什么什么之类的话。</p><p>似乎看上去已经很完美了，无非是多存一些文件而已嘛，怕什么？！老子硬盘4个TB！！好吧，那我们再考虑一些情况，很多时候一个项目代码需要几个人一起维护，那么怎么去协调每个人修改的部分呢？</p><p>这个稍微有一些麻烦了，不过没关系，我们可以让其中一个人先改，改完了将文件发给第二个人改，第二个人改完了发给第三个人，以此类推。当最后一个人改完了，将这个文件标记为最终版！！额。。。假设每个人都做过100次改动，有四个人来维护这个项目，那么产生的文件个数就是400个！这还只是一个项目而已，如果很多项目呢？对这些项目版本的管理会产生极其高昂的成本。</p><p>那么我们再假设一种情况，这个项目想新加入一个功能，但是不知道这个功能好不好，如果好就加到项目中去，如果不好就还是使用原来的项目。那么我们又该怎么管理这个项目的版本呢？</p><p>提出了以上问题，就是Git诞生的原因，最初就是为了方便管理Linux内核代码而设计的工具。在我看来，Git的用处在于可以记录每次的项目文件改动，而且可以方便的新建项目分支、合并项目分支。以我在Github上的<a href="github.com/thinkexist1989/CV">个人简历</a>为例，我的个人简历是用LaTeX写的，从写简历开始，每一次的修改都被Git记录了下来，而且由于我的简历分为中文版和英文版，我的项目里就新建了2个分支，一个叫en分支，是英文版简历，一个叫zh分支，是中文版简历。所有的这些在我的电脑里，仅仅有一份文件就足够了，这就是神奇的Git。</p><h1 id="Git的安装"><a href="#Git的安装" class="headerlink" title="Git的安装"></a>Git的安装</h1><p>如果你在Linux下，那么Git的使用将会是异常方便的。你只需要在终端输入</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install git</div></pre></td></tr></table></figure><p>便可以使用Git了。当然，如果你不喜欢指令行形式的Git，你也可以使用一些GUI软件，个人比较推荐GitKraken，界面很漂亮，而且跨平台。</p><p>如果你在Windows下，你可以安装Git Bash，同样利用指令行来使用Git，或者使用GitKraken之类的GUI软件来管理你的项目版本。由于个人喜好，我喜欢直接利用指令来使用Git，这对于理解Git的工作原理也有很多好处，当然你也可以更直观的利用GUI来使用，下面我介绍的都是Git指令，理解了Git指令同样可以在GUI里游刃有余的使用Git。</p><h1 id="Git的使用"><a href="#Git的使用" class="headerlink" title="Git的使用"></a>Git的使用</h1><p>其实，Git只是一个记录文件改动的工具，因此完全可以独立在电脑上使用，并不一定非要将文件存放到网上。初始化Git很简单，新建一个你需要管理的项目文件夹，假设名为proj，进入文件夹，在终端里输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git init</div></pre></td></tr></table></figure><p>你会发现，在文件夹里出现了一个隐藏的文件夹，名为.git，别小看了这个文件夹，今后你文件夹中所有的文件改动它都一清二楚地记录在里面，Git就是利用这个文件夹中的文件来进行版本控制的。</p><p>假设你的需要版本控制的文件名叫file.doc,那么你需要在终端输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git add file.doc</div></pre></td></tr></table></figure><p>来告诉Git，我要跟踪file.doc这个文件的版本。或者如果文件夹下有很多文件，你全部需要跟踪，你可以输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git add .</div></pre></td></tr></table></figure><p>Git同时可以利用.gitignore文件控制需要忽略的文件，这个可以查看Git教程，这里不再赘述。下面你便可以对这个文件夹的文件进行修改，修改之后，在终端输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git status</div></pre></td></tr></table></figure><p>你会发现，你所有的文件改动，包括修改，删除、新建的文件都没有逃过Git的法眼，但是根据Git的机制，Git目前还没有将这些改动暂存，如果你认为这一时刻的状态需要被Git记录下来，那么你就需要输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git commit -m &quot;这是我的修改&quot;</div></pre></td></tr></table></figure><p>这样你的这次改动就被Git存储了下来，今后不管到什么版本，你都可以随时恢复到这次暂存的这个版本。怎么样？很神奇吧。神奇的还在后面呢。假如你想新建项目的另一个版本，同时又不想影响当前的版本，你可以在终端输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git checkout -b another</div></pre></td></tr></table></figure><p>这样，你会看到Git新建了一个分支，叫another分支，今后你所有的修改就会发生在another分支上，而对之前的分支（默认分支master）没有任何影响，如果你有一天想要回到之前的分支，继续之前的工作，那么简单，在终端输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git checkout master</div></pre></td></tr></table></figure><p>这样就轻松的切换回了主分支master，你会看到所有的文件都恢复到了master分支的状态。</p><p>这就是Git最基本的用法，当然了，版本回退、分支合并等操作也可以轻松实现，你也可以将代码push到GitHub或者Gitee等代码托管网站上，你也可以将别处的改动pull到本地，或是git clone网站上的代码到本地，这些在这里不在赘述，可以参考文献《Pro Git中文版》，里面有关于Git的详细用法。</p><h1 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h1><p>Git可以管理几乎你的任何文件，虽然不推荐使用Git来管理非文本类的文件，but anyway，这是你的自由，只要你想Git就可以做！</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>这篇教程是我自己安装Linux与Windows双系统的心得。其实安装Linux与Windows双系统对于很多IT人士来讲是很普通的一件事，就像吃饭要用筷子一样，网上类似的教程也有很多，其实并不难。但是身处高校科研这么多年来，我却发现，在中国高校，Linux的普及率很低，很多机器人方向的博士甚至都没有接触过。作为一个Linux的脑残粉，我这里不但要介绍一下双系统的搭建，而且也顺便将我在Linux下所用到很多高效开发工具介绍给大家。</p><h1 id="什么是Linux"><a href="#什么是Linux" class="headerlink" title="什么是Linux"></a>什么是Linux</h1><p><a href="https://baike.baidu.com/item/linux/27050?fr=aladdin" target="_blank" rel="external">百度百科</a>上是这么介绍Linux的：Linux是一套免费使用和自由传播的类Unix操作系统。</p><p>没错，和Windows一样，Linux就是一个操作系统。但是不同的是，Linux是免费的、自由的操作系统，而Windows是收费的。作为一名苦逼的博士，在经济条件捉急的情况下，能有一套免费的操作系统用当然很开心！但免费并不是我选择Linux的主要原因，因为毕竟Windows也可以破解嘛～在慢慢的使用过程中，我才领悟到Linux的精神在于自由，在于你可以按照一切你想要的样子去改造出属于自己的操作系统，可以裁剪、编译、修改等等，这也就是为什么目前绝大多数的嵌入式设备都采用Linux内核的原因之一。</p><h1 id="Linux发行版"><a href="#Linux发行版" class="headerlink" title="Linux发行版"></a>Linux发行版</h1><p>其实Linux操作系统指的是采用Linux内核的操作系统。内核管理着操作系统最基本的部分，它必须配合一系列的软件，才可以构成一套方便用户使用的操作系统。很多软件公司把Linux内核与各类不同的软件打包发布，这就是所谓的Linux发行版，就像是都采用高通处理器的手机，有的叫小米、有的叫一加。</p><p>据我所知，目前最好用的发行版之一就是Ubuntu了。我也很推荐Ubuntu，不光是系统比较稳定，而且由于用户众多，出现各种问题上网一搜便能找到解决方案，的确很方便。并且由于ROS系统(Robot Operating System) 在Ubuntu下的支持最好，很多机器人方向的学生都首选Ubuntu。我现在使用的发行版是Linuxmint，它其实是基于Ubuntu的封装，只是界面风格和一些文件管理器做了一些改变，总体上和Ubuntu是没有区别的，使用体验上和Windows更类似一些。</p><h1 id="Linux安装"><a href="#Linux安装" class="headerlink" title="Linux安装"></a>Linux安装</h1><p>对于我来说，Linux上最大的问题是有一些成熟的商业软件只能在Windows上用，因此尽管我大部分时间都可以在Linux上使用，但是每个月总有那么一两次需要切换回Windows。况且Linux占用硬盘空间也很小，完全可以实现双系统，所以我一般推荐在电脑上安装Windows与Linux双系统。安装双系统其实很简单，如果不是有什么特别癖好，只需要以下几步便可以完成。</p><ul><li>准备Linux系统启动U盘</li><li>在Windows系统下分配空间给Linux</li><li>安装Linux</li><li>配置Boot(不一定需要)</li></ul><h2 id="准备系统启动U盘"><a href="#准备系统启动U盘" class="headerlink" title="准备系统启动U盘"></a>准备系统启动U盘</h2><p>很简单，去Linuxmint或者Ubuntu之类的Linux发行版官网，均可以找到最新的镜像安装包(.iso)，下载之后将ISO里的东西全部拷贝到一个空U盘里即可。推荐下载LTS的安装包，LTS代表long time support，长期支持。</p><h2 id="分配空间给Linux"><a href="#分配空间给Linux" class="headerlink" title="分配空间给Linux"></a>分配空间给Linux</h2><p>在Windows的磁盘管理下，利用压缩卷，释放一定的可用空间给Linux，一般50G~100G就完全够用了。</p><h2 id="安装Linux"><a href="#安装Linux" class="headerlink" title="安装Linux"></a>安装Linux</h2><p>重新启动电脑，设置U盘启动，这里要注意一下BIOS是legacy还是UEFI，一般Linux都这两种启动方式都支持。只是如果是Windows 10且采用UEFI启动的话，可能需要关闭Security Boot选项，否则无法安装。</p><p>安装过程比较简单，可以手动配置空间分配大小，但是我推荐可以选择与Windows共存选项，系统会自动分配空间大小。之后按照提示一步一步安装至重启即可。</p><h2 id="设置BOOT"><a href="#设置BOOT" class="headerlink" title="设置BOOT"></a>设置BOOT</h2><p>如果选择与Windows共存的话一般不用设置，启动后便进入GRUB界面，可以选择想启动的操作系统。但是如果是自己选择的空间分配，有可能需要在Windows下利用EasyBCD等软件设置启动分区。推荐使用GRUB启动，因为可以修改主题，使启动界面也很漂亮。</p><h2 id="Linux下的生产力工具"><a href="#Linux下的生产力工具" class="headerlink" title="Linux下的生产力工具"></a>Linux下的生产力工具</h2><p>对于高校的科研工作者来说，我认为Linux是非常好用的，因为上面有许许多多免费开源的生产力工具，当然这些工具一般都是跨平台的，也可以在Windows下使用。但是当你熟悉了Linux下的指令行操作，你就明白Linux的魅力所在了。在这里我推荐几个我最常用的软件。</p><ul><li><strong>TeXLive</strong>Texlive是由TUG维护的LaTeX发行版，在Windows和Linux下均可以使用，对于经常需要期刊投稿的高校科研工作者，我认为LaTeX是必备技能之一，完全可以摆脱Word。</li><li><strong>Inkscape</strong>鼎鼎大名的开源矢量绘图软件，我论文里的插图几乎都是用Inkscape绘制的，不但可以直接存成svg格式，也可以转换为png等图片格式，更神奇的是，可以转换为PStricks格式供LaTeX使用，简直不要太牛逼！也有Windows版本哦～</li><li><strong>Veusz</strong>Veusz是一个科研绘图的神奇，不但界面简单，做出的曲线图也十分漂亮，完全可以取代Origin。同样是跨平台的哦～</li><li><strong>Git</strong>Git分布式代码管理系统，这个不用多说，管理你的代码简直就是神器，在Linux下直接命令行操作，这种快感真是爽歪歪了。</li><li><strong>Qt</strong>Qt这个跨平台的C++库，可以实现一套代码，跑遍各种操作系统，而且独有的信号和槽的机制，使得程序的编写更加简单。</li><li><strong>Mendeley</strong>牛逼的文献管理软件，完全可以取代笨重的Endnote.</li><li><strong>JabRef</strong>配合LaTeX使用的文献管理工具，跨平台</li><li><strong>GitKraken</strong>跨平台的Git图形化管理工具，超级好用，一目了然。</li></ul><p>这只是一小部分我使用的软件，其实在Linux下，还有很多例如Vim之类的超级好用软件，这些软件的特点通常就是入门门槛高，但是一旦会用便无法自拔，而且——免费！妈妈再也不用担心我没有破解工具了。</p><h1 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h1><p>各个操作系统都有自己的优缺点，Linux也一样，只要适合自己便是好的操作系统，多用才是王道，任何一个操作系统只要能熟练使用，提升工作效率我认为就足够了。</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;Git对于经常写代码的码农同志们并不陌生，几乎是必备的工具之一。由于本人现在经常参与机器人相关的项目，需要管理大量的项目代码
+        &lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;这篇教程是我自己安装Linux与Windows双系统的心得。其实安装Linux与Windows双系统对于很多IT人士来讲是很
       
     
     </summary>
@@ -162,19 +216,19 @@
   </entry>
   
   <entry>
-    <title>Linux与Windows双系统搭建</title>
-    <link href="http://yluo.name/2018/04/14/linux_windows/"/>
-    <id>http://yluo.name/2018/04/14/linux_windows/</id>
+    <title>Git分布式版本控制系统使用心得</title>
+    <link href="http://yluo.name/2018/04/14/Git_intro/"/>
+    <id>http://yluo.name/2018/04/14/Git_intro/</id>
     <published>2018-04-14T12:32:00.000Z</published>
-    <updated>2018-09-02T16:37:20.723Z</updated>
+    <updated>2018-09-02T16:36:47.446Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>这篇教程是我自己安装Linux与Windows双系统的心得。其实安装Linux与Windows双系统对于很多IT人士来讲是很普通的一件事，就像吃饭要用筷子一样，网上类似的教程也有很多，其实并不难。但是身处高校科研这么多年来，我却发现，在中国高校，Linux的普及率很低，很多机器人方向的博士甚至都没有接触过。作为一个Linux的脑残粉，我这里不但要介绍一下双系统的搭建，而且也顺便将我在Linux下所用到很多高效开发工具介绍给大家。</p><h1 id="什么是Linux"><a href="#什么是Linux" class="headerlink" title="什么是Linux"></a>什么是Linux</h1><p><a href="https://baike.baidu.com/item/linux/27050?fr=aladdin" target="_blank" rel="external">百度百科</a>上是这么介绍Linux的：Linux是一套免费使用和自由传播的类Unix操作系统。</p><p>没错，和Windows一样，Linux就是一个操作系统。但是不同的是，Linux是免费的、自由的操作系统，而Windows是收费的。作为一名苦逼的博士，在经济条件捉急的情况下，能有一套免费的操作系统用当然很开心！但免费并不是我选择Linux的主要原因，因为毕竟Windows也可以破解嘛～在慢慢的使用过程中，我才领悟到Linux的精神在于自由，在于你可以按照一切你想要的样子去改造出属于自己的操作系统，可以裁剪、编译、修改等等，这也就是为什么目前绝大多数的嵌入式设备都采用Linux内核的原因之一。</p><h1 id="Linux发行版"><a href="#Linux发行版" class="headerlink" title="Linux发行版"></a>Linux发行版</h1><p>其实Linux操作系统指的是采用Linux内核的操作系统。内核管理着操作系统最基本的部分，它必须配合一系列的软件，才可以构成一套方便用户使用的操作系统。很多软件公司把Linux内核与各类不同的软件打包发布，这就是所谓的Linux发行版，就像是都采用高通处理器的手机，有的叫小米、有的叫一加。</p><p>据我所知，目前最好用的发行版之一就是Ubuntu了。我也很推荐Ubuntu，不光是系统比较稳定，而且由于用户众多，出现各种问题上网一搜便能找到解决方案，的确很方便。并且由于ROS系统(Robot Operating System) 在Ubuntu下的支持最好，很多机器人方向的学生都首选Ubuntu。我现在使用的发行版是Linuxmint，它其实是基于Ubuntu的封装，只是界面风格和一些文件管理器做了一些改变，总体上和Ubuntu是没有区别的，使用体验上和Windows更类似一些。</p><h1 id="Linux安装"><a href="#Linux安装" class="headerlink" title="Linux安装"></a>Linux安装</h1><p>对于我来说，Linux上最大的问题是有一些成熟的商业软件只能在Windows上用，因此尽管我大部分时间都可以在Linux上使用，但是每个月总有那么一两次需要切换回Windows。况且Linux占用硬盘空间也很小，完全可以实现双系统，所以我一般推荐在电脑上安装Windows与Linux双系统。安装双系统其实很简单，如果不是有什么特别癖好，只需要以下几步便可以完成。</p><ul><li>准备Linux系统启动U盘</li><li>在Windows系统下分配空间给Linux</li><li>安装Linux</li><li>配置Boot(不一定需要)</li></ul><h2 id="准备系统启动U盘"><a href="#准备系统启动U盘" class="headerlink" title="准备系统启动U盘"></a>准备系统启动U盘</h2><p>很简单，去Linuxmint或者Ubuntu之类的Linux发行版官网，均可以找到最新的镜像安装包(.iso)，下载之后将ISO里的东西全部拷贝到一个空U盘里即可。推荐下载LTS的安装包，LTS代表long time support，长期支持。</p><h2 id="分配空间给Linux"><a href="#分配空间给Linux" class="headerlink" title="分配空间给Linux"></a>分配空间给Linux</h2><p>在Windows的磁盘管理下，利用压缩卷，释放一定的可用空间给Linux，一般50G~100G就完全够用了。</p><h2 id="安装Linux"><a href="#安装Linux" class="headerlink" title="安装Linux"></a>安装Linux</h2><p>重新启动电脑，设置U盘启动，这里要注意一下BIOS是legacy还是UEFI，一般Linux都这两种启动方式都支持。只是如果是Windows 10且采用UEFI启动的话，可能需要关闭Security Boot选项，否则无法安装。</p><p>安装过程比较简单，可以手动配置空间分配大小，但是我推荐可以选择与Windows共存选项，系统会自动分配空间大小。之后按照提示一步一步安装至重启即可。</p><h2 id="设置BOOT"><a href="#设置BOOT" class="headerlink" title="设置BOOT"></a>设置BOOT</h2><p>如果选择与Windows共存的话一般不用设置，启动后便进入GRUB界面，可以选择想启动的操作系统。但是如果是自己选择的空间分配，有可能需要在Windows下利用EasyBCD等软件设置启动分区。推荐使用GRUB启动，因为可以修改主题，使启动界面也很漂亮。</p><h2 id="Linux下的生产力工具"><a href="#Linux下的生产力工具" class="headerlink" title="Linux下的生产力工具"></a>Linux下的生产力工具</h2><p>对于高校的科研工作者来说，我认为Linux是非常好用的，因为上面有许许多多免费开源的生产力工具，当然这些工具一般都是跨平台的，也可以在Windows下使用。但是当你熟悉了Linux下的指令行操作，你就明白Linux的魅力所在了。在这里我推荐几个我最常用的软件。</p><ul><li><strong>TeXLive</strong>Texlive是由TUG维护的LaTeX发行版，在Windows和Linux下均可以使用，对于经常需要期刊投稿的高校科研工作者，我认为LaTeX是必备技能之一，完全可以摆脱Word。</li><li><strong>Inkscape</strong>鼎鼎大名的开源矢量绘图软件，我论文里的插图几乎都是用Inkscape绘制的，不但可以直接存成svg格式，也可以转换为png等图片格式，更神奇的是，可以转换为PStricks格式供LaTeX使用，简直不要太牛逼！也有Windows版本哦～</li><li><strong>Veusz</strong>Veusz是一个科研绘图的神奇，不但界面简单，做出的曲线图也十分漂亮，完全可以取代Origin。同样是跨平台的哦～</li><li><strong>Git</strong>Git分布式代码管理系统，这个不用多说，管理你的代码简直就是神器，在Linux下直接命令行操作，这种快感真是爽歪歪了。</li><li><strong>Qt</strong>Qt这个跨平台的C++库，可以实现一套代码，跑遍各种操作系统，而且独有的信号和槽的机制，使得程序的编写更加简单。</li><li><strong>Mendeley</strong>牛逼的文献管理软件，完全可以取代笨重的Endnote.</li><li><strong>JabRef</strong>配合LaTeX使用的文献管理工具，跨平台</li><li><strong>GitKraken</strong>跨平台的Git图形化管理工具，超级好用，一目了然。</li></ul><p>这只是一小部分我使用的软件，其实在Linux下，还有很多例如Vim之类的超级好用软件，这些软件的特点通常就是入门门槛高，但是一旦会用便无法自拔，而且——免费！妈妈再也不用担心我没有破解工具了。</p><h1 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h1><p>各个操作系统都有自己的优缺点，Linux也一样，只要适合自己便是好的操作系统，多用才是王道，任何一个操作系统只要能熟练使用，提升工作效率我认为就足够了。</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>Git对于经常写代码的码农同志们并不陌生，几乎是必备的工具之一。由于本人现在经常参与机器人相关的项目，需要管理大量的项目代码。之前一直在电脑保存各式各样的代码版本，时间一长根本记不住每个版本之间的区别和改动，这才入了Git的坑，在了解了Git的工作原理和基本操作之后，便一发不可收拾，真后悔没有早些了解这个神奇的工具。下面我就以我对Git的了解介绍一下什么是Git以及Git的基本使用方法。</p><h1 id="什么是Git？"><a href="#什么是Git？" class="headerlink" title="什么是Git？"></a>什么是Git？</h1><p>Git专业的叫法是：一种分布式版本控制系统。很多人不了解分布式版本控制系统的概念，没关系，我会用一种通俗的方式解释一下。</p><p>假设你现在要开发一个程序，你已经写好了一份代码，但是这份代码有很多BUG，而且功能也很不完善，你需要不断的修改这份代码，并且需要记录每次的改动，以便万一哪次改错了可以恢复之前的版本，如果没有Git，你会怎么做？</p><p>很简单，我可以把每次的代码文件名后面加一个版本号，假设是code1，code2，…..，code100 等等。如果我修改过100次，那么就需要在电脑上保留100份代码，怎么样？是不是很简单？而且很直观，我还可以在每次修改的代码文件里加入一些修改的描述，比如此次修改了什么什么之类的话。</p><p>似乎看上去已经很完美了，无非是多存一些文件而已嘛，怕什么？！老子硬盘4个TB！！好吧，那我们再考虑一些情况，很多时候一个项目代码需要几个人一起维护，那么怎么去协调每个人修改的部分呢？</p><p>这个稍微有一些麻烦了，不过没关系，我们可以让其中一个人先改，改完了将文件发给第二个人改，第二个人改完了发给第三个人，以此类推。当最后一个人改完了，将这个文件标记为最终版！！额。。。假设每个人都做过100次改动，有四个人来维护这个项目，那么产生的文件个数就是400个！这还只是一个项目而已，如果很多项目呢？对这些项目版本的管理会产生极其高昂的成本。</p><p>那么我们再假设一种情况，这个项目想新加入一个功能，但是不知道这个功能好不好，如果好就加到项目中去，如果不好就还是使用原来的项目。那么我们又该怎么管理这个项目的版本呢？</p><p>提出了以上问题，就是Git诞生的原因，最初就是为了方便管理Linux内核代码而设计的工具。在我看来，Git的用处在于可以记录每次的项目文件改动，而且可以方便的新建项目分支、合并项目分支。以我在Github上的<a href="github.com/thinkexist1989/CV">个人简历</a>为例，我的个人简历是用LaTeX写的，从写简历开始，每一次的修改都被Git记录了下来，而且由于我的简历分为中文版和英文版，我的项目里就新建了2个分支，一个叫en分支，是英文版简历，一个叫zh分支，是中文版简历。所有的这些在我的电脑里，仅仅有一份文件就足够了，这就是神奇的Git。</p><h1 id="Git的安装"><a href="#Git的安装" class="headerlink" title="Git的安装"></a>Git的安装</h1><p>如果你在Linux下，那么Git的使用将会是异常方便的。你只需要在终端输入</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install git</div></pre></td></tr></table></figure><p>便可以使用Git了。当然，如果你不喜欢指令行形式的Git，你也可以使用一些GUI软件，个人比较推荐GitKraken，界面很漂亮，而且跨平台。</p><p>如果你在Windows下，你可以安装Git Bash，同样利用指令行来使用Git，或者使用GitKraken之类的GUI软件来管理你的项目版本。由于个人喜好，我喜欢直接利用指令来使用Git，这对于理解Git的工作原理也有很多好处，当然你也可以更直观的利用GUI来使用，下面我介绍的都是Git指令，理解了Git指令同样可以在GUI里游刃有余的使用Git。</p><h1 id="Git的使用"><a href="#Git的使用" class="headerlink" title="Git的使用"></a>Git的使用</h1><p>其实，Git只是一个记录文件改动的工具，因此完全可以独立在电脑上使用，并不一定非要将文件存放到网上。初始化Git很简单，新建一个你需要管理的项目文件夹，假设名为proj，进入文件夹，在终端里输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git init</div></pre></td></tr></table></figure><p>你会发现，在文件夹里出现了一个隐藏的文件夹，名为.git，别小看了这个文件夹，今后你文件夹中所有的文件改动它都一清二楚地记录在里面，Git就是利用这个文件夹中的文件来进行版本控制的。</p><p>假设你的需要版本控制的文件名叫file.doc,那么你需要在终端输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git add file.doc</div></pre></td></tr></table></figure><p>来告诉Git，我要跟踪file.doc这个文件的版本。或者如果文件夹下有很多文件，你全部需要跟踪，你可以输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git add .</div></pre></td></tr></table></figure><p>Git同时可以利用.gitignore文件控制需要忽略的文件，这个可以查看Git教程，这里不再赘述。下面你便可以对这个文件夹的文件进行修改，修改之后，在终端输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git status</div></pre></td></tr></table></figure><p>你会发现，你所有的文件改动，包括修改，删除、新建的文件都没有逃过Git的法眼，但是根据Git的机制，Git目前还没有将这些改动暂存，如果你认为这一时刻的状态需要被Git记录下来，那么你就需要输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git commit -m &quot;这是我的修改&quot;</div></pre></td></tr></table></figure><p>这样你的这次改动就被Git存储了下来，今后不管到什么版本，你都可以随时恢复到这次暂存的这个版本。怎么样？很神奇吧。神奇的还在后面呢。假如你想新建项目的另一个版本，同时又不想影响当前的版本，你可以在终端输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git checkout -b another</div></pre></td></tr></table></figure><p>这样，你会看到Git新建了一个分支，叫another分支，今后你所有的修改就会发生在another分支上，而对之前的分支（默认分支master）没有任何影响，如果你有一天想要回到之前的分支，继续之前的工作，那么简单，在终端输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git checkout master</div></pre></td></tr></table></figure><p>这样就轻松的切换回了主分支master，你会看到所有的文件都恢复到了master分支的状态。</p><p>这就是Git最基本的用法，当然了，版本回退、分支合并等操作也可以轻松实现，你也可以将代码push到GitHub或者Gitee等代码托管网站上，你也可以将别处的改动pull到本地，或是git clone网站上的代码到本地，这些在这里不在赘述，可以参考文献《Pro Git中文版》，里面有关于Git的详细用法。</p><h1 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h1><p>Git可以管理几乎你的任何文件，虽然不推荐使用Git来管理非文本类的文件，but anyway，这是你的自由，只要你想Git就可以做！</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;这篇教程是我自己安装Linux与Windows双系统的心得。其实安装Linux与Windows双系统对于很多IT人士来讲是很
+        &lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;Git对于经常写代码的码农同志们并不陌生，几乎是必备的工具之一。由于本人现在经常参与机器人相关的项目，需要管理大量的项目代码
       
     
     </summary>

@@ -150,7 +150,7 @@ links_layout: block
 # in theme directory(source/images): /images/avatar.gif
 # in site  directory(source/uploads): /uploads/avatar.gif
 #avatar: /images/avatar.gif
-avatar: http://oxuze83b3.bkt.clouddn.com/image/materials/doudou.jpg
+avatar: images/doudou.jpg
 #avatar: http://oxuze83b3.bkt.clouddn.com/image/materials/maidou.png
 
 # Table Of Contents in the Sidebar
