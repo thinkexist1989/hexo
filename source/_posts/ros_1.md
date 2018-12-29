@@ -10,7 +10,7 @@ tags:
 mathjax: false
 ---
 
-![](http://oxuze83b3.bkt.clouddn.com/image/ros/ros_org.png)
+![](/images/ros_org.png)
 
 # 什么是ROS？
 

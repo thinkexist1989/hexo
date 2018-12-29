@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[计算机网络初探（四）：网络里的中间商—正向代理与反向代理]]></title>
+    <url>%2F2018%2F12%2F29%2Fnetwork_4%2F</url>
+    <content type="text"><![CDATA[知乎网络大神车小胖对于正向代理与反向代理做了一个有趣的类比： 很久以前，老王去饭店吃饭，需要先到饭店，七荤八素点好菜，坐等饭菜上桌，然后大快朵颐，不亦乐乎。有了第三方订餐外卖平台，老王懒得动身前往饭店，老王打个电话或用APP，先选好某个饭店，再点好菜，外卖小哥会送上门来。这种模式被起名为正向代理（Forward Proxy）由于某个品牌的饭店口碑特别好，食客络绎不绝涌入，第三方订餐电话也不绝于耳，但是限于饭店接待能力有限，无法提供及时服务，很多食客等得不耐烦了，纷纷铩羽而归，饭店老总看着煮熟的鸭子飞走了，心疼不已。痛定思痛，老总又成立了几个连锁饭店，形成一个集群，对外提供统一标准的菜品服务，电话订餐电话400-xxx-7777，当食客涌入饭店总台，总台将食客用大巴运到各个连锁店，这样食客既不需要排队，各连锁店都能高速运转起来，一举两得，老总乐开了花，并为此种运作模式起名为反向代理（Reverse Proxy）。反向代理在计算机世界里，由于单个服务器的处理客户端（用户）请求能力有一个极限，当用户的接入请求蜂拥而入时，会造成服务器忙不过来的局面，可以使用多个服务器来共同分担成千上万的用户请求，这些服务器提供相同的服务，对于用户来说，根本感觉不到任何差别。 概念正向代理是一个位于客户端和目标服务器之间的代理服务器(中间服务器)。为了从原始服务器取得内容，客户端向代理服务器发送一个请求，并且指定目标服务器，之后代理向目标服务器转交并且将获得的内容返回给客户端。正向代理的情况下客户端必须要进行一些特别的设置才能使用。 反向代理正好相反。对于客户端来说，反向代理就好像目标服务器。并且客户端不需要进行任何设置。客户端向反向代理发送请求，接着反向代理判断请求走向何处，并将请求转交给客户端，使得这些内容就好似他自己一样，一次客户端并不会感知到反向代理后面的服务，也因此不需要客户端做任何设置，只需要把反向代理服务器当成真正的服务器就好了。 区别正向代理需要你主动设置代理服务器ip或者域名进行访问，由设置的服务器ip或者域名去获取访问内容并返回；而反向代理不需要你做任何设置，直接访问服务器真实ip或者域名，但是服务器内部会自动根据访问内容进行跳转及内容返回，你不知道它最终访问的是哪些机器。 正向代理是代理客户端，为客户端收发请求，使真实客户端对服务器不可见；而反向代理是代理服务器端，为服务器收发请求，使真实服务器对客户端不可见。 正向代理和反向代理最关键的两点区别： 是否指定目标服务器 客户端是否要做设置 正向代理与反向代理 正向代理中，proxy和client同属一个LAN，对server透明； 反向代理中，proxy和server同属一个LAN，对client透明。 实际上proxy在两种代理中做的事都是代为收发请求和响应，不过从结构上来看正好左右互换了下，所以把前者那种代理方式叫做正向代理，后者叫做反向代理。 从用途上来区分： 正向代理：正向代理用途是为了在防火墙内的局域网提供访问internet的途径。另外还可以使用缓冲特性减少网络使用率 反向代理：反向代理的用途是将防火墙后面的服务器提供给internet用户访问。同时还可以完成诸如负载均衡等功能 从安全性来讲： 正向代理：正向代理允许客户端通过它访问任意网站并且隐蔽客户端自身，因此你必须采取安全措施来确保仅为经过授权的客户端提供服务 反向代理：对外是透明的，访问者并不知道自己访问的是代理。对访问者而言，他以为访问的就是原始服务器 使用场景正向代理的典型用途是为在防火墙内的局域网客户端提供访问Internet的途径。正向代理还可以使用缓冲特性减少网络使用率。反向代理的典型用途是将 防火墙后面的服务器提供给Internet用户访问。反向代理还可以为后端的多台服务器提供负载平衡，或为后端较慢的服务器提供缓冲服务。 从上面的介绍也就可以猜出来正向代理的至少一个功能（比如科学上网），也即： 用户A无法访问facebook，但是能访问服务器B，而服务器B可以访问facebook。于是用户A访问服务器B，通过服务器B去访问facebook，，服务器B收到请求后，去访问facebook，facebook把响应信息返回给服务器B，服务器B再把响应信息返回给A。这样，通过代理服务器B，就实现了翻墙。 从上面的介绍也可以猜出来反向代理的至少一个功能（比如负载均衡），也即： 假设用户A访问 http://www.somesite.com/something.html，但www.somesite.com上并不存在something.html页面，于是接收用户请求的该服务器就偷偷从另外一台服务器上取回来，然后返回给用户，而用户并不知道something.html页面究竟位于哪台机器上。当我们请求 www.baidu.com 的时候，就像拨打10086一样，背后可能有成千上万台服务器为我们服务，但具体是哪一台，你不知道，也不需要知道，你只需要知道反向代理服务器是谁就好了，www.baidu.com 就是我们的反向代理服务器，反向代理服务器会帮我们把请求转发到真实的服务器那里去。 当然反向代理的作用还有很多，这里简单列举一下： 保护和隐藏原始资源服务器 加密和SSL加速 负载均衡 缓存静态内容 压缩 减速上传 安全 外网发布 总结总之，正向代理代理的对象是客户端，反向代理代理的对象是服务端；正向代理隐藏了真实的客户端，反向代理隐藏了真实的服务端。]]></content>
+      <categories>
+        <category>Computer Network</category>
+      </categories>
+      <tags>
+        <tag>summary</tag>
+        <tag>network</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[使用make编译LaTeX文档]]></title>
     <url>%2F2018%2F12%2F20%2Fmake_latex%2F</url>
     <content type="text"><![CDATA[由于一直使用Ubuntu作为主力系统，很多代码编写的工作都用VIM来完成，VIM这个牛逼闪闪的编辑器的确装逼范十足，让人爱不释手，导致我恨不得将所有的编辑器都抛弃掉，全部采用VIM来编辑（除了WORD之外还真没什么不可以）。VIM下来编辑LaTeX文档自然不在话下，利用vim-latex插件可以轻松实现LaTeX文档的编写与编译。但是这个插件也有一定的缺陷——不能利用Magic Comments自动识别编译引擎来编译LaTeX文档，默认情况下\ll快捷键只能支持一种编译引擎！这就让经常需要在pdflatex和xelatex之间切换的我很尴尬，每次编写完文档，都需要切到终端去利用不用的命令行来实现LaTeX文档的编译工作。为了充分展现我懒惰的一面，打算采用make来编译LaTeX文档，这样在编写好Makefile之后，我只需要在终端输入make就可以实现文档的全自动编译，简直不要太美妙！ 准备工作在编写Makefile之前，请确认你的系统环境是否满足以下条件： TeX环境，可以是TeX Live或者MiKTeX； GNU make工具，在Linux下一般默认已安装（或利用apt install make安装），若在Windows下则需要安装minGW。 make命令在执行时，需要一个Makefile文件，以告诉make命令需要如何去编译和链接程序，接下来我就会编写一个针对于xelatex的Makefile文件。 Makefile规则Makefile文件的编写规则大致如下 1234target ... : prerequisites ... command ... ... target：可以是一个目标文件，也可以是一个执行文件，还可以是一个标签（伪目标） prerequisites：生成该target所依赖的文件或target command：该target要执行的命令（任意的shell命令） 这是一个文件的依赖关系，也就是说，target这一个或多个的目标文件依赖于prerequisites中的文件， 其生成规则定义在command中。说白一点就是说:prerequisites中如果有一个以上的文件比target文件要新的话，command所定义的命令就会执行。 这就是Makefile的规则，也是Makefile最核心的内容。 Makefile编写123456789101112131415161718192021222324252627282930313233343536373839404142LATEX=xelatex #定义变量，指定编译引擎LATEXOPT=--shell-escape #定义变量 指定编译参数NONSTOP=--interaction=nonstopmode #定义变量 指定编译模式LATEXMK=latexmk #采用latexmk来编译latex文档LATEXMKOPT=-pdf #latexmk参数 输出pdfCONTINUOUS=-pvc #若加入-pvc选项则可以持续检测文件改动并实时显示MAIN=main #根文件名称SOURCES=$(MAIN).tex Makefile FIGURES := $(shell find figures/* movies/* -type f)all: $(MAIN).pdf#$(MAIN).pdf: $(MAIN).tex $(SOURCES) $(FIGURES)# $(LATEXMK) $(LATEXMKOPT) $(CONTINUOUS) \# -pdflatex=&quot;$(LATEX) $(LATEXOPT) $(NONSTOP) %O %S&quot; $(MAIN)$(MAIN).pdf: $(MAIN).tex $(SOURCES) $(FIGURES) $(LATEXMK) $(LATEXMKOPT) \ -pdflatex=&quot;$(LATEX) $(LATEXOPT) $(NONSTOP) %O %S&quot; $(MAIN)force: rm $(MAIN).pdf $(LATEXMK) $(LATEXMKOPT) $(CONTINUOUS) \ -pdflatex=&quot;$(LATEX) $(LATEXOPT) %O %S&quot; $(MAIN)clean: $(LATEXMK) -C $(MAIN) rm -f $(MAIN).pdfsync rm -rf *~ *.tmp rm -f *.bbl *.blg *.aux *.end *.fls *.log *.out *.fdb_latexmkonce: $(LATEXMK) $(LATEXMKOPT) -pdflatex=&quot;$(LATEX) $(LATEXOPT) %O %S&quot; $(MAIN)debug: $(LATEX) $(LATEXOPT) $(MAIN).PHONY: clean force once all make编译把上面的内容放入Makefile文件，放在LaTeX文件夹下，根据需要修改文件头部定义的变量，可以更换编译引擎，编译参数和编译模式。之后在终端下输入make即可完成编译。 若想要删除目录下生成的中间文件，则输入make clean即可。]]></content>
@@ -68,8 +80,8 @@
         <category>Robot Operating System</category>
       </categories>
       <tags>
-        <tag>summary</tag>
         <tag>tutorials</tag>
+        <tag>summary</tag>
         <tag>ros</tag>
       </tags>
   </entry>

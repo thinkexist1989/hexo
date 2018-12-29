@@ -10,7 +10,7 @@ type: "about"
 <table width="100%" cellpadding="0" cellspacing="0" style="font-size:15px">
 	<tr valign="top">
 		<td width="50%" style="border: none; padding: none;margin: 1px">
-			<p><i class="fa fa-link"></i> <a href="http://www.yluoblog.cn">www.yluoblog.cn</a></p>
+			<p><i class="fa fa-link"></i> <a href="http://yluo.name">yluo.name</a></p>
 		</td>
 		<td width="50%" style="border: none; padding: none;margin: 1px">
 			<p><i class="fa fa-github"></i> <a href="https://github.com/thinkexist1989">github.com/thinkexist1989</a></p>
@@ -18,7 +18,7 @@ type: "about"
 	</tr>
 	<tr valign="top">
 		<td width="50%" style="border: none; padding: none;margin: 1px">
-			<p><i class="fa fa-envelope"></i> <a href="https://www.gmail.com">yluo.rcamc@gmail.com</a></p>
+			<p><i class="fa fa-envelope"></i> <a href="mailto://yluo@hit.edu.cn">yluo@hit.edu.cn</a></p>
 		</td>
 		<td width="50%" style="border: none; padding: none;margin: 1px">
 			<p><i class="fa fa-mobile"></i> (+86)18686744086</p>
