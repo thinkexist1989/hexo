@@ -120,18 +120,18 @@
 
 
 
-<meta name="description" content="待写">
+<meta name="description" content="由于一直使用Ubuntu作为主力系统，很多代码编写的工作都用VIM来完成，VIM这个牛逼闪闪的编辑器的确装逼范十足，让人爱不释手，导致我恨不得将所有的编辑器都抛弃掉，全部采用VIM来编辑（除了WORD之外还真没什么不可以）。VIM下来编辑LaTeX文档自然不在话下，利用vim-latex插件可以轻松实现LaTeX文档的编写与编译。但是这个插件也有一定的缺陷——不能利用Magic Comments自">
 <meta name="keywords" content="tutorials,practise">
 <meta property="og:type" content="article">
-<meta property="og:title" content="编写Makefile，利用make编译LaTeX">
+<meta property="og:title" content="使用make编译LaTeX文档">
 <meta property="og:url" content="http://yluo.name/2018/12/20/make_latex/index.html">
 <meta property="og:site_name" content="DécouVerte">
-<meta property="og:description" content="待写">
+<meta property="og:description" content="由于一直使用Ubuntu作为主力系统，很多代码编写的工作都用VIM来完成，VIM这个牛逼闪闪的编辑器的确装逼范十足，让人爱不释手，导致我恨不得将所有的编辑器都抛弃掉，全部采用VIM来编辑（除了WORD之外还真没什么不可以）。VIM下来编辑LaTeX文档自然不在话下，利用vim-latex插件可以轻松实现LaTeX文档的编写与编译。但是这个插件也有一定的缺陷——不能利用Magic Comments自">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-25T03:01:55.906Z">
+<meta property="og:updated_time" content="2018-12-29T00:45:28.629Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="编写Makefile，利用make编译LaTeX">
-<meta name="twitter:description" content="待写">
+<meta name="twitter:title" content="使用make编译LaTeX文档">
+<meta name="twitter:description" content="由于一直使用Ubuntu作为主力系统，很多代码编写的工作都用VIM来完成，VIM这个牛逼闪闪的编辑器的确装逼范十足，让人爱不释手，导致我恨不得将所有的编辑器都抛弃掉，全部采用VIM来编辑（除了WORD之外还真没什么不可以）。VIM下来编辑LaTeX文档自然不在话下，利用vim-latex插件可以轻松实现LaTeX文档的编写与编译。但是这个插件也有一定的缺陷——不能利用Magic Comments自">
 
 
 
@@ -167,7 +167,7 @@
 
 
 
-  <title>编写Makefile，利用make编译LaTeX | DécouVerte</title>
+  <title>使用make编译LaTeX文档 | DécouVerte</title>
   
 
 
@@ -356,7 +356,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">编写Makefile，利用make编译LaTeX</h1>
+          <h1 class="post-title" itemprop="name headline">使用make编译LaTeX文档</h1>
         
 
         <div class="post-meta">
@@ -428,7 +428,24 @@
       
 
       
-        <h1 id="待写"><a href="#待写" class="headerlink" title="待写"></a>待写</h1>
+        <p>由于一直使用Ubuntu作为主力系统，很多代码编写的工作都用VIM来完成，VIM这个牛逼闪闪的编辑器的确装逼范十足，让人爱不释手，导致我恨不得将所有的编辑器都抛弃掉，全部采用VIM来编辑（除了WORD之外还真没什么不可以）。VIM下来编辑LaTeX文档自然不在话下，利用vim-latex插件可以轻松实现LaTeX文档的编写与编译。但是这个插件也有一定的缺陷——不能利用Magic Comments自动识别编译引擎来编译LaTeX文档，默认情况下<code>\ll</code>快捷键只能支持一种编译引擎！这就让经常需要在pdflatex和xelatex之间切换的我很尴尬，每次编写完文档，都需要切到终端去利用不用的命令行来实现LaTeX文档的编译工作。为了充分展现我懒惰的一面，打算采用make来编译LaTeX文档，这样在编写好Makefile之后，我只需要在终端输入<code>make</code>就可以实现文档的全自动编译，简直不要太美妙！</p>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>在编写Makefile之前，请确认你的系统环境是否满足以下条件：</p>
+<ul>
+<li>TeX环境，可以是TeX Live或者MiKTeX；</li>
+<li>GNU make工具，在Linux下一般默认已安装（或利用apt install make安装），若在Windows下则需要安装minGW。</li>
+</ul>
+<p>make命令在执行时，需要一个Makefile文件，以告诉make命令需要如何去编译和链接程序，接下来我就会编写一个针对于xelatex的Makefile文件。</p>
+<h1 id="Makefile规则"><a href="#Makefile规则" class="headerlink" title="Makefile规则"></a>Makefile规则</h1><p>Makefile文件的编写规则大致如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">target ... : prerequisites ...</div><div class="line">	command</div><div class="line">	...</div><div class="line">	...</div></pre></td></tr></table></figure>
+<p><strong>target</strong>：可以是一个目标文件，也可以是一个执行文件，还可以是一个标签（伪目标）</p>
+<p><strong>prerequisites</strong>：生成该target所依赖的文件或target</p>
+<p><strong>command</strong>：该target要执行的命令（任意的shell命令）</p>
+<p>这是一个文件的依赖关系，也就是说，target这一个或多个的目标文件依赖于prerequisites中的文件， 其生成规则定义在command中。说白一点就是说:prerequisites中如果有一个以上的文件比target文件要新的话，command所定义的命令就会执行。</p>
+<p>这就是Makefile的规则，也是Makefile最核心的内容。</p>
+<h1 id="Makefile编写"><a href="#Makefile编写" class="headerlink" title="Makefile编写"></a>Makefile编写</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">LATEX=xelatex #定义变量，指定编译引擎</div><div class="line">LATEXOPT=--shell-escape #定义变量 指定编译参数</div><div class="line">NONSTOP=--interaction=nonstopmode #定义变量 指定编译模式</div><div class="line"></div><div class="line">LATEXMK=latexmk #采用latexmk来编译latex文档</div><div class="line">LATEXMKOPT=-pdf #latexmk参数 输出pdf</div><div class="line">CONTINUOUS=-pvc #若加入-pvc选项则可以持续检测文件改动并实时显示</div><div class="line"></div><div class="line">MAIN=main #根文件名称</div><div class="line">SOURCES=$(MAIN).tex Makefile </div><div class="line">FIGURES := $(shell find figures/* movies/* -type f)</div><div class="line"></div><div class="line">all:    $(MAIN).pdf</div><div class="line"></div><div class="line">#$(MAIN).pdf: $(MAIN).tex $(SOURCES) $(FIGURES)</div><div class="line">#	$(LATEXMK) $(LATEXMKOPT) $(CONTINUOUS) \</div><div class="line">#            -pdflatex=&quot;$(LATEX) $(LATEXOPT) $(NONSTOP) %O %S&quot; $(MAIN)</div><div class="line"></div><div class="line">$(MAIN).pdf: $(MAIN).tex $(SOURCES) $(FIGURES)</div><div class="line">	$(LATEXMK) $(LATEXMKOPT)  \</div><div class="line">            -pdflatex=&quot;$(LATEX) $(LATEXOPT) $(NONSTOP) %O %S&quot; $(MAIN)</div><div class="line"></div><div class="line"></div><div class="line">force:</div><div class="line">	rm $(MAIN).pdf</div><div class="line">	$(LATEXMK) $(LATEXMKOPT) $(CONTINUOUS) \</div><div class="line">            -pdflatex=&quot;$(LATEX) $(LATEXOPT) %O %S&quot; $(MAIN)</div><div class="line"></div><div class="line">clean:</div><div class="line">	$(LATEXMK) -C $(MAIN)</div><div class="line">	rm -f $(MAIN).pdfsync</div><div class="line">	rm -rf *~ *.tmp</div><div class="line">	rm -f *.bbl *.blg *.aux *.end *.fls *.log *.out *.fdb_latexmk</div><div class="line"></div><div class="line">once:</div><div class="line">	$(LATEXMK) $(LATEXMKOPT) -pdflatex=&quot;$(LATEX) $(LATEXOPT) %O %S&quot; $(MAIN)</div><div class="line"></div><div class="line">debug:</div><div class="line">	$(LATEX) $(LATEXOPT) $(MAIN)</div><div class="line"></div><div class="line">.PHONY: clean force once all</div></pre></td></tr></table></figure>
+<h1 id="make编译"><a href="#make编译" class="headerlink" title="make编译"></a>make编译</h1><p>把上面的内容放入Makefile文件，放在LaTeX文件夹下，根据需要修改文件头部定义的变量，可以更换编译引擎，编译参数和编译模式。之后在终端下输入<code>make</code>即可完成编译。</p>
+<p>若想要删除目录下生成的中间文件，则输入<code>make clean</code>即可。</p>
+
       
     </div>
     
@@ -627,7 +644,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#待写"><span class="nav-number">1.</span> <span class="nav-text">待写</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#准备工作"><span class="nav-number">1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Makefile规则"><span class="nav-number">2.</span> <span class="nav-text">Makefile规则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Makefile编写"><span class="nav-number">3.</span> <span class="nav-text">Makefile编写</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#make编译"><span class="nav-number">4.</span> <span class="nav-text">make编译</span></a></li></ol></div>
             
 
           </div>
@@ -672,7 +689,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">This site has totally 13.5k words</span>
+  <span class="post-count">This site has totally 14.3k words</span>
 </div>
         
 

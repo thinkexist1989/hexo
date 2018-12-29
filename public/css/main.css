@@ -1934,7 +1934,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #4dff96;
+  background: #ffe906;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2716,8 +2716,7 @@ embed {
 .custom-logo .site-title {
   margin: 10px auto 0;
   font-size: 24px;
-/*  color: $black-deep; */
-  color: linear_gradient(to bottom, #f00, #00f);
+  color: #222;
 }
 .custom-logo .site-title a {
   border: none;
@@ -2726,8 +2725,7 @@ embed {
   margin: 0 auto;
   padding: 5px;
   max-width: 150px;
-/*background: white;*/
-  background: #00f;
+  background: #fff;
 }
 @media (max-width: 767px) {
   .site-nav {
