@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yluo.name/"/>
-  <updated>2019-01-02T02:05:08.206Z</updated>
+  <updated>2019-01-10T13:42:36.489Z</updated>
   <id>http://yluo.name/</id>
   
   <author>
@@ -21,9 +21,16 @@
     <link href="http://yluo.name/2019/01/02/cmake/"/>
     <id>http://yluo.name/2019/01/02/cmake/</id>
     <published>2019-01-02T02:02:00.000Z</published>
-    <updated>2019-01-02T02:05:08.206Z</updated>
+    <updated>2019-01-10T13:42:36.489Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="CMAKE是什么"><a href="#CMAKE是什么" class="headerlink" title="CMAKE是什么"></a>CMAKE是什么</h1><p>CMake是一个跨平台的安装（编译）工具，可以用简单的语句来描述所有平台的安装(编译过程)。他能够输出各种各样的makefile或者project文件，能测试编译器所支持的C++特性,类似UNIX下的automake。只是 CMake 的组态档取名为 CMakeLists.txt。Cmake 并不直接建构出最终的软件，而是产生标准的建构档（如 Unix 的 Makefile 或 Windows Visual C++ 的 projects/workspaces），然后再依一般的建构方式使用。这使得熟悉某个集成开发环境（IDE）的开发者可以用标准的方式建构他的软件，这种可以使用各平台的原生建构系统的能力是 CMake 和 SCons 等其他类似系统的区别之处。</p><p>对于一个大型软件，其编译、维护是一个复杂而耗时的过程。它涉及到大量的文件、目录，这些文件可能是在不同的时间、由不同的人、在不同的地方分别写的，其中一些是程序，有些是数据，有些是文档，有些是衍生文件。甚至参与开发的人员也不一定清楚所有文件的细节，包括如何处理它们。此外，构成软件的文件数目可能达到成百上千，甚至成千上万个，开发过程中当修改了少量几个文件后，往往只需要重新编译、生成少数几个文件。有效地描述这些文件之间的依赖关系以及处理命令，当个别文件改动后仅执行必要的处理，而不必重复整个编译过程，可以大大提高软件开发的效率。</p><h1 id="为什么用CMAKE"><a href="#为什么用CMAKE" class="headerlink" title="为什么用CMAKE"></a>为什么用CMAKE</h1><p>如果你之前有过维护软件包的构建和安装的经验，你就会对CMake有兴趣。当前很多项目都可以在Linux下用Makefile和在Windows下用Visual Studio进行编译；这要求开发者在对应的系统下保持构建工具的更新，并且不同系统的构建行为保持一致；如果再引入XCode，这需要更多的构建工具，这样会是一个问题。如果在此基础上引入可选组件，比如如果系统上有libjpeg，项目就支援JPEG，这会造成更大的麻烦。CMake提供了一个简单的，易于理解的文件格式来解决上述问题。如果一个项目有多个开发者参与，或者这个项目有多个目标平台；那么不可避免的需要在多台PC上进行构建，不同的PC在开发环境上会有差异。</p><ul><li>自动进行项目构建所需的program、library、header file的查找能力；</li><li>在source tree以外进行构建的能力；</li><li>为Qt moc，SWIG等自动产生复杂的自定义命令的能力；</li><li>在configuration阶段进行可选组件定制的能力；</li><li>自动从简单文件文件产生workspace和project的能力；</li><li>配置生成静态库/动态库的能力；</li><li>自动产生文件依赖，支持并行编译；</li></ul><h1 id="CMAKE基本语法"><a href="#CMAKE基本语法" class="headerlink" title="CMAKE基本语法"></a>CMAKE基本语法</h1><p>build的过程由每个目录下的名为<code>CMakeFileLists.txt</code>的文件组成的一系列文件列表所控制；<br><code>CMakeFileLists.txt</code>文件由CMake语句进行项目描述，CMake语句的语法为：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">command(args...)</div></pre></td></tr></table></figure><ul><li><code>command</code>是命令的名字，CMake是不区分大小写的；</li><li><p><code>args</code>是一系列由空格分隔的参数，如果参数中有空格，参数需要用双引号引起来；</p></li><li><p>变量被引用的格式是<code>${VAR}</code>;</p></li><li>多个参数可以使用<code>set</code>来使之构成一个list。</li></ul><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">set(Foo a b c)</div></pre></td></tr></table></figure><p>这样设置的结果是<code>Foo</code>的值是 a b c;</p><p>CMake可以直接访问系统环境变量和Windows注册表；<br>访问系统环境变量的语法：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$Env&#123;ARG&#125;</div></pre></td></tr></table></figure><p>访问Windows注册表：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[HKEY_CURRENT_USER\\Software\\path1\\path2;key]</div></pre></td></tr></table></figure><h1 id="如何运行CMAKE"><a href="#如何运行CMAKE" class="headerlink" title="如何运行CMAKE"></a>如何运行CMAKE</h1><p>举一个简单的例子，在文件夹下建立一个C语言源文件<code>main.c</code>，内容如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line"></div><div class="line">void main()</div><div class="line">&#123;</div><div class="line">  float sum;</div><div class="line">  int i;</div><div class="line"></div><div class="line">  for(int i=0;i&lt;100;i++)</div><div class="line">          sum += 0.1;</div><div class="line"></div><div class="line">  printf(&quot;sum:%f\n&quot;,sum);</div><div class="line">&#125;</div></pre></td></tr></table></figure><p>在文件夹下建立<code>CMakeLists.txt</code>文件，内容如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cmake_minimum_required(VERSION 2.8)</div><div class="line">add_executable(Main main.c)</div></pre></td></tr></table></figure><p>在终端运行：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$cmake .</div></pre></td></tr></table></figure><p>则可以看到在文件夹下生成了Makefile文件，紧接着运行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$make</div></pre></td></tr></table></figure></p><p>在文件夹下看到生成了可执行文件<code>Main</code>，于是在终端运行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$./Main</div></pre></td></tr></table></figure></p><p>可以看到终端运行了程序并输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$sum:10.000002</div></pre></td></tr></table></figure></p><h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>强烈推荐一本CMAKE圣经《Mastering CMAKE》，CMAKE的强大之处只有一点点的学习体会才能感受到，我也会在今后的学习中慢慢领悟CMAKE的精髓，用CMAKE来管理构建我自己的项目。</p>]]></content>
     
     <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;CMAKE是什么&quot;&gt;&lt;a href=&quot;#CMAKE是什么&quot; class=&quot;headerlink&quot; title=&quot;CMAKE是什么&quot;&gt;&lt;/a&gt;CMAKE是什么&lt;/h1&gt;&lt;p&gt;CMake是一个跨平台的安装（编译）工具，可以用简单的语句来描述所有平台的安装(编译过程)。
+      
     
     </summary>
     
@@ -238,33 +245,6 @@
   </entry>
   
   <entry>
-    <title>Git分布式版本控制系统使用心得</title>
-    <link href="http://yluo.name/2018/04/14/Git_intro/"/>
-    <id>http://yluo.name/2018/04/14/Git_intro/</id>
-    <published>2018-04-14T12:32:00.000Z</published>
-    <updated>2018-12-28T13:10:42.918Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>Git对于经常写代码的码农同志们并不陌生，几乎是必备的工具之一。由于本人现在经常参与机器人相关的项目，需要管理大量的项目代码。之前一直在电脑保存各式各样的代码版本，时间一长根本记不住每个版本之间的区别和改动，这才入了Git的坑，在了解了Git的工作原理和基本操作之后，便一发不可收拾，真后悔没有早些了解这个神奇的工具。下面我就以我对Git的了解介绍一下什么是Git以及Git的基本使用方法。</p><h1 id="什么是Git？"><a href="#什么是Git？" class="headerlink" title="什么是Git？"></a>什么是Git？</h1><p>Git专业的叫法是：一种分布式版本控制系统。很多人不了解分布式版本控制系统的概念，没关系，我会用一种通俗的方式解释一下。</p><p>假设你现在要开发一个程序，你已经写好了一份代码，但是这份代码有很多BUG，而且功能也很不完善，你需要不断的修改这份代码，并且需要记录每次的改动，以便万一哪次改错了可以恢复之前的版本，如果没有Git，你会怎么做？</p><p>很简单，我可以把每次的代码文件名后面加一个版本号，假设是code1，code2，…..，code100 等等。如果我修改过100次，那么就需要在电脑上保留100份代码，怎么样？是不是很简单？而且很直观，我还可以在每次修改的代码文件里加入一些修改的描述，比如此次修改了什么什么之类的话。</p><p>似乎看上去已经很完美了，无非是多存一些文件而已嘛，怕什么？！老子硬盘4个TB！！好吧，那我们再考虑一些情况，很多时候一个项目代码需要几个人一起维护，那么怎么去协调每个人修改的部分呢？</p><p>这个稍微有一些麻烦了，不过没关系，我们可以让其中一个人先改，改完了将文件发给第二个人改，第二个人改完了发给第三个人，以此类推。当最后一个人改完了，将这个文件标记为最终版！！额。。。假设每个人都做过100次改动，有四个人来维护这个项目，那么产生的文件个数就是400个！这还只是一个项目而已，如果很多项目呢？对这些项目版本的管理会产生极其高昂的成本。</p><p>那么我们再假设一种情况，这个项目想新加入一个功能，但是不知道这个功能好不好，如果好就加到项目中去，如果不好就还是使用原来的项目。那么我们又该怎么管理这个项目的版本呢？</p><p>提出了以上问题，就是Git诞生的原因，最初就是为了方便管理Linux内核代码而设计的工具。在我看来，Git的用处在于可以记录每次的项目文件改动，而且可以方便的新建项目分支、合并项目分支。以我在Github上的<a href="github.com/thinkexist1989/CV">个人简历</a>为例，我的个人简历是用LaTeX写的，从写简历开始，每一次的修改都被Git记录了下来，而且由于我的简历分为中文版和英文版，我的项目里就新建了2个分支，一个叫en分支，是英文版简历，一个叫zh分支，是中文版简历。所有的这些在我的电脑里，仅仅有一份文件就足够了，这就是神奇的Git。</p><h1 id="Git的安装"><a href="#Git的安装" class="headerlink" title="Git的安装"></a>Git的安装</h1><p>如果你在Linux下，那么Git的使用将会是异常方便的。你只需要在终端输入</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install git</div></pre></td></tr></table></figure><p>便可以使用Git了。当然，如果你不喜欢指令行形式的Git，你也可以使用一些GUI软件，个人比较推荐GitKraken，界面很漂亮，而且跨平台。</p><p>如果你在Windows下，你可以安装Git Bash，同样利用指令行来使用Git，或者使用GitKraken之类的GUI软件来管理你的项目版本。由于个人喜好，我喜欢直接利用指令来使用Git，这对于理解Git的工作原理也有很多好处，当然你也可以更直观的利用GUI来使用，下面我介绍的都是Git指令，理解了Git指令同样可以在GUI里游刃有余的使用Git。</p><h1 id="Git的使用"><a href="#Git的使用" class="headerlink" title="Git的使用"></a>Git的使用</h1><p>其实，Git只是一个记录文件改动的工具，因此完全可以独立在电脑上使用，并不一定非要将文件存放到网上。初始化Git很简单，新建一个你需要管理的项目文件夹，假设名为proj，进入文件夹，在终端里输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git init</div></pre></td></tr></table></figure><p>你会发现，在文件夹里出现了一个隐藏的文件夹，名为.git，别小看了这个文件夹，今后你文件夹中所有的文件改动它都一清二楚地记录在里面，Git就是利用这个文件夹中的文件来进行版本控制的。</p><p>假设你的需要版本控制的文件名叫file.doc,那么你需要在终端输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git add file.doc</div></pre></td></tr></table></figure><p>来告诉Git，我要跟踪file.doc这个文件的版本。或者如果文件夹下有很多文件，你全部需要跟踪，你可以输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git add .</div></pre></td></tr></table></figure><p>Git同时可以利用.gitignore文件控制需要忽略的文件，这个可以查看Git教程，这里不再赘述。下面你便可以对这个文件夹的文件进行修改，修改之后，在终端输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git status</div></pre></td></tr></table></figure><p>你会发现，你所有的文件改动，包括修改，删除、新建的文件都没有逃过Git的法眼，但是根据Git的机制，Git目前还没有将这些改动暂存，如果你认为这一时刻的状态需要被Git记录下来，那么你就需要输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git commit -m &quot;这是我的修改&quot;</div></pre></td></tr></table></figure><p>这样你的这次改动就被Git存储了下来，今后不管到什么版本，你都可以随时恢复到这次暂存的这个版本。怎么样？很神奇吧。神奇的还在后面呢。假如你想新建项目的另一个版本，同时又不想影响当前的版本，你可以在终端输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git checkout -b another</div></pre></td></tr></table></figure><p>这样，你会看到Git新建了一个分支，叫another分支，今后你所有的修改就会发生在another分支上，而对之前的分支（默认分支master）没有任何影响，如果你有一天想要回到之前的分支，继续之前的工作，那么简单，在终端输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git checkout master</div></pre></td></tr></table></figure><p>这样就轻松的切换回了主分支master，你会看到所有的文件都恢复到了master分支的状态。</p><p>这就是Git最基本的用法，当然了，版本回退、分支合并等操作也可以轻松实现，你也可以将代码push到GitHub或者Gitee等代码托管网站上，你也可以将别处的改动pull到本地，或是git clone网站上的代码到本地，这些在这里不在赘述，可以参考文献《Pro Git中文版》，里面有关于Git的详细用法。</p><h1 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h1><p>Git可以管理几乎你的任何文件，虽然不推荐使用Git来管理非文本类的文件，but anyway，这是你的自由，只要你想Git就可以做！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;Git对于经常写代码的码农同志们并不陌生，几乎是必备的工具之一。由于本人现在经常参与机器人相关的项目，需要管理大量的项目代码
-      
-    
-    </summary>
-    
-      <category term="Software" scheme="http://yluo.name/categories/Software/"/>
-    
-    
-      <category term="tutorials" scheme="http://yluo.name/tags/tutorials/"/>
-    
-      <category term="practise" scheme="http://yluo.name/tags/practise/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Linux与Windows双系统搭建</title>
     <link href="http://yluo.name/2018/04/14/linux_windows/"/>
     <id>http://yluo.name/2018/04/14/linux_windows/</id>
@@ -292,29 +272,29 @@
   </entry>
   
   <entry>
-    <title>How To Writing Academic Essay  | 学术论文词汇总结</title>
-    <link href="http://yluo.name/2017/10/18/academic_essay_words/"/>
-    <id>http://yluo.name/2017/10/18/academic_essay_words/</id>
-    <published>2017-10-18T07:57:00.000Z</published>
+    <title>Git分布式版本控制系统使用心得</title>
+    <link href="http://yluo.name/2018/04/14/Git_intro/"/>
+    <id>http://yluo.name/2018/04/14/Git_intro/</id>
+    <published>2018-04-14T12:32:00.000Z</published>
     <updated>2018-12-28T13:10:42.918Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="介词"><a href="#介词" class="headerlink" title="介词"></a>介词</h1><h2 id="转折关系"><a href="#转折关系" class="headerlink" title="转折关系"></a>转折关系</h2><ul><li>然而           <code>However</code>; <code>Nevertheless</code></li><li>尽管           <code>Despite</code>; </li></ul><h2 id="递进关系"><a href="#递进关系" class="headerlink" title="递进关系"></a>递进关系</h2><ul><li>更进一步地  <code>Moreover</code>; <code>Furthermore</code>; <code>In addition</code>; </li><li>尤其地          <code>Particularly</code>;</li><li>同时           <code>whilst</code>; </li></ul><h2 id="因果关系"><a href="#因果关系" class="headerlink" title="因果关系"></a>因果关系</h2><ul><li>因此            <code>Consequently</code>; <code>Therefore</code></li><li>由于           <code>Due to</code></li></ul><h2 id="过渡与总结"><a href="#过渡与总结" class="headerlink" title="过渡与总结"></a>过渡与总结</h2><ul><li>到目前为止   <code>By now</code>; <code>To date</code>; <code>More recently</code>; <code>as-of-yet</code>; <code>So far</code>;</li><li>大体上来说   <code>by and large</code>; </li></ul><h1 id="短语"><a href="#短语" class="headerlink" title="短语"></a>短语</h1><ul><li>展示、呈现   <code>be present</code>; <code>be depicted</code>;<code>be described</code>; <code>be displayed</code> ; <code>indicate that...</code> ; </li><li>利用               <code>use</code>; <code>leverage</code>; </li><li>缺点、劣势   <code>disadvantages</code>; <code>drawbacks</code>; </li><li>关注              <code>drawn attention to</code>; <code>concerning</code>; <code>concern about</code>; <code>conducted on</code>; </li><li>根据、依据   <code>according to</code>; <code>in light of</code>; </li><li>广泛使用      <code>extensively used</code>; <code>widely used</code></li><li>被简化为      <code>be abbreviated to</code>; </li><li>上述的、上面提及的 <code>abovementioned</code>; <code>aforementioned</code>;</li><li>期望的          <code>desired</code>; <code>expected</code>; </li><li>描绘、关注…问题   <code>focus on</code>; <code>examine</code>; <code>discuss</code>; <code>trace</code>; <code>take ... into account</code>; </li><li>忽视              <code>overlook</code>; <code>ignore</code>;</li><li>意义、重要性 <code>significance</code>; </li><li>有意义的，相关的 <code>relevant</code>; <code>significant</code>;</li><li>强烈地 <code>vigorously</code>; <code>strongly</code></li><li>遭受 <code>be subjected to</code>; <code>suffer from</code></li><li>仅仅 <code>merely</code>; <code>barely</code>; </li><li>详尽的 <code>elaborate</code>;</li></ul><p>accommodate 适应 </p><p>denote 表示</p><p>proof-of-concept 概念验证</p><p>has raged unabated for over a century 持续了一个多世纪</p><p>via 通过 </p><p>adhere to 坚持、追随、秉承</p><p>in either/this scenario 在 其他/这种 情景</p><p>heuristically 启发式地、试探性地</p><p>an account of 一份…的说明</p><p>recent research 最近的研究</p><p>limitations 局限性</p><p>rely too heavily on…. 过于依赖</p><p>questionable 可疑的，有问题的</p><p>challenged Jones’ claim on the grounds 对Jone的主张提出质疑</p><p>pre-existing 先已存在的</p><p>systematic study 系统研究</p><p>interacts with 相互作用</p><p>point out 指出</p><p>assess 评估、评价</p><h1 id="专业词汇"><a href="#专业词汇" class="headerlink" title="专业词汇"></a>专业词汇</h1><p>three-phase dc-brushless motor  三相直流无刷电机</p><p>resolver 旋转变压器</p><p>three-bladed nylon propeller 三叶的尼龙桨</p><p>pulsewidth-modulated (PWM) 脉宽调制</p><p>4096 counts per revolution 每转4096线</p><p>revolution 转速</p><p>advance speed 推进速度、前进速度</p><p>four quadrant nonlinear function 四象限非线性方程</p><p>wake fraction number 伴流系数(0.1~0.4)</p><p>affine thruster model 仿射的推进器模型</p><p>lump parameter of various constants 集中参数</p><p>cavitation 空化现象</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>Git对于经常写代码的码农同志们并不陌生，几乎是必备的工具之一。由于本人现在经常参与机器人相关的项目，需要管理大量的项目代码。之前一直在电脑保存各式各样的代码版本，时间一长根本记不住每个版本之间的区别和改动，这才入了Git的坑，在了解了Git的工作原理和基本操作之后，便一发不可收拾，真后悔没有早些了解这个神奇的工具。下面我就以我对Git的了解介绍一下什么是Git以及Git的基本使用方法。</p><h1 id="什么是Git？"><a href="#什么是Git？" class="headerlink" title="什么是Git？"></a>什么是Git？</h1><p>Git专业的叫法是：一种分布式版本控制系统。很多人不了解分布式版本控制系统的概念，没关系，我会用一种通俗的方式解释一下。</p><p>假设你现在要开发一个程序，你已经写好了一份代码，但是这份代码有很多BUG，而且功能也很不完善，你需要不断的修改这份代码，并且需要记录每次的改动，以便万一哪次改错了可以恢复之前的版本，如果没有Git，你会怎么做？</p><p>很简单，我可以把每次的代码文件名后面加一个版本号，假设是code1，code2，…..，code100 等等。如果我修改过100次，那么就需要在电脑上保留100份代码，怎么样？是不是很简单？而且很直观，我还可以在每次修改的代码文件里加入一些修改的描述，比如此次修改了什么什么之类的话。</p><p>似乎看上去已经很完美了，无非是多存一些文件而已嘛，怕什么？！老子硬盘4个TB！！好吧，那我们再考虑一些情况，很多时候一个项目代码需要几个人一起维护，那么怎么去协调每个人修改的部分呢？</p><p>这个稍微有一些麻烦了，不过没关系，我们可以让其中一个人先改，改完了将文件发给第二个人改，第二个人改完了发给第三个人，以此类推。当最后一个人改完了，将这个文件标记为最终版！！额。。。假设每个人都做过100次改动，有四个人来维护这个项目，那么产生的文件个数就是400个！这还只是一个项目而已，如果很多项目呢？对这些项目版本的管理会产生极其高昂的成本。</p><p>那么我们再假设一种情况，这个项目想新加入一个功能，但是不知道这个功能好不好，如果好就加到项目中去，如果不好就还是使用原来的项目。那么我们又该怎么管理这个项目的版本呢？</p><p>提出了以上问题，就是Git诞生的原因，最初就是为了方便管理Linux内核代码而设计的工具。在我看来，Git的用处在于可以记录每次的项目文件改动，而且可以方便的新建项目分支、合并项目分支。以我在Github上的<a href="github.com/thinkexist1989/CV">个人简历</a>为例，我的个人简历是用LaTeX写的，从写简历开始，每一次的修改都被Git记录了下来，而且由于我的简历分为中文版和英文版，我的项目里就新建了2个分支，一个叫en分支，是英文版简历，一个叫zh分支，是中文版简历。所有的这些在我的电脑里，仅仅有一份文件就足够了，这就是神奇的Git。</p><h1 id="Git的安装"><a href="#Git的安装" class="headerlink" title="Git的安装"></a>Git的安装</h1><p>如果你在Linux下，那么Git的使用将会是异常方便的。你只需要在终端输入</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install git</div></pre></td></tr></table></figure><p>便可以使用Git了。当然，如果你不喜欢指令行形式的Git，你也可以使用一些GUI软件，个人比较推荐GitKraken，界面很漂亮，而且跨平台。</p><p>如果你在Windows下，你可以安装Git Bash，同样利用指令行来使用Git，或者使用GitKraken之类的GUI软件来管理你的项目版本。由于个人喜好，我喜欢直接利用指令来使用Git，这对于理解Git的工作原理也有很多好处，当然你也可以更直观的利用GUI来使用，下面我介绍的都是Git指令，理解了Git指令同样可以在GUI里游刃有余的使用Git。</p><h1 id="Git的使用"><a href="#Git的使用" class="headerlink" title="Git的使用"></a>Git的使用</h1><p>其实，Git只是一个记录文件改动的工具，因此完全可以独立在电脑上使用，并不一定非要将文件存放到网上。初始化Git很简单，新建一个你需要管理的项目文件夹，假设名为proj，进入文件夹，在终端里输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git init</div></pre></td></tr></table></figure><p>你会发现，在文件夹里出现了一个隐藏的文件夹，名为.git，别小看了这个文件夹，今后你文件夹中所有的文件改动它都一清二楚地记录在里面，Git就是利用这个文件夹中的文件来进行版本控制的。</p><p>假设你的需要版本控制的文件名叫file.doc,那么你需要在终端输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git add file.doc</div></pre></td></tr></table></figure><p>来告诉Git，我要跟踪file.doc这个文件的版本。或者如果文件夹下有很多文件，你全部需要跟踪，你可以输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git add .</div></pre></td></tr></table></figure><p>Git同时可以利用.gitignore文件控制需要忽略的文件，这个可以查看Git教程，这里不再赘述。下面你便可以对这个文件夹的文件进行修改，修改之后，在终端输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git status</div></pre></td></tr></table></figure><p>你会发现，你所有的文件改动，包括修改，删除、新建的文件都没有逃过Git的法眼，但是根据Git的机制，Git目前还没有将这些改动暂存，如果你认为这一时刻的状态需要被Git记录下来，那么你就需要输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git commit -m &quot;这是我的修改&quot;</div></pre></td></tr></table></figure><p>这样你的这次改动就被Git存储了下来，今后不管到什么版本，你都可以随时恢复到这次暂存的这个版本。怎么样？很神奇吧。神奇的还在后面呢。假如你想新建项目的另一个版本，同时又不想影响当前的版本，你可以在终端输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git checkout -b another</div></pre></td></tr></table></figure><p>这样，你会看到Git新建了一个分支，叫another分支，今后你所有的修改就会发生在another分支上，而对之前的分支（默认分支master）没有任何影响，如果你有一天想要回到之前的分支，继续之前的工作，那么简单，在终端输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git checkout master</div></pre></td></tr></table></figure><p>这样就轻松的切换回了主分支master，你会看到所有的文件都恢复到了master分支的状态。</p><p>这就是Git最基本的用法，当然了，版本回退、分支合并等操作也可以轻松实现，你也可以将代码push到GitHub或者Gitee等代码托管网站上，你也可以将别处的改动pull到本地，或是git clone网站上的代码到本地，这些在这里不在赘述，可以参考文献《Pro Git中文版》，里面有关于Git的详细用法。</p><h1 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h1><p>Git可以管理几乎你的任何文件，虽然不推荐使用Git来管理非文本类的文件，but anyway，这是你的自由，只要你想Git就可以做！</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h1 id=&quot;介词&quot;&gt;&lt;a href=&quot;#介词&quot; class=&quot;headerlink&quot; title=&quot;介词&quot;&gt;&lt;/a&gt;介词&lt;/h1&gt;&lt;h2 id=&quot;转折关系&quot;&gt;&lt;a href=&quot;#转折关系&quot; class=&quot;headerlink&quot; title=&quot;转折关系&quot;&gt;&lt;/a&gt;转折关系&lt;/h
+        &lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;Git对于经常写代码的码农同志们并不陌生，几乎是必备的工具之一。由于本人现在经常参与机器人相关的项目，需要管理大量的项目代码
       
     
     </summary>
     
-      <category term="Academic Research" scheme="http://yluo.name/categories/Academic-Research/"/>
+      <category term="Software" scheme="http://yluo.name/categories/Software/"/>
     
     
-      <category term="summary" scheme="http://yluo.name/tags/summary/"/>
+      <category term="tutorials" scheme="http://yluo.name/tags/tutorials/"/>
     
-      <category term="scholarism" scheme="http://yluo.name/tags/scholarism/"/>
+      <category term="practise" scheme="http://yluo.name/tags/practise/"/>
     
   </entry>
   
@@ -332,6 +312,33 @@
       
       
         &lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;最近正在写学术论文，无意间拜读到了一篇国外大牛的文章，里面详细的讲解了如何去组织、撰写一篇学术论文。我把这个文章原文放在这里
+      
+    
+    </summary>
+    
+      <category term="Academic Research" scheme="http://yluo.name/categories/Academic-Research/"/>
+    
+    
+      <category term="summary" scheme="http://yluo.name/tags/summary/"/>
+    
+      <category term="scholarism" scheme="http://yluo.name/tags/scholarism/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>How To Writing Academic Essay  | 学术论文词汇总结</title>
+    <link href="http://yluo.name/2017/10/18/academic_essay_words/"/>
+    <id>http://yluo.name/2017/10/18/academic_essay_words/</id>
+    <published>2017-10-18T07:57:00.000Z</published>
+    <updated>2018-12-28T13:10:42.918Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="介词"><a href="#介词" class="headerlink" title="介词"></a>介词</h1><h2 id="转折关系"><a href="#转折关系" class="headerlink" title="转折关系"></a>转折关系</h2><ul><li>然而           <code>However</code>; <code>Nevertheless</code></li><li>尽管           <code>Despite</code>; </li></ul><h2 id="递进关系"><a href="#递进关系" class="headerlink" title="递进关系"></a>递进关系</h2><ul><li>更进一步地  <code>Moreover</code>; <code>Furthermore</code>; <code>In addition</code>; </li><li>尤其地          <code>Particularly</code>;</li><li>同时           <code>whilst</code>; </li></ul><h2 id="因果关系"><a href="#因果关系" class="headerlink" title="因果关系"></a>因果关系</h2><ul><li>因此            <code>Consequently</code>; <code>Therefore</code></li><li>由于           <code>Due to</code></li></ul><h2 id="过渡与总结"><a href="#过渡与总结" class="headerlink" title="过渡与总结"></a>过渡与总结</h2><ul><li>到目前为止   <code>By now</code>; <code>To date</code>; <code>More recently</code>; <code>as-of-yet</code>; <code>So far</code>;</li><li>大体上来说   <code>by and large</code>; </li></ul><h1 id="短语"><a href="#短语" class="headerlink" title="短语"></a>短语</h1><ul><li>展示、呈现   <code>be present</code>; <code>be depicted</code>;<code>be described</code>; <code>be displayed</code> ; <code>indicate that...</code> ; </li><li>利用               <code>use</code>; <code>leverage</code>; </li><li>缺点、劣势   <code>disadvantages</code>; <code>drawbacks</code>; </li><li>关注              <code>drawn attention to</code>; <code>concerning</code>; <code>concern about</code>; <code>conducted on</code>; </li><li>根据、依据   <code>according to</code>; <code>in light of</code>; </li><li>广泛使用      <code>extensively used</code>; <code>widely used</code></li><li>被简化为      <code>be abbreviated to</code>; </li><li>上述的、上面提及的 <code>abovementioned</code>; <code>aforementioned</code>;</li><li>期望的          <code>desired</code>; <code>expected</code>; </li><li>描绘、关注…问题   <code>focus on</code>; <code>examine</code>; <code>discuss</code>; <code>trace</code>; <code>take ... into account</code>; </li><li>忽视              <code>overlook</code>; <code>ignore</code>;</li><li>意义、重要性 <code>significance</code>; </li><li>有意义的，相关的 <code>relevant</code>; <code>significant</code>;</li><li>强烈地 <code>vigorously</code>; <code>strongly</code></li><li>遭受 <code>be subjected to</code>; <code>suffer from</code></li><li>仅仅 <code>merely</code>; <code>barely</code>; </li><li>详尽的 <code>elaborate</code>;</li></ul><p>accommodate 适应 </p><p>denote 表示</p><p>proof-of-concept 概念验证</p><p>has raged unabated for over a century 持续了一个多世纪</p><p>via 通过 </p><p>adhere to 坚持、追随、秉承</p><p>in either/this scenario 在 其他/这种 情景</p><p>heuristically 启发式地、试探性地</p><p>an account of 一份…的说明</p><p>recent research 最近的研究</p><p>limitations 局限性</p><p>rely too heavily on…. 过于依赖</p><p>questionable 可疑的，有问题的</p><p>challenged Jones’ claim on the grounds 对Jone的主张提出质疑</p><p>pre-existing 先已存在的</p><p>systematic study 系统研究</p><p>interacts with 相互作用</p><p>point out 指出</p><p>assess 评估、评价</p><h1 id="专业词汇"><a href="#专业词汇" class="headerlink" title="专业词汇"></a>专业词汇</h1><p>three-phase dc-brushless motor  三相直流无刷电机</p><p>resolver 旋转变压器</p><p>three-bladed nylon propeller 三叶的尼龙桨</p><p>pulsewidth-modulated (PWM) 脉宽调制</p><p>4096 counts per revolution 每转4096线</p><p>revolution 转速</p><p>advance speed 推进速度、前进速度</p><p>four quadrant nonlinear function 四象限非线性方程</p><p>wake fraction number 伴流系数(0.1~0.4)</p><p>affine thruster model 仿射的推进器模型</p><p>lump parameter of various constants 集中参数</p><p>cavitation 空化现象</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;介词&quot;&gt;&lt;a href=&quot;#介词&quot; class=&quot;headerlink&quot; title=&quot;介词&quot;&gt;&lt;/a&gt;介词&lt;/h1&gt;&lt;h2 id=&quot;转折关系&quot;&gt;&lt;a href=&quot;#转折关系&quot; class=&quot;headerlink&quot; title=&quot;转折关系&quot;&gt;&lt;/a&gt;转折关系&lt;/h
       
     
     </summary>
