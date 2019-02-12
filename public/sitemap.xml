@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yluo.name/2019/01/24/grub/</loc>
+    
+    <lastmod>2019-02-12T11:29:32.997Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2019/01/25/ubuntu_partition/</loc>
+    
+    <lastmod>2019-02-12T08:12:27.269Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2019/01/24/terminal_via_ss/</loc>
+    
+    <lastmod>2019-01-25T13:55:40.840Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yluo.name/2019/01/02/cmake/</loc>
     
     <lastmod>2019-01-10T13:42:36.489Z</lastmod>
@@ -37,28 +58,7 @@
   </url>
   
   <url>
-    <loc>http://yluo.name/2018/04/14/Git_intro/</loc>
-    
-    <lastmod>2018-12-28T13:10:42.918Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yluo.name/2018/09/07/network_3/</loc>
-    
-    <lastmod>2018-12-28T13:10:42.918Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yluo.name/2018/09/06/network_2/</loc>
-    
-    <lastmod>2018-12-28T13:10:42.918Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yluo.name/2017/10/18/academic_essay/</loc>
     
     <lastmod>2018-12-28T13:10:42.918Z</lastmod>
     
@@ -72,21 +72,7 @@
   </url>
   
   <url>
-    <loc>http://yluo.name/2018/04/14/linux_windows/</loc>
-    
-    <lastmod>2018-12-28T13:10:42.918Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yluo.name/2018/09/02/network_1/</loc>
-    
-    <lastmod>2018-12-28T13:10:42.918Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yluo.name/2018/11/01/vim_intro/</loc>
+    <loc>http://yluo.name/2018/04/14/Git_intro/</loc>
     
     <lastmod>2018-12-28T13:10:42.918Z</lastmod>
     
@@ -100,7 +86,28 @@
   </url>
   
   <url>
-    <loc>http://yluo.name/tags/index.html</loc>
+    <loc>http://yluo.name/2018/09/07/network_3/</loc>
+    
+    <lastmod>2018-12-28T13:10:42.918Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2018/04/14/linux_windows/</loc>
+    
+    <lastmod>2018-12-28T13:10:42.918Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2018/11/01/vim_intro/</loc>
+    
+    <lastmod>2018-12-28T13:10:42.918Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2017/10/18/academic_essay/</loc>
     
     <lastmod>2018-12-28T13:10:42.918Z</lastmod>
     
@@ -108,6 +115,20 @@
   
   <url>
     <loc>http://yluo.name/categories/index.html</loc>
+    
+    <lastmod>2018-12-28T13:10:42.918Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2018/09/02/network_1/</loc>
+    
+    <lastmod>2018-12-28T13:10:42.918Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/tags/index.html</loc>
     
     <lastmod>2018-12-28T13:10:42.918Z</lastmod>
     
