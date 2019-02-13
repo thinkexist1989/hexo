@@ -128,7 +128,7 @@
 <meta property="og:site_name" content="DécouVerte">
 <meta property="og:description" content="什么是GRUBGNU GRUB（简称“GRUB”）是一个来自GNU项目的启动引导程序。GRUB 来自 GRand Unified Bootloader 的缩写。它的功能是在启动时从 BIOS 接管掌控、加载自身、加载 Linux 内核到内存，然后再把执行权交给内核。一旦内核开始掌控，GRUB 就完成了它的任务，也就不再需要了。GRUB是多启动规范的实现，它允许用户可以在计算机内同时拥有多个操作系统">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-02-12T11:29:32.997Z">
+<meta property="og:updated_time" content="2019-02-13T01:41:56.822Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="GRUB简介与配置">
 <meta name="twitter:description" content="什么是GRUBGNU GRUB（简称“GRUB”）是一个来自GNU项目的启动引导程序。GRUB 来自 GRand Unified Bootloader 的缩写。它的功能是在启动时从 BIOS 接管掌控、加载自身、加载 Linux 内核到内存，然后再把执行权交给内核。一旦内核开始掌控，GRUB 就完成了它的任务，也就不再需要了。GRUB是多启动规范的实现，它允许用户可以在计算机内同时拥有多个操作系统">
@@ -439,19 +439,19 @@
 <p>下面介绍几个本人比较常用的GRUB配置。</p>
 <h2 id="修改开机默认引导上次选择的操作系统"><a href="#修改开机默认引导上次选择的操作系统" class="headerlink" title="修改开机默认引导上次选择的操作系统"></a>修改开机默认引导上次选择的操作系统</h2><ul>
 <li><p>打开<code>/etc/default/grub</code>文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/default/grub</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo vim /etc/default/grub</div></pre></td></tr></table></figure>
 </li>
 <li><p>修改并加入如下代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">GRUB_DEFAULT=saved</div><div class="line">GRUB_SAVEDEFAULT=true</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">GRUB_DEFAULT=saved</div><div class="line">GRUB_SAVEDEFAULT=true</div></pre></td></tr></table></figure>
 </li>
 <li><p>更新<code>/boot/grub/grub.cfg</code>文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo update-grub</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo update-grub</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="修改GRUB开机引导画面"><a href="#修改GRUB开机引导画面" class="headerlink" title="修改GRUB开机引导画面"></a>修改GRUB开机引导画面</h2><p>GRUB最爽的就是开机引导画面的定制，可以下载各种大神制作的主题，使开机画面美轮美奂。</p>
 <ul>
 <li><p>下载GRUB主题，将主题下的文件夹中的内容复制到<code>/boot/grub/themes</code>下</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo cp -R /path/to/your_theme /boot/grub/themes</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo cp -R /path/to/your_theme /boot/grub/themes</div></pre></td></tr></table></figure>
 </li>
 <li><p>修改<code>/etc/default/grub</code>文件</p>
 <ol>
@@ -504,13 +504,27 @@
 <h2 id="进入GRUB救援模式后手动引导系统"><a href="#进入GRUB救援模式后手动引导系统" class="headerlink" title="进入GRUB救援模式后手动引导系统"></a>进入GRUB救援模式后手动引导系统</h2><ul>
 <li>利用<code>ls</code>命令列出所有磁盘分区，查找启动分区，一般情况下EFI启动分区大小为500M左右，Linux的<code>/boot</code>分区为200M～500M。</li>
 <li><p>执行以下命令来手动引导系统</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">grub&gt;set root=(hd0,msdos8) //假设启动分区为(hd0,msdos8)</div><div class="line">grub&gt;set prefix=(hd0,msdos8)/boot/grub</div><div class="line">grub&gt;insmod normal                     //启动normal启动</div><div class="line">grub&gt;normal</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">grub&gt;set root=(hd0,msdos8) //假设启动分区为(hd0,msdos8)</div><div class="line">grub&gt;set prefix=(hd0,msdos8)/boot/grub</div><div class="line">grub&gt;insmod normal                     //启动normal启动</div><div class="line">grub&gt;normal</div></pre></td></tr></table></figure>
 </li>
 <li><p>重启之后就可以进入Linux系统了，在进入系统之后，可以更新GRUB引导项来恢复GRUB引导</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo update-grub</div></pre></td></tr></table></figure>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo update-grub</div></pre></td></tr></table></figure>
 </li>
 <li><p>或者重新安装GRUB</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo grub-install /dev/sda // /dev/sda为启动分区位置</div></pre></td></tr></table></figure></li>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo grub-install /dev/sda // /dev/sda为启动分区位置</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><ul>
+<li><p>若系统是用UEFI引导的话，则输入更新GRUB指令<code>sudo update-grub</code>可能无法奏效，这是因为这条命令会更新<code>/boot/grub/grub.cfg</code>文件，但是EFI下的配置文件是在<code>/boot/efi/EFI/ubuntu/grub.cfg</code>路径下，因此需要输入</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo grub-mkconfig -o /boot/efi/EFI/ubuntu/grub.cfg</div></pre></td></tr></table></figure>
+<p>  重启便会更新GRUB。</p>
+</li>
+<li><p>有时GRUB引导进入Ubuntu时会提示<code>file &quot;/boot/grub/grubenv&quot; not found</code>或者<code>file &quot;EFI/ubuntu/grubenv&quot; not found</code>，</p>
+<p>  出现这种情况话，进入系统，输入</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo grub-editenv /boot/grub/grubenv create</div></pre></td></tr></table></figure>
+<p>  或者</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo grub-editenv /boot/efi/EFI/ubuntu/grubenv create</div></pre></td></tr></table></figure>
+<p>  来创建GRUB环境文件即可。</p>
+</li>
 </ul>
 
       
@@ -544,8 +558,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/24/terminal_via_ss/" rel="next" title="Linux让终端走Shadowsocks代理">
-                <i class="fa fa-chevron-left"></i> Linux让终端走Shadowsocks代理
+              <a href="/2019/01/02/cmake/" rel="next" title="利用CMAKE构建和管理软件项目">
+                <i class="fa fa-chevron-left"></i> 利用CMAKE构建和管理软件项目
               </a>
             
           </div>
@@ -554,8 +568,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/25/ubuntu_partition/" rel="prev" title="Ubuntu安装时如何分配目录空间">
-                Ubuntu安装时如何分配目录空间 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/01/24/terminal_via_ss/" rel="prev" title="Linux让终端走Shadowsocks代理">
+                Linux让终端走Shadowsocks代理 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -715,7 +729,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是GRUB"><span class="nav-number">1.</span> <span class="nav-text">什么是GRUB</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GRUB菜单"><span class="nav-number">2.</span> <span class="nav-text">GRUB菜单</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GRUB配置"><span class="nav-number">3.</span> <span class="nav-text">GRUB配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#修改开机默认引导上次选择的操作系统"><span class="nav-number">3.1.</span> <span class="nav-text">修改开机默认引导上次选择的操作系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改GRUB开机引导画面"><span class="nav-number">3.2.</span> <span class="nav-text">修改GRUB开机引导画面</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GRUB引导修复"><span class="nav-number">4.</span> <span class="nav-text">GRUB引导修复</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#进入GRUB救援模式后手动引导系统"><span class="nav-number">4.1.</span> <span class="nav-text">进入GRUB救援模式后手动引导系统</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是GRUB"><span class="nav-number">1.</span> <span class="nav-text">什么是GRUB</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GRUB菜单"><span class="nav-number">2.</span> <span class="nav-text">GRUB菜单</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GRUB配置"><span class="nav-number">3.</span> <span class="nav-text">GRUB配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#修改开机默认引导上次选择的操作系统"><span class="nav-number">3.1.</span> <span class="nav-text">修改开机默认引导上次选择的操作系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改GRUB开机引导画面"><span class="nav-number">3.2.</span> <span class="nav-text">修改GRUB开机引导画面</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#GRUB引导修复"><span class="nav-number">4.</span> <span class="nav-text">GRUB引导修复</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#进入GRUB救援模式后手动引导系统"><span class="nav-number">4.1.</span> <span class="nav-text">进入GRUB救援模式后手动引导系统</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注意事项"><span class="nav-number">5.</span> <span class="nav-text">注意事项</span></a></li></ol></div>
             
 
           </div>
@@ -760,7 +774,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">This site has totally 20.4k words</span>
+  <span class="post-count">This site has totally 20.6k words</span>
 </div>
         
 

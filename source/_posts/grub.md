@@ -65,28 +65,28 @@ GRUB_GFXMODE=1366x768
 ## 修改开机默认引导上次选择的操作系统
 
 - 打开`/etc/default/grub`文件
-```
-sudo vim /etc/default/grub
-```
+    ```
+    sudo vim /etc/default/grub
+    ```
 
 - 修改并加入如下代码
-```
-GRUB_DEFAULT=saved
-GRUB_SAVEDEFAULT=true
-```
+    ```
+    GRUB_DEFAULT=saved
+    GRUB_SAVEDEFAULT=true
+    ```
 
 - 更新`/boot/grub/grub.cfg`文件
-```
-sudo update-grub
-```
+    ```
+    sudo update-grub
+    ```
 
 ## 修改GRUB开机引导画面
 GRUB最爽的就是开机引导画面的定制，可以下载各种大神制作的主题，使开机画面美轮美奂。
 
 - 下载GRUB主题，将主题下的文件夹中的内容复制到`/boot/grub/themes`下
-```
-sudo cp -R /path/to/your_theme /boot/grub/themes
-```
+    ```
+    sudo cp -R /path/to/your_theme /boot/grub/themes
+    ```
 
 - 修改`/etc/default/grub`文件
   
@@ -121,17 +121,35 @@ sudo cp -R /path/to/your_theme /boot/grub/themes
 
 - 利用`ls`命令列出所有磁盘分区，查找启动分区，一般情况下EFI启动分区大小为500M左右，Linux的`/boot`分区为200M～500M。
 - 执行以下命令来手动引导系统
-```
-grub>set root=(hd0,msdos8) //假设启动分区为(hd0,msdos8)
-grub>set prefix=(hd0,msdos8)/boot/grub
-grub>insmod normal                     //启动normal启动
-grub>normal
-```
+    ```
+    grub>set root=(hd0,msdos8) //假设启动分区为(hd0,msdos8)
+    grub>set prefix=(hd0,msdos8)/boot/grub
+    grub>insmod normal                     //启动normal启动
+    grub>normal
+    ```
 - 重启之后就可以进入Linux系统了，在进入系统之后，可以更新GRUB引导项来恢复GRUB引导
-```
-sudo update-grub
-```
+    ```
+    sudo update-grub
+    ```
 - 或者重新安装GRUB
-```
-sudo grub-install /dev/sda // /dev/sda为启动分区位置
-```
+    ```
+    sudo grub-install /dev/sda // /dev/sda为启动分区位置
+    ```
+
+# 注意事项
+- 若系统是用UEFI引导的话，则输入更新GRUB指令`sudo update-grub`可能无法奏效，这是因为这条命令会更新`/boot/grub/grub.cfg`文件，但是EFI下的配置文件是在`/boot/efi/EFI/ubuntu/grub.cfg`路径下，因此需要输入
+    ```
+    sudo grub-mkconfig -o /boot/efi/EFI/ubuntu/grub.cfg
+    ```
+    重启便会更新GRUB。
+- 有时GRUB引导进入Ubuntu时会提示`file "/boot/grub/grubenv" not found`或者`file "EFI/ubuntu/grubenv" not found`，
+
+    出现这种情况话，进入系统，输入
+    ```
+    sudo grub-editenv /boot/grub/grubenv create
+    ```
+    或者
+    ```
+    sudo grub-editenv /boot/efi/EFI/ubuntu/grubenv create
+    ```
+    来创建GRUB环境文件即可。
