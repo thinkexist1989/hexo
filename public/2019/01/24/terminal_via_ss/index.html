@@ -120,18 +120,18 @@
 
 
 
-<meta name="description" content="方法1在终端直接运行命令1export http_proxy=http://proxyAddress:port 这个办法的好处是简单直接，并且影响面很小（只对当前终端有效，退出就不行了）。 如果你用的是ss代理，在当前终端运行以下命令，那么wget curl 这类网络命令都会经过ss代理 1export ALL_PROXY=socks5://127.0.0.1:1080 方法2把代理服务器地址写入">
+<meta name="description" content="作为一名勤勤恳恳的科研人员，在使用Ubuntu的时候，避免不了要经常科学上网，最好用的莫过于Shadowsocks代理，在此简单介绍下如何在Ubuntu下使用Shadowsocks（以下简称ss）代理以及让终端也使用ss上网。 预备条件 一台境外VPS服务器，并且已经搭载好ss服务 本机安装了Ubuntu系统（其他Linux发行版操作类似）  安装shadowsocks-qt5shadowsock">
 <meta name="keywords" content="tutorials,practise">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Linux让终端走Shadowsocks代理">
+<meta property="og:title" content="Ubuntu下Shadowsocks代理及终端使用ss">
 <meta property="og:url" content="http://yluo.name/2019/01/24/terminal_via_ss/index.html">
 <meta property="og:site_name" content="DécouVerte">
-<meta property="og:description" content="方法1在终端直接运行命令1export http_proxy=http://proxyAddress:port 这个办法的好处是简单直接，并且影响面很小（只对当前终端有效，退出就不行了）。 如果你用的是ss代理，在当前终端运行以下命令，那么wget curl 这类网络命令都会经过ss代理 1export ALL_PROXY=socks5://127.0.0.1:1080 方法2把代理服务器地址写入">
+<meta property="og:description" content="作为一名勤勤恳恳的科研人员，在使用Ubuntu的时候，避免不了要经常科学上网，最好用的莫过于Shadowsocks代理，在此简单介绍下如何在Ubuntu下使用Shadowsocks（以下简称ss）代理以及让终端也使用ss上网。 预备条件 一台境外VPS服务器，并且已经搭载好ss服务 本机安装了Ubuntu系统（其他Linux发行版操作类似）  安装shadowsocks-qt5shadowsock">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-25T13:55:40.840Z">
+<meta property="og:updated_time" content="2019-03-08T02:46:12.397Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Linux让终端走Shadowsocks代理">
-<meta name="twitter:description" content="方法1在终端直接运行命令1export http_proxy=http://proxyAddress:port 这个办法的好处是简单直接，并且影响面很小（只对当前终端有效，退出就不行了）。 如果你用的是ss代理，在当前终端运行以下命令，那么wget curl 这类网络命令都会经过ss代理 1export ALL_PROXY=socks5://127.0.0.1:1080 方法2把代理服务器地址写入">
+<meta name="twitter:title" content="Ubuntu下Shadowsocks代理及终端使用ss">
+<meta name="twitter:description" content="作为一名勤勤恳恳的科研人员，在使用Ubuntu的时候，避免不了要经常科学上网，最好用的莫过于Shadowsocks代理，在此简单介绍下如何在Ubuntu下使用Shadowsocks（以下简称ss）代理以及让终端也使用ss上网。 预备条件 一台境外VPS服务器，并且已经搭载好ss服务 本机安装了Ubuntu系统（其他Linux发行版操作类似）  安装shadowsocks-qt5shadowsock">
 
 
 
@@ -167,7 +167,7 @@
 
 
 
-  <title>Linux让终端走Shadowsocks代理 | DécouVerte</title>
+  <title>Ubuntu下Shadowsocks代理及终端使用ss | DécouVerte</title>
   
 
 
@@ -356,7 +356,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Linux让终端走Shadowsocks代理</h1>
+          <h1 class="post-title" itemprop="name headline">Ubuntu下Shadowsocks代理及终端使用ss</h1>
         
 
         <div class="post-meta">
@@ -428,21 +428,27 @@
       
 
       
-        <h1 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h1><p>在终端直接运行命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export http_proxy=http://proxyAddress:port</div></pre></td></tr></table></figure></p>
-<p>这个办法的好处是简单直接，并且影响面很小（只对当前终端有效，退出就不行了）。</p>
-<p>如果你用的是ss代理，在当前终端运行以下命令，那么<code>wget</code> <code>curl</code> 这类网络命令都会经过ss代理</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export ALL_PROXY=socks5://127.0.0.1:1080</div></pre></td></tr></table></figure>
-<h1 id="方法2"><a href="#方法2" class="headerlink" title="方法2"></a>方法2</h1><p>把代理服务器地址写入shell配置文件<code>.bashrc</code></p>
-<p>可直接在<code>.bashrc</code>添加下面内容<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export http_proxy=&quot;http://localhost:port&quot;</div><div class="line">export https_proxy=&quot;http://localhost:port&quot;</div></pre></td></tr></table></figure></p>
-<p>以使用shadowsocks代理为例，ss的代理端口为<code>1080</code>，那么应该设置为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">export http_proxy=&quot;socks5://127.0.0.1:1080&quot;</div><div class="line">export https_proxy=&quot;socks5://127.0.0.1:1080&quot;</div></pre></td></tr></table></figure></p>
-<p>或者直接设置<code>ALL_PROXY</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export ALL_PROXY=socks5://127.0.0.1:1080</div></pre></td></tr></table></figure>
-<p><code>localhost</code>就是一个域名，域名默认指向<code>127.0.0.1</code>，两者是一样的。</p>
-<p>保存后在终端执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">source ~/.bashrc</div></pre></td></tr></table></figure>
-<p>或者退出当前终端再起一个终端。 这个办法的好处是把代理服务器永久保存了，下次就可以直接用了。</p>
-<p>或者通过设置alias简写来简化操作，每次要用的时候输入<code>setproxy</code>，不用了就<code>unsetproxy</code>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">alias setproxy=&quot;export ALL_PROXY=socks5://127.0.0.1:1080&quot;</div><div class="line">alias unsetproxy=&quot;unset ALL_PROXY&quot;</div><div class="line">alias ip=&quot;curl -i http://ip.cn&quot;</div></pre></td></tr></table></figure>
+        <p>作为一名勤勤恳恳的科研人员，在使用Ubuntu的时候，避免不了要经常科学上网，最好用的莫过于Shadowsocks代理，在此简单介绍下如何在Ubuntu下使用Shadowsocks（以下简称ss）代理以及让终端也使用ss上网。</p>
+<h1 id="预备条件"><a href="#预备条件" class="headerlink" title="预备条件"></a>预备条件</h1><ul>
+<li>一台境外VPS服务器，并且已经搭载好ss服务</li>
+<li>本机安装了Ubuntu系统（其他Linux发行版操作类似）</li>
+</ul>
+<h1 id="安装shadowsocks-qt5"><a href="#安装shadowsocks-qt5" class="headerlink" title="安装shadowsocks-qt5"></a>安装shadowsocks-qt5</h1><p>shadowsocks-qt5是ss在linux下的gui程序，在终端输入以下指令，添加ss-qt5的PPA源并更新</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo add-apt-repository ppa:hzwhuang/ss-qt5</div><div class="line">sudo apt-get update</div></pre></td></tr></table></figure>
+<p>随后安装ss-qt5</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install shadowsocks-qt5</div></pre></td></tr></table></figure>
+<p>之后运行ss-qt5，在里面配置相应的服务器信息后便可以测试连接是否成功。为了可以在浏览器里方便的使用ss，推荐Chrome浏览器下的插件SwitchyOmega，简单介绍以下SwitchOmega的配置。</p>
+<h1 id="安装配置SwitchyOmega"><a href="#安装配置SwitchyOmega" class="headerlink" title="安装配置SwitchyOmega"></a>安装配置SwitchyOmega</h1><p>在Chrome商店或者<a href="">https://www.switchyomega.com/download/</a>下载SwitchyOmega插件并安装到Chrome。</p>
+<p>随后在SwitchOmega配置中新建一个情景模式proxy,协议选择socks 5, 地址127.0.0.1,端口1080（根据ss-qt5中的配置适当修改）。其实这样配置之后启动proxy模式便可以实现科学上网了，但是此时所有的上网流量都需要经过VPS，很多国内的网站，比如百度等也是需要经过代理上网，增加了上网的延时，因此可以配置PAC来实现墙内网站直接连接，墙外网站走代理的完美解决方案。</p>
+<h1 id="配置PAC"><a href="#配置PAC" class="headerlink" title="配置PAC"></a>配置PAC</h1><p>在SwitchyOmega的自动切换模式下，在<code>规则列表规则</code>前面的框打√，再将后面的情景模式设置为proxy，意思是规则列表中的内容，我们使用proxy情景模式。然后规则列表设置中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">规则列表格式： AutoProxy </div><div class="line">规则列表网址： https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt</div></pre></td></tr></table></figure></p>
+<p>输入上面的网址后请点击“立即更新情景模式”，更新成功后可以看到下面的更新时间和内容，这样设置完成 “规则列表规则” 后就不需要在切换规则中一个一个添加条件了。</p>
+<h1 id="配置终端走ss代理"><a href="#配置终端走ss代理" class="headerlink" title="配置终端走ss代理"></a>配置终端走ss代理</h1><p>终端下走代理需要proxychains这个小软件的帮助，首先安装proxychains</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install proxychains</div></pre></td></tr></table></figure>
+<p>安装完毕后，修改<code>/etc/proxychains.conf</code>中的内容，在最后[ProxyList]选项里填入ss的信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">socks5 127.0.0.1 1080</div></pre></td></tr></table></figure>
+<p>这样就已经配置成功了，若想让终端的命令走ss代理的话，就在命令前加上<code>proxychains</code>即可。</p>
+<p>验证是否配置成功，首先输入<code>curl ip.gs</code>查看当前未走代理的ip地址，之后输入<code>proxychains curl ip.gs</code>查看走代理的ip地址，若ip地址是VPS的服务器地址，则配置成功。</p>
+
       
     </div>
     
@@ -645,7 +651,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#方法1"><span class="nav-number">1.</span> <span class="nav-text">方法1</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方法2"><span class="nav-number">2.</span> <span class="nav-text">方法2</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#预备条件"><span class="nav-number">1.</span> <span class="nav-text">预备条件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装shadowsocks-qt5"><span class="nav-number">2.</span> <span class="nav-text">安装shadowsocks-qt5</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装配置SwitchyOmega"><span class="nav-number">3.</span> <span class="nav-text">安装配置SwitchyOmega</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置PAC"><span class="nav-number">4.</span> <span class="nav-text">配置PAC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置终端走ss代理"><span class="nav-number">5.</span> <span class="nav-text">配置终端走ss代理</span></a></li></ol></div>
             
 
           </div>
@@ -690,7 +696,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">This site has totally 22.8k words</span>
+  <span class="post-count">This site has totally 23.2k words</span>
 </div>
         
 
