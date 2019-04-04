@@ -303,14 +303,15 @@ font:
   # Global font settings used on <body> element.
   global:
     external: true
-    family: Lato
+  #  family: Lato
+    family: Noto Serif SC
     size:
 
   # Font settings for Headlines (h1, h2, h3, h4, h5, h6).
   # Fallback to `global` font settings.
   headings:
     external: true
-    family:
+    family: Noto Serif SC
     size:
 
   # Font settings for posts.
