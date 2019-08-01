@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yluo.name/"/>
-  <updated>2019-08-01T06:50:17.158Z</updated>
+  <updated>2019-08-01T07:56:29.098Z</updated>
   <id>http://yluo.name/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Ubuntu与Windows双系统时间设置问题</title>
+    <link href="http://yluo.name/2019/08/01/ubuntu_windows_time/"/>
+    <id>http://yluo.name/2019/08/01/ubuntu_windows_time/</id>
+    <published>2019-08-01T07:38:00.000Z</published>
+    <updated>2019-08-01T07:56:29.098Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="问题缘由"><a href="#问题缘由" class="headerlink" title="问题缘由"></a>问题缘由</h1><p>现在很多人都在电脑里安装了Ubuntu和Windows双系统，在安装完系统之后会发现，系统的显示时间经常会出问题，要么比正常时间快8个小时，要么比正常时间慢8个小时。即使利用网络同步时间之后，当切换过系统之后还是会出现时间差的问题。</p><p>这种现象是由于Windows与Ubuntu默认对时间的管理方式不同造成的。我们知道电脑的BIOS里记录着一串时间数据，操作系统就是根据这个数据得到当前时间的。Ubuntu系统使用的是UTC时间（世界协调时），系统会把BIOS里记录的时间看成GMT+0时间，即世界标准时。在Ubuntu系统中有一个设置，是配置当前所在时区的，在中国就会配置为东八区（GMT+8），所以Ubuntu会把BIOS中得到的时间加上8个小时显示出来，随后在系统关机的时候，将当前显示的时间减去8个小时后存入BIOS中。</p><p>而在Windows中，会将BIOS中的时间看做本地时间，直接显示出来，因此，当从Ubuntu切换到Windows时，会出现时间差8个小时的情况。</p><h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>最简单的方法就是将Ubuntu下的UTC时间关闭，采用和Window一样的时间管理方式。只需要在Ubuntu终端下运行一行代码：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo timedatectrl set-local-utc 1</div></pre></td></tr></table></figure><p>这样便可以使Windows和Ubuntu下的时间同步了。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;问题缘由&quot;&gt;&lt;a href=&quot;#问题缘由&quot; class=&quot;headerlink&quot; title=&quot;问题缘由&quot;&gt;&lt;/a&gt;问题缘由&lt;/h1&gt;&lt;p&gt;现在很多人都在电脑里安装了Ubuntu和Windows双系统，在安装完系统之后会发现，系统的显示时间经常会出问题，要么比正常
+      
+    
+    </summary>
+    
+      <category term="Software" scheme="http://yluo.name/categories/Software/"/>
+    
+    
+      <category term="tutorials" scheme="http://yluo.name/tags/tutorials/"/>
+    
+      <category term="practise" scheme="http://yluo.name/tags/practise/"/>
+    
+  </entry>
   
   <entry>
     <title>分屏终端Terminator上手</title>
@@ -548,33 +575,6 @@
       <category term="tutorials" scheme="http://yluo.name/tags/tutorials/"/>
     
       <category term="practise" scheme="http://yluo.name/tags/practise/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>How To Writing Academic Essay  | 学术论文词汇总结</title>
-    <link href="http://yluo.name/2017/10/18/academic_essay_words/"/>
-    <id>http://yluo.name/2017/10/18/academic_essay_words/</id>
-    <published>2017-10-18T07:57:00.000Z</published>
-    <updated>2019-08-01T06:50:17.158Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="介词"><a href="#介词" class="headerlink" title="介词"></a>介词</h1><h2 id="转折关系"><a href="#转折关系" class="headerlink" title="转折关系"></a>转折关系</h2><ul><li>然而           <code>However</code>; <code>Nevertheless</code></li><li>尽管           <code>Despite</code>; </li></ul><h2 id="递进关系"><a href="#递进关系" class="headerlink" title="递进关系"></a>递进关系</h2><ul><li>更进一步地  <code>Moreover</code>; <code>Furthermore</code>; <code>In addition</code>; </li><li>尤其地          <code>Particularly</code>;</li><li>同时           <code>whilst</code>; </li></ul><h2 id="因果关系"><a href="#因果关系" class="headerlink" title="因果关系"></a>因果关系</h2><ul><li>因此            <code>Consequently</code>; <code>Therefore</code></li><li>由于           <code>Due to</code></li></ul><h2 id="过渡与总结"><a href="#过渡与总结" class="headerlink" title="过渡与总结"></a>过渡与总结</h2><ul><li>到目前为止   <code>By now</code>; <code>To date</code>; <code>More recently</code>; <code>as-of-yet</code>; <code>So far</code>;</li><li>大体上来说   <code>by and large</code>; </li></ul><h1 id="短语"><a href="#短语" class="headerlink" title="短语"></a>短语</h1><ul><li>展示、呈现   <code>be present</code>; <code>be depicted</code>;<code>be described</code>; <code>be displayed</code> ; <code>indicate that...</code> ; </li><li>利用               <code>use</code>; <code>leverage</code>; </li><li>缺点、劣势   <code>disadvantages</code>; <code>drawbacks</code>; </li><li>关注              <code>drawn attention to</code>; <code>concerning</code>; <code>concern about</code>; <code>conducted on</code>; </li><li>根据、依据   <code>according to</code>; <code>in light of</code>; </li><li>广泛使用      <code>extensively used</code>; <code>widely used</code></li><li>被简化为      <code>be abbreviated to</code>; </li><li>上述的、上面提及的 <code>abovementioned</code>; <code>aforementioned</code>;</li><li>期望的          <code>desired</code>; <code>expected</code>; </li><li>描绘、关注…问题   <code>focus on</code>; <code>examine</code>; <code>discuss</code>; <code>trace</code>; <code>take ... into account</code>; </li><li>忽视              <code>overlook</code>; <code>ignore</code>;</li><li>意义、重要性 <code>significance</code>; </li><li>有意义的，相关的 <code>relevant</code>; <code>significant</code>;</li><li>强烈地 <code>vigorously</code>; <code>strongly</code></li><li>遭受 <code>be subjected to</code>; <code>suffer from</code></li><li>仅仅 <code>merely</code>; <code>barely</code>; </li><li>详尽的 <code>elaborate</code>;</li></ul><p>accommodate 适应 </p><p>denote 表示</p><p>proof-of-concept 概念验证</p><p>has raged unabated for over a century 持续了一个多世纪</p><p>via 通过 </p><p>adhere to 坚持、追随、秉承</p><p>in either/this scenario 在 其他/这种 情景</p><p>heuristically 启发式地、试探性地</p><p>an account of 一份…的说明</p><p>recent research 最近的研究</p><p>limitations 局限性</p><p>rely too heavily on…. 过于依赖</p><p>questionable 可疑的，有问题的</p><p>challenged Jones’ claim on the grounds 对Jone的主张提出质疑</p><p>pre-existing 先已存在的</p><p>systematic study 系统研究</p><p>interacts with 相互作用</p><p>point out 指出</p><p>assess 评估、评价</p><h1 id="专业词汇"><a href="#专业词汇" class="headerlink" title="专业词汇"></a>专业词汇</h1><p>three-phase dc-brushless motor  三相直流无刷电机</p><p>resolver 旋转变压器</p><p>three-bladed nylon propeller 三叶的尼龙桨</p><p>pulsewidth-modulated (PWM) 脉宽调制</p><p>4096 counts per revolution 每转4096线</p><p>revolution 转速</p><p>advance speed 推进速度、前进速度</p><p>four quadrant nonlinear function 四象限非线性方程</p><p>wake fraction number 伴流系数(0.1~0.4)</p><p>affine thruster model 仿射的推进器模型</p><p>lump parameter of various constants 集中参数</p><p>cavitation 空化现象</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;介词&quot;&gt;&lt;a href=&quot;#介词&quot; class=&quot;headerlink&quot; title=&quot;介词&quot;&gt;&lt;/a&gt;介词&lt;/h1&gt;&lt;h2 id=&quot;转折关系&quot;&gt;&lt;a href=&quot;#转折关系&quot; class=&quot;headerlink&quot; title=&quot;转折关系&quot;&gt;&lt;/a&gt;转折关系&lt;/h
-      
-    
-    </summary>
-    
-      <category term="Academic Research" scheme="http://yluo.name/categories/Academic-Research/"/>
-    
-    
-      <category term="summary" scheme="http://yluo.name/tags/summary/"/>
-    
-      <category term="scholarism" scheme="http://yluo.name/tags/scholarism/"/>
     
   </entry>
   
