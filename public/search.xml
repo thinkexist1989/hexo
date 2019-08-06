@@ -8,8 +8,7 @@
         <category>Software</category>
       </categories>
       <tags>
-        <tag>tutorials</tag>
-        <tag>practise</tag>
+        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -20,9 +19,8 @@
         <category>Software</category>
       </categories>
       <tags>
-        <tag>tutorials</tag>
-        <tag>practise</tag>
         <tag>linux</tag>
+        <tag>terminator</tag>
       </tags>
   </entry>
   <entry>
@@ -33,8 +31,8 @@
         <category>Software</category>
       </categories>
       <tags>
-        <tag>tutorials</tag>
         <tag>qt</tag>
+        <tag>uic</tag>
       </tags>
   </entry>
   <entry>
@@ -45,8 +43,8 @@
         <category>Software</category>
       </categories>
       <tags>
-        <tag>tutorials</tag>
         <tag>qt</tag>
+        <tag>dpi</tag>
       </tags>
   </entry>
   <entry>
@@ -57,9 +55,8 @@
         <category>Software</category>
       </categories>
       <tags>
-        <tag>tutorials</tag>
-        <tag>practise</tag>
         <tag>vim</tag>
+        <tag>vim plugin</tag>
       </tags>
   </entry>
   <entry>
@@ -70,8 +67,6 @@
         <category>Software</category>
       </categories>
       <tags>
-        <tag>tutorials</tag>
-        <tag>practise</tag>
         <tag>vim</tag>
       </tags>
   </entry>
@@ -83,8 +78,9 @@
         <category>Software</category>
       </categories>
       <tags>
-        <tag>tutorials</tag>
-        <tag>practise</tag>
+        <tag>cmake</tag>
+        <tag>opencv</tag>
+        <tag>Qt</tag>
       </tags>
   </entry>
   <entry>
@@ -95,8 +91,8 @@
         <category>Software</category>
       </categories>
       <tags>
-        <tag>tutorials</tag>
-        <tag>practise</tag>
+        <tag>cmake</tag>
+        <tag>opencv</tag>
       </tags>
   </entry>
   <entry>
@@ -107,20 +103,7 @@
         <category>Software</category>
       </categories>
       <tags>
-        <tag>tutorials</tag>
-        <tag>practise</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[GRUB简介与配置]]></title>
-    <url>%2F2019%2F01%2F24%2Fgrub%2F</url>
-    <content type="text"><![CDATA[什么是GRUBGNU GRUB（简称“GRUB”）是一个来自GNU项目的启动引导程序。GRUB 来自 GRand Unified Bootloader 的缩写。它的功能是在启动时从 BIOS 接管掌控、加载自身、加载 Linux 内核到内存，然后再把执行权交给内核。一旦内核开始掌控，GRUB 就完成了它的任务，也就不再需要了。GRUB是多启动规范的实现，它允许用户可以在计算机内同时拥有多个操作系统，并在计算机启动时选择希望运行的操作系统。GRUB可用于选择操作系统分区上的不同内核，也可用于向这些内核传递启动参数。 简单的说，如果你的电脑上需要同时安装多个操作系统，比如Windows，Ubuntu，Centos，RHEL等（各种LINUX发行版）的话，就可以利用GRUB来作为启动引导程序，来引导系统启动。 GRUB菜单GRUB 菜单的功能是当默认的内核不是想要的时，允许用户从已经安装的内核中选择一个进行引导。通过上下箭头键允许你选中想要的内核，敲击回车键会使用选中的内核继续引导进程。 GRUB 菜单也提供了超时机制，因此如果用户没有做任何选择，GRUB 就会在没有用户干预的情况下使用默认内核继续引导。敲击键盘上除了回车键之外的任何键会停止终端上显示的倒数计时器。立即敲击回车键会使用默认内核或者选中的内核继续引导进程。 GRUB配置GRUB的一个重要的特性是安装它不需依附一个操作系统，但是这种安装需要一个Linux/Windows副本。由于单独工作，GRUB实质上是一个微型系统，通过链式启动的方式，它可以启动所有安装的主流操作系统。 因此GRUB通常在Linux系统下进行配置。grub.cfg文件是GRUB配置文件。它由grub-mkconfig程序根据用户的配置使用一组主配置文件以及GRUB默认文件而生成。/boot/grub/grub.cfg文件在Linux安装时会初次生成，安装新内核时又会重新生成。但是如果需要手动配置GRUB，则不能修改这个文件，而是修改/etc/default/grub文件，这个文件的内容大致如下所示： 12345678910111213141516171819202122232425262728GRUB_DEFAULT=0GRUB_HIDDEN_TIMEOUT=0GRUB_TIMEOUT=10GRUB_DISTRIBUTOR=`lsb_release -i -s 2&gt; /dev/null || echo Debian`GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash&quot;GRUB_CMDLINE_LINUX=&quot;&quot;# Uncomment to enable BadRAM filtering, modify to suit your needs# This works with Linux (no patch required) and with any kernel that obtains# the memory map information from GRUB (GNU Mach, kernel of FreeBSD ...)#GRUB_BADRAM=&quot;0x01234567,0xfefefefe,0x89abcdef,0xefefefef&quot;# Uncomment to disable graphical terminal (grub-pc only)#GRUB_TERMINAL=console# The resolution used on graphical terminal# note that you can use only modes which your graphic card supports via VBE# you can see them in real GRUB with the command `vbeinfo&apos;GRUB_GFXMODE=1366x768# Uncomment if you don&apos;t want GRUB to pass &quot;root=UUID=xxx&quot; parameter to Linux#GRUB_DISABLE_LINUX_UUID=true# Uncomment to disable generation of recovery mode menu entries#GRUB_DISABLE_RECOVERY=&quot;true&quot;# Uncomment to get a beep at grub start#GRUB_INIT_TUNE=&quot;480 440 1&quot; 在修改完/etc/default/grub文件之后，需要在终端运行update-grub来更新/boot/grub/grub.cfg文件，这样就完成了对GRUB的配置。 下面介绍几个本人比较常用的GRUB配置。 修改开机默认引导上次选择的操作系统 打开/etc/default/grub文件 1sudo vim /etc/default/grub 修改并加入如下代码 12GRUB_DEFAULT=savedGRUB_SAVEDEFAULT=true 更新/boot/grub/grub.cfg文件 1sudo update-grub 修改GRUB开机引导画面GRUB最爽的就是开机引导画面的定制，可以下载各种大神制作的主题，使开机画面美轮美奂。 下载GRUB主题，将主题下的文件夹中的内容复制到/boot/grub/themes下 1sudo cp -R /path/to/your_theme /boot/grub/themes 修改/etc/default/grub文件 将GRUB_GFXMODE修改为自己屏幕分辨率 1GRUB_GFXMODE=1366*768 修改或添加一行 1GRUB_THEME=/boot/grub/themes/your_theme/theme.txt 更新/boot/grub/grub.cfg文件 1sudo update-grub GRUB引导修复当/boot/grub/grub.conf配置文件丢失, 或者关键配置出现错误, 或者MBR、UEFI记录的引导程序遭到破坏时, Linux主机启动后可能只会出现“grub&gt;”的提示符，无法完成进一步的系统启动过程。 这表示你的grub2的配置文件损坏，GRUB找不到Ubuntu系统的引导项. 从而进入修复模式了(grub rescue), 也称救援模式。在救援模式下只有很少的命令可以用: set，ls，insmod，root，prefix。 命令 描述 set 查看环境变量 ls 查看设备 insmod 加载模块 root 指定用于启动系统的分区，设置GRUB启动分区 prefix 设定GRUB启动路径 进入GRUB救援模式后手动引导系统 利用ls命令列出所有磁盘分区，查找启动分区，一般情况下EFI启动分区大小为500M左右，Linux的/boot分区为200M～500M。 执行以下命令来手动引导系统 1234grub&gt;set root=(hd0,msdos8) //假设启动分区为(hd0,msdos8)grub&gt;set prefix=(hd0,msdos8)/boot/grubgrub&gt;insmod normal //启动normal启动grub&gt;normal 重启之后就可以进入Linux系统了，在进入系统之后，可以更新GRUB引导项来恢复GRUB引导 1sudo update-grub 或者重新安装GRUB 1sudo grub-install /dev/sda // /dev/sda为启动分区位置 注意事项 若系统是用UEFI引导的话，则输入更新GRUB指令sudo update-grub可能无法奏效，这是因为这条命令会更新/boot/grub/grub.cfg文件，但是EFI下的配置文件是在/boot/efi/EFI/ubuntu/grub.cfg路径下，因此需要输入 1sudo grub-mkconfig -o /boot/efi/EFI/ubuntu/grub.cfg 重启便会更新GRUB。 有时GRUB引导进入Ubuntu时会提示file &quot;/boot/grub/grubenv&quot; not found或者file &quot;EFI/ubuntu/grubenv&quot; not found， 出现这种情况话，进入系统，输入 1sudo grub-editenv /boot/grub/grubenv create 或者 1sudo grub-editenv /boot/efi/EFI/ubuntu/grubenv create 来创建GRUB环境文件即可。]]></content>
-      <categories>
-        <category>Software</category>
-      </categories>
-      <tags>
-        <tag>tutorials</tag>
-        <tag>practise</tag>
+        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -131,8 +114,19 @@
         <category>Software</category>
       </categories>
       <tags>
-        <tag>tutorials</tag>
-        <tag>practise</tag>
+        <tag>proxy</tag>
+        <tag>proxychains</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[GRUB简介与配置]]></title>
+    <url>%2F2019%2F01%2F24%2Fgrub%2F</url>
+    <content type="text"><![CDATA[什么是GRUBGNU GRUB（简称“GRUB”）是一个来自GNU项目的启动引导程序。GRUB 来自 GRand Unified Bootloader 的缩写。它的功能是在启动时从 BIOS 接管掌控、加载自身、加载 Linux 内核到内存，然后再把执行权交给内核。一旦内核开始掌控，GRUB 就完成了它的任务，也就不再需要了。GRUB是多启动规范的实现，它允许用户可以在计算机内同时拥有多个操作系统，并在计算机启动时选择希望运行的操作系统。GRUB可用于选择操作系统分区上的不同内核，也可用于向这些内核传递启动参数。 简单的说，如果你的电脑上需要同时安装多个操作系统，比如Windows，Ubuntu，Centos，RHEL等（各种LINUX发行版）的话，就可以利用GRUB来作为启动引导程序，来引导系统启动。 GRUB菜单GRUB 菜单的功能是当默认的内核不是想要的时，允许用户从已经安装的内核中选择一个进行引导。通过上下箭头键允许你选中想要的内核，敲击回车键会使用选中的内核继续引导进程。 GRUB 菜单也提供了超时机制，因此如果用户没有做任何选择，GRUB 就会在没有用户干预的情况下使用默认内核继续引导。敲击键盘上除了回车键之外的任何键会停止终端上显示的倒数计时器。立即敲击回车键会使用默认内核或者选中的内核继续引导进程。 GRUB配置GRUB的一个重要的特性是安装它不需依附一个操作系统，但是这种安装需要一个Linux/Windows副本。由于单独工作，GRUB实质上是一个微型系统，通过链式启动的方式，它可以启动所有安装的主流操作系统。 因此GRUB通常在Linux系统下进行配置。grub.cfg文件是GRUB配置文件。它由grub-mkconfig程序根据用户的配置使用一组主配置文件以及GRUB默认文件而生成。/boot/grub/grub.cfg文件在Linux安装时会初次生成，安装新内核时又会重新生成。但是如果需要手动配置GRUB，则不能修改这个文件，而是修改/etc/default/grub文件，这个文件的内容大致如下所示： 12345678910111213141516171819202122232425262728GRUB_DEFAULT=0GRUB_HIDDEN_TIMEOUT=0GRUB_TIMEOUT=10GRUB_DISTRIBUTOR=`lsb_release -i -s 2&gt; /dev/null || echo Debian`GRUB_CMDLINE_LINUX_DEFAULT=&quot;quiet splash&quot;GRUB_CMDLINE_LINUX=&quot;&quot;# Uncomment to enable BadRAM filtering, modify to suit your needs# This works with Linux (no patch required) and with any kernel that obtains# the memory map information from GRUB (GNU Mach, kernel of FreeBSD ...)#GRUB_BADRAM=&quot;0x01234567,0xfefefefe,0x89abcdef,0xefefefef&quot;# Uncomment to disable graphical terminal (grub-pc only)#GRUB_TERMINAL=console# The resolution used on graphical terminal# note that you can use only modes which your graphic card supports via VBE# you can see them in real GRUB with the command `vbeinfo&apos;GRUB_GFXMODE=1366x768# Uncomment if you don&apos;t want GRUB to pass &quot;root=UUID=xxx&quot; parameter to Linux#GRUB_DISABLE_LINUX_UUID=true# Uncomment to disable generation of recovery mode menu entries#GRUB_DISABLE_RECOVERY=&quot;true&quot;# Uncomment to get a beep at grub start#GRUB_INIT_TUNE=&quot;480 440 1&quot; 在修改完/etc/default/grub文件之后，需要在终端运行update-grub来更新/boot/grub/grub.cfg文件，这样就完成了对GRUB的配置。 下面介绍几个本人比较常用的GRUB配置。 修改开机默认引导上次选择的操作系统 打开/etc/default/grub文件 1sudo vim /etc/default/grub 修改并加入如下代码 12GRUB_DEFAULT=savedGRUB_SAVEDEFAULT=true 更新/boot/grub/grub.cfg文件 1sudo update-grub 修改GRUB开机引导画面GRUB最爽的就是开机引导画面的定制，可以下载各种大神制作的主题，使开机画面美轮美奂。 下载GRUB主题，将主题下的文件夹中的内容复制到/boot/grub/themes下 1sudo cp -R /path/to/your_theme /boot/grub/themes 修改/etc/default/grub文件 将GRUB_GFXMODE修改为自己屏幕分辨率 1GRUB_GFXMODE=1366*768 修改或添加一行 1GRUB_THEME=/boot/grub/themes/your_theme/theme.txt 更新/boot/grub/grub.cfg文件 1sudo update-grub GRUB引导修复当/boot/grub/grub.conf配置文件丢失, 或者关键配置出现错误, 或者MBR、UEFI记录的引导程序遭到破坏时, Linux主机启动后可能只会出现“grub&gt;”的提示符，无法完成进一步的系统启动过程。 这表示你的grub2的配置文件损坏，GRUB找不到Ubuntu系统的引导项. 从而进入修复模式了(grub rescue), 也称救援模式。在救援模式下只有很少的命令可以用: set，ls，insmod，root，prefix。 命令 描述 set 查看环境变量 ls 查看设备 insmod 加载模块 root 指定用于启动系统的分区，设置GRUB启动分区 prefix 设定GRUB启动路径 进入GRUB救援模式后手动引导系统 利用ls命令列出所有磁盘分区，查找启动分区，一般情况下EFI启动分区大小为500M左右，Linux的/boot分区为200M～500M。 执行以下命令来手动引导系统 1234grub&gt;set root=(hd0,msdos8) //假设启动分区为(hd0,msdos8)grub&gt;set prefix=(hd0,msdos8)/boot/grubgrub&gt;insmod normal //启动normal启动grub&gt;normal 重启之后就可以进入Linux系统了，在进入系统之后，可以更新GRUB引导项来恢复GRUB引导 1sudo update-grub 或者重新安装GRUB 1sudo grub-install /dev/sda // /dev/sda为启动分区位置 注意事项 若系统是用UEFI引导的话，则输入更新GRUB指令sudo update-grub可能无法奏效，这是因为这条命令会更新/boot/grub/grub.cfg文件，但是EFI下的配置文件是在/boot/efi/EFI/ubuntu/grub.cfg路径下，因此需要输入 1sudo grub-mkconfig -o /boot/efi/EFI/ubuntu/grub.cfg 重启便会更新GRUB。 有时GRUB引导进入Ubuntu时会提示file &quot;/boot/grub/grubenv&quot; not found或者file &quot;EFI/ubuntu/grubenv&quot; not found， 出现这种情况话，进入系统，输入 1sudo grub-editenv /boot/grub/grubenv create 或者 1sudo grub-editenv /boot/efi/EFI/ubuntu/grubenv create 来创建GRUB环境文件即可。]]></content>
+      <categories>
+        <category>Software</category>
+      </categories>
+      <tags>
+        <tag>grub</tag>
       </tags>
   </entry>
   <entry>
@@ -143,7 +137,6 @@
         <category>Software</category>
       </categories>
       <tags>
-        <tag>tutorials</tag>
         <tag>cmake</tag>
         <tag>Makefile</tag>
       </tags>
@@ -156,8 +149,8 @@
         <category>Computer Network</category>
       </categories>
       <tags>
-        <tag>summary</tag>
         <tag>network</tag>
+        <tag>proxy</tag>
       </tags>
   </entry>
   <entry>
@@ -168,8 +161,9 @@
         <category>Software</category>
       </categories>
       <tags>
-        <tag>tutorials</tag>
-        <tag>practise</tag>
+        <tag>make</tag>
+        <tag>makefile</tag>
+        <tag>latex</tag>
       </tags>
   </entry>
   <entry>
@@ -180,8 +174,8 @@
         <category>Computer Network</category>
       </categories>
       <tags>
-        <tag>summary</tag>
         <tag>network</tag>
+        <tag>nat</tag>
       </tags>
   </entry>
   <entry>
@@ -192,8 +186,8 @@
         <category>Computer Network</category>
       </categories>
       <tags>
-        <tag>summary</tag>
         <tag>network</tag>
+        <tag>dhcp</tag>
       </tags>
   </entry>
   <entry>
@@ -204,8 +198,9 @@
         <category>Computer Network</category>
       </categories>
       <tags>
-        <tag>summary</tag>
         <tag>network</tag>
+        <tag>ip address</tag>
+        <tag>dns</tag>
       </tags>
   </entry>
   <entry>
@@ -216,21 +211,18 @@
         <category>Robot Operating System</category>
       </categories>
       <tags>
-        <tag>tutorials</tag>
-        <tag>summary</tag>
         <tag>ros</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[Linux与Windows双系统搭建]]></title>
-    <url>%2F2018%2F04%2F14%2Flinux_windows%2F</url>
-    <content type="text"><![CDATA[写在前面这篇教程是我自己安装Linux与Windows双系统的心得。其实安装Linux与Windows双系统对于很多IT人士来讲是很普通的一件事，就像吃饭要用筷子一样，网上类似的教程也有很多，其实并不难。但是身处高校科研这么多年来，我却发现，在中国高校，Linux的普及率很低，很多机器人方向的博士甚至都没有接触过。作为一个Linux的脑残粉，我这里不但要介绍一下双系统的搭建，而且也顺便将我在Linux下所用到很多高效开发工具介绍给大家。 什么是Linux百度百科上是这么介绍Linux的：Linux是一套免费使用和自由传播的类Unix操作系统。 没错，和Windows一样，Linux就是一个操作系统。但是不同的是，Linux是免费的、自由的操作系统，而Windows是收费的。作为一名苦逼的博士，在经济条件捉急的情况下，能有一套免费的操作系统用当然很开心！但免费并不是我选择Linux的主要原因，因为毕竟Windows也可以破解嘛～在慢慢的使用过程中，我才领悟到Linux的精神在于自由，在于你可以按照一切你想要的样子去改造出属于自己的操作系统，可以裁剪、编译、修改等等，这也就是为什么目前绝大多数的嵌入式设备都采用Linux内核的原因之一。 Linux发行版其实Linux操作系统指的是采用Linux内核的操作系统。内核管理着操作系统最基本的部分，它必须配合一系列的软件，才可以构成一套方便用户使用的操作系统。很多软件公司把Linux内核与各类不同的软件打包发布，这就是所谓的Linux发行版，就像是都采用高通处理器的手机，有的叫小米、有的叫一加。 据我所知，目前最好用的发行版之一就是Ubuntu了。我也很推荐Ubuntu，不光是系统比较稳定，而且由于用户众多，出现各种问题上网一搜便能找到解决方案，的确很方便。并且由于ROS系统(Robot Operating System) 在Ubuntu下的支持最好，很多机器人方向的学生都首选Ubuntu。我现在使用的发行版是Linuxmint，它其实是基于Ubuntu的封装，只是界面风格和一些文件管理器做了一些改变，总体上和Ubuntu是没有区别的，使用体验上和Windows更类似一些。 Linux安装对于我来说，Linux上最大的问题是有一些成熟的商业软件只能在Windows上用，因此尽管我大部分时间都可以在Linux上使用，但是每个月总有那么一两次需要切换回Windows。况且Linux占用硬盘空间也很小，完全可以实现双系统，所以我一般推荐在电脑上安装Windows与Linux双系统。安装双系统其实很简单，如果不是有什么特别癖好，只需要以下几步便可以完成。 准备Linux系统启动U盘 在Windows系统下分配空间给Linux 安装Linux 配置Boot(不一定需要) 准备系统启动U盘很简单，去Linuxmint或者Ubuntu之类的Linux发行版官网，均可以找到最新的镜像安装包(.iso)，下载之后将ISO里的东西全部拷贝到一个空U盘里即可。推荐下载LTS的安装包，LTS代表long time support，长期支持。 分配空间给Linux在Windows的磁盘管理下，利用压缩卷，释放一定的可用空间给Linux，一般50G~100G就完全够用了。 安装Linux重新启动电脑，设置U盘启动，这里要注意一下BIOS是legacy还是UEFI，一般Linux都这两种启动方式都支持。只是如果是Windows 10且采用UEFI启动的话，可能需要关闭Security Boot选项，否则无法安装。 安装过程比较简单，可以手动配置空间分配大小，但是我推荐可以选择与Windows共存选项，系统会自动分配空间大小。之后按照提示一步一步安装至重启即可。 设置BOOT如果选择与Windows共存的话一般不用设置，启动后便进入GRUB界面，可以选择想启动的操作系统。但是如果是自己选择的空间分配，有可能需要在Windows下利用EasyBCD等软件设置启动分区。推荐使用GRUB启动，因为可以修改主题，使启动界面也很漂亮。 Linux下的生产力工具对于高校的科研工作者来说，我认为Linux是非常好用的，因为上面有许许多多免费开源的生产力工具，当然这些工具一般都是跨平台的，也可以在Windows下使用。但是当你熟悉了Linux下的指令行操作，你就明白Linux的魅力所在了。在这里我推荐几个我最常用的软件。 TeXLiveTexlive是由TUG维护的LaTeX发行版，在Windows和Linux下均可以使用，对于经常需要期刊投稿的高校科研工作者，我认为LaTeX是必备技能之一，完全可以摆脱Word。 Inkscape鼎鼎大名的开源矢量绘图软件，我论文里的插图几乎都是用Inkscape绘制的，不但可以直接存成svg格式，也可以转换为png等图片格式，更神奇的是，可以转换为PStricks格式供LaTeX使用，简直不要太牛逼！也有Windows版本哦～ VeuszVeusz是一个科研绘图的神奇，不但界面简单，做出的曲线图也十分漂亮，完全可以取代Origin。同样是跨平台的哦～ GitGit分布式代码管理系统，这个不用多说，管理你的代码简直就是神器，在Linux下直接命令行操作，这种快感真是爽歪歪了。 QtQt这个跨平台的C++库，可以实现一套代码，跑遍各种操作系统，而且独有的信号和槽的机制，使得程序的编写更加简单。 Mendeley牛逼的文献管理软件，完全可以取代笨重的Endnote. JabRef配合LaTeX使用的文献管理工具，跨平台 GitKraken跨平台的Git图形化管理工具，超级好用，一目了然。 这只是一小部分我使用的软件，其实在Linux下，还有很多例如Vim之类的超级好用软件，这些软件的特点通常就是入门门槛高，但是一旦会用便无法自拔，而且——免费！妈妈再也不用担心我没有破解工具了。 写在后面各个操作系统都有自己的优缺点，Linux也一样，只要适合自己便是好的操作系统，多用才是王道，任何一个操作系统只要能熟练使用，提升工作效率我认为就足够了。]]></content>
+    <title><![CDATA[机器人操作系统ROS学习笔记（一）：安装与配置]]></title>
+    <url>%2F2018%2F08%2F30%2Frospy_api%2F</url>
+    <content type="text"></content>
       <categories>
-        <category>Software</category>
+        <category>Robot Operating System</category>
       </categories>
       <tags>
-        <tag>tutorials</tag>
-        <tag>practise</tag>
+        <tag>ros</tag>
       </tags>
   </entry>
   <entry>
@@ -241,8 +233,19 @@
         <category>Software</category>
       </categories>
       <tags>
-        <tag>tutorials</tag>
-        <tag>practise</tag>
+        <tag>Git</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Linux与Windows双系统搭建]]></title>
+    <url>%2F2018%2F04%2F14%2Flinux_windows%2F</url>
+    <content type="text"><![CDATA[写在前面这篇教程是我自己安装Linux与Windows双系统的心得。其实安装Linux与Windows双系统对于很多IT人士来讲是很普通的一件事，就像吃饭要用筷子一样，网上类似的教程也有很多，其实并不难。但是身处高校科研这么多年来，我却发现，在中国高校，Linux的普及率很低，很多机器人方向的博士甚至都没有接触过。作为一个Linux的脑残粉，我这里不但要介绍一下双系统的搭建，而且也顺便将我在Linux下所用到很多高效开发工具介绍给大家。 什么是Linux百度百科上是这么介绍Linux的：Linux是一套免费使用和自由传播的类Unix操作系统。 没错，和Windows一样，Linux就是一个操作系统。但是不同的是，Linux是免费的、自由的操作系统，而Windows是收费的。作为一名苦逼的博士，在经济条件捉急的情况下，能有一套免费的操作系统用当然很开心！但免费并不是我选择Linux的主要原因，因为毕竟Windows也可以破解嘛～在慢慢的使用过程中，我才领悟到Linux的精神在于自由，在于你可以按照一切你想要的样子去改造出属于自己的操作系统，可以裁剪、编译、修改等等，这也就是为什么目前绝大多数的嵌入式设备都采用Linux内核的原因之一。 Linux发行版其实Linux操作系统指的是采用Linux内核的操作系统。内核管理着操作系统最基本的部分，它必须配合一系列的软件，才可以构成一套方便用户使用的操作系统。很多软件公司把Linux内核与各类不同的软件打包发布，这就是所谓的Linux发行版，就像是都采用高通处理器的手机，有的叫小米、有的叫一加。 据我所知，目前最好用的发行版之一就是Ubuntu了。我也很推荐Ubuntu，不光是系统比较稳定，而且由于用户众多，出现各种问题上网一搜便能找到解决方案，的确很方便。并且由于ROS系统(Robot Operating System) 在Ubuntu下的支持最好，很多机器人方向的学生都首选Ubuntu。我现在使用的发行版是Linuxmint，它其实是基于Ubuntu的封装，只是界面风格和一些文件管理器做了一些改变，总体上和Ubuntu是没有区别的，使用体验上和Windows更类似一些。 Linux安装对于我来说，Linux上最大的问题是有一些成熟的商业软件只能在Windows上用，因此尽管我大部分时间都可以在Linux上使用，但是每个月总有那么一两次需要切换回Windows。况且Linux占用硬盘空间也很小，完全可以实现双系统，所以我一般推荐在电脑上安装Windows与Linux双系统。安装双系统其实很简单，如果不是有什么特别癖好，只需要以下几步便可以完成。 准备Linux系统启动U盘 在Windows系统下分配空间给Linux 安装Linux 配置Boot(不一定需要) 准备系统启动U盘很简单，去Linuxmint或者Ubuntu之类的Linux发行版官网，均可以找到最新的镜像安装包(.iso)，下载之后将ISO里的东西全部拷贝到一个空U盘里即可。推荐下载LTS的安装包，LTS代表long time support，长期支持。 分配空间给Linux在Windows的磁盘管理下，利用压缩卷，释放一定的可用空间给Linux，一般50G~100G就完全够用了。 安装Linux重新启动电脑，设置U盘启动，这里要注意一下BIOS是legacy还是UEFI，一般Linux都这两种启动方式都支持。只是如果是Windows 10且采用UEFI启动的话，可能需要关闭Security Boot选项，否则无法安装。 安装过程比较简单，可以手动配置空间分配大小，但是我推荐可以选择与Windows共存选项，系统会自动分配空间大小。之后按照提示一步一步安装至重启即可。 设置BOOT如果选择与Windows共存的话一般不用设置，启动后便进入GRUB界面，可以选择想启动的操作系统。但是如果是自己选择的空间分配，有可能需要在Windows下利用EasyBCD等软件设置启动分区。推荐使用GRUB启动，因为可以修改主题，使启动界面也很漂亮。 Linux下的生产力工具对于高校的科研工作者来说，我认为Linux是非常好用的，因为上面有许许多多免费开源的生产力工具，当然这些工具一般都是跨平台的，也可以在Windows下使用。但是当你熟悉了Linux下的指令行操作，你就明白Linux的魅力所在了。在这里我推荐几个我最常用的软件。 TeXLiveTexlive是由TUG维护的LaTeX发行版，在Windows和Linux下均可以使用，对于经常需要期刊投稿的高校科研工作者，我认为LaTeX是必备技能之一，完全可以摆脱Word。 Inkscape鼎鼎大名的开源矢量绘图软件，我论文里的插图几乎都是用Inkscape绘制的，不但可以直接存成svg格式，也可以转换为png等图片格式，更神奇的是，可以转换为PStricks格式供LaTeX使用，简直不要太牛逼！也有Windows版本哦～ VeuszVeusz是一个科研绘图的神奇，不但界面简单，做出的曲线图也十分漂亮，完全可以取代Origin。同样是跨平台的哦～ GitGit分布式代码管理系统，这个不用多说，管理你的代码简直就是神器，在Linux下直接命令行操作，这种快感真是爽歪歪了。 QtQt这个跨平台的C++库，可以实现一套代码，跑遍各种操作系统，而且独有的信号和槽的机制，使得程序的编写更加简单。 Mendeley牛逼的文献管理软件，完全可以取代笨重的Endnote. JabRef配合LaTeX使用的文献管理工具，跨平台 GitKraken跨平台的Git图形化管理工具，超级好用，一目了然。 这只是一小部分我使用的软件，其实在Linux下，还有很多例如Vim之类的超级好用软件，这些软件的特点通常就是入门门槛高，但是一旦会用便无法自拔，而且——免费！妈妈再也不用担心我没有破解工具了。 写在后面各个操作系统都有自己的优缺点，Linux也一样，只要适合自己便是好的操作系统，多用才是王道，任何一个操作系统只要能熟练使用，提升工作效率我认为就足够了。]]></content>
+      <categories>
+        <category>Software</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>windows</tag>
       </tags>
   </entry>
   <entry>
@@ -253,7 +256,6 @@
         <category>Academic Research</category>
       </categories>
       <tags>
-        <tag>summary</tag>
         <tag>scholarism</tag>
       </tags>
   </entry>
@@ -265,7 +267,6 @@
         <category>Academic Research</category>
       </categories>
       <tags>
-        <tag>summary</tag>
         <tag>scholarism</tag>
       </tags>
   </entry>
@@ -277,8 +278,8 @@
         <category>Software</category>
       </categories>
       <tags>
-        <tag>tutorials</tag>
-        <tag>practise</tag>
+        <tag>hexo</tag>
+        <tag>git</tag>
       </tags>
   </entry>
 </search>

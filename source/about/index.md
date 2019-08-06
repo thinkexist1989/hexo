@@ -2,7 +2,7 @@
 date: 2017-10-15 09:18:41
 type: "about"
 ---
-### <font color=Darkorange><i class="fa fa-user"></i>  个人信息</font>
+### <font color=Black><i class="fa fa-user"></i>  个人信息</font>
 
 
 <center><img src="doudou.jpg" width="100px"/>
@@ -36,26 +36,26 @@ type: "about"
 	</tr>
 </table>
 
-<font color=Darkorange size=5>机器人系统与技术</font></center>
+<font color=Black size=5>机器人系统与技术</font></center>
 
 
 **简介** 我是哈尔滨工业大学机器人及系统国家重点实验室四年级博士生,在中国工程院院士邓宗全教授门下从事**机器人系统设计**、**建模与控制研究**。
 
-**研究兴趣** 博士期间,我的研究工作涵盖了很多方面的主题,主要包括:**动力学建模**,**模型参数辨识**,**控制理论及其应用(滑模控制,鲁棒控制,自适应控制等)**,**机器学习(高斯过程回归,神经网络,强化学习等)**。目前,我致力于将先进的机器学习算法加入到水下焊接机器人的控制中去。
+**研究兴趣** 博士期间,我的研究工作涵盖了很多方面的主题,主要包括:**动力学建模**,**模型参数辨识**,**控制理论及其应用(滑模控制,鲁棒控制,自适应控制等)**,**机器学习(高斯过程回归,神经网络,强化学习等)**。目前,我致力于将人工智能方法与机器人系统的融合，机器人仿真环境设计与搭建。
 
-### <font color=Darkorange> <i class="fa fa-graduation-cap"></i>  教育背景</font>
+### <font color=Black> <i class="fa fa-graduation-cap"></i>  教育背景</font>
 + 2014.9-2019.3(expected) <i class="fa fa-refresh fa-spin"></i> **博士在读**，航空宇航科学与技术专业， 机电工程学院，*哈尔滨工业大学*， 哈尔滨
 + 2012.9-2014.7 <i class="fa fa-check-circle"></i> **工学硕士**，机械设计专业，机电工程学院，*哈尔滨工业大学*，哈尔滨
 + 2008.9-2012.7 <i class="fa fa-check-circle"></i> **工学学士**，机械设计制造及其自动化专业，机电工程学院，*哈尔滨工业大学*，哈尔滨
 
-### <font color=Darkorange> <i class="fa fa-list-ul"></i>  相关技能</font>
+### <font color=Black> <i class="fa fa-list-ul"></i>  相关技能</font>
 + 编程技能： **C/C++**, Matlab, LaTeX, Python, ROS, Linux, ARM, Git, Markdown.
 + 机器人：**软硬件设计,动力学建模及仿真,运动控制算法**；大多数控制理论及其应用；数据融合算法，推力分配算法，机器人学习算法
 + ROS系统：ROS操作系统搭建；ROS消息订阅与接受；ROS节点配置;RVIZ与Gazebo仿真环境搭建
 + 嵌入式系统：**STM32系列单片机应用及外部电路设计**；高精度A/D，D/A采集电路设计；高速CAN通讯设计；Ethercat通讯设计；各种伺服驱动器配置及使用；传感器配置及使用
 + 开发平台：**GCC/G++,Qt,Matlab**, Git, **Visual Studio**, **Altium Designer**, Keil, Jupyter Notebook, **Ubuntu**, Inkscape, Eclispe, Hexo.
 
-### <font color=Darkorange> <i class="fa fa-code"></i> 实习/项目经历</font>
+### <font color=Black> <i class="fa fa-code"></i> 实习/项目经历</font>
 - **2014.9-2017.9 水下焊接机器人建模与控制研究，博士课题**
 	-  设计完成了*国内首款核电站水下焊接机器人*,采用矢量布置的八推进器实现机器人水下全姿态运动,搭载三自由度移动平台完成水下焊接作业 ;
 	-  完成了水下焊接机器人软硬件设计,采用远程遥操作与机器人自主运动控制相结合的控制结构,水下控制系统采用搭载 Linux 内核的 ARM 芯片作为主控芯片,水面控制系统采用机器人操作系统(ROS)；
@@ -90,7 +90,7 @@ type: "about"
 	-  利用 AutoCAD 软件绘制了液压系统原理图、阀块零件图、阀块装配图、液压缸装配图、液压缸前端盖零件图、电液推杆总装图、连接板零件图、联轴箱零件图和外观图;
 	- 对直驱集成一体式液压推力装置进行了电控部分设计,采用西门子 PLC 作为伺服控制器。
 
-### <font color=Darkorange> <i class="fa fa-gavel"></i> 奖励与荣誉</font>
+### <font color=Black> <i class="fa fa-gavel"></i> 奖励与荣誉</font>
 - 2012-2014 哈尔滨工业大学硕士研究生**二等奖学金(2 次)**，**保送**进入哈尔滨工业大学攻读硕士与博士研究生
 - 2012-2014 哈尔滨工业大学 **2012级研究生骨干培训班**培训合格,准予结业
 - 2009-2011 哈尔滨工业大学**二等人民奖学金 1 次**，**三等人民奖学金 1 次**

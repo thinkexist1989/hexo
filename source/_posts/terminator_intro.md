@@ -4,9 +4,8 @@ date: 2019-4-6 00:18:00
 categories:
  - Software
 tags: 
- - tutorials
- - practise
  - linux
+ - terminator
 mathjax: false
 ---
 

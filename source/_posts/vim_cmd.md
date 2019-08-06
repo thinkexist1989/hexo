@@ -4,8 +4,6 @@ date: 2019-3-5 21:19:00
 categories:
  - Software
 tags: 
- - tutorials
- - practise
  - vim
 mathjax: false
 ---

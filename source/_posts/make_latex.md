@@ -4,8 +4,9 @@ date: 2018-12-20 16:37:00
 categories:
  - Software
 tags: 
- - tutorials
- - practise
+ - make
+ - makefile
+ - latex
 mathjax: false
 ---
 

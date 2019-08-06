@@ -4,8 +4,9 @@ date: 2019-3-5 12:18:00
 categories:
  - Software
 tags: 
- - tutorials
- - practise
+ - cmake
+ - Qt
+ - opencv
 mathjax: false
 ---
 

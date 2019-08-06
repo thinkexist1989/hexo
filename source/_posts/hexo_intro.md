@@ -4,8 +4,8 @@ date: 2017-10-17 20:32:00
 categories:
  - Software
 tags: 
- - tutorials
- - practise
+ - hexo
+ - git
 mathjax: false
 ---
 

@@ -4,8 +4,8 @@ date: 2019-1-24 23:17:00
 categories:
  - Software
 tags: 
- - tutorials
- - practise
+ - proxy
+ - proxychains
 mathjax: false
 ---
 

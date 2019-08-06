@@ -4,8 +4,8 @@ date: 2019-2-12 22:05:00
 categories:
  - Software
 tags: 
- - tutorials
- - practise
+ - cmake
+ - opencv
 mathjax: false
 ---
 

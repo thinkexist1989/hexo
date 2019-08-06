@@ -4,8 +4,9 @@ date: 2018-9-2 21:49:00
 categories:
  - Computer Network
 tags: 
- - summary
  - network
+ - ip address
+ - dns
 mathjax: false
 ---
 

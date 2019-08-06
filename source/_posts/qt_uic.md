@@ -4,8 +4,8 @@ date: 2019-3-17 23:15:00
 categories:
  - Software
 tags: 
- - tutorials
  - qt
+ - uic
 mathjax: false
 ---
 

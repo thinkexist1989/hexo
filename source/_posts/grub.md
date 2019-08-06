@@ -4,8 +4,7 @@ date: 2019-1-24 23:17:00
 categories:
  - Software
 tags: 
- - tutorials
- - practise
+ - grub
 mathjax: false
 ---
 
@@ -94,11 +93,11 @@ GRUB最爽的就是开机引导画面的定制，可以下载各种大神制作�
     ```
     GRUB_GFXMODE=1366*768
     ```
-    2. 修改或添加一行
+    1. 修改或添加一行
     ```
     GRUB_THEME=/boot/grub/themes/your_theme/theme.txt
     ```
-    3. 更新`/boot/grub/grub.cfg`文件
+    1. 更新`/boot/grub/grub.cfg`文件
     ```
     sudo update-grub
     ```

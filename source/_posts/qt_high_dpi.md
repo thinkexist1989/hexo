@@ -4,8 +4,8 @@ date: 2019-3-17 22:47:00
 categories:
  - Software
 tags: 
- - tutorials
  - qt
+ - dpi
 mathjax: false
 ---
 

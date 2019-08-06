@@ -4,7 +4,6 @@ date: 2017-10-18 15:57:00
 categories:
  - Academic Research
 tags: 
- - summary
  - scholarism
 mathjax: false
 ---

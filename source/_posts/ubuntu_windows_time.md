@@ -4,8 +4,7 @@ date: 2019-8-1 15:38:00
 categories:
  - Software
 tags: 
- - tutorials
- - practise
+ - linux
 mathjax: false
 ---
 

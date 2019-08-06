@@ -4,8 +4,8 @@ date: 2018-9-6 21:34:00
 categories:
  - Computer Network
 tags: 
- - summary
  - network
+ - dhcp
 mathjax: false
 ---
 
