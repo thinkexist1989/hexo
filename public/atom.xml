@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yluo.name/"/>
-  <updated>2019-08-06T02:48:41.325Z</updated>
+  <updated>2019-08-07T05:04:24.056Z</updated>
   <id>http://yluo.name/</id>
   
   <author>
@@ -15,6 +15,131 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>机器人操作系统ROS学习笔记：自定义服务</title>
+    <link href="http://yluo.name/2019/08/06/ros_service/"/>
+    <id>http://yluo.name/2019/08/06/ros_service/</id>
+    <published>2019-08-06T07:00:00.000Z</published>
+    <updated>2019-08-07T05:04:24.056Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="ROS中的服务"><a href="#ROS中的服务" class="headerlink" title="ROS中的服务"></a>ROS中的服务</h1><p>服务（Service）是ROS节点之间同步通讯的一种方式，允许客户端（Client）节点发布请求（Request），由服务端（Server）节点处理后反馈应答（Response）。</p><h1 id="定义服务"><a href="#定义服务" class="headerlink" title="定义服务"></a>定义服务</h1><p>ROS中的服务可以通过srv文件夹下的xxx.srv文件进行语言无关的接口定义。文件包括请求与应答两个数据域，使用“—-”进行分割。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int64 a</div><div class="line">int64 b</div><div class="line">---</div><div class="line">int64 sum</div></pre></td></tr></table></figure><h1 id="使用服务"><a href="#使用服务" class="headerlink" title="使用服务"></a>使用服务</h1><p>首先需要在package.xml文件表明对消息生成系统的依赖，即构建依赖项message_generation和运行依赖项message_runtime：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;build_depend&gt;rospy&lt;/build_depend&gt;</div><div class="line">&lt;run_depend&gt;rospy&lt;/run_depend&gt;</div><div class="line"></div><div class="line">&lt;build_depend&gt;message_generation&lt;/build_depend&gt;</div><div class="line">&lt;run_depend&gt;message_runtime&lt;/run_depend&gt;</div></pre></td></tr></table></figure><p>随后在CMakeLists.txt文件中利用find_package函数增加对message_generation的依赖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">find_package(catkin REQUIRED COMPONENTS</div><div class="line">    ...</div><div class="line">    message_generation</div><div class="line">)</div></pre></td></tr></table></figure></p><p>同时，利用catkin_package函数设置运行依赖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">catkin_package(</div><div class="line">    ...</div><div class="line">    CATKIN_DEPENDS message_runtime ...</div><div class="line">)</div></pre></td></tr></table></figure></p><p>并添加需要参与编译的srv文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">add_service_files(</div><div class="line">    FILES</div><div class="line">    xxx.srv</div><div class="line">    ...</div><div class="line">)</div></pre></td></tr></table></figure></p><p>确保CMake知道在消息文件更改后重新编译msg文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">generate_messages(</div><div class="line">    DEPENDENCIES</div><div class="line">    std_msgs</div><div class="line">)</div></pre></td></tr></table></figure></p><p>随后便可在功能包目录下运行catkin_make进行编译，成功后可使用rossrv命令检验服务的定义是否和我们想的一样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rossrv show xxx</div></pre></td></tr></table></figure></p><p>还可以使用rossrv list来查看所有可用的服务，使用rossrv packages来查看所有提供了服务的包，使用rossrv package xxx来查看xxx功能包提供的服务。</p><p>注意，ROS中还有一个命令rosservice，这个命令是用来在ROS运行时和启动的服务进行交互的命令，例如：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rosservice call /spawn 8.0 8.0 0.0 &apos;turtle2&apos;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;ROS中的服务&quot;&gt;&lt;a href=&quot;#ROS中的服务&quot; class=&quot;headerlink&quot; title=&quot;ROS中的服务&quot;&gt;&lt;/a&gt;ROS中的服务&lt;/h1&gt;&lt;p&gt;服务（Service）是ROS节点之间同步通讯的一种方式，允许客户端（Client）节点发布请求（R
+      
+    
+    </summary>
+    
+      <category term="Robot Operating System" scheme="http://yluo.name/categories/Robot-Operating-System/"/>
+    
+    
+      <category term="ros" scheme="http://yluo.name/tags/ros/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>机器人操作系统ROS学习笔记：自定义消息类型</title>
+    <link href="http://yluo.name/2019/08/06/ros_message/"/>
+    <id>http://yluo.name/2019/08/06/ros_message/</id>
+    <published>2019-08-06T07:00:00.000Z</published>
+    <updated>2019-08-06T07:53:26.323Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="ROS消息文件"><a href="#ROS消息文件" class="headerlink" title="ROS消息文件"></a>ROS消息文件</h1><p>ROS的消息文件是一个描述ROS中所使用消息类型的简单文本，通常存放在功能包文件夹下的msg文件夹下，可以被用来生成不同语言的源代码。</p><h1 id="消息数据类型"><a href="#消息数据类型" class="headerlink" title="消息数据类型"></a>消息数据类型</h1><p>ROS中的消息可使用的基本数据类型如下：</p><ul><li>int8, int16, int32, int64 (plus uint*)</li><li>float32, float64</li><li>string</li><li>time, duration</li><li>可变长度的数组，例如int8[]，以及固定长度的数组，例如float32[10]</li></ul><p>ROS消息中还有一个特殊的数据类型：Header， 其含有时间戳和坐标系信息。通常在很多msg文件的第一行有：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Header header</div></pre></td></tr></table></figure></p><p>个人理解（不一定准确），Header类型通常包含在频繁发送的消息中，这样订阅节点可以根据Header中的时间戳信息等做信息同步处理。</p><p>同时，msg文件中还可以包括其他消息文件类型，例如在下面xxx.msg文件中，使用了Header, string以及另外两个消息类型。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Header header</div><div class="line">string child_frame_id</div><div class="line">geometry_msgs/PoseWithCovariance pose</div><div class="line">geometry_msgs/TwistWithCovariance twist</div></pre></td></tr></table></figure></p><h1 id="使用消息"><a href="#使用消息" class="headerlink" title="使用消息"></a>使用消息</h1><p>为了使用消息，需要在package.xml中添加编译依赖和执行依赖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;build_depend&gt;message_generation&lt;/build_depend&gt;</div><div class="line">&lt;exec_depend&gt;message_runtime&lt;/exec_depend&gt;</div></pre></td></tr></table></figure></p><p>并且在CMakeLists.txt文件中利用find_package函数增加对message_generation的依赖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">find_package(catkin REQUIRED COMPONENTS</div><div class="line">    ...</div><div class="line">    message_generation</div><div class="line">)</div></pre></td></tr></table></figure></p><p>同时，利用catkin_package函数设置运行依赖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">catkin_package(</div><div class="line">    ...</div><div class="line">    CATKIN_DEPENDS message_runtime ...</div><div class="line">)</div></pre></td></tr></table></figure></p><p>并添加需要参与编译的msg文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">add_message_files(</div><div class="line">    FILES</div><div class="line">    xxx.msg</div><div class="line">    ...</div><div class="line">)</div></pre></td></tr></table></figure></p><p>确保CMake知道在消息文件更改后重新编译msg文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">generate_messages(</div><div class="line">    DEPENDENCIES</div><div class="line">    std_msgs</div><div class="line">)</div></pre></td></tr></table></figure></p><p>随后便可在功能包目录下运行catkin_make进行编译，成功后可使用rosmsg命令查看自定义的消息类型：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rosmsg show xxx</div></pre></td></tr></table></figure></p><h1 id="消息相关命令"><a href="#消息相关命令" class="headerlink" title="消息相关命令"></a>消息相关命令</h1><ul><li>rosmsg show xxx: 查看消息xxx类型，可以不指定功能包名。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;ROS消息文件&quot;&gt;&lt;a href=&quot;#ROS消息文件&quot; class=&quot;headerlink&quot; title=&quot;ROS消息文件&quot;&gt;&lt;/a&gt;ROS消息文件&lt;/h1&gt;&lt;p&gt;ROS的消息文件是一个描述ROS中所使用消息类型的简单文本，通常存放在功能包文件夹下的msg文件夹下
+      
+    
+    </summary>
+    
+      <category term="Robot Operating System" scheme="http://yluo.name/categories/Robot-Operating-System/"/>
+    
+    
+      <category term="ros" scheme="http://yluo.name/tags/ros/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>机器人操作系统ROS学习笔记：CMakeLists.txt文件</title>
+    <link href="http://yluo.name/2019/08/06/ros_cmakelist/"/>
+    <id>http://yluo.name/2019/08/06/ros_cmakelist/</id>
+    <published>2019-08-06T06:17:00.000Z</published>
+    <updated>2019-08-06T07:54:42.673Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="CMakeLists-txt"><a href="#CMakeLists-txt" class="headerlink" title="CMakeLists.txt"></a>CMakeLists.txt</h1><p>ROS中使用的编译器catkin是对cmake的一种封装，因此编译规则使用的也是CMakeLists.txt文件，关于CMakeLists.txt文件的规则之前在博客中已经提及过，不再赘述。</p><h1 id="编译规则"><a href="#编译规则" class="headerlink" title="编译规则"></a>编译规则</h1><p>在ROS功能包中的CMakeLists文件主要包括以下配置项：</p><ul><li>project(PROJ_NAME): 项目名称，一般情况下使用catkin_create_pkg命令会自动生成；</li><li>find_package(catkin REQUIRED COMPONTS rospy roscpp …): 寻找相关的功能包；</li><li>include_directories(include ${catkin_INCLUDE_DIRES}): 设置头文件的相对路径，通常在功能包下将相关的头文件都放置在include文件夹下；</li><li>add_executable(node_name src/xxx.cpp): 设置需要编译的代码和生成的可执行文件；</li><li>target_link_libraries(node_name ${catkin_LIBRARIES}): 设置链接库；</li><li>add_dependencies(node_name ${PROJECT_NAME}_generate_messages_cpp): 设置依赖，一般情况下自定义了消息类型的话便需要添加依赖。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;CMakeLists-txt&quot;&gt;&lt;a href=&quot;#CMakeLists-txt&quot; class=&quot;headerlink&quot; title=&quot;CMakeLists.txt&quot;&gt;&lt;/a&gt;CMakeLists.txt&lt;/h1&gt;&lt;p&gt;ROS中使用的编译器catkin是对cmak
+      
+    
+    </summary>
+    
+      <category term="Robot Operating System" scheme="http://yluo.name/categories/Robot-Operating-System/"/>
+    
+    
+      <category term="ros" scheme="http://yluo.name/tags/ros/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>机器人操作系统ROS学习笔记：package清单文件</title>
+    <link href="http://yluo.name/2019/08/06/ros_package_xml/"/>
+    <id>http://yluo.name/2019/08/06/ros_package_xml/</id>
+    <published>2019-08-06T06:00:00.000Z</published>
+    <updated>2019-08-06T06:31:00.008Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="package清单文件"><a href="#package清单文件" class="headerlink" title="package清单文件"></a>package清单文件</h1><p>每一个ROS的功能包都包含一个package.xml的功能包清单文件，用于记录功能包的基本信息，包含作者信息、许可信息、依赖选项、编译标志等。</p><h1 id="package-xml规则"><a href="#package-xml规则" class="headerlink" title="package.xml规则"></a>package.xml规则</h1><p>package.xml文件采用xml标记语言来编写，其中的主要信息包括一下几种：</p><ul><li>name: 功能包的名称；</li><li>version: 功能包的版本；</li><li>description: 功能包的描述；</li><li>maintainer: 功能包的维护者信息；</li><li>license: 许可信息，MIT，BSD，GPL等；</li></ul><p>除此之外，package.xml中还包含了功能包所需的各种依赖项，主要包括：</p><ul><li>buildtool_depend: 编译工具依赖项，通常为catkin；</li><li>build_depend: 功能包代码编译所需的依赖项，例如roscpp，rospy，geometry_msgs，message_generation等；</li><li>run_depend: 功能包运行过程中所需的依赖项，例如roscpp，rospy，std_msgs，message_runtime等；</li></ul><p>如果是元功能包，则还需包含一个引用标签：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;export&gt;</div><div class="line">   &lt;metapackage/&gt;</div><div class="line">&lt;/export&gt;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;package清单文件&quot;&gt;&lt;a href=&quot;#package清单文件&quot; class=&quot;headerlink&quot; title=&quot;package清单文件&quot;&gt;&lt;/a&gt;package清单文件&lt;/h1&gt;&lt;p&gt;每一个ROS的功能包都包含一个package.xml的功能包清单文件
+      
+    
+    </summary>
+    
+      <category term="Robot Operating System" scheme="http://yluo.name/categories/Robot-Operating-System/"/>
+    
+    
+      <category term="ros" scheme="http://yluo.name/tags/ros/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>机器人操作系统ROS学习笔记：功能包package文件结构</title>
+    <link href="http://yluo.name/2019/08/06/ros_package_struct/"/>
+    <id>http://yluo.name/2019/08/06/ros_package_struct/</id>
+    <published>2019-08-06T05:14:00.000Z</published>
+    <updated>2019-08-06T05:51:04.405Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="ROS功能包package"><a href="#ROS功能包package" class="headerlink" title="ROS功能包package"></a>ROS功能包package</h1><p>在ROS下，所有的文件按照功能包（package）的形式进行组织，是ROS软件中的基本单元。其中包括ROS节点、库、配置文件等。</p><h1 id="package的典型文件结构"><a href="#package的典型文件结构" class="headerlink" title="package的典型文件结构"></a>package的典型文件结构</h1><p>ROS package的典型结构包含一下文件及文件夹：</p><ul><li>config（文件夹）：放置功能包中的配置文件，由用户创建，文件名可以不同。</li><li>include（文件夹）：放置功能包中需要用到的头文件。</li><li>scripts（文件夹）：放置可以直接运行的Python脚本。</li><li>src（文件夹）：放置需要编译的C++代码。</li><li>launch（文件夹）：放置功能包中的所有启动文件。</li><li>msg（文件夹）：放置功能包自定义的消息类型。</li><li>srv（文件夹）：放置功能包自定义的服务类型。</li><li>action（文件夹）：放置功能包自定义的动作指令。</li><li>CMakeLists.txt（文件）：编译器编译功能包的规则（cmake的规则文件）。</li><li>package.xml（文件）：功能包清单，这个文件可以显示包信息，并注明依赖项，之后可以利用rosdep来安装依赖。</li></ul><h1 id="元功能包meta-package"><a href="#元功能包meta-package" class="headerlink" title="元功能包meta package"></a>元功能包meta package</h1><p>元功能包是一种特殊的功能包，只包含一个package.xml元功能包清单文件，其主要功能是将多个功能包整合成一个逻辑上的独立功能包，类似于功能包集的概念。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;ROS功能包package&quot;&gt;&lt;a href=&quot;#ROS功能包package&quot; class=&quot;headerlink&quot; title=&quot;ROS功能包package&quot;&gt;&lt;/a&gt;ROS功能包package&lt;/h1&gt;&lt;p&gt;在ROS下，所有的文件按照功能包（package）的
+      
+    
+    </summary>
+    
+      <category term="Robot Operating System" scheme="http://yluo.name/categories/Robot-Operating-System/"/>
+    
+    
+      <category term="ros" scheme="http://yluo.name/tags/ros/"/>
+    
+  </entry>
   
   <entry>
     <title>Ubuntu与Windows双系统时间设置问题</title>
@@ -418,138 +543,6 @@
       <category term="network" scheme="http://yluo.name/tags/network/"/>
     
       <category term="nat" scheme="http://yluo.name/tags/nat/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>计算机网络初探（二）：自动配置上网信息的DHCP服务器</title>
-    <link href="http://yluo.name/2018/09/06/network_2/"/>
-    <id>http://yluo.name/2018/09/06/network_2/</id>
-    <published>2018-09-06T13:34:00.000Z</published>
-    <updated>2019-08-06T02:48:41.325Z</updated>
-    
-    <content type="html"><![CDATA[<p>一台计算机如果想要接入互联网，则必须要配置以下四项参数：</p><ul><li>IP地址</li><li>子网掩码</li><li>缺省网关</li><li>DNS服务器IP地址</li></ul><p>但通常我们利用网线连接路由器的网口或者连接上无线路由器WIFI之后，也没有手动配置过这些信息，但是我们就已经可以上网了，此时我们在命令行下运行<code>ipconfig -all</code>(Linux下运行<code>ifconfig</code>)就可以看到，以上所需的信息都已经自动配置完成了，这就是DHCP服务的功劳啦！</p><h1 id="什么是DHCP"><a href="#什么是DHCP" class="headerlink" title="什么是DHCP"></a>什么是DHCP</h1><p>DHCP(Dynamic Host Configuration Protocol，动态主机配置协议) 是用于内部网络自动分配IP地址的网络协议。目前我们买到的路由器都具备DHCP服务器的功能，当我们连接上路由器后，我们的电脑就会在网络中寻找DHCP服务器，而DHCP服务器接收到消息后便会响应电脑的请求，分配空闲的IP地址给我们的电脑。</p><h1 id="DHCP工作过程"><a href="#DHCP工作过程" class="headerlink" title="DHCP工作过程"></a>DHCP工作过程</h1><h2 id="1-客户端寻找DHCP服务器"><a href="#1-客户端寻找DHCP服务器" class="headerlink" title="1 客户端寻找DHCP服务器"></a>1 客户端寻找DHCP服务器</h2><p>当客户端首次连接上路由器时，并没有任何的IP地址设定，因此它将以广播（broadcast）的方式，采用UDP协议在网络中发送DHCP Discover报文来寻找DHCP服务器（目的端口68，源端口67）。网络中所有安装了TCP/IP协议的主机都会接收到这个消息，但是只有DHCP服务器会作出响应。</p><h2 id="2-DHCP服务器给客户端分配IP参数"><a href="#2-DHCP服务器给客户端分配IP参数" class="headerlink" title="2 DHCP服务器给客户端分配IP参数"></a>2 DHCP服务器给客户端分配IP参数</h2><p>服务器接收到客户端发来的DHCP Discover报文，会从IP地址池中选择一个空闲的IP地址，对应的子网掩码、缺省网关、DNS服务器IP地址，以单播（unicast）的方式，采用UDP协议发送给客户端一个包含以上信息的DHCP Offer报文（目的端口67，源端口68）。</p><h2 id="3-客户端接受IP参数"><a href="#3-客户端接受IP参数" class="headerlink" title="3 客户端接受IP参数"></a>3 客户端接受IP参数</h2><p>DHCP客户端接收到DHCP Offer报文，选择接收到的第一个信息（若网络中存在多个DHCP服务器，则只接收第一个收到的DHCP报文），以单播方式回答一个DHCP Request报文，里面包含其所选定的DHCP服务器请求IP地址的内容。</p><h2 id="4-IP地址分配确认"><a href="#4-IP地址分配确认" class="headerlink" title="4 IP地址分配确认"></a>4 IP地址分配确认</h2><p>DHCP服务器接收到DHCP客户端响应的DHCP Request报文后，便以单播的形式向客户端发送DHCP Ack报文，告诉客户端可以使用其提供的IP地址。客户端接收到DHCP Ack报文后，会尝试用获得的参数配置TCP/IP协议栈，同时还要尝试ARP广播请求自己IP对应的MAC地址，这个为了确定这个IP地址是唯一，不会引起IP冲突，若没有受到任何回复则可以完成配置工作。</p><h1 id="DHCP中继代理"><a href="#DHCP中继代理" class="headerlink" title="DHCP中继代理"></a>DHCP中继代理</h1><p>DHCP服务器正常工作，要求和客户端处于同一个网段内，若一个公司具有数十个子网，便需要数十个DHCP服务器，这是很浪费的。这个问题可以通过DHCP中继处理来解决。即在每个网段内有一个DHCP中继代理，之后将每个中继代理和DHCP服务器处于同一网段下即可，DHCP中继代理就充当让客户端与服务器相互发现彼此的中介机构。</p><p>DHCP中继代理的工作过程如下：</p><ol><li>接受网段内DHCP广播报文</li><li>添加[中继代理 xx.xx.xx.xx]字段</li><li>将广播转单播发给DHCP服务器</li><li>接收DHCP服务器报文并法给客户端</li></ol><h1 id="DHCP优化"><a href="#DHCP优化" class="headerlink" title="DHCP优化"></a>DHCP优化</h1><p>DHCP服务器能够实现上述功能，看上去已经很好了，但是仍然存在一些问题，但聪明的程序员已经想到了解决方案。</p><h2 id="多DHCP服务共存"><a href="#多DHCP服务共存" class="headerlink" title="多DHCP服务共存"></a>多DHCP服务共存</h2><p>当多个网段处于同一个广播域下，存在多个DHCP服务器时，申请IP地址时，每个DHCP服务器都会响应客户端的报文，则客户端会以第一个收到的DHCP报文中包含的IP地址作为自己的IP地址，这在很多时候是不被允许的，客户端所处的网段是需要可控的。</p><p><strong>解决方法</strong> 可利用VLAN（虚拟局域网）技术来解决，VLAN可以隔离广播，限制不同网段之间的访问，这样就可以有效的避免DHCP广播报文在不同网段内的传播，提高了安全性。</p><h2 id="DHCP欺诈"><a href="#DHCP欺诈" class="headerlink" title="DHCP欺诈"></a>DHCP欺诈</h2><p>由于DHCP就是通过DHCP报文来分配IP地址的，那么在网络下若存在一台计算机，伪造了大量的MAC地址，并利用这些地址发送DHCP报文申请IP地址，则地址资源就要被耗尽，会造成同一个网段下其他用户无法上网。</p><p><strong>解决方法</strong> DHCP窥探（DHCP Snooping）监视端口，当DHCP Discover信息经过的时候，会在原报文基础上增加一个安全选项[Option 82]，这里面记录了交换机名称、端口号等信息，这样若发现端口申请了多个IP，则拒绝继续分配IP地址。</p><h2 id="ARP漏洞"><a href="#ARP漏洞" class="headerlink" title="ARP漏洞"></a>ARP漏洞</h2><p>计算机利用ARP广播协议在网络中发现彼此的MAC地址，若计算机A在发送ARP报文时，被网络中的一台伪造MAC地址的计算机B回答了，则本应发给目标计算机C的消息全部发送给了伪造MAC地址的计算机B，计算机B看到了内容之后再将消息转发给C，这样A和C之间的消息都被B给劫持了，这就是网络流量的劫持。</p><p><strong>解决方法</strong> 同样利用DHCP窥探，在DHCP窥探时，会生成一张绑定表，里面记录了端口号、主机MAC地址、IP地址等信息，因此若发现报文中MAC地址、IP地址与端口号有任何一个不符合都被认为是欺诈行为。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;一台计算机如果想要接入互联网，则必须要配置以下四项参数：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;IP地址&lt;/li&gt;
-&lt;li&gt;子网掩码&lt;/li&gt;
-&lt;li&gt;缺省网关&lt;/li&gt;
-&lt;li&gt;DNS服务器IP地址&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;但通常我们利用网线连接路由器的网口或者连接上无线路由器W
-      
-    
-    </summary>
-    
-      <category term="Computer Network" scheme="http://yluo.name/categories/Computer-Network/"/>
-    
-    
-      <category term="network" scheme="http://yluo.name/tags/network/"/>
-    
-      <category term="dhcp" scheme="http://yluo.name/tags/dhcp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>计算机网络初探（一）：IP地址与域名解析</title>
-    <link href="http://yluo.name/2018/09/02/network_1/"/>
-    <id>http://yluo.name/2018/09/02/network_1/</id>
-    <published>2018-09-02T13:49:00.000Z</published>
-    <updated>2019-08-06T02:48:41.325Z</updated>
-    
-    <content type="html"><![CDATA[<p>作为一个工科男，一直对互联网这个每天离不开的庞大计算机网络充满了好奇。但互联网的知识如此繁杂，想了解但却又无从下手。虽说之前也配置过家里的路由器，利用过shadowsocks进行科学上网，但是却使用只能照着教程一步一步来，对互联网还是一知半解。正好遇上了同样喜欢研究的<a href="http://blog.chauncey.ml/wordpress" target="_blank" rel="external">丁博士</a>，趁着和他请教搭建VPS服务器的同时，研究了一下计算机网络的知识，对计算机网络的搭建有了初步的了解。</p><h1 id="IP地址"><a href="#IP地址" class="headerlink" title="IP地址"></a>IP地址</h1><p>当今的互联网是基于TCP/IP的思路设计的，由一些小的子网通过路由器连接起来形成一个巨大的网络。在计算机网络中，所有的设备都会被分配到一个IP地址，这个地址就像是家庭住址，互联网之间的信息传递就像是快递员送信，快递员如果不想把信送错地方，那么就需要每一个设备都有一个唯一的门牌号，例如“XX区XX街XX号”。实际的IP地址是一串32比特的数，每8比特（1字节）一组，分为四组，所以我们看到的IP地址就是这样的：192.168.0.1。</p><h1 id="子网掩码"><a href="#子网掩码" class="headerlink" title="子网掩码"></a>子网掩码</h1><p>TCP/IP是将多台计算机组成一个子网，然后再利用路由器将这些子网连接起来，IP地址是由网段号+主机号构成的，但是单看IP地址是无法确定哪些计算机在一个子网下的，于是乎一个叫子网掩码的东西就呼之欲出了。子网掩码（mask）是一串与IP地址相同长度的32比特数字，其左边一半都是1，右边一半都是0。子网掩码为1的部分表示网段号（子网下的计算机IP地址相同的部分），子网掩码为0的部分表示主机号（子网下不同的计算机IP地址不同的部分）。其表示方法有两种，例如，网段号24位，主机号8位的子网下的计算机A：192.168.0.1，可以表示为192.168.0.1/255.255.255.0，或者192.168.0.1/24。这就表示在192.168.0.1这个IP地址中192.168.0代表网段号，而.1代表主机号，于是IP为192.168.0.X（X表示1～254中的任意值）均处在同一个子网下。</p><p>值得一提的是，主机号部分比特全为0代表整个子网而不是某一台设备，例如192.168.0.0/24代表整个子网；而主机号部分比特全为1代表向子网上所有设备发送包，即广播（Broadcast，这很有用，比如ARP查询MAC地址时就需要利用广播）。</p><h1 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h1><p>正常来讲，我们想访问网络中的任意一台计算机，只需要输入它的IP就能和它通信了。比如我们想访问<a href="baidu.com">百度</a>，其实可以直接在浏览器下输入其服务器的IP<a href="123.125.115.110">123.125.115.110</a>即可，可是几乎没人这样做，大家都是直接输入域名<a href="baidu.com">baidu.com</a>来访问的，这就像我们知道每个人的名字，但是却不会记住每个人的身份证一样，与其记住一串毫无规律的数字，不如去记住一个直观的名字来的容易。但是计算机之前是靠IP地址来通信的，当我们输入<a href="baidu.com">baidu.com</a>这个域名的时候，DNS服务器（Domain Name System，域名服务系统）就登场了，浏览器会去最近的DNS服务器查询[baidu.com]这个域名对应的IP地址，然后利用查询到的IP地址来登陆百度的网站，这个过程就叫域名解析。</p><p>DNS服务器同样是有IP地址的，有时候我们在Windows下配置IPv4协议时，输入首选和备用DNS服务器的地址，为的就是能够把域名正确解析到对应的IP地址。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;作为一个工科男，一直对互联网这个每天离不开的庞大计算机网络充满了好奇。但互联网的知识如此繁杂，想了解但却又无从下手。虽说之前也配置过家里的路由器，利用过shadowsocks进行科学上网，但是却使用只能照着教程一步一步来，对互联网还是一知半解。正好遇上了同样喜欢研究的&lt;a 
-      
-    
-    </summary>
-    
-      <category term="Computer Network" scheme="http://yluo.name/categories/Computer-Network/"/>
-    
-    
-      <category term="network" scheme="http://yluo.name/tags/network/"/>
-    
-      <category term="ip address" scheme="http://yluo.name/tags/ip-address/"/>
-    
-      <category term="dns" scheme="http://yluo.name/tags/dns/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>机器人操作系统ROS学习笔记（一）：安装与配置</title>
-    <link href="http://yluo.name/2018/08/30/ros_1/"/>
-    <id>http://yluo.name/2018/08/30/ros_1/</id>
-    <published>2018-08-30T03:42:00.000Z</published>
-    <updated>2019-08-06T02:48:41.325Z</updated>
-    
-    <content type="html"><![CDATA[<p><img src="/images/ros_org.png" alt=""></p><h1 id="什么是ROS？"><a href="#什么是ROS？" class="headerlink" title="什么是ROS？"></a>什么是ROS？</h1><p>ROS (Robot Operating System, 机器人操作系统)在其<a href="ros.org">官网ros.org</a>上是这么介绍的：</p><blockquote><p>ROS 提供一系列程序库和工具以帮助软件开发者创建机器人应用软件。它提供了硬件抽象、设备驱动、函数库、可视化工具、消息传递和软件包管理等诸多功能。ROS遵循BSD开源许可协议。</p></blockquote><p>听上去还是没有感觉到ROS的厉害之处，在我刚开始接触ROS的时候，以为ROS只是一些函数库，类似于各种应用程序开放的API一样，我只要调用相应的函数，就执行相应的功能。但是在后来的使用过程中，我才意识到ROS并不仅仅是一堆可供调用的函数而已。实际上ROS是一个机器人系统的开发框架，之所以可以称自己为“操作系统”，就是因为在这个框架之上，ROS为机器人的开发提供了一个平台，类似于一个操作系统一样，他帮你抽象好了硬件，设置好消息传递方式，让你可以更加方便快捷的实现你的想法，而不用从机器人硬件的底层开始编写程序，提高机器人系统的研发效率。</p><h1 id="ROS能做什么？"><a href="#ROS能做什么？" class="headerlink" title="ROS能做什么？"></a>ROS能做什么？</h1><p>作为一种标准化机器人软件框架，利用ROS中大量的示例代码和开源程序可以轻松地完成机器人编程和控制。ROS的设计目标之一便是提高代码的复用率，ROS在运行时松散耦合，各个子功能之间相互独立，利用发布与订阅消息进行通讯，因此极易扩展，并且ROS提供了大量的监视和调试工具，方便机器人控制程序的开发。</p><p>我认为ROS也有一定的缺点，即实时性差，以我对ROS的了解，在一台普通电脑上，ROS的控制频率很难超过20Hz。当然ROS设计的目的是快速的进行机器人系统的开发，提高控制频率也并不是ROS关注的方向。</p><h1 id="安装ROS"><a href="#安装ROS" class="headerlink" title="安装ROS"></a>安装ROS</h1><p>在ROS的官方网站<a href="http://ros.org" target="_blank" rel="external">ros.org</a>有详细的安装介绍，这里不再赘述，只简单介绍以下安装步骤。</p><h2 id="ROS版本与操作系统环境"><a href="#ROS版本与操作系统环境" class="headerlink" title="ROS版本与操作系统环境"></a>ROS版本与操作系统环境</h2><p>ROS在Ubuntu下有着完美的支持，因此对于像我这样的新手果断选择在Ubuntu下安装ROS。不同的Ubuntu版本对应着不同版本的ROS，必须按照官网上ROS版本所支持的Ubuntu版本来进行对应安装。由于我目前的版本为Ubuntu 18.04 LTS，因此我安装的是ROS Melodic Morenia，如果你使用的是Ubuntu 16.04 LTS,则需要对应安装ROS Kinetic Kame，这两个版本的ROS都是长期支持版，推荐使用。</p><h2 id="添加sources-list"><a href="#添加sources-list" class="headerlink" title="添加sources.list"></a>添加sources.list</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$sudo sh -c &apos;echo &quot;deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main&quot; &gt; /etc/apt/sources.list.d/ros-latest.list&apos;</div></pre></td></tr></table></figure><h2 id="设置keys"><a href="#设置keys" class="headerlink" title="设置keys"></a>设置keys</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116</div></pre></td></tr></table></figure><h2 id="更新库"><a href="#更新库" class="headerlink" title="更新库"></a>更新库</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$sudo apt-get update</div></pre></td></tr></table></figure><h2 id="安装ROS完整版"><a href="#安装ROS完整版" class="headerlink" title="安装ROS完整版"></a>安装ROS完整版</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$sudo apt-get install ros-melodic-desktop-full</div></pre></td></tr></table></figure><h2 id="安装rosdep"><a href="#安装rosdep" class="headerlink" title="安装rosdep"></a>安装rosdep</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$sudo rosdep init</div><div class="line">$rosdep update</div></pre></td></tr></table></figure><h2 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$echo &quot;source /opt/ros/melodic/setup.bash&quot; &gt;&gt; ~/.bashrc</div><div class="line">$source ~/.bashrc</div></pre></td></tr></table></figure><h2 id="添加用于构建package的依赖"><a href="#添加用于构建package的依赖" class="headerlink" title="添加用于构建package的依赖"></a>添加用于构建package的依赖</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$sudo apt-get install python-rosinstall python-rosinstall-generator python-wstool build-essential</div></pre></td></tr></table></figure><p>到这里，ROS就已经安装完成，可运行如下指令来验证ROS环境是否已经配置完成：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$printenv | grep ROS</div></pre></td></tr></table></figure><p>如果显示如下内容则说明已经完成。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">ROS_ETC_DIR=/opt/ros/melodic/etc/ros</div><div class="line">ROS_ROOT=/opt/ros/melodic/share/ros</div><div class="line">ROS_MASTER_URI=http://localhost:11311</div><div class="line">ROS_VERSION=1</div><div class="line">ROS_PYTHON_VERSION=2</div><div class="line">ROS_PACKAGE_PATH=/opt/ros/melodic/share</div><div class="line">ROSLISP_PACKAGE_DIRECTORIES=</div><div class="line">ROS_DISTRO=melodic</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;img src=&quot;/images/ros_org.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;什么是ROS？&quot;&gt;&lt;a href=&quot;#什么是ROS？&quot; class=&quot;headerlink&quot; title=&quot;什么是ROS？&quot;&gt;&lt;/a&gt;什么是ROS？&lt;/h1&gt;&lt;p&gt;ROS 
-      
-    
-    </summary>
-    
-      <category term="Robot Operating System" scheme="http://yluo.name/categories/Robot-Operating-System/"/>
-    
-    
-      <category term="ros" scheme="http://yluo.name/tags/ros/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>机器人操作系统ROS学习笔记（一）：安装与配置</title>
-    <link href="http://yluo.name/2018/08/30/rospy_api/"/>
-    <id>http://yluo.name/2018/08/30/rospy_api/</id>
-    <published>2018-08-30T03:42:00.000Z</published>
-    <updated>2019-08-06T02:48:41.325Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="Robot Operating System" scheme="http://yluo.name/categories/Robot-Operating-System/"/>
-    
-    
-      <category term="ros" scheme="http://yluo.name/tags/ros/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Git分布式版本控制系统使用心得</title>
-    <link href="http://yluo.name/2018/04/14/Git_intro/"/>
-    <id>http://yluo.name/2018/04/14/Git_intro/</id>
-    <published>2018-04-14T12:32:00.000Z</published>
-    <updated>2019-08-06T02:48:41.325Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>Git对于经常写代码的码农同志们并不陌生，几乎是必备的工具之一。由于本人现在经常参与机器人相关的项目，需要管理大量的项目代码。之前一直在电脑保存各式各样的代码版本，时间一长根本记不住每个版本之间的区别和改动，这才入了Git的坑，在了解了Git的工作原理和基本操作之后，便一发不可收拾，真后悔没有早些了解这个神奇的工具。下面我就以我对Git的了解介绍一下什么是Git以及Git的基本使用方法。</p><h1 id="什么是Git？"><a href="#什么是Git？" class="headerlink" title="什么是Git？"></a>什么是Git？</h1><p>Git专业的叫法是：一种分布式版本控制系统。很多人不了解分布式版本控制系统的概念，没关系，我会用一种通俗的方式解释一下。</p><p>假设你现在要开发一个程序，你已经写好了一份代码，但是这份代码有很多BUG，而且功能也很不完善，你需要不断的修改这份代码，并且需要记录每次的改动，以便万一哪次改错了可以恢复之前的版本，如果没有Git，你会怎么做？</p><p>很简单，我可以把每次的代码文件名后面加一个版本号，假设是code1，code2，…..，code100 等等。如果我修改过100次，那么就需要在电脑上保留100份代码，怎么样？是不是很简单？而且很直观，我还可以在每次修改的代码文件里加入一些修改的描述，比如此次修改了什么什么之类的话。</p><p>似乎看上去已经很完美了，无非是多存一些文件而已嘛，怕什么？！老子硬盘4个TB！！好吧，那我们再考虑一些情况，很多时候一个项目代码需要几个人一起维护，那么怎么去协调每个人修改的部分呢？</p><p>这个稍微有一些麻烦了，不过没关系，我们可以让其中一个人先改，改完了将文件发给第二个人改，第二个人改完了发给第三个人，以此类推。当最后一个人改完了，将这个文件标记为最终版！！额。。。假设每个人都做过100次改动，有四个人来维护这个项目，那么产生的文件个数就是400个！这还只是一个项目而已，如果很多项目呢？对这些项目版本的管理会产生极其高昂的成本。</p><p>那么我们再假设一种情况，这个项目想新加入一个功能，但是不知道这个功能好不好，如果好就加到项目中去，如果不好就还是使用原来的项目。那么我们又该怎么管理这个项目的版本呢？</p><p>提出了以上问题，就是Git诞生的原因，最初就是为了方便管理Linux内核代码而设计的工具。在我看来，Git的用处在于可以记录每次的项目文件改动，而且可以方便的新建项目分支、合并项目分支。以我在Github上的<a href="github.com/thinkexist1989/CV">个人简历</a>为例，我的个人简历是用LaTeX写的，从写简历开始，每一次的修改都被Git记录了下来，而且由于我的简历分为中文版和英文版，我的项目里就新建了2个分支，一个叫en分支，是英文版简历，一个叫zh分支，是中文版简历。所有的这些在我的电脑里，仅仅有一份文件就足够了，这就是神奇的Git。</p><h1 id="Git的安装"><a href="#Git的安装" class="headerlink" title="Git的安装"></a>Git的安装</h1><p>如果你在Linux下，那么Git的使用将会是异常方便的。你只需要在终端输入</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo apt-get install git</div></pre></td></tr></table></figure><p>便可以使用Git了。当然，如果你不喜欢指令行形式的Git，你也可以使用一些GUI软件，个人比较推荐GitKraken，界面很漂亮，而且跨平台。</p><p>如果你在Windows下，你可以安装Git Bash，同样利用指令行来使用Git，或者使用GitKraken之类的GUI软件来管理你的项目版本。由于个人喜好，我喜欢直接利用指令来使用Git，这对于理解Git的工作原理也有很多好处，当然你也可以更直观的利用GUI来使用，下面我介绍的都是Git指令，理解了Git指令同样可以在GUI里游刃有余的使用Git。</p><h1 id="Git的使用"><a href="#Git的使用" class="headerlink" title="Git的使用"></a>Git的使用</h1><p>其实，Git只是一个记录文件改动的工具，因此完全可以独立在电脑上使用，并不一定非要将文件存放到网上。初始化Git很简单，新建一个你需要管理的项目文件夹，假设名为proj，进入文件夹，在终端里输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git init</div></pre></td></tr></table></figure><p>你会发现，在文件夹里出现了一个隐藏的文件夹，名为.git，别小看了这个文件夹，今后你文件夹中所有的文件改动它都一清二楚地记录在里面，Git就是利用这个文件夹中的文件来进行版本控制的。</p><p>假设你的需要版本控制的文件名叫file.doc,那么你需要在终端输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git add file.doc</div></pre></td></tr></table></figure><p>来告诉Git，我要跟踪file.doc这个文件的版本。或者如果文件夹下有很多文件，你全部需要跟踪，你可以输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git add .</div></pre></td></tr></table></figure><p>Git同时可以利用.gitignore文件控制需要忽略的文件，这个可以查看Git教程，这里不再赘述。下面你便可以对这个文件夹的文件进行修改，修改之后，在终端输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git status</div></pre></td></tr></table></figure><p>你会发现，你所有的文件改动，包括修改，删除、新建的文件都没有逃过Git的法眼，但是根据Git的机制，Git目前还没有将这些改动暂存，如果你认为这一时刻的状态需要被Git记录下来，那么你就需要输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git commit -m &quot;这是我的修改&quot;</div></pre></td></tr></table></figure><p>这样你的这次改动就被Git存储了下来，今后不管到什么版本，你都可以随时恢复到这次暂存的这个版本。怎么样？很神奇吧。神奇的还在后面呢。假如你想新建项目的另一个版本，同时又不想影响当前的版本，你可以在终端输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git checkout -b another</div></pre></td></tr></table></figure><p>这样，你会看到Git新建了一个分支，叫another分支，今后你所有的修改就会发生在another分支上，而对之前的分支（默认分支master）没有任何影响，如果你有一天想要回到之前的分支，继续之前的工作，那么简单，在终端输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">usr@proj $ git checkout master</div></pre></td></tr></table></figure><p>这样就轻松的切换回了主分支master，你会看到所有的文件都恢复到了master分支的状态。</p><p>这就是Git最基本的用法，当然了，版本回退、分支合并等操作也可以轻松实现，你也可以将代码push到GitHub或者Gitee等代码托管网站上，你也可以将别处的改动pull到本地，或是git clone网站上的代码到本地，这些在这里不在赘述，可以参考文献《Pro Git中文版》，里面有关于Git的详细用法。</p><h1 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h1><p>Git可以管理几乎你的任何文件，虽然不推荐使用Git来管理非文本类的文件，but anyway，这是你的自由，只要你想Git就可以做！</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;Git对于经常写代码的码农同志们并不陌生，几乎是必备的工具之一。由于本人现在经常参与机器人相关的项目，需要管理大量的项目代码
-      
-    
-    </summary>
-    
-      <category term="Software" scheme="http://yluo.name/categories/Software/"/>
-    
-    
-      <category term="Git" scheme="http://yluo.name/tags/Git/"/>
     
   </entry>
   

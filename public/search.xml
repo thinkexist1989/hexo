@@ -1,6 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[机器人操作系统ROS学习笔记：自定义服务]]></title>
+    <url>%2F2019%2F08%2F06%2Fros_service%2F</url>
+    <content type="text"><![CDATA[ROS中的服务服务（Service）是ROS节点之间同步通讯的一种方式，允许客户端（Client）节点发布请求（Request），由服务端（Server）节点处理后反馈应答（Response）。 定义服务ROS中的服务可以通过srv文件夹下的xxx.srv文件进行语言无关的接口定义。文件包括请求与应答两个数据域，使用“—-”进行分割。 1234int64 aint64 b---int64 sum 使用服务首先需要在package.xml文件表明对消息生成系统的依赖，即构建依赖项message_generation和运行依赖项message_runtime： 12345&lt;build_depend&gt;rospy&lt;/build_depend&gt;&lt;run_depend&gt;rospy&lt;/run_depend&gt;&lt;build_depend&gt;message_generation&lt;/build_depend&gt;&lt;run_depend&gt;message_runtime&lt;/run_depend&gt; 随后在CMakeLists.txt文件中利用find_package函数增加对message_generation的依赖：1234find_package(catkin REQUIRED COMPONENTS ... message_generation) 同时，利用catkin_package函数设置运行依赖：1234catkin_package( ... CATKIN_DEPENDS message_runtime ...) 并添加需要参与编译的srv文件：12345add_service_files( FILES xxx.srv ...) 确保CMake知道在消息文件更改后重新编译msg文件：1234generate_messages( DEPENDENCIES std_msgs) 随后便可在功能包目录下运行catkin_make进行编译，成功后可使用rossrv命令检验服务的定义是否和我们想的一样：1rossrv show xxx 还可以使用rossrv list来查看所有可用的服务，使用rossrv packages来查看所有提供了服务的包，使用rossrv package xxx来查看xxx功能包提供的服务。 注意，ROS中还有一个命令rosservice，这个命令是用来在ROS运行时和启动的服务进行交互的命令，例如： 1rosservice call /spawn 8.0 8.0 0.0 &apos;turtle2&apos;]]></content>
+      <categories>
+        <category>Robot Operating System</category>
+      </categories>
+      <tags>
+        <tag>ros</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[机器人操作系统ROS学习笔记：自定义消息类型]]></title>
+    <url>%2F2019%2F08%2F06%2Fros_message%2F</url>
+    <content type="text"><![CDATA[ROS消息文件ROS的消息文件是一个描述ROS中所使用消息类型的简单文本，通常存放在功能包文件夹下的msg文件夹下，可以被用来生成不同语言的源代码。 消息数据类型ROS中的消息可使用的基本数据类型如下： int8, int16, int32, int64 (plus uint*) float32, float64 string time, duration 可变长度的数组，例如int8[]，以及固定长度的数组，例如float32[10] ROS消息中还有一个特殊的数据类型：Header， 其含有时间戳和坐标系信息。通常在很多msg文件的第一行有：1Header header 个人理解（不一定准确），Header类型通常包含在频繁发送的消息中，这样订阅节点可以根据Header中的时间戳信息等做信息同步处理。 同时，msg文件中还可以包括其他消息文件类型，例如在下面xxx.msg文件中，使用了Header, string以及另外两个消息类型。1234Header headerstring child_frame_idgeometry_msgs/PoseWithCovariance posegeometry_msgs/TwistWithCovariance twist 使用消息为了使用消息，需要在package.xml中添加编译依赖和执行依赖：12&lt;build_depend&gt;message_generation&lt;/build_depend&gt;&lt;exec_depend&gt;message_runtime&lt;/exec_depend&gt; 并且在CMakeLists.txt文件中利用find_package函数增加对message_generation的依赖：1234find_package(catkin REQUIRED COMPONENTS ... message_generation) 同时，利用catkin_package函数设置运行依赖：1234catkin_package( ... CATKIN_DEPENDS message_runtime ...) 并添加需要参与编译的msg文件：12345add_message_files( FILES xxx.msg ...) 确保CMake知道在消息文件更改后重新编译msg文件：1234generate_messages( DEPENDENCIES std_msgs) 随后便可在功能包目录下运行catkin_make进行编译，成功后可使用rosmsg命令查看自定义的消息类型：1rosmsg show xxx 消息相关命令 rosmsg show xxx: 查看消息xxx类型，可以不指定功能包名。]]></content>
+      <categories>
+        <category>Robot Operating System</category>
+      </categories>
+      <tags>
+        <tag>ros</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[机器人操作系统ROS学习笔记：CMakeLists.txt文件]]></title>
+    <url>%2F2019%2F08%2F06%2Fros_cmakelist%2F</url>
+    <content type="text"><![CDATA[CMakeLists.txtROS中使用的编译器catkin是对cmake的一种封装，因此编译规则使用的也是CMakeLists.txt文件，关于CMakeLists.txt文件的规则之前在博客中已经提及过，不再赘述。 编译规则在ROS功能包中的CMakeLists文件主要包括以下配置项： project(PROJ_NAME): 项目名称，一般情况下使用catkin_create_pkg命令会自动生成； find_package(catkin REQUIRED COMPONTS rospy roscpp …): 寻找相关的功能包； include_directories(include ${catkin_INCLUDE_DIRES}): 设置头文件的相对路径，通常在功能包下将相关的头文件都放置在include文件夹下； add_executable(node_name src/xxx.cpp): 设置需要编译的代码和生成的可执行文件； target_link_libraries(node_name ${catkin_LIBRARIES}): 设置链接库； add_dependencies(node_name ${PROJECT_NAME}_generate_messages_cpp): 设置依赖，一般情况下自定义了消息类型的话便需要添加依赖。]]></content>
+      <categories>
+        <category>Robot Operating System</category>
+      </categories>
+      <tags>
+        <tag>ros</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[机器人操作系统ROS学习笔记：package清单文件]]></title>
+    <url>%2F2019%2F08%2F06%2Fros_package_xml%2F</url>
+    <content type="text"><![CDATA[package清单文件每一个ROS的功能包都包含一个package.xml的功能包清单文件，用于记录功能包的基本信息，包含作者信息、许可信息、依赖选项、编译标志等。 package.xml规则package.xml文件采用xml标记语言来编写，其中的主要信息包括一下几种： name: 功能包的名称； version: 功能包的版本； description: 功能包的描述； maintainer: 功能包的维护者信息； license: 许可信息，MIT，BSD，GPL等； 除此之外，package.xml中还包含了功能包所需的各种依赖项，主要包括： buildtool_depend: 编译工具依赖项，通常为catkin； build_depend: 功能包代码编译所需的依赖项，例如roscpp，rospy，geometry_msgs，message_generation等； run_depend: 功能包运行过程中所需的依赖项，例如roscpp，rospy，std_msgs，message_runtime等； 如果是元功能包，则还需包含一个引用标签： 123&lt;export&gt; &lt;metapackage/&gt;&lt;/export&gt;]]></content>
+      <categories>
+        <category>Robot Operating System</category>
+      </categories>
+      <tags>
+        <tag>ros</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[机器人操作系统ROS学习笔记：功能包package文件结构]]></title>
+    <url>%2F2019%2F08%2F06%2Fros_package_struct%2F</url>
+    <content type="text"><![CDATA[ROS功能包package在ROS下，所有的文件按照功能包（package）的形式进行组织，是ROS软件中的基本单元。其中包括ROS节点、库、配置文件等。 package的典型文件结构ROS package的典型结构包含一下文件及文件夹： config（文件夹）：放置功能包中的配置文件，由用户创建，文件名可以不同。 include（文件夹）：放置功能包中需要用到的头文件。 scripts（文件夹）：放置可以直接运行的Python脚本。 src（文件夹）：放置需要编译的C++代码。 launch（文件夹）：放置功能包中的所有启动文件。 msg（文件夹）：放置功能包自定义的消息类型。 srv（文件夹）：放置功能包自定义的服务类型。 action（文件夹）：放置功能包自定义的动作指令。 CMakeLists.txt（文件）：编译器编译功能包的规则（cmake的规则文件）。 package.xml（文件）：功能包清单，这个文件可以显示包信息，并注明依赖项，之后可以利用rosdep来安装依赖。 元功能包meta package元功能包是一种特殊的功能包，只包含一个package.xml元功能包清单文件，其主要功能是将多个功能包整合成一个逻辑上的独立功能包，类似于功能包集的概念。]]></content>
+      <categories>
+        <category>Robot Operating System</category>
+      </categories>
+      <tags>
+        <tag>ros</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Ubuntu与Windows双系统时间设置问题]]></title>
     <url>%2F2019%2F08%2F01%2Fubuntu_windows_time%2F</url>
     <content type="text"><![CDATA[问题缘由现在很多人都在电脑里安装了Ubuntu和Windows双系统，在安装完系统之后会发现，系统的显示时间经常会出问题，要么比正常时间快8个小时，要么比正常时间慢8个小时。即使利用网络同步时间之后，当切换过系统之后还是会出现时间差的问题。 这种现象是由于Windows与Ubuntu默认对时间的管理方式不同造成的。我们知道电脑的BIOS里记录着一串时间数据，操作系统就是根据这个数据得到当前时间的。Ubuntu系统使用的是UTC时间（世界协调时），系统会把BIOS里记录的时间看成GMT+0时间，即世界标准时。在Ubuntu系统中有一个设置，是配置当前所在时区的，在中国就会配置为东八区（GMT+8），所以Ubuntu会把BIOS中得到的时间加上8个小时显示出来，随后在系统关机的时候，将当前显示的时间减去8个小时后存入BIOS中。 而在Windows中，会将BIOS中的时间看做本地时间，直接显示出来，因此，当从Ubuntu切换到Windows时，会出现时间差8个小时的情况。 解决方法最简单的方法就是将Ubuntu下的UTC时间关闭，采用和Window一样的时间管理方式。只需要在Ubuntu终端下运行一行代码： 1sudo timedatectrl set-local-utc 1 这样便可以使Windows和Ubuntu下的时间同步了。]]></content>
@@ -204,36 +259,14 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[机器人操作系统ROS学习笔记（一）：安装与配置]]></title>
-    <url>%2F2018%2F08%2F30%2Fros_1%2F</url>
+    <title><![CDATA[机器人操作系统ROS学习笔记：安装与配置]]></title>
+    <url>%2F2018%2F08%2F30%2Fros_install%2F</url>
     <content type="text"><![CDATA[什么是ROS？ROS (Robot Operating System, 机器人操作系统)在其官网ros.org上是这么介绍的： ROS 提供一系列程序库和工具以帮助软件开发者创建机器人应用软件。它提供了硬件抽象、设备驱动、函数库、可视化工具、消息传递和软件包管理等诸多功能。ROS遵循BSD开源许可协议。 听上去还是没有感觉到ROS的厉害之处，在我刚开始接触ROS的时候，以为ROS只是一些函数库，类似于各种应用程序开放的API一样，我只要调用相应的函数，就执行相应的功能。但是在后来的使用过程中，我才意识到ROS并不仅仅是一堆可供调用的函数而已。实际上ROS是一个机器人系统的开发框架，之所以可以称自己为“操作系统”，就是因为在这个框架之上，ROS为机器人的开发提供了一个平台，类似于一个操作系统一样，他帮你抽象好了硬件，设置好消息传递方式，让你可以更加方便快捷的实现你的想法，而不用从机器人硬件的底层开始编写程序，提高机器人系统的研发效率。 ROS能做什么？作为一种标准化机器人软件框架，利用ROS中大量的示例代码和开源程序可以轻松地完成机器人编程和控制。ROS的设计目标之一便是提高代码的复用率，ROS在运行时松散耦合，各个子功能之间相互独立，利用发布与订阅消息进行通讯，因此极易扩展，并且ROS提供了大量的监视和调试工具，方便机器人控制程序的开发。 我认为ROS也有一定的缺点，即实时性差，以我对ROS的了解，在一台普通电脑上，ROS的控制频率很难超过20Hz。当然ROS设计的目的是快速的进行机器人系统的开发，提高控制频率也并不是ROS关注的方向。 安装ROS在ROS的官方网站ros.org有详细的安装介绍，这里不再赘述，只简单介绍以下安装步骤。 ROS版本与操作系统环境ROS在Ubuntu下有着完美的支持，因此对于像我这样的新手果断选择在Ubuntu下安装ROS。不同的Ubuntu版本对应着不同版本的ROS，必须按照官网上ROS版本所支持的Ubuntu版本来进行对应安装。由于我目前的版本为Ubuntu 18.04 LTS，因此我安装的是ROS Melodic Morenia，如果你使用的是Ubuntu 16.04 LTS,则需要对应安装ROS Kinetic Kame，这两个版本的ROS都是长期支持版，推荐使用。 添加sources.list1$sudo sh -c &apos;echo &quot;deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main&quot; &gt; /etc/apt/sources.list.d/ros-latest.list&apos; 设置keys1$sudo apt-key adv --keyserver hkp://ha.pool.sks-keyservers.net:80 --recv-key 421C365BD9FF1F717815A3895523BAEEB01FA116 更新库1$sudo apt-get update 安装ROS完整版1$sudo apt-get install ros-melodic-desktop-full 安装rosdep12$sudo rosdep init$rosdep update 配置环境12$echo &quot;source /opt/ros/melodic/setup.bash&quot; &gt;&gt; ~/.bashrc$source ~/.bashrc 添加用于构建package的依赖1$sudo apt-get install python-rosinstall python-rosinstall-generator python-wstool build-essential 到这里，ROS就已经安装完成，可运行如下指令来验证ROS环境是否已经配置完成： 1$printenv | grep ROS 如果显示如下内容则说明已经完成。 12345678ROS_ETC_DIR=/opt/ros/melodic/etc/rosROS_ROOT=/opt/ros/melodic/share/rosROS_MASTER_URI=http://localhost:11311ROS_VERSION=1ROS_PYTHON_VERSION=2ROS_PACKAGE_PATH=/opt/ros/melodic/shareROSLISP_PACKAGE_DIRECTORIES=ROS_DISTRO=melodic]]></content>
       <categories>
         <category>Robot Operating System</category>
       </categories>
       <tags>
         <tag>ros</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[机器人操作系统ROS学习笔记（一）：安装与配置]]></title>
-    <url>%2F2018%2F08%2F30%2Frospy_api%2F</url>
-    <content type="text"></content>
-      <categories>
-        <category>Robot Operating System</category>
-      </categories>
-      <tags>
-        <tag>ros</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[Git分布式版本控制系统使用心得]]></title>
-    <url>%2F2018%2F04%2F14%2FGit_intro%2F</url>
-    <content type="text"><![CDATA[写在前面Git对于经常写代码的码农同志们并不陌生，几乎是必备的工具之一。由于本人现在经常参与机器人相关的项目，需要管理大量的项目代码。之前一直在电脑保存各式各样的代码版本，时间一长根本记不住每个版本之间的区别和改动，这才入了Git的坑，在了解了Git的工作原理和基本操作之后，便一发不可收拾，真后悔没有早些了解这个神奇的工具。下面我就以我对Git的了解介绍一下什么是Git以及Git的基本使用方法。 什么是Git？Git专业的叫法是：一种分布式版本控制系统。很多人不了解分布式版本控制系统的概念，没关系，我会用一种通俗的方式解释一下。 假设你现在要开发一个程序，你已经写好了一份代码，但是这份代码有很多BUG，而且功能也很不完善，你需要不断的修改这份代码，并且需要记录每次的改动，以便万一哪次改错了可以恢复之前的版本，如果没有Git，你会怎么做？ 很简单，我可以把每次的代码文件名后面加一个版本号，假设是code1，code2，…..，code100 等等。如果我修改过100次，那么就需要在电脑上保留100份代码，怎么样？是不是很简单？而且很直观，我还可以在每次修改的代码文件里加入一些修改的描述，比如此次修改了什么什么之类的话。 似乎看上去已经很完美了，无非是多存一些文件而已嘛，怕什么？！老子硬盘4个TB！！好吧，那我们再考虑一些情况，很多时候一个项目代码需要几个人一起维护，那么怎么去协调每个人修改的部分呢？ 这个稍微有一些麻烦了，不过没关系，我们可以让其中一个人先改，改完了将文件发给第二个人改，第二个人改完了发给第三个人，以此类推。当最后一个人改完了，将这个文件标记为最终版！！额。。。假设每个人都做过100次改动，有四个人来维护这个项目，那么产生的文件个数就是400个！这还只是一个项目而已，如果很多项目呢？对这些项目版本的管理会产生极其高昂的成本。 那么我们再假设一种情况，这个项目想新加入一个功能，但是不知道这个功能好不好，如果好就加到项目中去，如果不好就还是使用原来的项目。那么我们又该怎么管理这个项目的版本呢？ 提出了以上问题，就是Git诞生的原因，最初就是为了方便管理Linux内核代码而设计的工具。在我看来，Git的用处在于可以记录每次的项目文件改动，而且可以方便的新建项目分支、合并项目分支。以我在Github上的个人简历为例，我的个人简历是用LaTeX写的，从写简历开始，每一次的修改都被Git记录了下来，而且由于我的简历分为中文版和英文版，我的项目里就新建了2个分支，一个叫en分支，是英文版简历，一个叫zh分支，是中文版简历。所有的这些在我的电脑里，仅仅有一份文件就足够了，这就是神奇的Git。 Git的安装如果你在Linux下，那么Git的使用将会是异常方便的。你只需要在终端输入 1$ sudo apt-get install git 便可以使用Git了。当然，如果你不喜欢指令行形式的Git，你也可以使用一些GUI软件，个人比较推荐GitKraken，界面很漂亮，而且跨平台。 如果你在Windows下，你可以安装Git Bash，同样利用指令行来使用Git，或者使用GitKraken之类的GUI软件来管理你的项目版本。由于个人喜好，我喜欢直接利用指令来使用Git，这对于理解Git的工作原理也有很多好处，当然你也可以更直观的利用GUI来使用，下面我介绍的都是Git指令，理解了Git指令同样可以在GUI里游刃有余的使用Git。 Git的使用其实，Git只是一个记录文件改动的工具，因此完全可以独立在电脑上使用，并不一定非要将文件存放到网上。初始化Git很简单，新建一个你需要管理的项目文件夹，假设名为proj，进入文件夹，在终端里输入： 1usr@proj $ git init 你会发现，在文件夹里出现了一个隐藏的文件夹，名为.git，别小看了这个文件夹，今后你文件夹中所有的文件改动它都一清二楚地记录在里面，Git就是利用这个文件夹中的文件来进行版本控制的。 假设你的需要版本控制的文件名叫file.doc,那么你需要在终端输入： 1usr@proj $ git add file.doc 来告诉Git，我要跟踪file.doc这个文件的版本。或者如果文件夹下有很多文件，你全部需要跟踪，你可以输入： 1usr@proj $ git add . Git同时可以利用.gitignore文件控制需要忽略的文件，这个可以查看Git教程，这里不再赘述。下面你便可以对这个文件夹的文件进行修改，修改之后，在终端输入： 1usr@proj $ git status 你会发现，你所有的文件改动，包括修改，删除、新建的文件都没有逃过Git的法眼，但是根据Git的机制，Git目前还没有将这些改动暂存，如果你认为这一时刻的状态需要被Git记录下来，那么你就需要输入： 1usr@proj $ git commit -m &quot;这是我的修改&quot; 这样你的这次改动就被Git存储了下来，今后不管到什么版本，你都可以随时恢复到这次暂存的这个版本。怎么样？很神奇吧。神奇的还在后面呢。假如你想新建项目的另一个版本，同时又不想影响当前的版本，你可以在终端输入： 1usr@proj $ git checkout -b another 这样，你会看到Git新建了一个分支，叫another分支，今后你所有的修改就会发生在another分支上，而对之前的分支（默认分支master）没有任何影响，如果你有一天想要回到之前的分支，继续之前的工作，那么简单，在终端输入： 1usr@proj $ git checkout master 这样就轻松的切换回了主分支master，你会看到所有的文件都恢复到了master分支的状态。 这就是Git最基本的用法，当然了，版本回退、分支合并等操作也可以轻松实现，你也可以将代码push到GitHub或者Gitee等代码托管网站上，你也可以将别处的改动pull到本地，或是git clone网站上的代码到本地，这些在这里不在赘述，可以参考文献《Pro Git中文版》，里面有关于Git的详细用法。 写在后面Git可以管理几乎你的任何文件，虽然不推荐使用Git来管理非文本类的文件，but anyway，这是你的自由，只要你想Git就可以做！]]></content>
-      <categories>
-        <category>Software</category>
-      </categories>
-      <tags>
-        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -246,6 +279,17 @@
       <tags>
         <tag>linux</tag>
         <tag>windows</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Git分布式版本控制系统使用心得]]></title>
+    <url>%2F2018%2F04%2F14%2FGit_intro%2F</url>
+    <content type="text"><![CDATA[写在前面Git对于经常写代码的码农同志们并不陌生，几乎是必备的工具之一。由于本人现在经常参与机器人相关的项目，需要管理大量的项目代码。之前一直在电脑保存各式各样的代码版本，时间一长根本记不住每个版本之间的区别和改动，这才入了Git的坑，在了解了Git的工作原理和基本操作之后，便一发不可收拾，真后悔没有早些了解这个神奇的工具。下面我就以我对Git的了解介绍一下什么是Git以及Git的基本使用方法。 什么是Git？Git专业的叫法是：一种分布式版本控制系统。很多人不了解分布式版本控制系统的概念，没关系，我会用一种通俗的方式解释一下。 假设你现在要开发一个程序，你已经写好了一份代码，但是这份代码有很多BUG，而且功能也很不完善，你需要不断的修改这份代码，并且需要记录每次的改动，以便万一哪次改错了可以恢复之前的版本，如果没有Git，你会怎么做？ 很简单，我可以把每次的代码文件名后面加一个版本号，假设是code1，code2，…..，code100 等等。如果我修改过100次，那么就需要在电脑上保留100份代码，怎么样？是不是很简单？而且很直观，我还可以在每次修改的代码文件里加入一些修改的描述，比如此次修改了什么什么之类的话。 似乎看上去已经很完美了，无非是多存一些文件而已嘛，怕什么？！老子硬盘4个TB！！好吧，那我们再考虑一些情况，很多时候一个项目代码需要几个人一起维护，那么怎么去协调每个人修改的部分呢？ 这个稍微有一些麻烦了，不过没关系，我们可以让其中一个人先改，改完了将文件发给第二个人改，第二个人改完了发给第三个人，以此类推。当最后一个人改完了，将这个文件标记为最终版！！额。。。假设每个人都做过100次改动，有四个人来维护这个项目，那么产生的文件个数就是400个！这还只是一个项目而已，如果很多项目呢？对这些项目版本的管理会产生极其高昂的成本。 那么我们再假设一种情况，这个项目想新加入一个功能，但是不知道这个功能好不好，如果好就加到项目中去，如果不好就还是使用原来的项目。那么我们又该怎么管理这个项目的版本呢？ 提出了以上问题，就是Git诞生的原因，最初就是为了方便管理Linux内核代码而设计的工具。在我看来，Git的用处在于可以记录每次的项目文件改动，而且可以方便的新建项目分支、合并项目分支。以我在Github上的个人简历为例，我的个人简历是用LaTeX写的，从写简历开始，每一次的修改都被Git记录了下来，而且由于我的简历分为中文版和英文版，我的项目里就新建了2个分支，一个叫en分支，是英文版简历，一个叫zh分支，是中文版简历。所有的这些在我的电脑里，仅仅有一份文件就足够了，这就是神奇的Git。 Git的安装如果你在Linux下，那么Git的使用将会是异常方便的。你只需要在终端输入 1$ sudo apt-get install git 便可以使用Git了。当然，如果你不喜欢指令行形式的Git，你也可以使用一些GUI软件，个人比较推荐GitKraken，界面很漂亮，而且跨平台。 如果你在Windows下，你可以安装Git Bash，同样利用指令行来使用Git，或者使用GitKraken之类的GUI软件来管理你的项目版本。由于个人喜好，我喜欢直接利用指令来使用Git，这对于理解Git的工作原理也有很多好处，当然你也可以更直观的利用GUI来使用，下面我介绍的都是Git指令，理解了Git指令同样可以在GUI里游刃有余的使用Git。 Git的使用其实，Git只是一个记录文件改动的工具，因此完全可以独立在电脑上使用，并不一定非要将文件存放到网上。初始化Git很简单，新建一个你需要管理的项目文件夹，假设名为proj，进入文件夹，在终端里输入： 1usr@proj $ git init 你会发现，在文件夹里出现了一个隐藏的文件夹，名为.git，别小看了这个文件夹，今后你文件夹中所有的文件改动它都一清二楚地记录在里面，Git就是利用这个文件夹中的文件来进行版本控制的。 假设你的需要版本控制的文件名叫file.doc,那么你需要在终端输入： 1usr@proj $ git add file.doc 来告诉Git，我要跟踪file.doc这个文件的版本。或者如果文件夹下有很多文件，你全部需要跟踪，你可以输入： 1usr@proj $ git add . Git同时可以利用.gitignore文件控制需要忽略的文件，这个可以查看Git教程，这里不再赘述。下面你便可以对这个文件夹的文件进行修改，修改之后，在终端输入： 1usr@proj $ git status 你会发现，你所有的文件改动，包括修改，删除、新建的文件都没有逃过Git的法眼，但是根据Git的机制，Git目前还没有将这些改动暂存，如果你认为这一时刻的状态需要被Git记录下来，那么你就需要输入： 1usr@proj $ git commit -m &quot;这是我的修改&quot; 这样你的这次改动就被Git存储了下来，今后不管到什么版本，你都可以随时恢复到这次暂存的这个版本。怎么样？很神奇吧。神奇的还在后面呢。假如你想新建项目的另一个版本，同时又不想影响当前的版本，你可以在终端输入： 1usr@proj $ git checkout -b another 这样，你会看到Git新建了一个分支，叫another分支，今后你所有的修改就会发生在another分支上，而对之前的分支（默认分支master）没有任何影响，如果你有一天想要回到之前的分支，继续之前的工作，那么简单，在终端输入： 1usr@proj $ git checkout master 这样就轻松的切换回了主分支master，你会看到所有的文件都恢复到了master分支的状态。 这就是Git最基本的用法，当然了，版本回退、分支合并等操作也可以轻松实现，你也可以将代码push到GitHub或者Gitee等代码托管网站上，你也可以将别处的改动pull到本地，或是git clone网站上的代码到本地，这些在这里不在赘述，可以参考文献《Pro Git中文版》，里面有关于Git的详细用法。 写在后面Git可以管理几乎你的任何文件，虽然不推荐使用Git来管理非文本类的文件，but anyway，这是你的自由，只要你想Git就可以做！]]></content>
+      <categories>
+        <category>Software</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
