@@ -113,7 +113,7 @@
 
 
 
-  <meta name="keywords" content="ros," />
+  <meta name="keywords" content="Git," />
 
 
 
@@ -126,18 +126,18 @@
 
 
 
-<meta name="description" content="ROS中的服务服务（Service）是ROS节点之间同步通讯的一种方式，允许客户端（Client）节点发布请求（Request），由服务端（Server）节点处理后反馈应答（Response）。 定义服务ROS中的服务可以通过srv文件夹下的xxx.srv文件进行语言无关的接口定义。文件包括请求与应答两个数据域，使用“—-”进行分割。 1234int64 aint64 b---int64 sum">
-<meta name="keywords" content="ros">
+<meta name="description" content="错误说明运行git status时，提示 1fatal: Unknown index entry format xxxxx 解决方法进入仓库文件夹，输入以下指令： 12rm -f .git/indexgit reset 大功告成，喜大普奔。">
+<meta name="keywords" content="Git">
 <meta property="og:type" content="article">
-<meta property="og:title" content="机器人操作系统ROS学习笔记：自定义服务">
-<meta property="og:url" content="http://yluo.name/2019/08/06/ros_service/index.html">
+<meta property="og:title" content="Git 未知索引格式错误">
+<meta property="og:url" content="http://yluo.name/2019/09/29/Git_fatal/index.html">
 <meta property="og:site_name" content="DécouVerte">
-<meta property="og:description" content="ROS中的服务服务（Service）是ROS节点之间同步通讯的一种方式，允许客户端（Client）节点发布请求（Request），由服务端（Server）节点处理后反馈应答（Response）。 定义服务ROS中的服务可以通过srv文件夹下的xxx.srv文件进行语言无关的接口定义。文件包括请求与应答两个数据域，使用“—-”进行分割。 1234int64 aint64 b---int64 sum">
+<meta property="og:description" content="错误说明运行git status时，提示 1fatal: Unknown index entry format xxxxx 解决方法进入仓库文件夹，输入以下指令： 12rm -f .git/indexgit reset 大功告成，喜大普奔。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-07T05:04:24.056Z">
+<meta property="og:updated_time" content="2019-09-20T03:16:21.141Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="机器人操作系统ROS学习笔记：自定义服务">
-<meta name="twitter:description" content="ROS中的服务服务（Service）是ROS节点之间同步通讯的一种方式，允许客户端（Client）节点发布请求（Request），由服务端（Server）节点处理后反馈应答（Response）。 定义服务ROS中的服务可以通过srv文件夹下的xxx.srv文件进行语言无关的接口定义。文件包括请求与应答两个数据域，使用“—-”进行分割。 1234int64 aint64 b---int64 sum">
+<meta name="twitter:title" content="Git 未知索引格式错误">
+<meta name="twitter:description" content="错误说明运行git status时，提示 1fatal: Unknown index entry format xxxxx 解决方法进入仓库文件夹，输入以下指令： 12rm -f .git/indexgit reset 大功告成，喜大普奔。">
 
 
 
@@ -167,13 +167,13 @@
 
 
 
-  <link rel="canonical" href="http://yluo.name/2019/08/06/ros_service/"/>
+  <link rel="canonical" href="http://yluo.name/2019/09/29/Git_fatal/"/>
 
 
 
 
 
-  <title>机器人操作系统ROS学习笔记：自定义服务 | DécouVerte</title>
+  <title>Git 未知索引格式错误 | DécouVerte</title>
   
 
 
@@ -345,7 +345,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yluo.name/2019/08/06/ros_service/">
+    <link itemprop="mainEntityOfPage" href="http://yluo.name/2019/09/29/Git_fatal/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yang Luo">
@@ -362,7 +362,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">机器人操作系统ROS学习笔记：自定义服务</h1>
+          <h1 class="post-title" itemprop="name headline">Git 未知索引格式错误</h1>
         
 
         <div class="post-meta">
@@ -374,8 +374,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-06T15:00:00+08:00">
-                2019-08-06
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-29T11:00:00+08:00">
+                2019-09-29
               </time>
             
 
@@ -397,8 +397,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Robot-Operating-System/" itemprop="url" rel="index">
-                    <span itemprop="name">Robot Operating System</span>
+                  <a href="/categories/Software/" itemprop="url" rel="index">
+                    <span itemprop="name">Software</span>
                   </a>
                 </span>
 
@@ -434,19 +434,11 @@
       
 
       
-        <h1 id="ROS中的服务"><a href="#ROS中的服务" class="headerlink" title="ROS中的服务"></a>ROS中的服务</h1><p>服务（Service）是ROS节点之间同步通讯的一种方式，允许客户端（Client）节点发布请求（Request），由服务端（Server）节点处理后反馈应答（Response）。</p>
-<h1 id="定义服务"><a href="#定义服务" class="headerlink" title="定义服务"></a>定义服务</h1><p>ROS中的服务可以通过srv文件夹下的xxx.srv文件进行语言无关的接口定义。文件包括请求与应答两个数据域，使用“—-”进行分割。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int64 a</div><div class="line">int64 b</div><div class="line">---</div><div class="line">int64 sum</div></pre></td></tr></table></figure>
-<h1 id="使用服务"><a href="#使用服务" class="headerlink" title="使用服务"></a>使用服务</h1><p>首先需要在package.xml文件表明对消息生成系统的依赖，即构建依赖项message_generation和运行依赖项message_runtime：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;build_depend&gt;rospy&lt;/build_depend&gt;</div><div class="line">&lt;run_depend&gt;rospy&lt;/run_depend&gt;</div><div class="line"></div><div class="line">&lt;build_depend&gt;message_generation&lt;/build_depend&gt;</div><div class="line">&lt;run_depend&gt;message_runtime&lt;/run_depend&gt;</div></pre></td></tr></table></figure>
-<p>随后在CMakeLists.txt文件中利用find_package函数增加对message_generation的依赖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">find_package(catkin REQUIRED COMPONENTS</div><div class="line">    ...</div><div class="line">    message_generation</div><div class="line">)</div></pre></td></tr></table></figure></p>
-<p>同时，利用catkin_package函数设置运行依赖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">catkin_package(</div><div class="line">    ...</div><div class="line">    CATKIN_DEPENDS message_runtime ...</div><div class="line">)</div></pre></td></tr></table></figure></p>
-<p>并添加需要参与编译的srv文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">add_service_files(</div><div class="line">    FILES</div><div class="line">    xxx.srv</div><div class="line">    ...</div><div class="line">)</div></pre></td></tr></table></figure></p>
-<p>确保CMake知道在消息文件更改后重新编译msg文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">generate_messages(</div><div class="line">    DEPENDENCIES</div><div class="line">    std_msgs</div><div class="line">)</div></pre></td></tr></table></figure></p>
-<p>随后便可在功能包目录下运行catkin_make进行编译，成功后可使用rossrv命令检验服务的定义是否和我们想的一样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rossrv show xxx</div></pre></td></tr></table></figure></p>
-<p>还可以使用rossrv list来查看所有可用的服务，使用rossrv packages来查看所有提供了服务的包，使用rossrv package xxx来查看xxx功能包提供的服务。</p>
-<p>注意，ROS中还有一个命令rosservice，这个命令是用来在ROS运行时和启动的服务进行交互的命令，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rosservice call /spawn 8.0 8.0 0.0 &apos;turtle2&apos;</div></pre></td></tr></table></figure>
+        <h1 id="错误说明"><a href="#错误说明" class="headerlink" title="错误说明"></a>错误说明</h1><p>运行<code>git status</code>时，提示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fatal: Unknown index entry format xxxxx</div></pre></td></tr></table></figure>
+<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>进入仓库文件夹，输入以下指令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rm -f .git/index</div><div class="line">git reset</div></pre></td></tr></table></figure>
+<p>大功告成，喜大普奔。</p>
 
       
     </div>
@@ -464,7 +456,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ros/" rel="tag"><i class="fa fa-tag"></i>ros</a>
+            <a href="/tags/Git/" rel="tag"><i class="fa fa-tag"></i>Git</a>
           
         </div>
       
@@ -477,8 +469,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/06/ros_namespace/" rel="next" title="机器人操作系统ROS学习笔记：ROS命名空间及重映射">
-                <i class="fa fa-chevron-left"></i> 机器人操作系统ROS学习笔记：ROS命名空间及重映射
+              <a href="/2019/08/06/ros_service/" rel="next" title="机器人操作系统ROS学习笔记：自定义服务">
+                <i class="fa fa-chevron-left"></i> 机器人操作系统ROS学习笔记：自定义服务
               </a>
             
           </div>
@@ -486,10 +478,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/29/Git_fatal/" rel="prev" title="Git 未知索引格式错误">
-                Git 未知索引格式错误 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -648,7 +636,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ROS中的服务"><span class="nav-number">1.</span> <span class="nav-text">ROS中的服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定义服务"><span class="nav-number">2.</span> <span class="nav-text">定义服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用服务"><span class="nav-number">3.</span> <span class="nav-text">使用服务</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#错误说明"><span class="nav-number">1.</span> <span class="nav-text">错误说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决方法"><span class="nav-number">2.</span> <span class="nav-text">解决方法</span></a></li></ol></div>
             
 
           </div>

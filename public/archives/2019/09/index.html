@@ -113,7 +113,7 @@
 
 
 
-  <meta name="keywords" content="ros," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -126,18 +126,16 @@
 
 
 
-<meta name="description" content="ROS中的服务服务（Service）是ROS节点之间同步通讯的一种方式，允许客户端（Client）节点发布请求（Request），由服务端（Server）节点处理后反馈应答（Response）。 定义服务ROS中的服务可以通过srv文件夹下的xxx.srv文件进行语言无关的接口定义。文件包括请求与应答两个数据域，使用“—-”进行分割。 1234int64 aint64 b---int64 sum">
-<meta name="keywords" content="ros">
-<meta property="og:type" content="article">
-<meta property="og:title" content="机器人操作系统ROS学习笔记：自定义服务">
-<meta property="og:url" content="http://yluo.name/2019/08/06/ros_service/index.html">
+<meta name="description" content="一头专注科研的猪">
+<meta property="og:type" content="website">
+<meta property="og:title" content="DécouVerte">
+<meta property="og:url" content="http://yluo.name/archives/2019/09/index.html">
 <meta property="og:site_name" content="DécouVerte">
-<meta property="og:description" content="ROS中的服务服务（Service）是ROS节点之间同步通讯的一种方式，允许客户端（Client）节点发布请求（Request），由服务端（Server）节点处理后反馈应答（Response）。 定义服务ROS中的服务可以通过srv文件夹下的xxx.srv文件进行语言无关的接口定义。文件包括请求与应答两个数据域，使用“—-”进行分割。 1234int64 aint64 b---int64 sum">
+<meta property="og:description" content="一头专注科研的猪">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-08-07T05:04:24.056Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="机器人操作系统ROS学习笔记：自定义服务">
-<meta name="twitter:description" content="ROS中的服务服务（Service）是ROS节点之间同步通讯的一种方式，允许客户端（Client）节点发布请求（Request），由服务端（Server）节点处理后反馈应答（Response）。 定义服务ROS中的服务可以通过srv文件夹下的xxx.srv文件进行语言无关的接口定义。文件包括请求与应答两个数据域，使用“—-”进行分割。 1234int64 aint64 b---int64 sum">
+<meta name="twitter:title" content="DécouVerte">
+<meta name="twitter:description" content="一头专注科研的猪">
 
 
 
@@ -167,13 +165,13 @@
 
 
 
-  <link rel="canonical" href="http://yluo.name/2019/08/06/ros_service/"/>
+  <link rel="canonical" href="http://yluo.name/archives/2019/09/"/>
 
 
 
 
 
-  <title>机器人操作系统ROS学习笔记：自定义服务 | DécouVerte</title>
+  <title>归档 | DécouVerte</title>
   
 
 
@@ -192,7 +190,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left page-archive">
     <div class="headband"></div>
     <a href="https://github.com/thinkexist1989" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 
@@ -331,185 +329,74 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
+  
+  
+  
+  <div class="post-block archive">
+    <div id="posts" class="posts-collapse">
+      <span class="archive-move-on"></span>
 
-  
+      <span class="archive-page-counter">
+        
+        
+        
+          
+        
+        嗯..! 目前共计 30 篇日志。 继续努力。
+      </span>
 
-  
-  
-  
+      
+
+        
+        
+        
+
+        
+          
+          <div class="collection-title">
+            <h1 class="archive-year" id="archive-year-2019">2019</h1>
+          </div>
+        
+        
+
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yluo.name/2019/08/06/ros_service/">
+    <header class="post-header">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Yang Luo">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/doudou.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DécouVerte">
-    </span>
-
-    
-      <header class="post-header">
-
+      <h2 class="post-title">
         
+            <a class="post-title-link" href="/2019/09/29/Git_fatal/" itemprop="url">
+              
+                <span itemprop="name">Git 未知索引格式错误</span>
+              
+            </a>
         
-          <h1 class="post-title" itemprop="name headline">机器人操作系统ROS学习笔记：自定义服务</h1>
-        
+      </h2>
 
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-08-06T15:00:00+08:00">
-                2019-08-06
-              </time>
-            
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2019-09-29T11:00:00+08:00"
+              content="2019-09-29" >
+          09-29
+        </time>
+      </div>
 
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Robot-Operating-System/" itemprop="url" rel="index">
-                    <span itemprop="name">Robot Operating System</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h1 id="ROS中的服务"><a href="#ROS中的服务" class="headerlink" title="ROS中的服务"></a>ROS中的服务</h1><p>服务（Service）是ROS节点之间同步通讯的一种方式，允许客户端（Client）节点发布请求（Request），由服务端（Server）节点处理后反馈应答（Response）。</p>
-<h1 id="定义服务"><a href="#定义服务" class="headerlink" title="定义服务"></a>定义服务</h1><p>ROS中的服务可以通过srv文件夹下的xxx.srv文件进行语言无关的接口定义。文件包括请求与应答两个数据域，使用“—-”进行分割。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int64 a</div><div class="line">int64 b</div><div class="line">---</div><div class="line">int64 sum</div></pre></td></tr></table></figure>
-<h1 id="使用服务"><a href="#使用服务" class="headerlink" title="使用服务"></a>使用服务</h1><p>首先需要在package.xml文件表明对消息生成系统的依赖，即构建依赖项message_generation和运行依赖项message_runtime：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;build_depend&gt;rospy&lt;/build_depend&gt;</div><div class="line">&lt;run_depend&gt;rospy&lt;/run_depend&gt;</div><div class="line"></div><div class="line">&lt;build_depend&gt;message_generation&lt;/build_depend&gt;</div><div class="line">&lt;run_depend&gt;message_runtime&lt;/run_depend&gt;</div></pre></td></tr></table></figure>
-<p>随后在CMakeLists.txt文件中利用find_package函数增加对message_generation的依赖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">find_package(catkin REQUIRED COMPONENTS</div><div class="line">    ...</div><div class="line">    message_generation</div><div class="line">)</div></pre></td></tr></table></figure></p>
-<p>同时，利用catkin_package函数设置运行依赖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">catkin_package(</div><div class="line">    ...</div><div class="line">    CATKIN_DEPENDS message_runtime ...</div><div class="line">)</div></pre></td></tr></table></figure></p>
-<p>并添加需要参与编译的srv文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">add_service_files(</div><div class="line">    FILES</div><div class="line">    xxx.srv</div><div class="line">    ...</div><div class="line">)</div></pre></td></tr></table></figure></p>
-<p>确保CMake知道在消息文件更改后重新编译msg文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">generate_messages(</div><div class="line">    DEPENDENCIES</div><div class="line">    std_msgs</div><div class="line">)</div></pre></td></tr></table></figure></p>
-<p>随后便可在功能包目录下运行catkin_make进行编译，成功后可使用rossrv命令检验服务的定义是否和我们想的一样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rossrv show xxx</div></pre></td></tr></table></figure></p>
-<p>还可以使用rossrv list来查看所有可用的服务，使用rossrv packages来查看所有提供了服务的包，使用rossrv package xxx来查看xxx功能包提供的服务。</p>
-<p>注意，ROS中还有一个命令rosservice，这个命令是用来在ROS运行时和启动的服务进行交互的命令，例如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rosservice call /spawn 8.0 8.0 0.0 &apos;turtle2&apos;</div></pre></td></tr></table></figure>
-
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/ros/" rel="tag"><i class="fa fa-tag"></i>ros</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2019/08/06/ros_namespace/" rel="next" title="机器人操作系统ROS学习笔记：ROS命名空间及重映射">
-                <i class="fa fa-chevron-left"></i> 机器人操作系统ROS学习笔记：ROS命名空间及重映射
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/09/29/Git_fatal/" rel="prev" title="Git 未知索引格式错误">
-                Git 未知索引格式错误 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+    </header>
   </article>
 
 
 
-    <div class="post-spread">
       
+
     </div>
   </div>
+  
+  
+  
+
+  
+
 
 
           </div>
@@ -517,10 +404,6 @@
 
 
           
-
-  
-
-
 
         </div>
         
@@ -541,17 +424,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -638,22 +512,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ROS中的服务"><span class="nav-number">1.</span> <span class="nav-text">ROS中的服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#定义服务"><span class="nav-number">2.</span> <span class="nav-text">定义服务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用服务"><span class="nav-number">3.</span> <span class="nav-text">使用服务</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -804,10 +662,6 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
-
-
 
   
 
@@ -1180,6 +1034,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
