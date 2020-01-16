@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yluo.name/"/>
-  <updated>2020-01-16T06:21:00.495Z</updated>
+  <updated>2020-01-16T06:22:34.561Z</updated>
   <id>http://yluo.name/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://yluo.name/2020/01/17/qt_im/"/>
     <id>http://yluo.name/2020/01/17/qt_im/</id>
     <published>2020-01-17T06:20:00.000Z</published>
-    <updated>2020-01-16T06:21:00.495Z</updated>
+    <updated>2020-01-16T06:22:34.561Z</updated>
     
     <content type="html"><![CDATA[<p>在Ubuntu 16.04系统下安装Qt5.12.2之后，发现在Qt Creator下无法使用Sogou Linux输入法实现中文输入。这是由于Sogou输入法使用的是fcitx框架，而Qt Creator下缺少fcitx输入法的插件造成的。</p><h2 id="解决步骤"><a href="#解决步骤" class="headerlink" title="解决步骤"></a>解决步骤</h2><h3 id="1-确认安装fcitx-frontend-qt5"><a href="#1-确认安装fcitx-frontend-qt5" class="headerlink" title="1. 确认安装fcitx-frontend-qt5"></a>1. 确认安装fcitx-frontend-qt5</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt install fcitx-frontend-qt5</div></pre></td></tr></table></figure><h3 id="2-确认该路径下存在文件"><a href="#2-确认该路径下存在文件" class="headerlink" title="2. 确认该路径下存在文件"></a>2. 确认该路径下存在文件</h3><p>由于Sogou Linux输入法采用的是fcitx框架，因此，需要确认<code>libfcitxplatforminputcontextplugin.so</code>是否存在</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /usr/lib/x86_64-linux-gnu/qt5/plugins/platforminputcontexts</div><div class="line">ls | grep libfcitx</div></pre></td></tr></table></figure><h3 id="3-将此lib文件复制到Qt与Qt-Creator的对应路径下"><a href="#3-将此lib文件复制到Qt与Qt-Creator的对应路径下" class="headerlink" title="3. 将此lib文件复制到Qt与Qt Creator的对应路径下"></a>3. 将此lib文件复制到Qt与Qt Creator的对应路径下</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo cp libfcitxplatforminputcontextplugin.so /opt/Qt5.12.2/Tools/QtCreator/lib/Qt/plugins/platforminputcontexts/</div><div class="line">sudo cp libfcitxplatforminputcontextplugin.so /opt/Qt5.12.2/5.12.2/gcc_64/plugins/platforminputcontexts/</div></pre></td></tr></table></figure><p>随后重启Qt Creator，便可以输入中文了。</p>]]></content>
     
@@ -97,31 +97,6 @@
   </entry>
   
   <entry>
-    <title>机器人操作系统ROS学习笔记：自定义消息类型</title>
-    <link href="http://yluo.name/2019/08/06/ros_message/"/>
-    <id>http://yluo.name/2019/08/06/ros_message/</id>
-    <published>2019-08-06T07:00:00.000Z</published>
-    <updated>2019-11-15T02:42:48.373Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="ROS消息文件"><a href="#ROS消息文件" class="headerlink" title="ROS消息文件"></a>ROS消息文件</h1><p>ROS的消息文件是一个描述ROS中所使用消息类型的简单文本，通常存放在功能包文件夹下的msg文件夹下，可以被用来生成不同语言的源代码。</p><h1 id="消息数据类型"><a href="#消息数据类型" class="headerlink" title="消息数据类型"></a>消息数据类型</h1><p>ROS中的消息可使用的基本数据类型如下：</p><ul><li>int8, int16, int32, int64 (plus uint*)</li><li>float32, float64</li><li>string</li><li>time, duration</li><li>可变长度的数组，例如int8[]，以及固定长度的数组，例如float32[10]</li></ul><p>ROS消息中还有一个特殊的数据类型：Header， 其含有时间戳和坐标系信息。通常在很多msg文件的第一行有：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Header header</div></pre></td></tr></table></figure></p><p>个人理解（不一定准确），Header类型通常包含在频繁发送的消息中，这样订阅节点可以根据Header中的时间戳信息等做信息同步处理。</p><p>同时，msg文件中还可以包括其他消息文件类型，例如在下面xxx.msg文件中，使用了Header, string以及另外两个消息类型。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Header header</div><div class="line">string child_frame_id</div><div class="line">geometry_msgs/PoseWithCovariance pose</div><div class="line">geometry_msgs/TwistWithCovariance twist</div></pre></td></tr></table></figure></p><h1 id="使用消息"><a href="#使用消息" class="headerlink" title="使用消息"></a>使用消息</h1><p>为了使用消息，需要在package.xml中添加编译依赖和执行依赖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;build_depend&gt;message_generation&lt;/build_depend&gt;</div><div class="line">&lt;exec_depend&gt;message_runtime&lt;/exec_depend&gt;</div></pre></td></tr></table></figure></p><p>并且在CMakeLists.txt文件中利用find_package函数增加对message_generation的依赖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">find_package(catkin REQUIRED COMPONENTS</div><div class="line">    ...</div><div class="line">    message_generation</div><div class="line">)</div></pre></td></tr></table></figure></p><p>同时，利用catkin_package函数设置运行依赖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">catkin_package(</div><div class="line">    ...</div><div class="line">    CATKIN_DEPENDS message_runtime ...</div><div class="line">)</div></pre></td></tr></table></figure></p><p>并添加需要参与编译的msg文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">add_message_files(</div><div class="line">    FILES</div><div class="line">    xxx.msg</div><div class="line">    ...</div><div class="line">)</div></pre></td></tr></table></figure></p><p>确保CMake知道在消息文件更改后重新编译msg文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">generate_messages(</div><div class="line">    DEPENDENCIES</div><div class="line">    std_msgs</div><div class="line">)</div></pre></td></tr></table></figure></p><p>随后便可在功能包目录下运行catkin_make进行编译，成功后可使用rosmsg命令查看自定义的消息类型：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rosmsg show xxx</div></pre></td></tr></table></figure></p><h1 id="消息相关命令"><a href="#消息相关命令" class="headerlink" title="消息相关命令"></a>消息相关命令</h1><ul><li>rosmsg show xxx: 查看消息xxx类型，可以不指定功能包名。</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;ROS消息文件&quot;&gt;&lt;a href=&quot;#ROS消息文件&quot; class=&quot;headerlink&quot; title=&quot;ROS消息文件&quot;&gt;&lt;/a&gt;ROS消息文件&lt;/h1&gt;&lt;p&gt;ROS的消息文件是一个描述ROS中所使用消息类型的简单文本，通常存放在功能包文件夹下的msg文件夹下
-      
-    
-    </summary>
-    
-      <category term="Robot Operating System" scheme="http://yluo.name/categories/Robot-Operating-System/"/>
-    
-    
-      <category term="ros" scheme="http://yluo.name/tags/ros/"/>
-    
-  </entry>
-  
-  <entry>
     <title>机器人操作系统ROS学习笔记：ROS命名空间及重映射</title>
     <link href="http://yluo.name/2019/08/06/ros_namespace/"/>
     <id>http://yluo.name/2019/08/06/ros_namespace/</id>
@@ -135,6 +110,31 @@
       
       
         &lt;h1 id=&quot;ROS的命名&quot;&gt;&lt;a href=&quot;#ROS的命名&quot; class=&quot;headerlink&quot; title=&quot;ROS的命名&quot;&gt;&lt;/a&gt;ROS的命名&lt;/h1&gt;&lt;p&gt;命名是ROS中的基本概念。ROS中的节点、话题以及参数都必须有唯一的命名。例如机器人上的相机可以命名为cam
+      
+    
+    </summary>
+    
+      <category term="Robot Operating System" scheme="http://yluo.name/categories/Robot-Operating-System/"/>
+    
+    
+      <category term="ros" scheme="http://yluo.name/tags/ros/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>机器人操作系统ROS学习笔记：自定义消息类型</title>
+    <link href="http://yluo.name/2019/08/06/ros_message/"/>
+    <id>http://yluo.name/2019/08/06/ros_message/</id>
+    <published>2019-08-06T07:00:00.000Z</published>
+    <updated>2019-11-15T02:42:48.373Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="ROS消息文件"><a href="#ROS消息文件" class="headerlink" title="ROS消息文件"></a>ROS消息文件</h1><p>ROS的消息文件是一个描述ROS中所使用消息类型的简单文本，通常存放在功能包文件夹下的msg文件夹下，可以被用来生成不同语言的源代码。</p><h1 id="消息数据类型"><a href="#消息数据类型" class="headerlink" title="消息数据类型"></a>消息数据类型</h1><p>ROS中的消息可使用的基本数据类型如下：</p><ul><li>int8, int16, int32, int64 (plus uint*)</li><li>float32, float64</li><li>string</li><li>time, duration</li><li>可变长度的数组，例如int8[]，以及固定长度的数组，例如float32[10]</li></ul><p>ROS消息中还有一个特殊的数据类型：Header， 其含有时间戳和坐标系信息。通常在很多msg文件的第一行有：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Header header</div></pre></td></tr></table></figure></p><p>个人理解（不一定准确），Header类型通常包含在频繁发送的消息中，这样订阅节点可以根据Header中的时间戳信息等做信息同步处理。</p><p>同时，msg文件中还可以包括其他消息文件类型，例如在下面xxx.msg文件中，使用了Header, string以及另外两个消息类型。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Header header</div><div class="line">string child_frame_id</div><div class="line">geometry_msgs/PoseWithCovariance pose</div><div class="line">geometry_msgs/TwistWithCovariance twist</div></pre></td></tr></table></figure></p><h1 id="使用消息"><a href="#使用消息" class="headerlink" title="使用消息"></a>使用消息</h1><p>为了使用消息，需要在package.xml中添加编译依赖和执行依赖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;build_depend&gt;message_generation&lt;/build_depend&gt;</div><div class="line">&lt;exec_depend&gt;message_runtime&lt;/exec_depend&gt;</div></pre></td></tr></table></figure></p><p>并且在CMakeLists.txt文件中利用find_package函数增加对message_generation的依赖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">find_package(catkin REQUIRED COMPONENTS</div><div class="line">    ...</div><div class="line">    message_generation</div><div class="line">)</div></pre></td></tr></table></figure></p><p>同时，利用catkin_package函数设置运行依赖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">catkin_package(</div><div class="line">    ...</div><div class="line">    CATKIN_DEPENDS message_runtime ...</div><div class="line">)</div></pre></td></tr></table></figure></p><p>并添加需要参与编译的msg文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">add_message_files(</div><div class="line">    FILES</div><div class="line">    xxx.msg</div><div class="line">    ...</div><div class="line">)</div></pre></td></tr></table></figure></p><p>确保CMake知道在消息文件更改后重新编译msg文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">generate_messages(</div><div class="line">    DEPENDENCIES</div><div class="line">    std_msgs</div><div class="line">)</div></pre></td></tr></table></figure></p><p>随后便可在功能包目录下运行catkin_make进行编译，成功后可使用rosmsg命令查看自定义的消息类型：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rosmsg show xxx</div></pre></td></tr></table></figure></p><h1 id="消息相关命令"><a href="#消息相关命令" class="headerlink" title="消息相关命令"></a>消息相关命令</h1><ul><li>rosmsg show xxx: 查看消息xxx类型，可以不指定功能包名。</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;ROS消息文件&quot;&gt;&lt;a href=&quot;#ROS消息文件&quot; class=&quot;headerlink&quot; title=&quot;ROS消息文件&quot;&gt;&lt;/a&gt;ROS消息文件&lt;/h1&gt;&lt;p&gt;ROS的消息文件是一个描述ROS中所使用消息类型的简单文本，通常存放在功能包文件夹下的msg文件夹下
       
     
     </summary>
