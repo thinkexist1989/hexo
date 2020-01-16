@@ -2,233 +2,240 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yluo.name/2019/09/29/Git_fatal/</loc>
+    <loc>http://yluo.name/2020/01/16/ubuntu_indicator/</loc>
     
-    <lastmod>2019-09-20T03:16:21.141Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yluo.name/2019/08/06/ros_namespace/</loc>
-    
-    <lastmod>2019-09-20T03:13:05.493Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yluo.name/2019/08/06/ros_service/</loc>
-    
-    <lastmod>2019-08-07T05:04:24.056Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yluo.name/2019/08/06/ros_cmakelist/</loc>
-    
-    <lastmod>2019-08-06T07:54:42.673Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yluo.name/2019/08/06/ros_message/</loc>
-    
-    <lastmod>2019-08-06T07:53:26.323Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yluo.name/2019/08/06/ros_package_xml/</loc>
-    
-    <lastmod>2019-08-06T06:31:00.008Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yluo.name/2019/08/06/ros_package_struct/</loc>
-    
-    <lastmod>2019-08-06T05:51:04.405Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yluo.name/2018/08/30/ros_install/</loc>
-    
-    <lastmod>2019-08-06T02:52:49.495Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yluo.name/2018/09/02/network_1/</loc>
-    
-    <lastmod>2019-08-06T02:48:41.325Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yluo.name/2018/04/14/linux_windows/</loc>
-    
-    <lastmod>2019-08-06T02:48:41.325Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yluo.name/2018/12/20/make_latex/</loc>
-    
-    <lastmod>2019-08-06T02:48:41.325Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yluo.name/2018/09/07/network_3/</loc>
-    
-    <lastmod>2019-08-06T02:48:41.325Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yluo.name/2018/12/29/network_4/</loc>
-    
-    <lastmod>2019-08-06T02:48:41.325Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yluo.name/2018/09/06/network_2/</loc>
-    
-    <lastmod>2019-08-06T02:48:41.325Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yluo.name/2019/03/17/qt_high_dpi/</loc>
-    
-    <lastmod>2019-08-06T02:48:41.325Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yluo.name/2019/03/17/qt_uic/</loc>
-    
-    <lastmod>2019-08-06T02:48:41.325Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yluo.name/2018/04/14/Git_intro/</loc>
-    
-    <lastmod>2019-08-06T02:48:41.325Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yluo.name/2017/10/18/academic_essay_words/</loc>
-    
-    <lastmod>2019-08-06T02:48:41.325Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yluo.name/2019/01/02/cmake/</loc>
-    
-    <lastmod>2019-08-06T02:48:41.325Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yluo.name/2019/03/05/cmake_qt_opencv/</loc>
-    
-    <lastmod>2019-08-06T02:48:41.325Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yluo.name/2019/02/12/cmake_build_opencv/</loc>
-    
-    <lastmod>2019-08-06T02:48:41.325Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yluo.name/2019/01/24/grub/</loc>
-    
-    <lastmod>2019-08-06T02:48:41.325Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yluo.name/2019/01/24/terminal_via_ss/</loc>
-    
-    <lastmod>2019-08-06T02:48:41.325Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yluo.name/2017/10/17/hexo_intro/</loc>
-    
-    <lastmod>2019-08-06T02:48:41.325Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yluo.name/2019/04/06/terminator_intro/</loc>
-    
-    <lastmod>2019-08-06T02:48:41.325Z</lastmod>
+    <lastmod>2020-01-16T03:17:33.458Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yluo.name/2019/01/25/ubuntu_partition/</loc>
     
-    <lastmod>2019-08-06T02:48:41.325Z</lastmod>
+    <lastmod>2020-01-16T02:31:18.791Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yluo.name/2019/08/01/ubuntu_windows_time/</loc>
+    <loc>http://yluo.name/2019/09/29/Git_fatal/</loc>
     
-    <lastmod>2019-08-06T02:48:41.325Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://yluo.name/2019/03/06/vim_intro/</loc>
-    
-    <lastmod>2019-08-06T02:48:41.325Z</lastmod>
+    <lastmod>2019-11-15T02:42:48.373Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yluo.name/2019/03/05/vim_cmd/</loc>
+    <loc>http://yluo.name/2018/04/14/Git_intro/</loc>
     
-    <lastmod>2019-08-06T02:48:41.325Z</lastmod>
+    <lastmod>2019-11-15T02:42:48.373Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yluo.name/2017/10/18/academic_essay/</loc>
     
-    <lastmod>2019-08-06T02:48:41.325Z</lastmod>
+    <lastmod>2019-11-15T02:42:48.373Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2017/10/18/academic_essay_words/</loc>
+    
+    <lastmod>2019-11-15T02:42:48.373Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2019/02/12/cmake_build_opencv/</loc>
+    
+    <lastmod>2019-11-15T02:42:48.373Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2019/03/05/cmake_qt_opencv/</loc>
+    
+    <lastmod>2019-11-15T02:42:48.373Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2019/01/02/cmake/</loc>
+    
+    <lastmod>2019-11-15T02:42:48.373Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2019/01/24/grub/</loc>
+    
+    <lastmod>2019-11-15T02:42:48.373Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2017/10/17/hexo_intro/</loc>
+    
+    <lastmod>2019-11-15T02:42:48.373Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2018/04/14/linux_windows/</loc>
+    
+    <lastmod>2019-11-15T02:42:48.373Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2018/12/20/make_latex/</loc>
+    
+    <lastmod>2019-11-15T02:42:48.373Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2018/09/02/network_1/</loc>
+    
+    <lastmod>2019-11-15T02:42:48.373Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2018/09/06/network_2/</loc>
+    
+    <lastmod>2019-11-15T02:42:48.373Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2018/09/07/network_3/</loc>
+    
+    <lastmod>2019-11-15T02:42:48.373Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2018/12/29/network_4/</loc>
+    
+    <lastmod>2019-11-15T02:42:48.373Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2019/03/17/qt_high_dpi/</loc>
+    
+    <lastmod>2019-11-15T02:42:48.373Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2019/03/17/qt_uic/</loc>
+    
+    <lastmod>2019-11-15T02:42:48.373Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2019/08/06/ros_cmakelist/</loc>
+    
+    <lastmod>2019-11-15T02:42:48.373Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2018/08/30/ros_install/</loc>
+    
+    <lastmod>2019-11-15T02:42:48.373Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2019/08/06/ros_message/</loc>
+    
+    <lastmod>2019-11-15T02:42:48.373Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2019/08/06/ros_namespace/</loc>
+    
+    <lastmod>2019-11-15T02:42:48.373Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2019/08/06/ros_package_struct/</loc>
+    
+    <lastmod>2019-11-15T02:42:48.373Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2019/08/06/ros_package_xml/</loc>
+    
+    <lastmod>2019-11-15T02:42:48.373Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2019/08/06/ros_service/</loc>
+    
+    <lastmod>2019-11-15T02:42:48.373Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2019/01/24/terminal_via_ss/</loc>
+    
+    <lastmod>2019-11-15T02:42:48.373Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2019/04/06/terminator_intro/</loc>
+    
+    <lastmod>2019-11-15T02:42:48.373Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2019/08/01/ubuntu_windows_time/</loc>
+    
+    <lastmod>2019-11-15T02:42:48.373Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2019/03/05/vim_cmd/</loc>
+    
+    <lastmod>2019-11-15T02:42:48.373Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yluo.name/2019/03/06/vim_intro/</loc>
+    
+    <lastmod>2019-11-15T02:42:48.373Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yluo.name/about/index.html</loc>
     
-    <lastmod>2019-08-05T03:14:12.953Z</lastmod>
+    <lastmod>2019-11-15T02:42:48.373Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yluo.name/categories/index.html</loc>
     
-    <lastmod>2019-08-01T06:50:17.158Z</lastmod>
+    <lastmod>2019-11-15T02:42:48.373Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yluo.name/tags/index.html</loc>
     
-    <lastmod>2019-08-01T06:50:17.158Z</lastmod>
+    <lastmod>2019-11-15T02:42:48.373Z</lastmod>
     
   </url>
   
