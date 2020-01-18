@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yluo.name/"/>
-  <updated>2020-01-16T06:22:34.561Z</updated>
+  <updated>2020-01-18T07:19:08.350Z</updated>
   <id>http://yluo.name/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>正则表达式</title>
+    <link href="http://yluo.name/2020/01/18/regexp/"/>
+    <id>http://yluo.name/2020/01/18/regexp/</id>
+    <published>2020-01-18T06:11:00.000Z</published>
+    <updated>2020-01-18T07:19:08.350Z</updated>
+    
+    <content type="html"><![CDATA[<p>正则表达式(Regular Expression)是一种文本模式，包括普通字符（例如，a 到 z 之间的字母）和特殊字符（称为”元字符”）。正则表达式使用单个字符串来描述、匹配一系列匹配某个句法规则的字符串。</p><h2 id="为什么使用正则表达式"><a href="#为什么使用正则表达式" class="headerlink" title="为什么使用正则表达式"></a>为什么使用正则表达式</h2><p>在Linux终端和Vim等文本编辑器中经常会使用到正则表达式来匹配期望的文本，通过使用正则表达式可以：</p><ul><li>测试字符串内的模式， 例如查看字符串内是否出现电话号码或信用卡号码等；</li><li>替换文本， 识别特定文本并进行相关操作；</li><li>基于模式匹配从字符串中提取子字符串，可以查找文档内或输入域内特定的文本。</li></ul><p>例如，可以使用<code>data(\w)?\.dat</code>可以匹配以下内容：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">data.dat</div><div class="line">data1.dat</div><div class="line">datax.dat</div><div class="line">dataN.dat</div></pre></td></tr></table></figure><p><code>?</code>可以匹配文件名中的0个或1个字符，而<code>*</code>通配符匹配0个或多个字符。<code>data.*\.dat</code>可以匹配以下内容：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">data.dat</div><div class="line">data2.dat</div><div class="line">data12.dat</div><div class="line">datxYZ.dat</div></pre></td></tr></table></figure><h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>正则表达式描述了一种字符串匹配的模式（pattern），可以用来检查一个串是否含有某种子串、将匹配的子串替换或者从某个串中取出符合某个条件的子串等。</p><p>例如，</p><ul><li><p><code>runoo+b</code>，可以匹配 runoob、runooob、runoooooob 等，<code>+</code> 号代表前面的字符必须至少出现一次（1次或多次）。</p></li><li><p><code>runoo*b</code>，可以匹配 runob、runoob、runoooooob 等，<code>*</code> 号代表字符可以不出现，也可以出现一次或者多次（0次、或1次、或多次）。</p></li><li><p><code>colou?r</code> 可以匹配 color 或者 colour，<code>?</code> 问号代表前面的字符最多只可以出现一次（0次、或1次）。</p></li></ul><h3 id="普通字符"><a href="#普通字符" class="headerlink" title="普通字符"></a>普通字符</h3><p>普通字符包括没有显式指定为元字符的所有可打印和不可打印字符。这包括所有<em>大写</em>和<em>小写</em>字母、所有<em>数字</em>、所有<em>标点符号</em>和一些其他符号。</p><h3 id="非打印字符"><a href="#非打印字符" class="headerlink" title="非打印字符"></a>非打印字符</h3><div class="table-container"><table><thead><tr><th style="text-align:left">字符</th><th style="text-align:left">描述</th></tr></thead><tbody><tr><td style="text-align:left"><code>\cx</code></td><td style="text-align:left">匹配由x指明的控制字符。例如， \cM 匹配一个 Control-M 或回车符。x 的值必须为 A-Z 或 a-z 之一。否则，将 c 视为一个原义的 ‘c’ 字符</td></tr><tr><td style="text-align:left"><code>\f</code></td><td style="text-align:left">匹配一个换页符。等价于 \x0c 和 \c</td></tr><tr><td style="text-align:left"><code>\n</code></td><td style="text-align:left">匹配一个换行符。等价于 \x0a 和 \cJ</td></tr><tr><td style="text-align:left"><code>\r</code></td><td style="text-align:left">匹配一个回车符。等价于 \x0d 和 \cM</td></tr><tr><td style="text-align:left"><code>\s</code></td><td style="text-align:left">匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [ \f\n\r\t\v]。注意 Unicode 正则表达式会匹配全角空格符</td></tr><tr><td style="text-align:left"><code>\S</code></td><td style="text-align:left">匹配任何非空白字符。等价于 <sup><a href="#fn_ \f\n\r\t\v" id="reffn_ \f\n\r\t\v"> \f\n\r\t\v</a></sup></td></tr><tr><td style="text-align:left"><code>\t</code></td><td style="text-align:left">匹配一个制表符。等价于 \x09 和 \cI</td></tr><tr><td style="text-align:left"><code>\v</code></td><td style="text-align:left">匹配一个垂直制表符。等价于 \x0b 和 \cK</td></tr></tbody></table></div><h3 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h3><p>所谓特殊字符，就是一些有特殊含义的字符，如上面说的 <code>runoo*b</code> 中的 <code>*</code>，简单的说就是表示任何字符串的意思。如果要查找字符串中的 * 符号，则需要对 * 进行转义，即在其前加一个 <code>\</code>: <code>runo\*ob</code> 匹配 runo*ob。</p><p>许多元字符要求在试图匹配它们时特别对待。若要匹配这些特殊字符，必须首先使字符”转义”，即，将反斜杠字符<code>\</code>放在它们前面。下表列出了正则表达式中的特殊字符：<br>| 字符    |       描述      |<br>| :——— | :——————- |<br>|    <code>$</code>    | 匹配输入字符串的结尾位置。如果设置了 RegExp 对象的 Multiline 属性，则 $ 也匹配 ‘\n’ 或 ‘\r’。要匹配 $ 字符本身，请使用 $ |<br>|   <code>()</code>    | 标记一个子表达式的开始和结束位置。子表达式可以获取供以后使用。要匹配这些字符，请使用 <code>\(</code> 和 <code>\)</code> |<br>|   <code>*</code>     | 匹配前面的子表达式0次或多次。要匹配 <em> 字符，请使用 `\</em><code>||</code>+<code>| 匹配前面的子表达式1次或多次。要匹配 + 字符，请使用</code>+<code>||</code>.<code>| 匹配除换行符</code>\n<code>之外的任何单字符。要匹配 . ，请使用</code>.<code>||</code>[<code>| 标记一个中括号表达式的开始。要匹配 [，请使用</code>[<code>||</code>?<code>| 匹配前面的子表达式0次或1次，或指明一个**非贪婪**限定符。要匹配 ? 字符，请使用</code>\?<code>||</code>`     | 将下一个字符标记为或特殊字符、或原义字符、或向后引用、或八进制转义符。例如， <code>n</code> 匹配字符 n。<code>\n</code> 匹配换行符。序列 <code>\\</code> 匹配 \、，而 <code>\(</code> 则匹配 ( |<br>|   <code>^</code>     | 匹配输入字符串的开始位置，除非在方括号表达式中使用，当该符号在方括号表达式中使用时，表示不接受该方括号表达式中的字符集合。要匹配 ^ 字符本身，请使用 <code>\^</code> |<br>|   <code>{</code>     | 标记限定符表达式的开始。要匹配 {，请使用<code>\{</code>  |<br>|   <code>|</code>     | 指明两项之间的一个选择。要匹配 |， 请使用<code>\|</code> |</p><h3 id="限定符"><a href="#限定符" class="headerlink" title="限定符"></a>限定符</h3><p>限定符用来指定正则表达式的一个给定组件必须要出现多少次才能满足匹配。有 <code>*</code>或 <code>+</code> 或 <code>?</code> 或 <code>{n}</code> 或 <code>{n,}</code> 或 <code>{n,m}</code> 共6种。正则表达式的限定符有：<br>| 字符    |       描述      |<br>| :——— | :——————- |<br>|   <code>*</code>   | 匹配前面的子表达式0次或多次。例如，<code>zo*</code> 能匹配 z 以及 zoo。<code>*</code> 等价于<code>{0,}</code> |<br>|   <code>+</code>   | 匹配前面的子表达式1次或多次。例如，<code>zo+</code> 能匹配 zo 以及 zoo，但不能匹配 z。<code>+</code> 等价于 <code>{1,}</code> |<br>|   <code>?</code>   | 匹配前面的子表达式0次或1次。例如，<code>do(es)?</code> 可以匹配 do 、 does 中的 does 、 doxy 中的 do 。<code>?</code> 等价于 <code>{0,1}</code> |<br>|   <code>{n}</code>   | n 是一个非负整数。匹配确定的 n 次。例如，<code>o{2}</code> 不能匹配 Bob 中的 o，但是能匹配 food 中的2个 o |<br>|   <code>{n,}</code>  | n 是一个非负整数。至少匹配n 次。例如，<code>o{2,}</code> 不能匹配 Bob 中的 o，但能匹配 foooood 中的所有 o。<code>o{1,}</code> 等价于 <code>o+</code>。<code>o{0,}</code> 则等价于 <code>o*</code> |<br>|   <code>{n,m}</code> | m 和 n 均为非负整数，其中n &lt;= m。最少匹配 n 次且最多匹配 m 次。例如，<code>o{1,3}</code> 将匹配 fooooood 中的前三个 o。<code>o{0,1}</code> 等价于 <code>o?</code>。请注意在逗号和两个数之间不能有空格 |</p><p>以下正则表达式匹配一个正整数， <code>[1-9]</code>设置第一个数字不是0， <code>[0-9]*</code>表示任意多个数字：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/[1-9][0-9]*/</div></pre></td></tr></table></figure><p>请注意，限定符出现在范围表达式之后。因此，它应用于整个范围表达式，在本例中，只指定从 0 到 9 的数字（包括 0 和 9）。这里不使用 + 限定符，因为在第二个位置或后面的位置不一定需要有一个数字。也不使用 ? 字符，因为使用 ? 会将整数限制到只有两位数。如果你想设置 0~99 的两位数，可以使用下面的表达式来至少指定1位但至多2位数字：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/[0-9]&#123;1,2&#125;/</div></pre></td></tr></table></figure><p>上面的表达式的缺点是，只能匹配两位数字，而且可以匹配 0、00、01、10 99 的章节编号仍只匹配开头两位数字。改进下，匹配 1~99 的正整数表达式如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/[1-9][0-9]?/</div></pre></td></tr></table></figure><p><code>*</code> 、<code>+</code> 限定符都是<strong>贪婪</strong>的，因为它们会<strong>尽可能多</strong>的匹配文字，只有在它们的后面加上一个 <code>?</code> 就可以实现<strong>非贪婪</strong>或<strong>最小匹配</strong>。</p><p>例如，您可能搜索 HTML 文档，以查找在 h1 标签内的内容。HTML 代码如下：</p><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>RUNOOB-菜鸟教程<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div></pre></td></tr></table></figure><p><strong>贪婪</strong>：下面的表达式匹配从开始小于符号 (&lt;) 到关闭 h1 标记的大于符号 (&gt;) 之间的所有内容。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/&lt;.*&gt;/</div></pre></td></tr></table></figure><p><strong>非贪婪</strong>：如果您只需要匹配开始和结束 h1 标签，下面的非贪婪表达式只匹配 \<h1\>。</h1\></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/&lt;.*?&gt;/</div></pre></td></tr></table></figure><p>也可以使用以下正则表达式来匹配 h1 标签，表达式则是：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/&lt;\w+?&gt;/</div></pre></td></tr></table></figure><p>通过在 <code>*</code> 、<code>+</code> 或 <code>?</code> 限定符之后放置 <code>?</code>，该表达式从<strong>贪婪</strong>表达式转换为<strong>非贪婪</strong>表达式或者<strong>最小匹配</strong>。</p><p>未完待续。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;正则表达式(Regular Expression)是一种文本模式，包括普通字符（例如，a 到 z 之间的字母）和特殊字符（称为”元字符”）。正则表达式使用单个字符串来描述、匹配一系列匹配某个句法规则的字符串。&lt;/p&gt;
+&lt;h2 id=&quot;为什么使用正则表达式&quot;&gt;&lt;a href=
+      
+    
+    </summary>
+    
+      <category term="Software" scheme="http://yluo.name/categories/Software/"/>
+    
+    
+      <category term="linux" scheme="http://yluo.name/tags/linux/"/>
+    
+      <category term="bash" scheme="http://yluo.name/tags/bash/"/>
+    
+  </entry>
   
   <entry>
     <title>Ubuntu下Qt Creator无法输入中文问题</title>
@@ -122,31 +150,6 @@
   </entry>
   
   <entry>
-    <title>机器人操作系统ROS学习笔记：自定义服务</title>
-    <link href="http://yluo.name/2019/08/06/ros_service/"/>
-    <id>http://yluo.name/2019/08/06/ros_service/</id>
-    <published>2019-08-06T07:00:00.000Z</published>
-    <updated>2019-11-15T02:42:48.373Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="ROS中的服务"><a href="#ROS中的服务" class="headerlink" title="ROS中的服务"></a>ROS中的服务</h1><p>服务（Service）是ROS节点之间同步通讯的一种方式，允许客户端（Client）节点发布请求（Request），由服务端（Server）节点处理后反馈应答（Response）。</p><h1 id="定义服务"><a href="#定义服务" class="headerlink" title="定义服务"></a>定义服务</h1><p>ROS中的服务可以通过srv文件夹下的xxx.srv文件进行语言无关的接口定义。文件包括请求与应答两个数据域，使用“—-”进行分割。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int64 a</div><div class="line">int64 b</div><div class="line">---</div><div class="line">int64 sum</div></pre></td></tr></table></figure><h1 id="使用服务"><a href="#使用服务" class="headerlink" title="使用服务"></a>使用服务</h1><p>首先需要在package.xml文件表明对消息生成系统的依赖，即构建依赖项message_generation和运行依赖项message_runtime：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;build_depend&gt;rospy&lt;/build_depend&gt;</div><div class="line">&lt;run_depend&gt;rospy&lt;/run_depend&gt;</div><div class="line"></div><div class="line">&lt;build_depend&gt;message_generation&lt;/build_depend&gt;</div><div class="line">&lt;run_depend&gt;message_runtime&lt;/run_depend&gt;</div></pre></td></tr></table></figure><p>随后在CMakeLists.txt文件中利用find_package函数增加对message_generation的依赖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">find_package(catkin REQUIRED COMPONENTS</div><div class="line">    ...</div><div class="line">    message_generation</div><div class="line">)</div></pre></td></tr></table></figure></p><p>同时，利用catkin_package函数设置运行依赖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">catkin_package(</div><div class="line">    ...</div><div class="line">    CATKIN_DEPENDS message_runtime ...</div><div class="line">)</div></pre></td></tr></table></figure></p><p>并添加需要参与编译的srv文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">add_service_files(</div><div class="line">    FILES</div><div class="line">    xxx.srv</div><div class="line">    ...</div><div class="line">)</div></pre></td></tr></table></figure></p><p>确保CMake知道在消息文件更改后重新编译msg文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">generate_messages(</div><div class="line">    DEPENDENCIES</div><div class="line">    std_msgs</div><div class="line">)</div></pre></td></tr></table></figure></p><p>随后便可在功能包目录下运行catkin_make进行编译，成功后可使用rossrv命令检验服务的定义是否和我们想的一样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rossrv show xxx</div></pre></td></tr></table></figure></p><p>还可以使用rossrv list来查看所有可用的服务，使用rossrv packages来查看所有提供了服务的包，使用rossrv package xxx来查看xxx功能包提供的服务。</p><p>注意，ROS中还有一个命令rosservice，这个命令是用来在ROS运行时和启动的服务进行交互的命令，例如：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rosservice call /spawn 8.0 8.0 0.0 &apos;turtle2&apos;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;ROS中的服务&quot;&gt;&lt;a href=&quot;#ROS中的服务&quot; class=&quot;headerlink&quot; title=&quot;ROS中的服务&quot;&gt;&lt;/a&gt;ROS中的服务&lt;/h1&gt;&lt;p&gt;服务（Service）是ROS节点之间同步通讯的一种方式，允许客户端（Client）节点发布请求（R
-      
-    
-    </summary>
-    
-      <category term="Robot Operating System" scheme="http://yluo.name/categories/Robot-Operating-System/"/>
-    
-    
-      <category term="ros" scheme="http://yluo.name/tags/ros/"/>
-    
-  </entry>
-  
-  <entry>
     <title>机器人操作系统ROS学习笔记：ROS命名空间及重映射</title>
     <link href="http://yluo.name/2019/08/06/ros_namespace/"/>
     <id>http://yluo.name/2019/08/06/ros_namespace/</id>
@@ -160,6 +163,31 @@
       
       
         &lt;h1 id=&quot;ROS的命名&quot;&gt;&lt;a href=&quot;#ROS的命名&quot; class=&quot;headerlink&quot; title=&quot;ROS的命名&quot;&gt;&lt;/a&gt;ROS的命名&lt;/h1&gt;&lt;p&gt;命名是ROS中的基本概念。ROS中的节点、话题以及参数都必须有唯一的命名。例如机器人上的相机可以命名为cam
+      
+    
+    </summary>
+    
+      <category term="Robot Operating System" scheme="http://yluo.name/categories/Robot-Operating-System/"/>
+    
+    
+      <category term="ros" scheme="http://yluo.name/tags/ros/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>机器人操作系统ROS学习笔记：自定义服务</title>
+    <link href="http://yluo.name/2019/08/06/ros_service/"/>
+    <id>http://yluo.name/2019/08/06/ros_service/</id>
+    <published>2019-08-06T07:00:00.000Z</published>
+    <updated>2019-11-15T02:42:48.373Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="ROS中的服务"><a href="#ROS中的服务" class="headerlink" title="ROS中的服务"></a>ROS中的服务</h1><p>服务（Service）是ROS节点之间同步通讯的一种方式，允许客户端（Client）节点发布请求（Request），由服务端（Server）节点处理后反馈应答（Response）。</p><h1 id="定义服务"><a href="#定义服务" class="headerlink" title="定义服务"></a>定义服务</h1><p>ROS中的服务可以通过srv文件夹下的xxx.srv文件进行语言无关的接口定义。文件包括请求与应答两个数据域，使用“—-”进行分割。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int64 a</div><div class="line">int64 b</div><div class="line">---</div><div class="line">int64 sum</div></pre></td></tr></table></figure><h1 id="使用服务"><a href="#使用服务" class="headerlink" title="使用服务"></a>使用服务</h1><p>首先需要在package.xml文件表明对消息生成系统的依赖，即构建依赖项message_generation和运行依赖项message_runtime：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;build_depend&gt;rospy&lt;/build_depend&gt;</div><div class="line">&lt;run_depend&gt;rospy&lt;/run_depend&gt;</div><div class="line"></div><div class="line">&lt;build_depend&gt;message_generation&lt;/build_depend&gt;</div><div class="line">&lt;run_depend&gt;message_runtime&lt;/run_depend&gt;</div></pre></td></tr></table></figure><p>随后在CMakeLists.txt文件中利用find_package函数增加对message_generation的依赖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">find_package(catkin REQUIRED COMPONENTS</div><div class="line">    ...</div><div class="line">    message_generation</div><div class="line">)</div></pre></td></tr></table></figure></p><p>同时，利用catkin_package函数设置运行依赖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">catkin_package(</div><div class="line">    ...</div><div class="line">    CATKIN_DEPENDS message_runtime ...</div><div class="line">)</div></pre></td></tr></table></figure></p><p>并添加需要参与编译的srv文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">add_service_files(</div><div class="line">    FILES</div><div class="line">    xxx.srv</div><div class="line">    ...</div><div class="line">)</div></pre></td></tr></table></figure></p><p>确保CMake知道在消息文件更改后重新编译msg文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">generate_messages(</div><div class="line">    DEPENDENCIES</div><div class="line">    std_msgs</div><div class="line">)</div></pre></td></tr></table></figure></p><p>随后便可在功能包目录下运行catkin_make进行编译，成功后可使用rossrv命令检验服务的定义是否和我们想的一样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rossrv show xxx</div></pre></td></tr></table></figure></p><p>还可以使用rossrv list来查看所有可用的服务，使用rossrv packages来查看所有提供了服务的包，使用rossrv package xxx来查看xxx功能包提供的服务。</p><p>注意，ROS中还有一个命令rosservice，这个命令是用来在ROS运行时和启动的服务进行交互的命令，例如：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rosservice call /spawn 8.0 8.0 0.0 &apos;turtle2&apos;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;ROS中的服务&quot;&gt;&lt;a href=&quot;#ROS中的服务&quot; class=&quot;headerlink&quot; title=&quot;ROS中的服务&quot;&gt;&lt;/a&gt;ROS中的服务&lt;/h1&gt;&lt;p&gt;服务（Service）是ROS节点之间同步通讯的一种方式，允许客户端（Client）节点发布请求（R
       
     
     </summary>
@@ -510,34 +538,6 @@
     
     
       <category term="grub" scheme="http://yluo.name/tags/grub/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ubuntu下Shadowsocks代理及终端使用ss</title>
-    <link href="http://yluo.name/2019/01/24/terminal_via_ss/"/>
-    <id>http://yluo.name/2019/01/24/terminal_via_ss/</id>
-    <published>2019-01-24T15:17:00.000Z</published>
-    <updated>2019-11-15T02:42:48.373Z</updated>
-    
-    <content type="html"><![CDATA[<p>作为一名勤勤恳恳的科研人员，在使用Ubuntu的时候，避免不了要经常科学上网，最好用的莫过于Shadowsocks代理，在此简单介绍下如何在Ubuntu下使用Shadowsocks（以下简称ss）代理以及让终端也使用ss上网。</p><h1 id="预备条件"><a href="#预备条件" class="headerlink" title="预备条件"></a>预备条件</h1><ul><li>一台境外VPS服务器，并且已经搭载好ss服务</li><li>本机安装了Ubuntu系统（其他Linux发行版操作类似）</li></ul><h1 id="安装shadowsocks-qt5"><a href="#安装shadowsocks-qt5" class="headerlink" title="安装shadowsocks-qt5"></a>安装shadowsocks-qt5</h1><p>shadowsocks-qt5是ss在linux下的gui程序，在终端输入以下指令，添加ss-qt5的PPA源并更新</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">sudo add-apt-repository ppa:hzwhuang/ss-qt5</div><div class="line">sudo apt-get update</div></pre></td></tr></table></figure><p>随后安装ss-qt5</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install shadowsocks-qt5</div></pre></td></tr></table></figure><p>之后运行ss-qt5，在里面配置相应的服务器信息后便可以测试连接是否成功。为了可以在浏览器里方便的使用ss，推荐Chrome浏览器下的插件SwitchyOmega，简单介绍以下SwitchOmega的配置。</p><h1 id="安装配置SwitchyOmega"><a href="#安装配置SwitchyOmega" class="headerlink" title="安装配置SwitchyOmega"></a>安装配置SwitchyOmega</h1><p>在Chrome商店或者<a href="">https://www.switchyomega.com/download/</a>下载SwitchyOmega插件并安装到Chrome。</p><p>随后在SwitchOmega配置中新建一个情景模式proxy,协议选择socks 5, 地址127.0.0.1,端口1080（根据ss-qt5中的配置适当修改）。其实这样配置之后启动proxy模式便可以实现科学上网了，但是此时所有的上网流量都需要经过VPS，很多国内的网站，比如百度等也是需要经过代理上网，增加了上网的延时，因此可以配置PAC来实现墙内网站直接连接，墙外网站走代理的完美解决方案。</p><h1 id="配置PAC"><a href="#配置PAC" class="headerlink" title="配置PAC"></a>配置PAC</h1><p>在SwitchyOmega的自动切换模式下，在<code>规则列表规则</code>前面的框打√，再将后面的情景模式设置为proxy，意思是规则列表中的内容，我们使用proxy情景模式。然后规则列表设置中：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">规则列表格式： AutoProxy </div><div class="line">规则列表网址： https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt</div></pre></td></tr></table></figure></p><p>输入上面的网址后请点击“立即更新情景模式”，更新成功后可以看到下面的更新时间和内容，这样设置完成 “规则列表规则” 后就不需要在切换规则中一个一个添加条件了。</p><h1 id="配置终端走ss代理"><a href="#配置终端走ss代理" class="headerlink" title="配置终端走ss代理"></a>配置终端走ss代理</h1><p>终端下走代理需要proxychains这个小软件的帮助，首先安装proxychains</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt-get install proxychains</div></pre></td></tr></table></figure><p>安装完毕后，修改<code>/etc/proxychains.conf</code>中的内容，在最后[ProxyList]选项里填入ss的信息</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">socks5 127.0.0.1 1080</div></pre></td></tr></table></figure><p>这样就已经配置成功了，若想让终端的命令走ss代理的话，就在命令前加上<code>proxychains</code>即可。</p><p>验证是否配置成功，首先输入<code>curl ip.gs</code>查看当前未走代理的ip地址，之后输入<code>proxychains curl ip.gs</code>查看走代理的ip地址，若ip地址是VPS的服务器地址，则配置成功。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;作为一名勤勤恳恳的科研人员，在使用Ubuntu的时候，避免不了要经常科学上网，最好用的莫过于Shadowsocks代理，在此简单介绍下如何在Ubuntu下使用Shadowsocks（以下简称ss）代理以及让终端也使用ss上网。&lt;/p&gt;
-&lt;h1 id=&quot;预备条件&quot;&gt;&lt;a hr
-      
-    
-    </summary>
-    
-      <category term="Software" scheme="http://yluo.name/categories/Software/"/>
-    
-    
-      <category term="proxy" scheme="http://yluo.name/tags/proxy/"/>
-    
-      <category term="proxychains" scheme="http://yluo.name/tags/proxychains/"/>
     
   </entry>
   
