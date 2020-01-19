@@ -2,11 +2,11 @@
 title: 使用make编译LaTeX文档
 date: 2018-12-20 16:37:00
 categories:
- - Software
+ - 技术探索
 tags: 
  - make
  - makefile
- - latex
+ - LaTeX
 mathjax: false
 ---
 

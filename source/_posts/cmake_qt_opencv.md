@@ -2,7 +2,7 @@
 title: 利用CMAKE构建Qt和OpenCV项目 
 date: 2019-3-5 12:18:00
 categories:
- - Software
+ - 技术探索
 tags: 
  - cmake
  - Qt

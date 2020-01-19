@@ -2,10 +2,11 @@
 title: 计算机网络初探（二）：自动配置上网信息的DHCP服务器
 date: 2018-9-6 21:34:00
 categories:
- - Computer Network
+ - 理论学习
 tags: 
- - network
- - dhcp
+ - 计算机网络
+ - 动态主机配置
+ - DHCP
 mathjax: false
 ---
 

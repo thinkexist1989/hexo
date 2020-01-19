@@ -2,9 +2,10 @@
 title: Ubuntu与Windows双系统时间设置问题 
 date: 2019-8-1 15:38:00
 categories:
- - Software
+ - 技术探索
 tags: 
- - linux
+ - Linux
+ - Windows
 mathjax: false
 ---
 

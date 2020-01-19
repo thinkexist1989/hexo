@@ -2,10 +2,11 @@
 title: 计算机网络初探（四）：网络里的中间商—正向代理与反向代理
 date: 2018-12-29 19:46:00
 categories:
- - Computer Network
+ - 理论学习
 tags: 
- - network
- - proxy
+ - 计算机网络
+ - 正向代理
+ - 反向代理
 mathjax: false
 ---
 

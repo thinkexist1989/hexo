@@ -2,9 +2,9 @@
 title: 机器人操作系统ROS学习笔记：安装与配置
 date: 2018-8-30 11:42:00
 categories:
- - Robot Operating System
+ - 技术探索
 tags: 
- - ros
+ - ROS
 mathjax: false
 ---
 

@@ -2,9 +2,9 @@
 title: Qt的ui编译机制浅析
 date: 2019-3-17 23:15:00
 categories:
- - Software
+ - 技术探索
 tags: 
- - qt
+ - Qt
  - uic
 mathjax: false
 ---

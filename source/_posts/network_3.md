@@ -2,10 +2,11 @@
 title: 计算机网络初探（三）：路由里的小搬运工—NAT
 date: 2018-9-7 13:05:00
 categories:
- - Computer Network
+ - 理论学习
 tags: 
- - network
- - nat
+ - 计算机网络
+ - 网络地址转换
+ - NAT
 mathjax: false
 ---
 

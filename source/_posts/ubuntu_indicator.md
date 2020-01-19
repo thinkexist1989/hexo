@@ -2,10 +2,10 @@
 title: Ubuntu右上角状态指示栏顺序配置
 date: 2020-1-16 10:29:00
 categories:
- - OS
+ - 技术探索
 tags: 
  - Linux
- - tips
+ - 小技巧
 mathjax: false
 ---
 

@@ -2,10 +2,12 @@
 title: Ubuntu下Shadowsocks代理及终端使用ss
 date: 2019-1-24 23:17:00
 categories:
- - Software
+ - 技术探索
 tags: 
- - proxy
+ - Shadowsocks
+ - bash
  - proxychains
+ - Linux
 mathjax: false
 ---
 

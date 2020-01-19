@@ -2,10 +2,11 @@
 title: 正则表达式
 date: 2020-1-18 14:11:00
 categories:
- - Software
+ - 技术探索
 tags: 
- - linux
- - bash
+ - Linux
+ - Shell
+ - 正则表达式
 mathjax: false
 ---
 

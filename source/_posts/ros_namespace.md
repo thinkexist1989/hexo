@@ -2,9 +2,9 @@
 title: 机器人操作系统ROS学习笔记：ROS命名空间及重映射
 date: 2019-8-6 15:00:00
 categories:
- - Robot Operating System
+ - 技术探索
 tags: 
- - ros
+ - ROS
 mathjax: false
 ---
 

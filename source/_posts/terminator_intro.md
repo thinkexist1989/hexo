@@ -2,10 +2,10 @@
 title: 分屏终端Terminator上手
 date: 2019-4-6 00:18:00
 categories:
- - Software
+ - 技术探索
 tags: 
- - linux
- - terminator
+ - Linux
+ - Terminator
 mathjax: false
 ---
 

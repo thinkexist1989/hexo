@@ -2,10 +2,11 @@
 title: 计算机网络初探（一）：IP地址与域名解析
 date: 2018-9-2 21:49:00
 categories:
- - Computer Network
+ - 理论学习
 tags: 
- - network
- - ip address
+ - 计算机网络
+ - IP地址
+ - 域名解析
  - dns
 mathjax: false
 ---

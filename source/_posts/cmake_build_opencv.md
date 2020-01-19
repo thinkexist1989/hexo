@@ -2,10 +2,10 @@
 title: 利用CMAKE编译OpenCV源码 
 date: 2019-2-12 22:05:00
 categories:
- - Software
+ - 技术探索
 tags: 
  - cmake
- - opencv
+ - OpenCV
 mathjax: false
 ---
 

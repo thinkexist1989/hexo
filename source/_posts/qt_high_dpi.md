@@ -2,10 +2,11 @@
 title: Qt高分屏支持
 date: 2019-3-17 22:47:00
 categories:
- - Software
+ - 技术探索
 tags: 
- - qt
- - dpi
+ - Qt
+ - 高分辨率
+ - 小技巧
 mathjax: false
 ---
 

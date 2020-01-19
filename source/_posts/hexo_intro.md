@@ -2,10 +2,11 @@
 title: Hexo+Github Pages搭建个人博客
 date: 2017-10-17 20:32:00
 categories:
- - Software
+ - 技术探索
 tags: 
  - hexo
- - git
+ - Git
+ - 博客搭建
 mathjax: false
 ---
 

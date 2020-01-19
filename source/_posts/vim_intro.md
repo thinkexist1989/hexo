@@ -2,7 +2,7 @@
 title: VIM插件推荐 
 date: 2019-3-6 10:11:00
 categories:
- - Software
+ - 技术探索
 tags: 
  - vim
  - vim plugin

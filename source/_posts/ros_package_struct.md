@@ -2,9 +2,9 @@
 title: 机器人操作系统ROS学习笔记：功能包package文件结构
 date: 2019-8-6 13:14:00
 categories:
- - Robot Operating System
+ - 技术探索
 tags: 
- - ros
+ - ROS
 mathjax: false
 ---
 

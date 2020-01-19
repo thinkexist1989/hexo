@@ -2,9 +2,11 @@
 title: Ubuntu下Qt Creator无法输入中文问题
 date: 2020-1-17 14:20:00
 categories:
- - Software
+ - 技术探索
 tags: 
- - qt
+ - Qt
+ - 输入法
+ - 小技巧
 mathjax: false
 ---
 

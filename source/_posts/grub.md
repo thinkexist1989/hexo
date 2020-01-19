@@ -2,9 +2,10 @@
 title: GRUB简介与配置
 date: 2019-1-24 23:17:00
 categories:
- - Software
+ - 技术探索
 tags: 
  - grub
+ - 启动管理
 mathjax: false
 ---
 

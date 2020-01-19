@@ -2,9 +2,10 @@
 title: Git分布式版本控制系统使用心得
 date: 2018-4-14 20:32:00
 categories:
- - Software
+ - 技术探索
 tags: 
  - Git
+ - 版本控制
 mathjax: false
 ---
 

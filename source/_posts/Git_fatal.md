@@ -2,9 +2,10 @@
 title: Git 未知索引格式错误
 date: 2019-9-29 11:00:00
 categories:
- - Software
+ - 技术探索
 tags: 
  - Git
+ - 小技巧
 mathjax: false
 ---
 

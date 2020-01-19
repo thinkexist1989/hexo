@@ -2,9 +2,9 @@
 title: Ubuntu安装时如何分配目录空间 
 date: 2019-1-25 19:52:00
 categories:
- - OS
+ - 技术探索
 tags: 
- - linux
+ - Linux
 mathjax: false
 ---
 

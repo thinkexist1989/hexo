@@ -2,9 +2,9 @@
 title: How To Writing Academic Essay  | 学术论文写作总结
 date: 2017-10-18 15:57:00
 categories:
- - Academic Research
+ - 学术天地
 tags: 
- - scholarism
+ - 学术写作
 mathjax: false
 ---
 

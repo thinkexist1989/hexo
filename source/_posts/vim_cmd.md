@@ -2,7 +2,7 @@
 title: Vim相关指令汇总 
 date: 2019-3-5 21:19:00
 categories:
- - Software
+ - 技术探索
 tags: 
  - vim
 mathjax: false
