@@ -134,7 +134,7 @@
 <meta property="og:site_name" content="DécouVerte">
 <meta property="og:description" content="ROS消息文件ROS的消息文件是一个描述ROS中所使用消息类型的简单文本，通常存放在功能包文件夹下的msg文件夹下，可以被用来生成不同语言的源代码。 消息数据类型ROS中的消息可使用的基本数据类型如下：  int8, int16, int32, int64 (plus uint*) float32, float64 string time, duration 可变长度的数组，例如int8[]，以及">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-19T13:09:19.373Z">
+<meta property="og:updated_time" content="2020-01-19T14:16:17.124Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器人操作系统ROS学习笔记：自定义消息类型">
 <meta name="twitter:description" content="ROS消息文件ROS的消息文件是一个描述ROS中所使用消息类型的简单文本，通常存放在功能包文件夹下的msg文件夹下，可以被用来生成不同语言的源代码。 消息数据类型ROS中的消息可使用的基本数据类型如下：  int8, int16, int32, int64 (plus uint*) float32, float64 string time, duration 可变长度的数组，例如int8[]，以及">
@@ -434,8 +434,8 @@
       
 
       
-        <h1 id="ROS消息文件"><a href="#ROS消息文件" class="headerlink" title="ROS消息文件"></a>ROS消息文件</h1><p>ROS的消息文件是一个描述ROS中所使用消息类型的简单文本，通常存放在功能包文件夹下的msg文件夹下，可以被用来生成不同语言的源代码。</p>
-<h1 id="消息数据类型"><a href="#消息数据类型" class="headerlink" title="消息数据类型"></a>消息数据类型</h1><p>ROS中的消息可使用的基本数据类型如下：</p>
+        <h2 id="ROS消息文件"><a href="#ROS消息文件" class="headerlink" title="ROS消息文件"></a>ROS消息文件</h2><p>ROS的消息文件是一个描述ROS中所使用消息类型的简单文本，通常存放在功能包文件夹下的msg文件夹下，可以被用来生成不同语言的源代码。</p>
+<h2 id="消息数据类型"><a href="#消息数据类型" class="headerlink" title="消息数据类型"></a>消息数据类型</h2><p>ROS中的消息可使用的基本数据类型如下：</p>
 <ul>
 <li>int8, int16, int32, int64 (plus uint*)</li>
 <li>float32, float64</li>
@@ -443,16 +443,24 @@
 <li>time, duration</li>
 <li>可变长度的数组，例如int8[]，以及固定长度的数组，例如float32[10]</li>
 </ul>
-<p>ROS消息中还有一个特殊的数据类型：Header， 其含有时间戳和坐标系信息。通常在很多msg文件的第一行有：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Header header</div></pre></td></tr></table></figure></p>
+<p>ROS消息中还有一个特殊的数据类型：Header， 其含有时间戳和坐标系信息。通常在很多msg文件的第一行有：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Header header</div></pre></td></tr></table></figure>
 <p>个人理解（不一定准确），Header类型通常包含在频繁发送的消息中，这样订阅节点可以根据Header中的时间戳信息等做信息同步处理。</p>
-<p>同时，msg文件中还可以包括其他消息文件类型，例如在下面xxx.msg文件中，使用了Header, string以及另外两个消息类型。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Header header</div><div class="line">string child_frame_id</div><div class="line">geometry_msgs/PoseWithCovariance pose</div><div class="line">geometry_msgs/TwistWithCovariance twist</div></pre></td></tr></table></figure></p>
-<h1 id="使用消息"><a href="#使用消息" class="headerlink" title="使用消息"></a>使用消息</h1><p>为了使用消息，需要在package.xml中添加编译依赖和执行依赖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;build_depend&gt;message_generation&lt;/build_depend&gt;</div><div class="line">&lt;exec_depend&gt;message_runtime&lt;/exec_depend&gt;</div></pre></td></tr></table></figure></p>
-<p>并且在CMakeLists.txt文件中利用find_package函数增加对message_generation的依赖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">find_package(catkin REQUIRED COMPONENTS</div><div class="line">    ...</div><div class="line">    message_generation</div><div class="line">)</div></pre></td></tr></table></figure></p>
-<p>同时，利用catkin_package函数设置运行依赖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">catkin_package(</div><div class="line">    ...</div><div class="line">    CATKIN_DEPENDS message_runtime ...</div><div class="line">)</div></pre></td></tr></table></figure></p>
-<p>并添加需要参与编译的msg文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">add_message_files(</div><div class="line">    FILES</div><div class="line">    xxx.msg</div><div class="line">    ...</div><div class="line">)</div></pre></td></tr></table></figure></p>
-<p>确保CMake知道在消息文件更改后重新编译msg文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">generate_messages(</div><div class="line">    DEPENDENCIES</div><div class="line">    std_msgs</div><div class="line">)</div></pre></td></tr></table></figure></p>
-<p>随后便可在功能包目录下运行catkin_make进行编译，成功后可使用rosmsg命令查看自定义的消息类型：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rosmsg show xxx</div></pre></td></tr></table></figure></p>
-<h1 id="消息相关命令"><a href="#消息相关命令" class="headerlink" title="消息相关命令"></a>消息相关命令</h1><ul>
+<p>同时，msg文件中还可以包括其他消息文件类型，例如在下面xxx.msg文件中，使用了Header, string以及另外两个消息类型。</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Header header</div><div class="line"><span class="built_in">string</span> child_frame_id</div><div class="line">geometry_msgs/PoseWithCovariance pose</div><div class="line">geometry_msgs/TwistWithCovariance twist</div></pre></td></tr></table></figure>
+<h2 id="使用消息"><a href="#使用消息" class="headerlink" title="使用消息"></a>使用消息</h2><p>为了使用消息，需要在package.xml中添加编译依赖和执行依赖：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;build_depend&gt;message_generation&lt;/build_depend&gt;</div><div class="line">&lt;exec_depend&gt;message_runtime&lt;/exec_depend&gt;</div></pre></td></tr></table></figure>
+<p>并且在CMakeLists.txt文件中利用find_package函数增加对message_generation的依赖：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">find_package</span>(catkin REQUIRED COMPONENTS</div><div class="line">    ...</div><div class="line">    message_generation</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>同时，利用catkin_package函数设置运行依赖：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">catkin_package(</div><div class="line">    ...</div><div class="line">    CATKIN_DEPENDS message_runtime ...</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>并添加需要参与编译的msg文件：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">add_message_files(</div><div class="line">    FILES</div><div class="line">    xxx.msg</div><div class="line">    ...</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>确保CMake知道在消息文件更改后重新编译msg文件：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">generate_messages(</div><div class="line">    DEPENDENCIES</div><div class="line">    std_msgs</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>随后便可在功能包目录下运行catkin_make进行编译，成功后可使用rosmsg命令查看自定义的消息类型：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rosmsg show xxx</div></pre></td></tr></table></figure>
+<h2 id="消息相关命令"><a href="#消息相关命令" class="headerlink" title="消息相关命令"></a>消息相关命令</h2><ul>
 <li>rosmsg show xxx: 查看消息xxx类型，可以不指定功能包名。</li>
 </ul>
 
@@ -485,8 +493,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/08/06/ros_namespace/" rel="next" title="机器人操作系统ROS学习笔记：ROS命名空间及重映射">
-                <i class="fa fa-chevron-left"></i> 机器人操作系统ROS学习笔记：ROS命名空间及重映射
+              <a href="/2019/08/06/ros_service/" rel="next" title="机器人操作系统ROS学习笔记：自定义服务">
+                <i class="fa fa-chevron-left"></i> 机器人操作系统ROS学习笔记：自定义服务
               </a>
             
           </div>
@@ -495,8 +503,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/09/29/Git_fatal/" rel="prev" title="Git 未知索引格式错误">
-                Git 未知索引格式错误 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/08/06/ros_namespace/" rel="prev" title="机器人操作系统ROS学习笔记：ROS命名空间及重映射">
+                机器人操作系统ROS学习笔记：ROS命名空间及重映射 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -578,7 +586,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">34</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -656,7 +664,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ROS消息文件"><span class="nav-number">1.</span> <span class="nav-text">ROS消息文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#消息数据类型"><span class="nav-number">2.</span> <span class="nav-text">消息数据类型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用消息"><span class="nav-number">3.</span> <span class="nav-text">使用消息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#消息相关命令"><span class="nav-number">4.</span> <span class="nav-text">消息相关命令</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#ROS消息文件"><span class="nav-number">1.</span> <span class="nav-text">ROS消息文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#消息数据类型"><span class="nav-number">2.</span> <span class="nav-text">消息数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用消息"><span class="nav-number">3.</span> <span class="nav-text">使用消息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#消息相关命令"><span class="nav-number">4.</span> <span class="nav-text">消息相关命令</span></a></li></ol></div>
             
 
           </div>
@@ -701,7 +709,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">This site has totally 30.2k words</span>
+  <span class="post-count">This site has totally 30.5k words</span>
 </div>
         
 
