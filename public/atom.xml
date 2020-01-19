@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yluo.name/"/>
-  <updated>2020-01-19T14:14:06.822Z</updated>
+  <updated>2020-01-19T16:19:38.200Z</updated>
   <id>http://yluo.name/</id>
   
   <author>
@@ -15,6 +15,63 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Shell编程：echo指令</title>
+    <link href="http://yluo.name/2020/01/19/shell-echo/"/>
+    <id>http://yluo.name/2020/01/19/shell-echo/</id>
+    <published>2020-01-19T15:57:54.000Z</published>
+    <updated>2020-01-19T16:19:38.200Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>echo</code>命令用于在终端打印一行文本，例如，</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">echo</span> this is a <span class="built_in">test</span></div><div class="line">this is a <span class="built_in">test</span></div></pre></td></tr></table></figure><p>经常使用的参数如下：</p><div class="table-container"><table><thead><tr><th style="text-align:left">参数</th><th style="text-align:left">说明</th></tr></thead><tbody><tr><td style="text-align:left">-n</td><td style="text-align:left">不输出结尾换行符</td></tr><tr><td style="text-align:left">-e</td><td style="text-align:left">启用反斜杠转义的解释</td></tr><tr><td style="text-align:left">-E</td><td style="text-align:left">不启用反斜杠转义的解释（默认）</td></tr></tbody></table></div><p>若采用<code>-e</code>， 则下列转义字符将被解释：</p><div class="table-container"><table><thead><tr><th style="text-align:left">参数</th><th style="text-align:left">说明</th></tr></thead><tbody><tr><td style="text-align:left">\\</td><td style="text-align:left">不输出结尾换行符</td></tr><tr><td style="text-align:left">\b</td><td style="text-align:left">退格 backspace</td></tr><tr><td style="text-align:left">\c</td><td style="text-align:left">不再输出后面内容</td></tr><tr><td style="text-align:left">\e</td><td style="text-align:left">退出 escape</td></tr><tr><td style="text-align:left">\f</td><td style="text-align:left">退格 backspace</td></tr><tr><td style="text-align:left">\n</td><td style="text-align:left">换行</td></tr><tr><td style="text-align:left">\r</td><td style="text-align:left">回车</td></tr><tr><td style="text-align:left">\t</td><td style="text-align:left">水平tab</td></tr><tr><td style="text-align:left">\v</td><td style="text-align:left">垂直tab</td></tr><tr><td style="text-align:left">\0NNN</td><td style="text-align:left">八进制NNN</td></tr><tr><td style="text-align:left">\xHH</td><td style="text-align:left">16进制HH</td></tr></tbody></table></div>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;code&gt;echo&lt;/code&gt;命令用于在终端打印一行文本，例如，&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div cl
+      
+    
+    </summary>
+    
+      <category term="技术探索" scheme="http://yluo.name/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/"/>
+    
+    
+      <category term="Linux" scheme="http://yluo.name/tags/Linux/"/>
+    
+      <category term="Shell" scheme="http://yluo.name/tags/Shell/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Shell编程：who指令</title>
+    <link href="http://yluo.name/2020/01/19/shell-who/"/>
+    <id>http://yluo.name/2020/01/19/shell-who/</id>
+    <published>2020-01-19T15:37:36.000Z</published>
+    <updated>2020-01-19T15:56:08.234Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>who</code>命令用于显示系统中有哪些使用者正在上面，显示的资料包含了使用者 ID、使用的终端机、从哪边连上来的、上线时间、呆滞时间、CPU 使用量、动作等等。</p><p>经常使用的参数如下：</p><div class="table-container"><table><thead><tr><th style="text-align:left">参数</th><th style="text-align:left">说明</th></tr></thead><tbody><tr><td style="text-align:left">-H, —heading</td><td style="text-align:left">显示各栏的列标题</td></tr><tr><td style="text-align:left">-b, —boot</td><td style="text-align:left">最后一次系统启动时间</td></tr><tr><td style="text-align:left">-d, —dead</td><td style="text-align:left">死进程</td></tr><tr><td style="text-align:left">-l, —login</td><td style="text-align:left">系统登陆进程</td></tr><tr><td style="text-align:left">-p, —process</td><td style="text-align:left">激活进程</td></tr><tr><td style="text-align:left">-r, —runlevel</td><td style="text-align:left">当前运行级别</td></tr><tr><td style="text-align:left">-t, —time</td><td style="text-align:left">显示最后一次系统时钟改动</td></tr><tr><td style="text-align:left">-T, -w, —mesg</td><td style="text-align:left">加入用户信息状态 + - ?</td></tr><tr><td style="text-align:left">-u, —user</td><td style="text-align:left">列出登陆用户</td></tr><tr><td style="text-align:left">-a 或 —all</td><td style="text-align:left">显示全部信息 -b -d -l -p -r -t -T -u</td></tr></tbody></table></div><h2 id="获取本人信息"><a href="#获取本人信息" class="headerlink" title="获取本人信息"></a>获取本人信息</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ who am i</div><div class="line">think    pts/18     2020-01-19 23:35 (:0)</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;&lt;code&gt;who&lt;/code&gt;命令用于显示系统中有哪些使用者正在上面，显示的资料包含了使用者 ID、使用的终端机、从哪边连上来的、上线时间、呆滞时间、CPU 使用量、动作等等。&lt;/p&gt;
+&lt;p&gt;经常使用的参数如下：&lt;/p&gt;
+&lt;div class=&quot;table-contain
+      
+    
+    </summary>
+    
+      <category term="技术探索" scheme="http://yluo.name/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/"/>
+    
+    
+      <category term="Linux" scheme="http://yluo.name/tags/Linux/"/>
+    
+      <category term="Shell" scheme="http://yluo.name/tags/Shell/"/>
+    
+  </entry>
   
   <entry>
     <title>Shell编程：date指令</title>
@@ -161,31 +218,6 @@
   </entry>
   
   <entry>
-    <title>机器人操作系统ROS学习笔记：ROS命名空间及重映射</title>
-    <link href="http://yluo.name/2019/08/06/ros_namespace/"/>
-    <id>http://yluo.name/2019/08/06/ros_namespace/</id>
-    <published>2019-08-06T07:00:00.000Z</published>
-    <updated>2020-01-19T14:18:36.019Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="ROS的命名"><a href="#ROS的命名" class="headerlink" title="ROS的命名"></a>ROS的命名</h2><p>命名是ROS中的基本概念。ROS中的节点、话题以及参数都必须有唯一的命名。例如机器人上的相机可以命名为camera，并且相机可以输出一个话题image，同时读取一个frame_rate的参数来控制发送图像的频率。一个有效的命名具备以下特点：</p><ul><li>首字符为字母（[a-z|A-Z]）、波浪线（～）或左斜杠（/）。（不可以为下划线_）</li><li>后续字符可以是字母或数字（[0-9|a-z|A-Z]）、下划线（_）或者左斜杠（/）</li></ul><p>当一个机器人上存在两个相机时，由于相机的功能几乎完全一样，我们没有必要为两个相机分别编写一个程序，同时，也不想让两个相机的话题都发布在image话题上，这样会导致两个相机的画面交替出现。更一般地，命名的冲突在机器人系统中非常容易发生，这是因为机器人上常常包含相同的硬件或软件来简化工作量，例如相同的左右机械臂、相同的相机以及相同的多个轮子。为了避免命名上的冲突，ROS中采用两种机制来处理这种情况：命名空间和重映射。</p><h2 id="命名空间-Namespace"><a href="#命名空间-Namespace" class="headerlink" title="命名空间 Namespace"></a>命名空间 Namespace</h2><p>命名空间是计算机科学中的一个基本概念。根据UNIX路径和网络URI的规范，ROS使用斜杠（/）来分隔命名空间。ROS可以在不同的命名空间中启动同一个节点来避免命名冲突。</p><p>例如，具有两个相机的机器人可以在不同的命名空间<code>left</code>和<code>right</code>中启动两个相机的节点，最终会有两路图像流，分别为<code>left/image</code>和<code>right/image</code>。</p><h2 id="重映射-Remap"><a href="#重映射-Remap" class="headerlink" title="重映射 Remap"></a>重映射 Remap</h2><p>命名空间避免了命名的冲突，以相机为例，左相机发布的图像流话题为<code>left/image</code>，而在ROS中存在另一个节点nodex，专门接收<code>image</code>话题，由于两个话题在不同的命名空间之下，因此无法接收到左相机的图像信息。为了解决这个问题，一种方法是在同一个命名空间下启动这个节点，即在<code>left</code>命名空间下启动节点nodex，于是节点变为<code>left/nodex</code>，此时接收的image话题也将变为<code>left/image</code>。但是在复杂的程序当中，有可能节点需要“深入”不止一个命名空间之中，十分不方便。因此ROS中还可以用重映射（remap）的方式来解决这个问题。</p><p>在ROS中，程序中任何一个用于命名的字符串都可以在运行时重映射。例如，ROS中的一个常用程序image_view将image主题实时渲染在窗口上。使用重映射，可以使image_view接收<code>left/image</code>或者<code>right/image</code>，而无需修改image_view的代码。</p><h2 id="命名空间和重映射的使用"><a href="#命名空间和重映射的使用" class="headerlink" title="命名空间和重映射的使用"></a>命名空间和重映射的使用</h2><h3 id="在命令行中使用"><a href="#在命令行中使用" class="headerlink" title="在命令行中使用"></a>在命令行中使用</h3><p>由于ROS的设计模式鼓励软件的重用，重命名在开发和部署ROS软件的时候非常普遍。为了简化操作，ROS在命令行启动节点时提供了标准语法来重命名。</p><ul><li><p>将<code>image</code>话题重映射到<code>right/image</code>可以利用重映射语法来完成：</p>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rosrun package image_view image:=right/image</div></pre></td></tr></table></figure></li><li><p>把节点放置到命名空间中可以利用<code>__ns</code>命名空间重映射语法来完成：</p>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rosrun package camera __ns:=right</div></pre></td></tr></table></figure></li><li><p>修改节点的名字可以利用<code>__name</code>重命名语法来完成：  </p>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rosrun package camera __name:=camera2</div></pre></td></tr></table></figure></li></ul><h3 id="在launch文件中使用"><a href="#在launch文件中使用" class="headerlink" title="在launch文件中使用"></a>在launch文件中使用</h3><ul><li><p>通过设置name参数来确定节点的名字：</p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;node name=&quot;turtlesim_node2&quot; pkg=&quot;turtlesim&quot; type=&quot;turtlesim_node.py&quot;/&gt;</div></pre></td></tr></table></figure></li><li><p>通过设置ns参数来确定默认命名空间：    </p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;node name=&quot;turtlesim_node&quot; pkg=&quot;turtlesim&quot; type=&quot;turtlesim_node.py&quot; ns=&quot;sim1&quot; /&gt;</div></pre></td></tr></table></figure></li><li><p>通过remap标签设置重映射：</p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;remap from=&quot;image&quot; to=&quot;right/image&quot;/&gt;</div></pre></td></tr></table></figure></li></ul><h3 id="在ROS程序终端中使用"><a href="#在ROS程序终端中使用" class="headerlink" title="在ROS程序终端中使用"></a>在ROS程序终端中使用</h3><p>可以利用环境变量设置默认命名空间：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> ROS_NAMESPACE=default-namespace</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;ROS的命名&quot;&gt;&lt;a href=&quot;#ROS的命名&quot; class=&quot;headerlink&quot; title=&quot;ROS的命名&quot;&gt;&lt;/a&gt;ROS的命名&lt;/h2&gt;&lt;p&gt;命名是ROS中的基本概念。ROS中的节点、话题以及参数都必须有唯一的命名。例如机器人上的相机可以命名为cam
-      
-    
-    </summary>
-    
-      <category term="技术探索" scheme="http://yluo.name/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/"/>
-    
-    
-      <category term="ROS" scheme="http://yluo.name/tags/ROS/"/>
-    
-  </entry>
-  
-  <entry>
     <title>机器人操作系统ROS学习笔记：自定义消息类型</title>
     <link href="http://yluo.name/2019/08/06/ros_message/"/>
     <id>http://yluo.name/2019/08/06/ros_message/</id>
@@ -199,6 +231,31 @@
       
       
         &lt;h2 id=&quot;ROS消息文件&quot;&gt;&lt;a href=&quot;#ROS消息文件&quot; class=&quot;headerlink&quot; title=&quot;ROS消息文件&quot;&gt;&lt;/a&gt;ROS消息文件&lt;/h2&gt;&lt;p&gt;ROS的消息文件是一个描述ROS中所使用消息类型的简单文本，通常存放在功能包文件夹下的msg文件夹下
+      
+    
+    </summary>
+    
+      <category term="技术探索" scheme="http://yluo.name/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/"/>
+    
+    
+      <category term="ROS" scheme="http://yluo.name/tags/ROS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>机器人操作系统ROS学习笔记：ROS命名空间及重映射</title>
+    <link href="http://yluo.name/2019/08/06/ros_namespace/"/>
+    <id>http://yluo.name/2019/08/06/ros_namespace/</id>
+    <published>2019-08-06T07:00:00.000Z</published>
+    <updated>2020-01-19T14:18:36.019Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="ROS的命名"><a href="#ROS的命名" class="headerlink" title="ROS的命名"></a>ROS的命名</h2><p>命名是ROS中的基本概念。ROS中的节点、话题以及参数都必须有唯一的命名。例如机器人上的相机可以命名为camera，并且相机可以输出一个话题image，同时读取一个frame_rate的参数来控制发送图像的频率。一个有效的命名具备以下特点：</p><ul><li>首字符为字母（[a-z|A-Z]）、波浪线（～）或左斜杠（/）。（不可以为下划线_）</li><li>后续字符可以是字母或数字（[0-9|a-z|A-Z]）、下划线（_）或者左斜杠（/）</li></ul><p>当一个机器人上存在两个相机时，由于相机的功能几乎完全一样，我们没有必要为两个相机分别编写一个程序，同时，也不想让两个相机的话题都发布在image话题上，这样会导致两个相机的画面交替出现。更一般地，命名的冲突在机器人系统中非常容易发生，这是因为机器人上常常包含相同的硬件或软件来简化工作量，例如相同的左右机械臂、相同的相机以及相同的多个轮子。为了避免命名上的冲突，ROS中采用两种机制来处理这种情况：命名空间和重映射。</p><h2 id="命名空间-Namespace"><a href="#命名空间-Namespace" class="headerlink" title="命名空间 Namespace"></a>命名空间 Namespace</h2><p>命名空间是计算机科学中的一个基本概念。根据UNIX路径和网络URI的规范，ROS使用斜杠（/）来分隔命名空间。ROS可以在不同的命名空间中启动同一个节点来避免命名冲突。</p><p>例如，具有两个相机的机器人可以在不同的命名空间<code>left</code>和<code>right</code>中启动两个相机的节点，最终会有两路图像流，分别为<code>left/image</code>和<code>right/image</code>。</p><h2 id="重映射-Remap"><a href="#重映射-Remap" class="headerlink" title="重映射 Remap"></a>重映射 Remap</h2><p>命名空间避免了命名的冲突，以相机为例，左相机发布的图像流话题为<code>left/image</code>，而在ROS中存在另一个节点nodex，专门接收<code>image</code>话题，由于两个话题在不同的命名空间之下，因此无法接收到左相机的图像信息。为了解决这个问题，一种方法是在同一个命名空间下启动这个节点，即在<code>left</code>命名空间下启动节点nodex，于是节点变为<code>left/nodex</code>，此时接收的image话题也将变为<code>left/image</code>。但是在复杂的程序当中，有可能节点需要“深入”不止一个命名空间之中，十分不方便。因此ROS中还可以用重映射（remap）的方式来解决这个问题。</p><p>在ROS中，程序中任何一个用于命名的字符串都可以在运行时重映射。例如，ROS中的一个常用程序image_view将image主题实时渲染在窗口上。使用重映射，可以使image_view接收<code>left/image</code>或者<code>right/image</code>，而无需修改image_view的代码。</p><h2 id="命名空间和重映射的使用"><a href="#命名空间和重映射的使用" class="headerlink" title="命名空间和重映射的使用"></a>命名空间和重映射的使用</h2><h3 id="在命令行中使用"><a href="#在命令行中使用" class="headerlink" title="在命令行中使用"></a>在命令行中使用</h3><p>由于ROS的设计模式鼓励软件的重用，重命名在开发和部署ROS软件的时候非常普遍。为了简化操作，ROS在命令行启动节点时提供了标准语法来重命名。</p><ul><li><p>将<code>image</code>话题重映射到<code>right/image</code>可以利用重映射语法来完成：</p>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rosrun package image_view image:=right/image</div></pre></td></tr></table></figure></li><li><p>把节点放置到命名空间中可以利用<code>__ns</code>命名空间重映射语法来完成：</p>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rosrun package camera __ns:=right</div></pre></td></tr></table></figure></li><li><p>修改节点的名字可以利用<code>__name</code>重命名语法来完成：  </p>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rosrun package camera __name:=camera2</div></pre></td></tr></table></figure></li></ul><h3 id="在launch文件中使用"><a href="#在launch文件中使用" class="headerlink" title="在launch文件中使用"></a>在launch文件中使用</h3><ul><li><p>通过设置name参数来确定节点的名字：</p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;node name=&quot;turtlesim_node2&quot; pkg=&quot;turtlesim&quot; type=&quot;turtlesim_node.py&quot;/&gt;</div></pre></td></tr></table></figure></li><li><p>通过设置ns参数来确定默认命名空间：    </p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;node name=&quot;turtlesim_node&quot; pkg=&quot;turtlesim&quot; type=&quot;turtlesim_node.py&quot; ns=&quot;sim1&quot; /&gt;</div></pre></td></tr></table></figure></li><li><p>通过remap标签设置重映射：</p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;remap from=&quot;image&quot; to=&quot;right/image&quot;/&gt;</div></pre></td></tr></table></figure></li></ul><h3 id="在ROS程序终端中使用"><a href="#在ROS程序终端中使用" class="headerlink" title="在ROS程序终端中使用"></a>在ROS程序终端中使用</h3><p>可以利用环境变量设置默认命名空间：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> ROS_NAMESPACE=default-namespace</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;ROS的命名&quot;&gt;&lt;a href=&quot;#ROS的命名&quot; class=&quot;headerlink&quot; title=&quot;ROS的命名&quot;&gt;&lt;/a&gt;ROS的命名&lt;/h2&gt;&lt;p&gt;命名是ROS中的基本概念。ROS中的节点、话题以及参数都必须有唯一的命名。例如机器人上的相机可以命名为cam
       
     
     </summary>
@@ -503,58 +560,6 @@
       <category term="Qt" scheme="http://yluo.name/tags/Qt/"/>
     
       <category term="opencv" scheme="http://yluo.name/tags/opencv/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>利用CMAKE编译OpenCV源码</title>
-    <link href="http://yluo.name/2019/02/12/cmake_build_opencv/"/>
-    <id>http://yluo.name/2019/02/12/cmake_build_opencv/</id>
-    <published>2019-02-12T14:05:00.000Z</published>
-    <updated>2020-01-19T12:59:38.281Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="OpenCV是什么"><a href="#OpenCV是什么" class="headerlink" title="OpenCV是什么"></a>OpenCV是什么</h1><p>OpenCV的中文名称是”开源计算机视觉库“（Open Source Computer Vision Library），于1999年由Intel建立，是一个基于开源发行的跨平台计算机视觉库，可以运行在Linux、Windows、Mac OS、Android、iOS、FreeBSD、OpenBSD等操作系统上。OpenCV由一系列C函数和C++类构成，轻量且高效。除了支持C/C++语言编译开发之外，还支持使用C#，Python、Ruby等语言的接口。</p><h1 id="为什么要编译源码"><a href="#为什么要编译源码" class="headerlink" title="为什么要编译源码"></a>为什么要编译源码</h1><p>在OpenCV的官网提供了许多编译好的Release版本的OpenCV二进制文件，但是由于很多人的需求不同，比如OpenCV官网提供的Windows版本是利用MSVC编译的，但是很多人却需要在Windows下使用MinGW编译代码，因此需要Windows下MinGW可以利用的二进制文件，由于OpenCV提供源码，因此可以利用OpenCV的源码编译出各种二进制文件，也可以修改官网的OpenCV源码并编译后为自己所用。</p><h1 id="利用CMAKE编译OpenCV源码"><a href="#利用CMAKE编译OpenCV源码" class="headerlink" title="利用CMAKE编译OpenCV源码"></a>利用CMAKE编译OpenCV源码</h1><p>关于什么是CMAKE可以参考我的另一篇博客<a href="http://yluo.name/2019/01/02/cmake/">《利用CMAKE构建和管理软件项目》</a>。</p><ul><li>安装完CMAKE之后，启动cmake-gui。</li><li>指定OpenCV<strong>源码存放路径</strong>。点击<code>Browse Source</code>按钮，在弹出的对话框中指定OpenCV源码存放路径<code>/path/to/opencv/sources</code>。</li><li>指定OpenCV<strong>构建存放路径</strong>。点击<code>Browse Build</code>按钮，在弹出的对话框中指定OpenCV构建文件存放路径，可随意设置，但不要放在源码路径下。</li><li>点击<code>Configure</code>按钮，进行第一次配置，之后会弹出编译器选择对话框，选择想要生成的项目文件（比如MSVC或者MinGW），可以使用默认的编译器，也可以指定编译器，比如在使用MinGW编译时，可以指定采用GCC和G++来编译OpenCV源码。确认无误点击<code>Finish</code>按钮开始第一次配置过程。</li><li>第一次配置完成后，会在主对话框上出现很多编译选项，勾选<code>Advanced</code>还会显示更多，这些都是默认的编译选项，可以进行修改，比如勾选<code>WITH_OPENGL</code>和<code>WITH_QT</code>选项等。设置完成后还需要进行第二次配置，再次点击<code>Configure</code>按钮，高亮的选项会变成正常（若还是有高亮选择则需要继续修改配置选项然后点击<code>Configure</code>配置）。</li><li>点击<code>Generate</code>生成项目文件，会在<strong>构建存放路径</strong>下生成对应的项目文件，比如VS的.sln解决方案文件，或者MinGW的Makefile文件，于是便可以利用对应的项目文件生成二进制文件了。</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;OpenCV是什么&quot;&gt;&lt;a href=&quot;#OpenCV是什么&quot; class=&quot;headerlink&quot; title=&quot;OpenCV是什么&quot;&gt;&lt;/a&gt;OpenCV是什么&lt;/h1&gt;&lt;p&gt;OpenCV的中文名称是”开源计算机视觉库“（Open Source Compute
-      
-    
-    </summary>
-    
-      <category term="技术探索" scheme="http://yluo.name/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/"/>
-    
-    
-      <category term="cmake" scheme="http://yluo.name/tags/cmake/"/>
-    
-      <category term="OpenCV" scheme="http://yluo.name/tags/OpenCV/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ubuntu安装时如何分配目录空间</title>
-    <link href="http://yluo.name/2019/01/25/ubuntu_partition/"/>
-    <id>http://yluo.name/2019/01/25/ubuntu_partition/</id>
-    <published>2019-01-25T11:52:00.000Z</published>
-    <updated>2020-01-19T13:11:51.976Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>像我这种主力系统为Linux，但是有些软件还必须在Windows上运行的人，在笔记本上安装Linux与Windows是必不可少的。估计很多用双系统的同学在手动安装Ubuntu或者其他Linux发行版时会像我一样，对如何给Linux的各个目录分配空间头疼不已。因此我下定决心研究了一下这些目录的功能，在此分享给大家。</p><h1 id="Linux的分区和挂载"><a href="#Linux的分区和挂载" class="headerlink" title="Linux的分区和挂载"></a>Linux的分区和挂载</h1><p>Linux的分区和Windows有很大不同。在Windows下，是以<code>盘符</code>来分割各个空间，而且一般操作系统都安装在<code>C盘</code>，剩下的<code>D盘</code>，<code>E盘</code>可以用来存储其他的文件和程序。而Linux不同，Linux有一个最基本的根目录<code>/</code>，所有其他的目录都在这个目录下，根目录<code>/</code>就像是一个大房子，<code>/</code>目录下面的其他目录，比如<code>/etc</code>，<code>/boot</code>等，就像是一个一个功能区，<code>/etc</code>用来存储配置文件，<code>/bin</code>用来放二进制程序，<code>/boot</code>用来放启动文件，<code>/home</code>用来放用户的文件等等。</p><p>Linux的分区和目录的关系是：可以指定一个目录力的东西存在某个分区里，如果不指定，则这个目录里的东西存在上一级目录所在分区中，如果上一级目录页没有特殊制定分期，则再上溯一级目录，以此类推。最后可以上溯到根目录<code>/</code>。所以装系统的时候，其他的都可以不指定，但是一定要指定<code>/</code>目录存放的分区。</p><h1 id="空间分配"><a href="#空间分配" class="headerlink" title="空间分配"></a>空间分配</h1><p>给Ubuntu一般30G左右就够用了，一般安装的时候我们都给<code>/boot</code>,<code>/swap</code>,<code>/</code>和<code>/home</code>分配一下相应的空间，其余的可以不分配。</p><ul><li><code>/boot</code>为启动分区，分配大小：200MB，分区类型：主分区，分区位置：空间起始位置，用于：Ext4日志文件系统，挂载点：/boot；</li><li><code>swap</code>为交换空间，一般为实际内存2倍左右，但是如果内存足够大，就不需要设置。分配大小：内存×2，分区类型：逻辑分区，分区位置：空间起始位置，用于：交换空间，挂载点：SWAP；</li><li><code>/</code>为根目录，分配大小：至少10G以上，分区类型：逻辑分区，分区位置：空间起始位置，用于：Ex4日志文件系统，挂载点：/；</li><li><code>/home</code>为用户目录，分配大小：剩余所有空间，分区类型：逻辑分区，分区位置：空间起始位置，用于：Ext4日志文件系统，挂载点：/home。</li></ul><h1 id="安装启动引导设备"><a href="#安装启动引导设备" class="headerlink" title="安装启动引导设备"></a>安装启动引导设备</h1><p>Ubuntu采用Grub来引导系统，选择<code>/boot</code>所在分区即可。</p><h1 id="UEFI引导下的配置"><a href="#UEFI引导下的配置" class="headerlink" title="UEFI引导下的配置"></a>UEFI引导下的配置</h1><p>若用UEFI引导系统，则空间分配时无需给<code>/boot</code>分配空间，在安装启动引导设备的选项中，选择<code>Windows Boot Manager</code>所在的分区即可完成引导。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;像我这种主力系统为Linux，但是有些软件还必须在Windows上运行的人，在笔记本上安装Linux与Windows是必不可
-      
-    
-    </summary>
-    
-      <category term="技术探索" scheme="http://yluo.name/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/"/>
-    
-    
-      <category term="Linux" scheme="http://yluo.name/tags/Linux/"/>
     
   </entry>
   
