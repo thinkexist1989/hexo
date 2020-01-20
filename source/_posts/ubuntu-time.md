@@ -9,7 +9,7 @@ tags:
 mathjax: false
 ---
 
-# 问题缘由
+## 问题缘由
 
 现在很多人都在电脑里安装了Ubuntu和Windows双系统，在安装完系统之后会发现，系统的显示时间经常会出问题，要么比正常时间快8个小时，要么比正常时间慢8个小时。即使利用网络同步时间之后，当切换过系统之后还是会出现时间差的问题。
 
@@ -17,12 +17,12 @@ mathjax: false
 
 而在Windows中，会将BIOS中的时间看做本地时间，直接显示出来，因此，当从Ubuntu切换到Windows时，会出现时间差8个小时的情况。
 
-# 解决方法
+## 解决方法
 
 最简单的方法就是将Ubuntu下的UTC时间关闭，采用和Window一样的时间管理方式。只需要在Ubuntu终端下运行一行代码：
 
-```
-sudo timedatectrl set-local-utc 1
+```bash
+$ sudo timedatectrl set-local-utc 1
 ```
 
 这样便可以使Windows和Ubuntu下的时间同步了。

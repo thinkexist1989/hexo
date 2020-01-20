@@ -12,14 +12,14 @@ tags:
 `date`命令用于显示当前的日期及时间，直接运行可得到如下格式的显示：
 
 ```bash
-$date
+$ date
 Sun Jan 19 21:42:52 CST 2020
 ```
 
 可以在命令后添加参数以设定输出格式(`date [OPTION]... [+FORMAT]`)，例如：
 
 ```bash
-$date +%Y%m%d
+$ date +%Y%m%d
 20200119
 ```
 

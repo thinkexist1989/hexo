@@ -130,11 +130,11 @@
 <meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu安装时如何分配目录空间">
-<meta property="og:url" content="http://yluo.name/2019/01/25/ubuntu_partition/index.html">
+<meta property="og:url" content="http://yluo.name/2019/01/25/ubuntu-partition/index.html">
 <meta property="og:site_name" content="DécouVerte">
 <meta property="og:description" content="写在前面像我这种主力系统为Linux，但是有些软件还必须在Windows上运行的人，在笔记本上安装Linux与Windows是必不可少的。估计很多用双系统的同学在手动安装Ubuntu或者其他Linux发行版时会像我一样，对如何给Linux的各个目录分配空间头疼不已。因此我下定决心研究了一下这些目录的功能，在此分享给大家。 Linux的分区和挂载Linux的分区和Windows有很大不同。在Wind">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-19T13:11:51.976Z">
+<meta property="og:updated_time" content="2020-01-20T01:21:42.497Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu安装时如何分配目录空间">
 <meta name="twitter:description" content="写在前面像我这种主力系统为Linux，但是有些软件还必须在Windows上运行的人，在笔记本上安装Linux与Windows是必不可少的。估计很多用双系统的同学在手动安装Ubuntu或者其他Linux发行版时会像我一样，对如何给Linux的各个目录分配空间头疼不已。因此我下定决心研究了一下这些目录的功能，在此分享给大家。 Linux的分区和挂载Linux的分区和Windows有很大不同。在Wind">
@@ -167,7 +167,7 @@
 
 
 
-  <link rel="canonical" href="http://yluo.name/2019/01/25/ubuntu_partition/"/>
+  <link rel="canonical" href="http://yluo.name/2019/01/25/ubuntu-partition/"/>
 
 
 
@@ -345,7 +345,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yluo.name/2019/01/25/ubuntu_partition/">
+    <link itemprop="mainEntityOfPage" href="http://yluo.name/2019/01/25/ubuntu-partition/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yang Luo">
@@ -434,18 +434,18 @@
       
 
       
-        <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>像我这种主力系统为Linux，但是有些软件还必须在Windows上运行的人，在笔记本上安装Linux与Windows是必不可少的。估计很多用双系统的同学在手动安装Ubuntu或者其他Linux发行版时会像我一样，对如何给Linux的各个目录分配空间头疼不已。因此我下定决心研究了一下这些目录的功能，在此分享给大家。</p>
-<h1 id="Linux的分区和挂载"><a href="#Linux的分区和挂载" class="headerlink" title="Linux的分区和挂载"></a>Linux的分区和挂载</h1><p>Linux的分区和Windows有很大不同。在Windows下，是以<code>盘符</code>来分割各个空间，而且一般操作系统都安装在<code>C盘</code>，剩下的<code>D盘</code>，<code>E盘</code>可以用来存储其他的文件和程序。而Linux不同，Linux有一个最基本的根目录<code>/</code>，所有其他的目录都在这个目录下，根目录<code>/</code>就像是一个大房子，<code>/</code>目录下面的其他目录，比如<code>/etc</code>，<code>/boot</code>等，就像是一个一个功能区，<code>/etc</code>用来存储配置文件，<code>/bin</code>用来放二进制程序，<code>/boot</code>用来放启动文件，<code>/home</code>用来放用户的文件等等。</p>
+        <h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>像我这种主力系统为Linux，但是有些软件还必须在Windows上运行的人，在笔记本上安装Linux与Windows是必不可少的。估计很多用双系统的同学在手动安装Ubuntu或者其他Linux发行版时会像我一样，对如何给Linux的各个目录分配空间头疼不已。因此我下定决心研究了一下这些目录的功能，在此分享给大家。</p>
+<h2 id="Linux的分区和挂载"><a href="#Linux的分区和挂载" class="headerlink" title="Linux的分区和挂载"></a>Linux的分区和挂载</h2><p>Linux的分区和Windows有很大不同。在Windows下，是以<code>盘符</code>来分割各个空间，而且一般操作系统都安装在<code>C盘</code>，剩下的<code>D盘</code>，<code>E盘</code>可以用来存储其他的文件和程序。而Linux不同，Linux有一个最基本的根目录<code>/</code>，所有其他的目录都在这个目录下，根目录<code>/</code>就像是一个大房子，<code>/</code>目录下面的其他目录，比如<code>/etc</code>，<code>/boot</code>等，就像是一个一个功能区，<code>/etc</code>用来存储配置文件，<code>/bin</code>用来放二进制程序，<code>/boot</code>用来放启动文件，<code>/home</code>用来放用户的文件等等。</p>
 <p>Linux的分区和目录的关系是：可以指定一个目录力的东西存在某个分区里，如果不指定，则这个目录里的东西存在上一级目录所在分区中，如果上一级目录页没有特殊制定分期，则再上溯一级目录，以此类推。最后可以上溯到根目录<code>/</code>。所以装系统的时候，其他的都可以不指定，但是一定要指定<code>/</code>目录存放的分区。</p>
-<h1 id="空间分配"><a href="#空间分配" class="headerlink" title="空间分配"></a>空间分配</h1><p>给Ubuntu一般30G左右就够用了，一般安装的时候我们都给<code>/boot</code>,<code>/swap</code>,<code>/</code>和<code>/home</code>分配一下相应的空间，其余的可以不分配。</p>
+<h2 id="空间分配"><a href="#空间分配" class="headerlink" title="空间分配"></a>空间分配</h2><p>给Ubuntu一般30G左右就够用了，一般安装的时候我们都给<code>/boot</code>,<code>/swap</code>,<code>/</code>和<code>/home</code>分配一下相应的空间，其余的可以不分配。</p>
 <ul>
 <li><code>/boot</code>为启动分区，分配大小：200MB，分区类型：主分区，分区位置：空间起始位置，用于：Ext4日志文件系统，挂载点：/boot；</li>
 <li><code>swap</code>为交换空间，一般为实际内存2倍左右，但是如果内存足够大，就不需要设置。分配大小：内存×2，分区类型：逻辑分区，分区位置：空间起始位置，用于：交换空间，挂载点：SWAP；</li>
 <li><code>/</code>为根目录，分配大小：至少10G以上，分区类型：逻辑分区，分区位置：空间起始位置，用于：Ex4日志文件系统，挂载点：/；</li>
 <li><code>/home</code>为用户目录，分配大小：剩余所有空间，分区类型：逻辑分区，分区位置：空间起始位置，用于：Ext4日志文件系统，挂载点：/home。</li>
 </ul>
-<h1 id="安装启动引导设备"><a href="#安装启动引导设备" class="headerlink" title="安装启动引导设备"></a>安装启动引导设备</h1><p>Ubuntu采用Grub来引导系统，选择<code>/boot</code>所在分区即可。</p>
-<h1 id="UEFI引导下的配置"><a href="#UEFI引导下的配置" class="headerlink" title="UEFI引导下的配置"></a>UEFI引导下的配置</h1><p>若用UEFI引导系统，则空间分配时无需给<code>/boot</code>分配空间，在安装启动引导设备的选项中，选择<code>Windows Boot Manager</code>所在的分区即可完成引导。</p>
+<h2 id="安装启动引导设备"><a href="#安装启动引导设备" class="headerlink" title="安装启动引导设备"></a>安装启动引导设备</h2><p>Ubuntu采用Grub来引导系统，选择<code>/boot</code>所在分区即可。</p>
+<h2 id="UEFI引导下的配置"><a href="#UEFI引导下的配置" class="headerlink" title="UEFI引导下的配置"></a>UEFI引导下的配置</h2><p>若用UEFI引导系统，则空间分配时无需给<code>/boot</code>分配空间，在安装启动引导设备的选项中，选择<code>Windows Boot Manager</code>所在的分区即可完成引导。</p>
 
       
     </div>
@@ -569,7 +569,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -647,7 +647,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux的分区和挂载"><span class="nav-number">2.</span> <span class="nav-text">Linux的分区和挂载</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#空间分配"><span class="nav-number">3.</span> <span class="nav-text">空间分配</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装启动引导设备"><span class="nav-number">4.</span> <span class="nav-text">安装启动引导设备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#UEFI引导下的配置"><span class="nav-number">5.</span> <span class="nav-text">UEFI引导下的配置</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#写在前面"><span class="nav-number">1.</span> <span class="nav-text">写在前面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linux的分区和挂载"><span class="nav-number">2.</span> <span class="nav-text">Linux的分区和挂载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#空间分配"><span class="nav-number">3.</span> <span class="nav-text">空间分配</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装启动引导设备"><span class="nav-number">4.</span> <span class="nav-text">安装启动引导设备</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UEFI引导下的配置"><span class="nav-number">5.</span> <span class="nav-text">UEFI引导下的配置</span></a></li></ol></div>
             
 
           </div>
@@ -692,7 +692,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">This site has totally 30.8k words</span>
+  <span class="post-count">This site has totally 31.3k words</span>
 </div>
         
 

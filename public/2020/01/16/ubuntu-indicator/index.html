@@ -130,11 +130,11 @@
 <meta name="keywords" content="小技巧,Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu右上角状态指示栏顺序配置">
-<meta property="og:url" content="http://yluo.name/2020/01/16/ubuntu_indicator/index.html">
+<meta property="og:url" content="http://yluo.name/2020/01/16/ubuntu-indicator/index.html">
 <meta property="og:site_name" content="DécouVerte">
 <meta property="og:description" content="Ubuntu的右上角状态指示栏(indicator)顺序通常按照先加载靠右，后加载靠左的顺序放置图标，但有时配置顺序不理想，需要手动调整。 设置方法在Ubuntu中存在一个表单，这个表单里固定了一部分indicator的顺序，这个文件保存在如下位置： 1/usr/share/indicator-application/ordering-override.keyfile 若是针对个人用户的配置，可以">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-19T13:11:39.672Z">
+<meta property="og:updated_time" content="2020-01-20T01:44:36.988Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu右上角状态指示栏顺序配置">
 <meta name="twitter:description" content="Ubuntu的右上角状态指示栏(indicator)顺序通常按照先加载靠右，后加载靠左的顺序放置图标，但有时配置顺序不理想，需要手动调整。 设置方法在Ubuntu中存在一个表单，这个表单里固定了一部分indicator的顺序，这个文件保存在如下位置： 1/usr/share/indicator-application/ordering-override.keyfile 若是针对个人用户的配置，可以">
@@ -167,7 +167,7 @@
 
 
 
-  <link rel="canonical" href="http://yluo.name/2020/01/16/ubuntu_indicator/"/>
+  <link rel="canonical" href="http://yluo.name/2020/01/16/ubuntu-indicator/"/>
 
 
 
@@ -345,7 +345,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yluo.name/2020/01/16/ubuntu_indicator/">
+    <link itemprop="mainEntityOfPage" href="http://yluo.name/2020/01/16/ubuntu-indicator/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yang Luo">
@@ -435,10 +435,10 @@
 
       
         <p>Ubuntu的右上角状态指示栏(indicator)顺序通常按照先加载靠右，后加载靠左的顺序放置图标，但有时配置顺序不理想，需要手动调整。</p>
-<h1 id="设置方法"><a href="#设置方法" class="headerlink" title="设置方法"></a>设置方法</h1><p>在Ubuntu中存在一个表单，这个表单里固定了一部分indicator的顺序，这个文件保存在如下位置：</p>
+<h2 id="设置方法"><a href="#设置方法" class="headerlink" title="设置方法"></a>设置方法</h2><p>在Ubuntu中存在一个表单，这个表单里固定了一部分indicator的顺序，这个文件保存在如下位置：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/share/indicator-application/ordering-override.keyfile</div></pre></td></tr></table></figure>
 <p>若是针对个人用户的配置，可以将ordering-override.keyfile复制到用户目录下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp /usr/share/indicator-application/ordering-override.keyfile ~/.local/share/indicators/application/</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp /usr/share/indicator-application/ordering-override.keyfile ~/.<span class="built_in">local</span>/share/indicators/application/</div></pre></td></tr></table></figure>
 <p>随后利用<code>vim ~/.local/share/indicators/application/ordering-override.keyfile</code>打开<code>.keyfile</code>文件，可以看到，文件里的内容如下所示：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">[Ordering Index Overrides]</div><div class="line">nm-applet=1</div><div class="line">My_Weather_Indicator=2</div><div class="line">lang_indicator=3</div><div class="line">bluetooth_manager=4</div><div class="line">transmission=6</div></pre></td></tr></table></figure>
 <p>数字越大则越靠近左边，而数字越小则越靠近右边。若想要indicator放置在最左边，则可以使数值为-1：</p>
@@ -568,7 +568,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">37</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -646,7 +646,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#设置方法"><span class="nav-number">1.</span> <span class="nav-text">设置方法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#设置方法"><span class="nav-number">1.</span> <span class="nav-text">设置方法</span></a></li></ol></div>
             
 
           </div>
@@ -691,7 +691,7 @@
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">This site has totally 30.8k words</span>
+  <span class="post-count">This site has totally 31.3k words</span>
 </div>
         
 

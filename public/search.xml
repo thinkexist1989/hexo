@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Ubuntu开机自动挂载硬盘]]></title>
+    <url>%2F2020%2F01%2F20%2Fubuntu-mount%2F</url>
+    <content type="text"><![CDATA[平时我使用Windows和Linux作为主力双系统，额外采用一块固态硬盘作为数据盘，为了在Linux下使用方便，需要开机自动便将硬盘挂在到/home目录下。 步骤1.查看硬盘信息1$ sudo fdisk -l 其显示信息大致如下： 12Device Boot Start End Sectors Size Id Type/dev/sda1 2048 1000212479 1000210432 477G 7 HPFS/NTFS/exFAT 如果有多个设备，则会显示多个类似信息。 2. 创建需要挂载的目录我希望将硬盘挂载到用户目录下，因此在用户目录下建立SSD/文件夹。 1$ sudo mkdir ~/SSD/ 3. 查看磁盘分区的UUID输入以下指令查看/dev/sda1的信息 1$ sudo blkid 其显示信息如下： 1/dev/sda1: LABEL="SSD" UUID="C28070388070354F" TYPE="ntfs" PARTUUID="40ae352f-01" 其中UUID=&quot;C28070388070354F&quot;便是挂载硬盘的UUID， 其文件系统格式为ntfs。 4. 配置开机自动挂载在/etc/fstab文件中加入如下分区信息，让其开机自动挂载： 1UUID=C28070388070354F /home/think/SSD ntfs defaults 0 0 说明：其格式为 &lt;分区定位&gt; + &lt;挂载点位置&gt; + &lt;挂载磁盘类型&gt; + &lt;挂载参数&gt; + + &lt;磁盘检查&gt;， 分区定位，可以为UUID或LABEL； 挂载点位置，想要挂载硬盘的位置； 挂载磁盘类型，文件系统类型，auto, ext4, ntfs； 挂载参数， 通常为defaults，还可设置为auto, ro, rw； dump备份，dump工具决定何时备份，0表示忽略，1表示备份。通常为0； 磁盘检查，决定文件系统检查顺序， 0表示检查，1表示最高优先权， 2表示其他所有需要被检查的设备。 5. 挂载硬盘执行完之前的步骤已经可以在开机自动挂载了，若想手动挂载也很方便，只需要输入如下命令： 1$ sudo mount -a 这样便可根据/etc/fstab文件中的顺序挂载所有设备。]]></content>
+      <categories>
+        <category>技术探索</category>
+      </categories>
+      <tags>
+        <tag>小技巧</tag>
+        <tag>Linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Shell编程：echo指令]]></title>
     <url>%2F2020%2F01%2F19%2Fshell-echo%2F</url>
     <content type="text"><![CDATA[echo命令用于在终端打印一行文本，例如， 12$ echo this is a testthis is a test 经常使用的参数如下： 参数 说明 -n 不输出结尾换行符 -e 启用反斜杠转义的解释 -E 不启用反斜杠转义的解释（默认） 若采用-e， 则下列转义字符将被解释： 参数 说明 \\ 不输出结尾换行符 \b 退格 backspace \c 不再输出后面内容 \e 退出 escape \f 退格 backspace \n 换行 \r 回车 \t 水平tab \v 垂直tab \0NNN 八进制NNN \xHH 16进制HH]]></content>
@@ -27,7 +39,7 @@
   <entry>
     <title><![CDATA[Shell编程：date指令]]></title>
     <url>%2F2020%2F01%2F19%2Fshell-date%2F</url>
-    <content type="text"><![CDATA[date命令用于显示当前的日期及时间，直接运行可得到如下格式的显示： 12$dateSun Jan 19 21:42:52 CST 2020 可以在命令后添加参数以设定输出格式(date [OPTION]... [+FORMAT])，例如： 12$date +%Y%m%d20200119 常用的格式参数如下所示： 参数 说明 %H 小时(00~23) %I 小时(01~12) %M 分(00~59) %m 月(01~12) %p 显示AM或PM %r 时间(hh:mm:ss) %S 秒(00~59) %s 从1970-01-01 00:00:00 UTC开始到现在的秒数 %T 24小时制时间 %H:%M:%S %X 按照当前系统时间格式显示当前时间 %x 按照当前系统日期格式显示当前日期 %Z 时区 %a 星期简称(Sun) %A 星期全称(Sunday) %b 月的简称(Dec) %B 月的全称(December) %c 日期和时间(Sun 19 Jan 2020 10:06:36 PM CST) %d 一个月的第几天(01~31) %D 日期(mm/dd/yy) %w 一个星期的第几天(0代表Sunday) %W 一年的第几个星期(01~53)，星期一为第一天 %y 年的最后两位(20) %Y 年(2020)]]></content>
+    <content type="text"><![CDATA[date命令用于显示当前的日期及时间，直接运行可得到如下格式的显示： 12$ dateSun Jan 19 21:42:52 CST 2020 可以在命令后添加参数以设定输出格式(date [OPTION]... [+FORMAT])，例如： 12$ date +%Y%m%d20200119 常用的格式参数如下所示： 参数 说明 %H 小时(00~23) %I 小时(01~12) %M 分(00~59) %m 月(01~12) %p 显示AM或PM %r 时间(hh:mm:ss) %S 秒(00~59) %s 从1970-01-01 00:00:00 UTC开始到现在的秒数 %T 24小时制时间 %H:%M:%S %X 按照当前系统时间格式显示当前时间 %x 按照当前系统日期格式显示当前日期 %Z 时区 %a 星期简称(Sun) %A 星期全称(Sunday) %b 月的简称(Dec) %B 月的全称(December) %c 日期和时间(Sun 19 Jan 2020 10:06:36 PM CST) %d 一个月的第几天(01~31) %D 日期(mm/dd/yy) %w 一个星期的第几天(0代表Sunday) %W 一年的第几个星期(01~53)，星期一为第一天 %y 年的最后两位(20) %Y 年(2020)]]></content>
       <categories>
         <category>技术探索</category>
       </categories>
@@ -64,7 +76,7 @@
   </entry>
   <entry>
     <title><![CDATA[Ubuntu右上角状态指示栏顺序配置]]></title>
-    <url>%2F2020%2F01%2F16%2Fubuntu_indicator%2F</url>
+    <url>%2F2020%2F01%2F16%2Fubuntu-indicator%2F</url>
     <content type="text"><![CDATA[Ubuntu的右上角状态指示栏(indicator)顺序通常按照先加载靠右，后加载靠左的顺序放置图标，但有时配置顺序不理想，需要手动调整。 设置方法在Ubuntu中存在一个表单，这个表单里固定了一部分indicator的顺序，这个文件保存在如下位置： 1/usr/share/indicator-application/ordering-override.keyfile 若是针对个人用户的配置，可以将ordering-override.keyfile复制到用户目录下： 1cp /usr/share/indicator-application/ordering-override.keyfile ~/.local/share/indicators/application/ 随后利用vim ~/.local/share/indicators/application/ordering-override.keyfile打开.keyfile文件，可以看到，文件里的内容如下所示： 123456[Ordering Index Overrides]nm-applet=1My_Weather_Indicator=2lang_indicator=3bluetooth_manager=4transmission=6 数字越大则越靠近左边，而数字越小则越靠近右边。若想要indicator放置在最左边，则可以使数值为-1： 1indicator_sysmonitor=-1]]></content>
       <categories>
         <category>技术探索</category>
@@ -87,9 +99,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[机器人操作系统ROS学习笔记：自定义消息类型]]></title>
-    <url>%2F2019%2F08%2F06%2Fros_message%2F</url>
-    <content type="text"><![CDATA[ROS消息文件ROS的消息文件是一个描述ROS中所使用消息类型的简单文本，通常存放在功能包文件夹下的msg文件夹下，可以被用来生成不同语言的源代码。 消息数据类型ROS中的消息可使用的基本数据类型如下： int8, int16, int32, int64 (plus uint*) float32, float64 string time, duration 可变长度的数组，例如int8[]，以及固定长度的数组，例如float32[10] ROS消息中还有一个特殊的数据类型：Header， 其含有时间戳和坐标系信息。通常在很多msg文件的第一行有： 1Header header 个人理解（不一定准确），Header类型通常包含在频繁发送的消息中，这样订阅节点可以根据Header中的时间戳信息等做信息同步处理。 同时，msg文件中还可以包括其他消息文件类型，例如在下面xxx.msg文件中，使用了Header, string以及另外两个消息类型。 1234Header headerstring child_frame_idgeometry_msgs/PoseWithCovariance posegeometry_msgs/TwistWithCovariance twist 使用消息为了使用消息，需要在package.xml中添加编译依赖和执行依赖： 12&lt;build_depend&gt;message_generation&lt;/build_depend&gt;&lt;exec_depend&gt;message_runtime&lt;/exec_depend&gt; 并且在CMakeLists.txt文件中利用find_package函数增加对message_generation的依赖： 1234find_package(catkin REQUIRED COMPONENTS ... message_generation) 同时，利用catkin_package函数设置运行依赖： 1234catkin_package( ... CATKIN_DEPENDS message_runtime ...) 并添加需要参与编译的msg文件： 12345add_message_files( FILES xxx.msg ...) 确保CMake知道在消息文件更改后重新编译msg文件： 1234generate_messages( DEPENDENCIES std_msgs) 随后便可在功能包目录下运行catkin_make进行编译，成功后可使用rosmsg命令查看自定义的消息类型： 1rosmsg show xxx 消息相关命令 rosmsg show xxx: 查看消息xxx类型，可以不指定功能包名。]]></content>
+    <title><![CDATA[机器人操作系统ROS学习笔记：ROS命名空间及重映射]]></title>
+    <url>%2F2019%2F08%2F06%2Fros_namespace%2F</url>
+    <content type="text"><![CDATA[ROS的命名命名是ROS中的基本概念。ROS中的节点、话题以及参数都必须有唯一的命名。例如机器人上的相机可以命名为camera，并且相机可以输出一个话题image，同时读取一个frame_rate的参数来控制发送图像的频率。一个有效的命名具备以下特点： 首字符为字母（[a-z|A-Z]）、波浪线（～）或左斜杠（/）。（不可以为下划线_） 后续字符可以是字母或数字（[0-9|a-z|A-Z]）、下划线（_）或者左斜杠（/） 当一个机器人上存在两个相机时，由于相机的功能几乎完全一样，我们没有必要为两个相机分别编写一个程序，同时，也不想让两个相机的话题都发布在image话题上，这样会导致两个相机的画面交替出现。更一般地，命名的冲突在机器人系统中非常容易发生，这是因为机器人上常常包含相同的硬件或软件来简化工作量，例如相同的左右机械臂、相同的相机以及相同的多个轮子。为了避免命名上的冲突，ROS中采用两种机制来处理这种情况：命名空间和重映射。 命名空间 Namespace命名空间是计算机科学中的一个基本概念。根据UNIX路径和网络URI的规范，ROS使用斜杠（/）来分隔命名空间。ROS可以在不同的命名空间中启动同一个节点来避免命名冲突。 例如，具有两个相机的机器人可以在不同的命名空间left和right中启动两个相机的节点，最终会有两路图像流，分别为left/image和right/image。 重映射 Remap命名空间避免了命名的冲突，以相机为例，左相机发布的图像流话题为left/image，而在ROS中存在另一个节点nodex，专门接收image话题，由于两个话题在不同的命名空间之下，因此无法接收到左相机的图像信息。为了解决这个问题，一种方法是在同一个命名空间下启动这个节点，即在left命名空间下启动节点nodex，于是节点变为left/nodex，此时接收的image话题也将变为left/image。但是在复杂的程序当中，有可能节点需要“深入”不止一个命名空间之中，十分不方便。因此ROS中还可以用重映射（remap）的方式来解决这个问题。 在ROS中，程序中任何一个用于命名的字符串都可以在运行时重映射。例如，ROS中的一个常用程序image_view将image主题实时渲染在窗口上。使用重映射，可以使image_view接收left/image或者right/image，而无需修改image_view的代码。 命名空间和重映射的使用在命令行中使用由于ROS的设计模式鼓励软件的重用，重命名在开发和部署ROS软件的时候非常普遍。为了简化操作，ROS在命令行启动节点时提供了标准语法来重命名。 将image话题重映射到right/image可以利用重映射语法来完成： 1$ rosrun package image_view image:=right/image 把节点放置到命名空间中可以利用__ns命名空间重映射语法来完成： 1$ rosrun package camera __ns:=right 修改节点的名字可以利用__name重命名语法来完成： 1$ rosrun package camera __name:=camera2 在launch文件中使用 通过设置name参数来确定节点的名字： 1&lt;node name=&quot;turtlesim_node2&quot; pkg=&quot;turtlesim&quot; type=&quot;turtlesim_node.py&quot;/&gt; 通过设置ns参数来确定默认命名空间： 1&lt;node name=&quot;turtlesim_node&quot; pkg=&quot;turtlesim&quot; type=&quot;turtlesim_node.py&quot; ns=&quot;sim1&quot; /&gt; 通过remap标签设置重映射： 1&lt;remap from=&quot;image&quot; to=&quot;right/image&quot;/&gt; 在ROS程序终端中使用可以利用环境变量设置默认命名空间： 1export ROS_NAMESPACE=default-namespace]]></content>
       <categories>
         <category>技术探索</category>
       </categories>
@@ -98,9 +110,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[机器人操作系统ROS学习笔记：ROS命名空间及重映射]]></title>
-    <url>%2F2019%2F08%2F06%2Fros_namespace%2F</url>
-    <content type="text"><![CDATA[ROS的命名命名是ROS中的基本概念。ROS中的节点、话题以及参数都必须有唯一的命名。例如机器人上的相机可以命名为camera，并且相机可以输出一个话题image，同时读取一个frame_rate的参数来控制发送图像的频率。一个有效的命名具备以下特点： 首字符为字母（[a-z|A-Z]）、波浪线（～）或左斜杠（/）。（不可以为下划线_） 后续字符可以是字母或数字（[0-9|a-z|A-Z]）、下划线（_）或者左斜杠（/） 当一个机器人上存在两个相机时，由于相机的功能几乎完全一样，我们没有必要为两个相机分别编写一个程序，同时，也不想让两个相机的话题都发布在image话题上，这样会导致两个相机的画面交替出现。更一般地，命名的冲突在机器人系统中非常容易发生，这是因为机器人上常常包含相同的硬件或软件来简化工作量，例如相同的左右机械臂、相同的相机以及相同的多个轮子。为了避免命名上的冲突，ROS中采用两种机制来处理这种情况：命名空间和重映射。 命名空间 Namespace命名空间是计算机科学中的一个基本概念。根据UNIX路径和网络URI的规范，ROS使用斜杠（/）来分隔命名空间。ROS可以在不同的命名空间中启动同一个节点来避免命名冲突。 例如，具有两个相机的机器人可以在不同的命名空间left和right中启动两个相机的节点，最终会有两路图像流，分别为left/image和right/image。 重映射 Remap命名空间避免了命名的冲突，以相机为例，左相机发布的图像流话题为left/image，而在ROS中存在另一个节点nodex，专门接收image话题，由于两个话题在不同的命名空间之下，因此无法接收到左相机的图像信息。为了解决这个问题，一种方法是在同一个命名空间下启动这个节点，即在left命名空间下启动节点nodex，于是节点变为left/nodex，此时接收的image话题也将变为left/image。但是在复杂的程序当中，有可能节点需要“深入”不止一个命名空间之中，十分不方便。因此ROS中还可以用重映射（remap）的方式来解决这个问题。 在ROS中，程序中任何一个用于命名的字符串都可以在运行时重映射。例如，ROS中的一个常用程序image_view将image主题实时渲染在窗口上。使用重映射，可以使image_view接收left/image或者right/image，而无需修改image_view的代码。 命名空间和重映射的使用在命令行中使用由于ROS的设计模式鼓励软件的重用，重命名在开发和部署ROS软件的时候非常普遍。为了简化操作，ROS在命令行启动节点时提供了标准语法来重命名。 将image话题重映射到right/image可以利用重映射语法来完成： 1$ rosrun package image_view image:=right/image 把节点放置到命名空间中可以利用__ns命名空间重映射语法来完成： 1$ rosrun package camera __ns:=right 修改节点的名字可以利用__name重命名语法来完成： 1$ rosrun package camera __name:=camera2 在launch文件中使用 通过设置name参数来确定节点的名字： 1&lt;node name=&quot;turtlesim_node2&quot; pkg=&quot;turtlesim&quot; type=&quot;turtlesim_node.py&quot;/&gt; 通过设置ns参数来确定默认命名空间： 1&lt;node name=&quot;turtlesim_node&quot; pkg=&quot;turtlesim&quot; type=&quot;turtlesim_node.py&quot; ns=&quot;sim1&quot; /&gt; 通过remap标签设置重映射： 1&lt;remap from=&quot;image&quot; to=&quot;right/image&quot;/&gt; 在ROS程序终端中使用可以利用环境变量设置默认命名空间： 1export ROS_NAMESPACE=default-namespace]]></content>
+    <title><![CDATA[机器人操作系统ROS学习笔记：自定义消息类型]]></title>
+    <url>%2F2019%2F08%2F06%2Fros_message%2F</url>
+    <content type="text"><![CDATA[ROS消息文件ROS的消息文件是一个描述ROS中所使用消息类型的简单文本，通常存放在功能包文件夹下的msg文件夹下，可以被用来生成不同语言的源代码。 消息数据类型ROS中的消息可使用的基本数据类型如下： int8, int16, int32, int64 (plus uint*) float32, float64 string time, duration 可变长度的数组，例如int8[]，以及固定长度的数组，例如float32[10] ROS消息中还有一个特殊的数据类型：Header， 其含有时间戳和坐标系信息。通常在很多msg文件的第一行有： 1Header header 个人理解（不一定准确），Header类型通常包含在频繁发送的消息中，这样订阅节点可以根据Header中的时间戳信息等做信息同步处理。 同时，msg文件中还可以包括其他消息文件类型，例如在下面xxx.msg文件中，使用了Header, string以及另外两个消息类型。 1234Header headerstring child_frame_idgeometry_msgs/PoseWithCovariance posegeometry_msgs/TwistWithCovariance twist 使用消息为了使用消息，需要在package.xml中添加编译依赖和执行依赖： 12&lt;build_depend&gt;message_generation&lt;/build_depend&gt;&lt;exec_depend&gt;message_runtime&lt;/exec_depend&gt; 并且在CMakeLists.txt文件中利用find_package函数增加对message_generation的依赖： 1234find_package(catkin REQUIRED COMPONENTS ... message_generation) 同时，利用catkin_package函数设置运行依赖： 1234catkin_package( ... CATKIN_DEPENDS message_runtime ...) 并添加需要参与编译的msg文件： 12345add_message_files( FILES xxx.msg ...) 确保CMake知道在消息文件更改后重新编译msg文件： 1234generate_messages( DEPENDENCIES std_msgs) 随后便可在功能包目录下运行catkin_make进行编译，成功后可使用rosmsg命令查看自定义的消息类型： 1rosmsg show xxx 消息相关命令 rosmsg show xxx: 查看消息xxx类型，可以不指定功能包名。]]></content>
       <categories>
         <category>技术探索</category>
       </categories>
@@ -155,8 +167,8 @@
   </entry>
   <entry>
     <title><![CDATA[Ubuntu与Windows双系统时间设置问题]]></title>
-    <url>%2F2019%2F08%2F01%2Fubuntu_windows_time%2F</url>
-    <content type="text"><![CDATA[问题缘由现在很多人都在电脑里安装了Ubuntu和Windows双系统，在安装完系统之后会发现，系统的显示时间经常会出问题，要么比正常时间快8个小时，要么比正常时间慢8个小时。即使利用网络同步时间之后，当切换过系统之后还是会出现时间差的问题。 这种现象是由于Windows与Ubuntu默认对时间的管理方式不同造成的。我们知道电脑的BIOS里记录着一串时间数据，操作系统就是根据这个数据得到当前时间的。Ubuntu系统使用的是UTC时间（世界协调时），系统会把BIOS里记录的时间看成GMT+0时间，即世界标准时。在Ubuntu系统中有一个设置，是配置当前所在时区的，在中国就会配置为东八区（GMT+8），所以Ubuntu会把BIOS中得到的时间加上8个小时显示出来，随后在系统关机的时候，将当前显示的时间减去8个小时后存入BIOS中。 而在Windows中，会将BIOS中的时间看做本地时间，直接显示出来，因此，当从Ubuntu切换到Windows时，会出现时间差8个小时的情况。 解决方法最简单的方法就是将Ubuntu下的UTC时间关闭，采用和Window一样的时间管理方式。只需要在Ubuntu终端下运行一行代码： 1sudo timedatectrl set-local-utc 1 这样便可以使Windows和Ubuntu下的时间同步了。]]></content>
+    <url>%2F2019%2F08%2F01%2Fubuntu-time%2F</url>
+    <content type="text"><![CDATA[问题缘由现在很多人都在电脑里安装了Ubuntu和Windows双系统，在安装完系统之后会发现，系统的显示时间经常会出问题，要么比正常时间快8个小时，要么比正常时间慢8个小时。即使利用网络同步时间之后，当切换过系统之后还是会出现时间差的问题。 这种现象是由于Windows与Ubuntu默认对时间的管理方式不同造成的。我们知道电脑的BIOS里记录着一串时间数据，操作系统就是根据这个数据得到当前时间的。Ubuntu系统使用的是UTC时间（世界协调时），系统会把BIOS里记录的时间看成GMT+0时间，即世界标准时。在Ubuntu系统中有一个设置，是配置当前所在时区的，在中国就会配置为东八区（GMT+8），所以Ubuntu会把BIOS中得到的时间加上8个小时显示出来，随后在系统关机的时候，将当前显示的时间减去8个小时后存入BIOS中。 而在Windows中，会将BIOS中的时间看做本地时间，直接显示出来，因此，当从Ubuntu切换到Windows时，会出现时间差8个小时的情况。 解决方法最简单的方法就是将Ubuntu下的UTC时间关闭，采用和Window一样的时间管理方式。只需要在Ubuntu终端下运行一行代码： 1$ sudo timedatectrl set-local-utc 1 这样便可以使Windows和Ubuntu下的时间同步了。]]></content>
       <categories>
         <category>技术探索</category>
       </categories>
@@ -252,7 +264,7 @@
   </entry>
   <entry>
     <title><![CDATA[Ubuntu安装时如何分配目录空间]]></title>
-    <url>%2F2019%2F01%2F25%2Fubuntu_partition%2F</url>
+    <url>%2F2019%2F01%2F25%2Fubuntu-partition%2F</url>
     <content type="text"><![CDATA[写在前面像我这种主力系统为Linux，但是有些软件还必须在Windows上运行的人，在笔记本上安装Linux与Windows是必不可少的。估计很多用双系统的同学在手动安装Ubuntu或者其他Linux发行版时会像我一样，对如何给Linux的各个目录分配空间头疼不已。因此我下定决心研究了一下这些目录的功能，在此分享给大家。 Linux的分区和挂载Linux的分区和Windows有很大不同。在Windows下，是以盘符来分割各个空间，而且一般操作系统都安装在C盘，剩下的D盘，E盘可以用来存储其他的文件和程序。而Linux不同，Linux有一个最基本的根目录/，所有其他的目录都在这个目录下，根目录/就像是一个大房子，/目录下面的其他目录，比如/etc，/boot等，就像是一个一个功能区，/etc用来存储配置文件，/bin用来放二进制程序，/boot用来放启动文件，/home用来放用户的文件等等。 Linux的分区和目录的关系是：可以指定一个目录力的东西存在某个分区里，如果不指定，则这个目录里的东西存在上一级目录所在分区中，如果上一级目录页没有特殊制定分期，则再上溯一级目录，以此类推。最后可以上溯到根目录/。所以装系统的时候，其他的都可以不指定，但是一定要指定/目录存放的分区。 空间分配给Ubuntu一般30G左右就够用了，一般安装的时候我们都给/boot,/swap,/和/home分配一下相应的空间，其余的可以不分配。 /boot为启动分区，分配大小：200MB，分区类型：主分区，分区位置：空间起始位置，用于：Ext4日志文件系统，挂载点：/boot； swap为交换空间，一般为实际内存2倍左右，但是如果内存足够大，就不需要设置。分配大小：内存×2，分区类型：逻辑分区，分区位置：空间起始位置，用于：交换空间，挂载点：SWAP； /为根目录，分配大小：至少10G以上，分区类型：逻辑分区，分区位置：空间起始位置，用于：Ex4日志文件系统，挂载点：/； /home为用户目录，分配大小：剩余所有空间，分区类型：逻辑分区，分区位置：空间起始位置，用于：Ext4日志文件系统，挂载点：/home。 安装启动引导设备Ubuntu采用Grub来引导系统，选择/boot所在分区即可。 UEFI引导下的配置若用UEFI引导系统，则空间分配时无需给/boot分配空间，在安装启动引导设备的选项中，选择Windows Boot Manager所在的分区即可完成引导。]]></content>
       <categories>
         <category>技术探索</category>
@@ -276,7 +288,7 @@
   <entry>
     <title><![CDATA[Ubuntu下Shadowsocks代理及终端使用ss]]></title>
     <url>%2F2019%2F01%2F24%2Fterminal_via_ss%2F</url>
-    <content type="text"><![CDATA[作为一名勤勤恳恳的科研人员，在使用Ubuntu的时候，避免不了要经常科学上网，最好用的莫过于Shadowsocks代理，在此简单介绍下如何在Ubuntu下使用Shadowsocks（以下简称ss）代理以及让终端也使用ss上网。 预备条件 一台境外VPS服务器，并且已经搭载好ss服务 本机安装了Ubuntu系统（其他Linux发行版操作类似） 安装shadowsocks-qt5shadowsocks-qt5是ss在linux下的gui程序，在终端输入以下指令，添加ss-qt5的PPA源并更新 12sudo add-apt-repository ppa:hzwhuang/ss-qt5sudo apt-get update 随后安装ss-qt5 1sudo apt-get install shadowsocks-qt5 之后运行ss-qt5，在里面配置相应的服务器信息后便可以测试连接是否成功。为了可以在浏览器里方便的使用ss，推荐Chrome浏览器下的插件SwitchyOmega，简单介绍以下SwitchOmega的配置。 安装配置SwitchyOmega在Chrome商店或者https://www.switchyomega.com/download/下载SwitchyOmega插件并安装到Chrome。 随后在SwitchOmega配置中新建一个情景模式proxy,协议选择socks 5, 地址127.0.0.1,端口1080（根据ss-qt5中的配置适当修改）。其实这样配置之后启动proxy模式便可以实现科学上网了，但是此时所有的上网流量都需要经过VPS，很多国内的网站，比如百度等也是需要经过代理上网，增加了上网的延时，因此可以配置PAC来实现墙内网站直接连接，墙外网站走代理的完美解决方案。 配置PAC在SwitchyOmega的自动切换模式下，在规则列表规则前面的框打√，再将后面的情景模式设置为proxy，意思是规则列表中的内容，我们使用proxy情景模式。然后规则列表设置中：12规则列表格式： AutoProxy 规则列表网址： https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt 输入上面的网址后请点击“立即更新情景模式”，更新成功后可以看到下面的更新时间和内容，这样设置完成 “规则列表规则” 后就不需要在切换规则中一个一个添加条件了。 配置终端走ss代理终端下走代理需要proxychains这个小软件的帮助，首先安装proxychains 1sudo apt-get install proxychains 安装完毕后，修改/etc/proxychains.conf中的内容，在最后[ProxyList]选项里填入ss的信息 1socks5 127.0.0.1 1080 这样就已经配置成功了，若想让终端的命令走ss代理的话，就在命令前加上proxychains即可。 验证是否配置成功，首先输入curl ip.gs查看当前未走代理的ip地址，之后输入proxychains curl ip.gs查看走代理的ip地址，若ip地址是VPS的服务器地址，则配置成功。]]></content>
+    <content type="text"><![CDATA[作为一名勤勤恳恳的科研人员，在使用Ubuntu的时候，避免不了要经常科学上网，最好用的莫过于Shadowsocks代理，在此简单介绍下如何在Ubuntu下使用Shadowsocks（以下简称ss）代理以及让终端也使用ss上网。 预备条件 一台境外VPS服务器，并且已经搭载好ss服务 本机安装了Ubuntu系统（其他Linux发行版操作类似） 安装shadowsocks-qt5shadowsocks-qt5是ss在linux下的gui程序，在终端输入以下指令，添加ss-qt5的PPA源并更新 12$ sudo add-apt-repository ppa:hzwhuang/ss-qt5$ sudo apt-get update 随后安装ss-qt5 1$ sudo apt-get install shadowsocks-qt5 之后运行ss-qt5，在里面配置相应的服务器信息后便可以测试连接是否成功。为了可以在浏览器里方便的使用ss，推荐Chrome浏览器下的插件SwitchyOmega，简单介绍以下SwitchOmega的配置。 安装配置SwitchyOmega在Chrome商店或者https://www.switchyomega.com/download/下载SwitchyOmega插件并安装到Chrome。 随后在SwitchOmega配置中新建一个情景模式proxy,协议选择socks 5, 地址127.0.0.1,端口1080（根据ss-qt5中的配置适当修改）。其实这样配置之后启动proxy模式便可以实现科学上网了，但是此时所有的上网流量都需要经过VPS，很多国内的网站，比如百度等也是需要经过代理上网，增加了上网的延时，因此可以配置PAC来实现墙内网站直接连接，墙外网站走代理的完美解决方案。 配置PAC在SwitchyOmega的自动切换模式下，在规则列表规则前面的框打√，再将后面的情景模式设置为proxy，意思是规则列表中的内容，我们使用proxy情景模式。然后规则列表设置中： 12规则列表格式： AutoProxy规则列表网址： https://raw.githubusercontent.com/gfwlist/gfwlist/master/gfwlist.txt 输入上面的网址后请点击“立即更新情景模式”，更新成功后可以看到下面的更新时间和内容，这样设置完成 “规则列表规则” 后就不需要在切换规则中一个一个添加条件了。 配置终端走ss代理终端下走代理需要proxychains这个小软件的帮助，首先安装proxychains 1$ sudo apt-get install proxychains 安装完毕后，修改/etc/proxychains.conf中的内容，在最后[ProxyList]选项里填入ss的信息 1socks5 127.0.0.1 1080 这样就已经配置成功了，若想让终端的命令走ss代理的话，就在命令前加上proxychains即可。 验证是否配置成功，首先输入curl ip.gs查看当前未走代理的ip地址，之后输入proxychains curl ip.gs查看走代理的ip地址，若ip地址是VPS的服务器地址，则配置成功。]]></content>
       <categories>
         <category>技术探索</category>
       </categories>
