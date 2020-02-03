@@ -1,6 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Windows Powershell运行自定义脚本]]></title>
+    <url>%2F2020%2F02%2F05%2Fpowershell-run-script%2F</url>
+    <content type="text"><![CDATA[问题描述Windows Powershell为了防止恶意脚本的执行，设计了一个执行策略(Execution Policy)，若发现自定义的脚本无法运行，则需要更改执行策略。 执行策略包括6种类型： Restricted 受限制的，只能执行单个命令，不能执行脚本 AllSigned 允许执行有数字签名的脚本 RemoteSigned 本地脚本可以运行，网络下载的需要数字签名 Unrestricted 无限制，但从网络下载的会有安全提示 Bypass 不设任何限制，且没有安全提示 Undefined 未设置策略，使用继承或默认策略 解决方法利用管理员身份打开Powershell终端，输入以下命令将策略更改为RemoteSigned： 1$ Set-ExecutionPolicy RemoteSigned]]></content>
+      <categories>
+        <category>技术探索</category>
+      </categories>
+      <tags>
+        <tag>Windows</tag>
+        <tag>Powershell</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Git利用rebase压缩多次commit]]></title>
+    <url>%2F2020%2F02%2F05%2Fgit-rebase%2F</url>
+    <content type="text"><![CDATA[问题描述有时我们提交到GitHub等远程仓库上的commit太多，想将多次提交的commit合并成一个commit。 解决方法可以利用rebase来压缩多次commit。 1. 首先查看本地提交历史输入以下命令查看master分支的提交历史： 1$ git log 这里会显示master分支自创立以来的所有提交历史，现在假设要合并最近的4次提交。 2. 压缩最近4次提交1$ git rebase -i HEAD~4 该命令执行后，会弹出默认编辑器的编辑窗口，4次提交的信息会倒序排列，最新的提交在最下面。 我们需要将其中第2~4行的第一个单词pick修改为squash这意味着将最后三次提交压缩到倒数第4次提交。随后保存。 3. 处理冲突若有冲突，则会提示需要修改，修改后输入以下命令保存此次压缩： 12$ git add .$ git rebase --continue 如果想要放弃此次压缩，则输入： 1$git rebase --abort 4. 修改描述信息若没有冲突处理，则会直接跳转到修改描述信息的位置，可以修改此次压缩后的commit描述。随后保存。 5. 提交到远程仓库修改完描述信息后便已经完成了提交，若想要推送的远程仓库，则需要覆盖之前的提交，需要强制推送： 1$ git push -f]]></content>
+      <categories>
+        <category>技术探索</category>
+      </categories>
+      <tags>
+        <tag>Git</tag>
+        <tag>小技巧</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Ubuntu蓝牙不可用]]></title>
+    <url>%2F2020%2F02%2F03%2Fubuntu-bluetooth-disabled%2F</url>
+    <content type="text"><![CDATA[问题描述之前在Ubuntu下不小心删除了/var/lib/bluetooth/下的文件夹，导致蓝牙界面一直显示disabled。 解决方法在终端里输入以下命令： 1rfkill unblock bluetooth 随后重启系统并打开蓝牙，蓝牙便显示enabled了。]]></content>
+      <categories>
+        <category>技术探索</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Bluetooth</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Windows无法进入睡眠]]></title>
+    <url>%2F2020%2F02%2F03%2Fwindows-sleep%2F</url>
+    <content type="text"><![CDATA[问题描述自己家的台式机在接通电源的情况下点击开始菜单-&gt;电源-&gt;睡眠，依然无法睡眠，会始终自动唤醒。这是由于Windows开启了离开模式(Away Mode)，一般来说能够改变到离开模式的软件主要有： 迅雷：离开模式下载； 百度网盘：传输时不休眠。 解决方法 按WIN+R打开运行 输入regedit打开注册表编辑器 定位到计算机\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SessionManager\Power，在右侧找到AwayModeEnabled，若其值为1时表示处于离开模式，无法正常睡眠，将其值改为0即可正常睡眠。]]></content>
+      <categories>
+        <category>技术探索</category>
+      </categories>
+      <tags>
+        <tag>Windows</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Ubuntu安装Nvidia显卡驱动]]></title>
     <url>%2F2020%2F02%2F02%2Fubuntu-install-nvidia-driver%2F</url>
     <content type="text"><![CDATA[通常Ubuntu默认安装的显卡驱动是Nouveau，而为了发挥显卡的最大性能，或者为了给Nvidia显卡安装cuda驱动，都需要将显卡驱动更换为Nvidia的官方驱动。有两种方法： 简单安装若显卡较老的话一般Ubuntu自己的源便会提供驱动，在系统的Additional Driver中选择相应的驱动安装即可，一般写着tested的驱动都是经过测试的，比较稳定。 自行安装若显卡较新的话，Ubuntu自己的源很多时候没有相应的驱动，这时候就需要去Nvidia的官网下载对应的驱动包，比如我现在的电脑显卡是Quadra P1000，我要去Nvidia的官网上下载Linux的驱动安装包，命名通常为NVIDIA-Linux-x86_64-440.44.run，将文件下载到系统中，随后便开始安装 1. 禁用Nouveau在/etc/modprobe.d/blacklist.conf文件的最后一行加上一句话：blacklist nouveau，将Nouveau加入黑名单，保存后输入如下指令生效： 1$ sudo update-initramfs -u 2. 重启电脑进入命令行界面重启之后，可以在登录界面或者进入系统之后，按ctrl+alt+F1进入命令行界面 3. 关闭桌面服务在命令行界面下输入以下命令： 1$ sudo service lightdm stop 4. 安装Nvidia驱动进入驱动安装包下载位置，首先赋予其执行权限： 1$ chmod +x NVIDIA-Linux-x86_64-440.44.run 随后运行并按照提示安装即可（通常用默认选项即可） 1$ sudo ./NVIDIA-Linux-x86_64-440.44.run 5.验证安装安装完成后输入以下指令： 1$ sudo nvidia-smi 若列出了GPU的信息列表则表示安装成功。]]></content>

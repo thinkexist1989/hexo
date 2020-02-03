@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yluo.name/"/>
-  <updated>2020-02-02T16:20:37.579Z</updated>
+  <updated>2020-02-05T13:50:37.228Z</updated>
   <id>http://yluo.name/</id>
   
   <author>
@@ -15,6 +15,113 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Windows Powershell运行自定义脚本</title>
+    <link href="http://yluo.name/2020/02/05/powershell-run-script/"/>
+    <id>http://yluo.name/2020/02/05/powershell-run-script/</id>
+    <published>2020-02-05T13:35:53.000Z</published>
+    <updated>2020-02-05T13:50:37.228Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>Windows Powershell为了防止恶意脚本的执行，设计了一个执行策略(Execution Policy)，若发现自定义的脚本无法运行，则需要更改执行策略。</p><p>执行策略包括6种类型：</p><ul><li>Restricted 受限制的，只能执行单个命令，不能执行脚本</li><li>AllSigned 允许执行有数字签名的脚本</li><li>RemoteSigned 本地脚本可以运行，网络下载的需要数字签名</li><li>Unrestricted 无限制，但从网络下载的会有安全提示</li><li>Bypass 不设任何限制，且没有安全提示</li><li>Undefined 未设置策略，使用继承或默认策略</li></ul><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>利用管理员身份打开Powershell终端，输入以下命令将策略更改为<code>RemoteSigned</code>：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ Set-ExecutionPolicy RemoteSigned</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h2&gt;&lt;p&gt;Windows Powershell为了防止恶意脚本的执行，设计了一个执行策略(Execution Policy)，若发现自
+      
+    
+    </summary>
+    
+      <category term="技术探索" scheme="http://yluo.name/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/"/>
+    
+    
+      <category term="Windows" scheme="http://yluo.name/tags/Windows/"/>
+    
+      <category term="Powershell" scheme="http://yluo.name/tags/Powershell/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Git利用rebase压缩多次commit</title>
+    <link href="http://yluo.name/2020/02/05/git-rebase/"/>
+    <id>http://yluo.name/2020/02/05/git-rebase/</id>
+    <published>2020-02-05T13:19:59.000Z</published>
+    <updated>2020-02-05T13:34:33.555Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>有时我们提交到GitHub等远程仓库上的commit太多，想将多次提交的commit合并成一个commit。</p><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>可以利用rebase来压缩多次commit。</p><h3 id="1-首先查看本地提交历史"><a href="#1-首先查看本地提交历史" class="headerlink" title="1. 首先查看本地提交历史"></a>1. 首先查看本地提交历史</h3><p>输入以下命令查看master分支的提交历史：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git log</div></pre></td></tr></table></figure><p>这里会显示master分支自创立以来的所有提交历史，现在假设要合并最近的4次提交。</p><h3 id="2-压缩最近4次提交"><a href="#2-压缩最近4次提交" class="headerlink" title="2. 压缩最近4次提交"></a>2. 压缩最近4次提交</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git rebase -i HEAD~4</div></pre></td></tr></table></figure><p>该命令执行后，会弹出默认编辑器的编辑窗口，4次提交的信息会倒序排列，最新的提交在最下面。</p><p>我们需要将其中第2~4行的第一个单词<code>pick</code>修改为<code>squash</code>这意味着将最后三次提交压缩到倒数第4次提交。随后保存。</p><h3 id="3-处理冲突"><a href="#3-处理冲突" class="headerlink" title="3. 处理冲突"></a>3. 处理冲突</h3><p>若有冲突，则会提示需要修改，修改后输入以下命令保存此次压缩：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git add .</div><div class="line">$ git rebase --continue</div></pre></td></tr></table></figure><p>如果想要放弃此次压缩，则输入：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$git rebase --abort</div></pre></td></tr></table></figure><h3 id="4-修改描述信息"><a href="#4-修改描述信息" class="headerlink" title="4. 修改描述信息"></a>4. 修改描述信息</h3><p>若没有冲突处理，则会直接跳转到修改描述信息的位置，可以修改此次压缩后的commit描述。随后保存。</p><h3 id="5-提交到远程仓库"><a href="#5-提交到远程仓库" class="headerlink" title="5. 提交到远程仓库"></a>5. 提交到远程仓库</h3><p>修改完描述信息后便已经完成了提交，若想要推送的远程仓库，则需要覆盖之前的提交，需要强制推送：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git push -f</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h2&gt;&lt;p&gt;有时我们提交到GitHub等远程仓库上的commit太多，想将多次提交的commit合并成一个commit。&lt;/p&gt;
+&lt;h2
+      
+    
+    </summary>
+    
+      <category term="技术探索" scheme="http://yluo.name/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/"/>
+    
+    
+      <category term="Git" scheme="http://yluo.name/tags/Git/"/>
+    
+      <category term="小技巧" scheme="http://yluo.name/tags/%E5%B0%8F%E6%8A%80%E5%B7%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ubuntu蓝牙不可用</title>
+    <link href="http://yluo.name/2020/02/03/ubuntu-bluetooth-disabled/"/>
+    <id>http://yluo.name/2020/02/03/ubuntu-bluetooth-disabled/</id>
+    <published>2020-02-03T02:43:10.000Z</published>
+    <updated>2020-02-03T03:48:10.764Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>之前在Ubuntu下不小心删除了<code>/var/lib/bluetooth/</code>下的文件夹，导致蓝牙界面一直显示disabled。</p><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>在终端里输入以下命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rfkill unblock bluetooth</div></pre></td></tr></table></figure><p>随后重启系统并打开蓝牙，蓝牙便显示enabled了。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h2&gt;&lt;p&gt;之前在Ubuntu下不小心删除了&lt;code&gt;/var/lib/bluetooth/&lt;/code&gt;下的文件夹，导致蓝牙界面一直
+      
+    
+    </summary>
+    
+      <category term="技术探索" scheme="http://yluo.name/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/"/>
+    
+    
+      <category term="Linux" scheme="http://yluo.name/tags/Linux/"/>
+    
+      <category term="Bluetooth" scheme="http://yluo.name/tags/Bluetooth/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Windows无法进入睡眠</title>
+    <link href="http://yluo.name/2020/02/03/windows-sleep/"/>
+    <id>http://yluo.name/2020/02/03/windows-sleep/</id>
+    <published>2020-02-03T02:28:25.000Z</published>
+    <updated>2020-02-03T02:41:22.094Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>自己家的台式机在接通电源的情况下点击开始菜单-&gt;电源-&gt;睡眠，依然无法睡眠，会始终自动唤醒。这是由于Windows开启了<strong>离开模式</strong>(Away Mode)，一般来说能够改变到离开模式的软件主要有：</p><ul><li><strong>迅雷</strong>：离开模式下载；</li><li><strong>百度网盘</strong>：传输时不休眠。</li></ul><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ol><li>按<code>WIN</code>+<code>R</code>打开<strong>运行</strong></li><li>输入<code>regedit</code>打开注册表编辑器</li><li>定位到<strong>计算机\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SessionManager\Power</strong>，在右侧找到<code>AwayModeEnabled</code>，若其值为1时表示处于离开模式，无法正常睡眠，将其值改为0即可正常睡眠。</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h2&gt;&lt;p&gt;自己家的台式机在接通电源的情况下点击开始菜单-&amp;gt;电源-&amp;gt;睡眠，依然无法睡眠，会始终自动唤醒。这是由于Window
+      
+    
+    </summary>
+    
+      <category term="技术探索" scheme="http://yluo.name/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/"/>
+    
+    
+      <category term="Windows" scheme="http://yluo.name/tags/Windows/"/>
+    
+  </entry>
   
   <entry>
     <title>Ubuntu安装Nvidia显卡驱动</title>
@@ -301,7 +408,7 @@
     <link href="http://yluo.name/2019/09/29/Git_fatal/"/>
     <id>http://yluo.name/2019/09/29/Git_fatal/</id>
     <published>2019-09-29T03:00:00.000Z</published>
-    <updated>2020-01-20T12:52:36.215Z</updated>
+    <updated>2020-02-05T13:34:38.359Z</updated>
     
     <content type="html"><![CDATA[<h1 id="错误说明"><a href="#错误说明" class="headerlink" title="错误说明"></a>错误说明</h1><p>运行<code>git status</code>时，提示</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fatal: Unknown index entry format xxxxx</div></pre></td></tr></table></figure><h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><p>进入仓库文件夹，输入以下指令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rm -f .git/index</div><div class="line">git reset</div></pre></td></tr></table></figure><p>大功告成，喜大普奔。</p>]]></content>
     
@@ -448,112 +555,6 @@
     
     
       <category term="ROS" scheme="http://yluo.name/tags/ROS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>机器人操作系统ROS学习笔记：功能包package文件结构</title>
-    <link href="http://yluo.name/2019/08/06/ros_package_struct/"/>
-    <id>http://yluo.name/2019/08/06/ros_package_struct/</id>
-    <published>2019-08-06T05:14:00.000Z</published>
-    <updated>2020-02-02T14:31:48.199Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="ROS功能包package"><a href="#ROS功能包package" class="headerlink" title="ROS功能包package"></a>ROS功能包package</h1><p>在ROS下，所有的文件按照功能包（package）的形式进行组织，是ROS软件中的基本单元。其中包括ROS节点、库、配置文件等。</p><h1 id="package的典型文件结构"><a href="#package的典型文件结构" class="headerlink" title="package的典型文件结构"></a>package的典型文件结构</h1><p>ROS package的典型结构包含一下文件及文件夹：</p><ul><li>config（文件夹）：放置功能包中的配置文件，由用户创建，文件名可以不同。</li><li>include（文件夹）：放置功能包中需要用到的头文件。</li><li>scripts（文件夹）：放置可以直接运行的Python脚本。</li><li>src（文件夹）：放置需要编译的C++代码。</li><li>launch（文件夹）：放置功能包中的所有启动文件。</li><li>msg（文件夹）：放置功能包自定义的消息类型。</li><li>srv（文件夹）：放置功能包自定义的服务类型。</li><li>action（文件夹）：放置功能包自定义的动作指令。</li><li>CMakeLists.txt（文件）：编译器编译功能包的规则（cmake的规则文件）。</li><li>package.xml（文件）：功能包清单，这个文件可以显示包信息，并注明依赖项，之后可以利用rosdep来安装依赖。</li></ul><h1 id="元功能包meta-package"><a href="#元功能包meta-package" class="headerlink" title="元功能包meta package"></a>元功能包meta package</h1><p>元功能包是一种特殊的功能包，只包含一个package.xml元功能包清单文件，其主要功能是将多个功能包整合成一个逻辑上的独立功能包，类似于功能包集的概念。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;ROS功能包package&quot;&gt;&lt;a href=&quot;#ROS功能包package&quot; class=&quot;headerlink&quot; title=&quot;ROS功能包package&quot;&gt;&lt;/a&gt;ROS功能包package&lt;/h1&gt;&lt;p&gt;在ROS下，所有的文件按照功能包（package）的
-      
-    
-    </summary>
-    
-      <category term="技术探索" scheme="http://yluo.name/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/"/>
-    
-    
-      <category term="ROS" scheme="http://yluo.name/tags/ROS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Ubuntu与Windows双系统时间设置问题</title>
-    <link href="http://yluo.name/2019/08/01/ubuntu-time/"/>
-    <id>http://yluo.name/2019/08/01/ubuntu-time/</id>
-    <published>2019-08-01T07:38:00.000Z</published>
-    <updated>2020-02-01T14:31:16.452Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="问题缘由"><a href="#问题缘由" class="headerlink" title="问题缘由"></a>问题缘由</h2><p>现在很多人都在电脑里安装了Ubuntu和Windows双系统，在安装完系统之后会发现，系统的显示时间经常会出问题，要么比正常时间快8个小时，要么比正常时间慢8个小时。即使利用网络同步时间之后，当切换过系统之后还是会出现时间差的问题。</p><p>这种现象是由于Windows与Ubuntu默认对时间的管理方式不同造成的。我们知道电脑的BIOS里记录着一串时间数据，操作系统就是根据这个数据得到当前时间的。Ubuntu系统使用的是UTC时间（世界协调时），系统会把BIOS里记录的时间看成GMT+0时间，即世界标准时。在Ubuntu系统中有一个设置，是配置当前所在时区的，在中国就会配置为东八区（GMT+8），所以Ubuntu会把BIOS中得到的时间加上8个小时显示出来，随后在系统关机的时候，将当前显示的时间减去8个小时后存入BIOS中。</p><p>而在Windows中，会将BIOS中的时间看做本地时间，直接显示出来，因此，当从Ubuntu切换到Windows时，会出现时间差8个小时的情况。</p><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>最简单的方法就是将Ubuntu下的UTC时间关闭，采用和Window一样的时间管理方式。只需要在Ubuntu终端下运行一行代码：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo timedatectrl <span class="built_in">set</span>-local-utc 1</div></pre></td></tr></table></figure><p>这样便可以使Windows和Ubuntu下的时间同步了。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;问题缘由&quot;&gt;&lt;a href=&quot;#问题缘由&quot; class=&quot;headerlink&quot; title=&quot;问题缘由&quot;&gt;&lt;/a&gt;问题缘由&lt;/h2&gt;&lt;p&gt;现在很多人都在电脑里安装了Ubuntu和Windows双系统，在安装完系统之后会发现，系统的显示时间经常会出问题，要么比正常
-      
-    
-    </summary>
-    
-      <category term="技术探索" scheme="http://yluo.name/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/"/>
-    
-    
-      <category term="Linux" scheme="http://yluo.name/tags/Linux/"/>
-    
-      <category term="Windows" scheme="http://yluo.name/tags/Windows/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>分屏终端Terminator上手</title>
-    <link href="http://yluo.name/2019/04/06/terminator_intro/"/>
-    <id>http://yluo.name/2019/04/06/terminator_intro/</id>
-    <published>2019-04-05T16:18:00.000Z</published>
-    <updated>2020-02-01T14:31:16.451Z</updated>
-    
-    <content type="html"><![CDATA[<p>之前使用Ubuntu时一直使用系统自带的终端，最苦恼的便是在同时使用多个终端的时候互相重叠，很难控制，有时候甚至找不到之前开的终端跑到哪里了。后来<a href="https://github.com/ljjhome" target="_blank" rel="external">佳神</a>给推荐了一款老外经常使用的终端Terminator，上手了几天的确感觉很方便，尤其是分屏功能，可以在一个终端上像Vim一样分成多个终端，在使用ROS这种需要同时运行多个终端的软件时尤为便利。</p><h1 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h1><p>Terminator可以在同一个窗口上分割多个子窗口，每个小窗口运行独立的命令程序。一个父窗口管理多个子窗口，清晰明了知道每个子窗口的运行情况。可以快速自由切换子窗口，并且对子窗口进行最大化和全屏状态。除此之外还有自定义窗口标题、激活标签等等。</p><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>Ubuntu软件源可以直接安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt install terminator</div></pre></td></tr></table></figure></p><p>若想要安装最新版，则需要手动添加ppa<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sudo add-apt-repository ppa:gnome-terminator</div><div class="line">sudo apt update</div><div class="line">sudo apt install terminator</div></pre></td></tr></table></figure></p><p>安装后，按终端的快捷键<code>Ctrl+Alt+T</code>便可呼出Terminator终端</p><h1 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h1><p>设置看个人喜好，配色方案什么的可以在设置菜单终端首选项里自由发挥，对于我来说，我一般配置两个：</p><ul><li>背景配置成80%透明，这样在抄写各种东西的时候很方便，可以透过终端看到终端后面的东西。</li><li>在配置文件里添加对256色的支持，这个在18.04下是迷人支持的，但是在14.04下是不支持的，需要手动开启一下，否则像Vim的插件airline之类的颜色是无法显示的。</li></ul><h1 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h1><ul><li>水平分屏<code>Ctrl+Shift+O</code></li><li>垂直分屏<code>Ctrl+Shift+E</code></li><li>搜索<code>Ctrl+Shift+F</code> </li><li>复制<code>Ctrl+Shift+C</code></li><li>粘贴<code>Ctrl+Shift+V</code></li><li>关闭当前终端<code>Ctrl+Shift+W</code></li><li>退出当前窗口<code>Ctrl+Shift+Q</code></li><li>切换显示当前窗口<code>Ctrl+Shift+X</code></li><li>全屏状态<code>F11</code></li><li>Clear屏幕<code>Ctrl+Shift+G</code></li><li>移动分隔条<code>Ctrl+Shift+方向键</code></li><li>隐藏/显示滚动条<code>Ctrl+Shift+S</code></li></ul><h1 id="添加右键菜单"><a href="#添加右键菜单" class="headerlink" title="添加右键菜单"></a>添加右键菜单</h1><p>若想把Terminator添加到右键菜单方便使用，有2种方案：</p><ul><li><code>nautilus-actions</code>工具，貌似在18.04上不好使</li><li><code>fma-config-tool</code>工具</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;之前使用Ubuntu时一直使用系统自带的终端，最苦恼的便是在同时使用多个终端的时候互相重叠，很难控制，有时候甚至找不到之前开的终端跑到哪里了。后来&lt;a href=&quot;https://github.com/ljjhome&quot; target=&quot;_blank&quot; rel=&quot;extern
-      
-    
-    </summary>
-    
-      <category term="技术探索" scheme="http://yluo.name/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/"/>
-    
-    
-      <category term="Linux" scheme="http://yluo.name/tags/Linux/"/>
-    
-      <category term="Terminator" scheme="http://yluo.name/tags/Terminator/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Qt的ui编译机制浅析</title>
-    <link href="http://yluo.name/2019/03/17/qt_uic/"/>
-    <id>http://yluo.name/2019/03/17/qt_uic/</id>
-    <published>2019-03-17T15:15:00.000Z</published>
-    <updated>2020-02-01T14:31:16.449Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Qt的ui编译机制"><a href="#Qt的ui编译机制" class="headerlink" title="Qt的ui编译机制"></a>Qt的ui编译机制</h1><p>利用Qt来设计GUI界面有两种方法，一种是直接在cpp文件中编写界面，另一种就是利用ui文件来编写界面，在cpp中编写界面没有在ui文件中利用拖拽的形式来编写界面来更直观。但是Qt是如何将ui文件转换成C++代码却很令我困惑，因此我特意了解了一下Qt的ui编译机制，加深对Qt的理解。</p><h1 id="利用uic来编译-ui文件"><a href="#利用uic来编译-ui文件" class="headerlink" title="利用uic来编译.ui文件"></a>利用uic来编译.ui文件</h1><p>Qt的.ui文件通过Qt Designer设计好以后，利用uic程序将.ui文件中的xml语法转换为c++的类文件，假设ui文件名为<code>mainwindow.ui</code>，在命令行中输入如下命令:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">uic mainwindow.ui -o ui_mainwindow.h</div></pre></td></tr></table></figure></p><blockquote><p>注意：若存在多个Qt版本，则可能需要指定相应uic执行路径</p></blockquote><p>通过uic会生成<code>mainwindow.ui</code>文件对应的头文件<code>ui_mainwindow.h</code>，这个<code>ui_mainwindow.h</code>文件的内容大致如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line">/********************************************************************************</div><div class="line">** Form generated from reading UI file &apos;mainwindow.ui&apos;</div><div class="line">**</div><div class="line">** Created by: Qt User Interface Compiler version 5.9.5</div><div class="line">**</div><div class="line">** WARNING! All changes made in this file will be lost when recompiling UI file!</div><div class="line">********************************************************************************/</div><div class="line"></div><div class="line">#ifndef UI_MAINWINDOW_H</div><div class="line">#define UI_MAINWINDOW_H</div><div class="line"></div><div class="line">#include &lt;QtCore/QVariant&gt;</div><div class="line">#include &lt;QtWidgets/QAction&gt;</div><div class="line">#include &lt;QtWidgets/QApplication&gt;</div><div class="line">#include &lt;QtWidgets/QButtonGroup&gt;</div><div class="line">#include &lt;QtWidgets/QHeaderView&gt;</div><div class="line">#include &lt;QtWidgets/QMainWindow&gt;</div><div class="line">#include &lt;QtWidgets/QMenuBar&gt;</div><div class="line">#include &lt;QtWidgets/QStatusBar&gt;</div><div class="line">#include &lt;QtWidgets/QToolBar&gt;</div><div class="line">#include &lt;QtWidgets/QWidget&gt;</div><div class="line"></div><div class="line">QT_BEGIN_NAMESPACE</div><div class="line"></div><div class="line">class Ui_MainWindow</div><div class="line">&#123;</div><div class="line">public:</div><div class="line">    QMenuBar *menuBar;</div><div class="line">    QToolBar *mainToolBar;</div><div class="line">    QWidget *centralWidget;</div><div class="line">    QStatusBar *statusBar;</div><div class="line"></div><div class="line">    void setupUi(QMainWindow *MainWindow)</div><div class="line">    &#123;</div><div class="line">        if (MainWindow-&gt;objectName().isEmpty())</div><div class="line">            MainWindow-&gt;setObjectName(QStringLiteral(&quot;MainWindow&quot;));</div><div class="line">        MainWindow-&gt;resize(400, 300);</div><div class="line">        menuBar = new QMenuBar(MainWindow);</div><div class="line">        menuBar-&gt;setObjectName(QStringLiteral(&quot;menuBar&quot;));</div><div class="line">        MainWindow-&gt;setMenuBar(menuBar);</div><div class="line">        mainToolBar = new QToolBar(MainWindow);</div><div class="line">        mainToolBar-&gt;setObjectName(QStringLiteral(&quot;mainToolBar&quot;));</div><div class="line">        MainWindow-&gt;addToolBar(mainToolBar);</div><div class="line">        centralWidget = new QWidget(MainWindow);</div><div class="line">        centralWidget-&gt;setObjectName(QStringLiteral(&quot;centralWidget&quot;));</div><div class="line">        MainWindow-&gt;setCentralWidget(centralWidget);</div><div class="line">        statusBar = new QStatusBar(MainWindow);</div><div class="line">        statusBar-&gt;setObjectName(QStringLiteral(&quot;statusBar&quot;));</div><div class="line">        MainWindow-&gt;setStatusBar(statusBar);</div><div class="line"></div><div class="line">        retranslateUi(MainWindow);</div><div class="line"></div><div class="line">        QMetaObject::connectSlotsByName(MainWindow);</div><div class="line">    &#125; // setupUi</div><div class="line"></div><div class="line">    void retranslateUi(QMainWindow *MainWindow)</div><div class="line">    &#123;</div><div class="line">        MainWindow-&gt;setWindowTitle(QApplication::translate(&quot;MainWindow&quot;, &quot;MainWindow&quot;, Q_NULLPTR));</div><div class="line">    &#125; // retranslateUi</div><div class="line"></div><div class="line">&#125;;</div><div class="line"></div><div class="line">namespace Ui &#123;</div><div class="line">    class MainWindow: public Ui_MainWindow &#123;&#125;;</div><div class="line">&#125; // namespace Ui</div><div class="line"></div><div class="line">QT_END_NAMESPACE</div><div class="line"></div><div class="line">#endif // UI_MAINWINDOW_H</div></pre></td></tr></table></figure></p><p>这个文件就是将.ui文件转换为C++可以看得懂的代码，之后参与Qt源代码的编译，可以看到这个文件中定义了一个<code>Ui_MainWindow</code>类，里面包含了在.ui文件中创建的各种窗口部件的实现，文件最后还定义了一个命名空间：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">namespace Ui &#123;</div><div class="line">    class MainWindow: public Ui_MainWindow &#123;&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p><p>这个命名空间Ui中包含了一个新类<code>MainWindow</code>，而这个新类继承自<code>Ui_MainWindow</code>类，之后我们便可以在别的文件中利用<code>Ui::MainWindow</code>调用这个ui类，或者直接调用<code>Ui_MainWindow</code>也可以。</p><h1 id="Ui调用"><a href="#Ui调用" class="headerlink" title="Ui调用"></a>Ui调用</h1><p>在Qt项目中，在<code>mainwindow.h</code>中添加Ui命名空间的声明：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">namespace Ui &#123;</div><div class="line">class MainWindow;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p><p>之后在继承<code>QMainWindow</code>类的对象声明中添加成员变量：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Ui::MainWindow *ui;</div></pre></td></tr></table></figure></p><p>在<code>mainwindow.cpp</code>的类构造函数中，初始化ui成员变量：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ui = new Ui::MainWindow;</div><div class="line">ui-&gt;setupUi(this);</div></pre></td></tr></table></figure></p><p>在类的析构函数中释放ui指针指向的内存空间：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">delete ui;</div></pre></td></tr></table></figure></p><p>这样便实现了ui的调用。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Qt的ui编译机制&quot;&gt;&lt;a href=&quot;#Qt的ui编译机制&quot; class=&quot;headerlink&quot; title=&quot;Qt的ui编译机制&quot;&gt;&lt;/a&gt;Qt的ui编译机制&lt;/h1&gt;&lt;p&gt;利用Qt来设计GUI界面有两种方法，一种是直接在cpp文件中编写界面，另一种就是利用
-      
-    
-    </summary>
-    
-      <category term="技术探索" scheme="http://yluo.name/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/"/>
-    
-    
-      <category term="Qt" scheme="http://yluo.name/tags/Qt/"/>
-    
-      <category term="uic" scheme="http://yluo.name/tags/uic/"/>
     
   </entry>
   
