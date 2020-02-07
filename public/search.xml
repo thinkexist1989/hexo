@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Ubuntu16.04下Terminator支持256色]]></title>
+    <url>%2F2020%2F02%2F07%2Fterminator-256color%2F</url>
+    <content type="text"><![CDATA[问题描述在Ubuntu 16.04下利用apt install terminator安装Terminator后，其版本为0.98。而0.98版本的Terminator默认不支持256色，导致终端下无法显示很多颜色，看上去很难受。 解决方法 打开Terminator，在Preferences中选择Profiles； 在Command选项卡中，将Run a custom command instead of my shell选中； 在Custom command 中输入TERM=xterm-256color bash -l 随后重启Terminator，便可以看到已经支持256色，终端里显示出了更多的颜色，来区分不同的项目了。]]></content>
+      <categories>
+        <category>技术探索</category>
+      </categories>
+      <tags>
+        <tag>Terminator</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Windows Powershell运行自定义脚本]]></title>
     <url>%2F2020%2F02%2F05%2Fpowershell-run-script%2F</url>
     <content type="text"><![CDATA[问题描述Windows Powershell为了防止恶意脚本的执行，设计了一个执行策略(Execution Policy)，若发现自定义的脚本无法运行，则需要更改执行策略。 执行策略包括6种类型： Restricted 受限制的，只能执行单个命令，不能执行脚本 AllSigned 允许执行有数字签名的脚本 RemoteSigned 本地脚本可以运行，网络下载的需要数字签名 Unrestricted 无限制，但从网络下载的会有安全提示 Bypass 不设任何限制，且没有安全提示 Undefined 未设置策略，使用继承或默认策略 解决方法利用管理员身份打开Powershell终端，输入以下命令将策略更改为RemoteSigned： 1$ Set-ExecutionPolicy RemoteSigned]]></content>
