@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[用Microsoft To Do做待办管理]]></title>
+    <url>%2F2020%2F02%2F08%2Ftodo-intro%2F</url>
+    <content type="text"><![CDATA[强烈安利一款软件：Microsoft To Do，用来实现待办事项管理。可以实现PC端、手机端的同步，实时管理和查看，十分方便。 Windows下安装在Microsoft Store中下载即可。 手机端安装在应用市场下载 Linux下安装Linux下没有To Do的安装包，但是有一个开源软件Ao可以下载，在Github上可以下载。]]></content>
+      <categories>
+        <category>技术探索</category>
+      </categories>
+      <tags>
+        <tag>To Do</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Ubuntu16.04下Terminator支持256色]]></title>
     <url>%2F2020%2F02%2F07%2Fterminator-256color%2F</url>
     <content type="text"><![CDATA[问题描述在Ubuntu 16.04下利用apt install terminator安装Terminator后，其版本为0.98。而0.98版本的Terminator默认不支持256色，导致终端下无法显示很多颜色，看上去很难受。 解决方法 打开Terminator，在Preferences中选择Profiles； 在Command选项卡中，将Run a custom command instead of my shell选中； 在Custom command 中输入TERM=xterm-256color bash -l 随后重启Terminator，便可以看到已经支持256色，终端里显示出了更多的颜色，来区分不同的项目了。]]></content>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yluo.name/"/>
-  <updated>2020-02-07T12:11:30.194Z</updated>
+  <updated>2020-02-08T06:21:27.951Z</updated>
   <id>http://yluo.name/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>用Microsoft To Do做待办管理</title>
+    <link href="http://yluo.name/2020/02/08/todo-intro/"/>
+    <id>http://yluo.name/2020/02/08/todo-intro/</id>
+    <published>2020-02-08T05:55:45.000Z</published>
+    <updated>2020-02-08T06:21:27.951Z</updated>
+    
+    <content type="html"><![CDATA[<p>强烈安利一款软件：Microsoft To Do，用来实现待办事项管理。可以实现PC端、手机端的同步，实时管理和查看，十分方便。</p><h2 id="Windows下安装"><a href="#Windows下安装" class="headerlink" title="Windows下安装"></a>Windows下安装</h2><p>在Microsoft Store中下载即可。</p><h2 id="手机端安装"><a href="#手机端安装" class="headerlink" title="手机端安装"></a>手机端安装</h2><p>在应用市场下载</p><h2 id="Linux下安装"><a href="#Linux下安装" class="headerlink" title="Linux下安装"></a>Linux下安装</h2><p>Linux下没有To Do的安装包，但是有一个开源软件Ao可以下载，在Github上可以下载。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;强烈安利一款软件：Microsoft To Do，用来实现待办事项管理。可以实现PC端、手机端的同步，实时管理和查看，十分方便。&lt;/p&gt;
+&lt;h2 id=&quot;Windows下安装&quot;&gt;&lt;a href=&quot;#Windows下安装&quot; class=&quot;headerlink&quot; title=&quot;
+      
+    
+    </summary>
+    
+      <category term="技术探索" scheme="http://yluo.name/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/"/>
+    
+    
+      <category term="To Do" scheme="http://yluo.name/tags/To-Do/"/>
+    
+  </entry>
   
   <entry>
     <title>Ubuntu16.04下Terminator支持256色</title>
@@ -526,33 +552,6 @@
     
       <category term="技术探索" scheme="http://yluo.name/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/"/>
     
-    
-      <category term="ROS" scheme="http://yluo.name/tags/ROS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>机器人操作系统ROS学习笔记：CMakeLists.txt文件</title>
-    <link href="http://yluo.name/2019/08/06/ros_cmakelist/"/>
-    <id>http://yluo.name/2019/08/06/ros_cmakelist/</id>
-    <published>2019-08-06T06:17:00.000Z</published>
-    <updated>2020-02-05T14:23:23.765Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="CMakeLists-txt"><a href="#CMakeLists-txt" class="headerlink" title="CMakeLists.txt"></a>CMakeLists.txt</h1><p>ROS中使用的编译器catkin是对cmake的一种封装，因此编译规则使用的也是CMakeLists.txt文件，关于CMakeLists.txt文件的规则之前在博客中已经提及过，不再赘述。</p><h1 id="编译规则"><a href="#编译规则" class="headerlink" title="编译规则"></a>编译规则</h1><p>在ROS功能包中的CMakeLists文件主要包括以下配置项：</p><ul><li>project(PROJ_NAME): 项目名称，一般情况下使用catkin_create_pkg命令会自动生成；</li><li>find_package(catkin REQUIRED COMPONTS rospy roscpp …): 寻找相关的功能包；</li><li>include_directories(include ${catkin_INCLUDE_DIRES}): 设置头文件的相对路径，通常在功能包下将相关的头文件都放置在include文件夹下；</li><li>add_executable(node_name src/xxx.cpp): 设置需要编译的代码和生成的可执行文件；</li><li>target_link_libraries(node_name ${catkin_LIBRARIES}): 设置链接库；</li><li>add_dependencies(node_name ${PROJECT_NAME}_generate_messages_cpp): 设置依赖，一般情况下自定义了消息类型的话便需要添加依赖。</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;CMakeLists-txt&quot;&gt;&lt;a href=&quot;#CMakeLists-txt&quot; class=&quot;headerlink&quot; title=&quot;CMakeLists.txt&quot;&gt;&lt;/a&gt;CMakeLists.txt&lt;/h1&gt;&lt;p&gt;ROS中使用的编译器catkin是对cmak
-      
-    
-    </summary>
-    
-      <category term="技术探索" scheme="http://yluo.name/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/"/>
-    
-    
-      <category term="cmake" scheme="http://yluo.name/tags/cmake/"/>
     
       <category term="ROS" scheme="http://yluo.name/tags/ROS/"/>
     
