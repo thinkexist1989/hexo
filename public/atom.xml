@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yluo.name/"/>
-  <updated>2020-02-08T06:21:27.951Z</updated>
+  <updated>2020-02-14T15:43:14.007Z</updated>
   <id>http://yluo.name/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Bash下的快捷键</title>
+    <link href="http://yluo.name/2020/02/14/bash-shortcuts/"/>
+    <id>http://yluo.name/2020/02/14/bash-shortcuts/</id>
+    <published>2020-02-14T15:12:46.000Z</published>
+    <updated>2020-02-14T15:43:14.007Z</updated>
+    
+    <content type="html"><![CDATA[<p>使用Linux终端的一个重要的原则就是：不要让你的手指离开<strong>本位行</strong>，这对于一个程序员来说是十分重要的，之前由于不知道Bash下的快捷键，导致经常需要去利用方向键来调整命令输入，比如：已经输入了很长一段指令，结果发现必须要用管理员来运行，没办法，只能靠方向键一直将光标移至命令开头，然后敲上<code>sudo</code>，是不是很麻烦？于是乎，Bash下的快捷键就可以快速地帮助你，当你按下<code>&lt;C-a&gt;</code>或者<code>&lt;C-xx&gt;</code>时，便自动移动到了行首，随后便可以潇洒地输入<code>sudo</code>，飘逸地一个回车，把B装到了极致。</p><p>下面是一些终端命令快捷键的总结：</p><h2 id="光标移动"><a href="#光标移动" class="headerlink" title="光标移动"></a>光标移动</h2><div class="table-container"><table><thead><tr><th style="text-align:left">快捷键</th><th style="text-align:left">用途</th></tr></thead><tbody><tr><td style="text-align:left"><code>&lt;C-a&gt;</code>或<code>Home</code></td><td style="text-align:left">移动到行首</td></tr><tr><td style="text-align:left"><code>&lt;C-e&gt;</code>或<code>End</code></td><td style="text-align:left">移动到行尾</td></tr><tr><td style="text-align:left"><code>&lt;ALT-b&gt;</code></td><td style="text-align:left">后移一个单词</td></tr><tr><td style="text-align:left"><code>&lt;C-b&gt;</code></td><td style="text-align:left">后移一个字符</td></tr><tr><td style="text-align:left"><code>&lt;ALT-f&gt;</code></td><td style="text-align:left">前移一个单词</td></tr><tr><td style="text-align:left"><code>&lt;C-f&gt;</code></td><td style="text-align:left">前移一个字符</td></tr><tr><td style="text-align:left"><code>&lt;C-xx&gt;</code></td><td style="text-align:left">当前和行首位置切换</td></tr></tbody></table></div><h2 id="剪切删除"><a href="#剪切删除" class="headerlink" title="剪切删除"></a>剪切删除</h2><div class="table-container"><table><thead><tr><th style="text-align:left">快捷键</th><th style="text-align:left">用途</th></tr></thead><tbody><tr><td style="text-align:left"><code>&lt;C-w&gt;</code></td><td style="text-align:left">剪切光标前单词</td></tr><tr><td style="text-align:left"><code>&lt;C-k&gt;</code></td><td style="text-align:left">剪切光标后内容移动到行尾</td></tr><tr><td style="text-align:left"><code>&lt;C-u&gt;</code></td><td style="text-align:left">剪切光标前内容</td></tr><tr><td style="text-align:left"><code>&lt;C-y&gt;</code></td><td style="text-align:left">粘贴剪切板内容</td></tr><tr><td style="text-align:left"><code>&lt;C-d&gt;</code></td><td style="text-align:left">删除当前字符</td></tr><tr><td style="text-align:left"><code>&lt;ALT-d&gt;</code></td><td style="text-align:left">删除光标后所有字符</td></tr><tr><td style="text-align:left"><code>&lt;C-h&gt;</code></td><td style="text-align:left">删除前一字符</td></tr></tbody></table></div><h2 id="进程控制"><a href="#进程控制" class="headerlink" title="进程控制"></a>进程控制</h2><div class="table-container"><table><thead><tr><th style="text-align:left">快捷键</th><th style="text-align:left">用途</th></tr></thead><tbody><tr><td style="text-align:left"><code>&lt;C-c&gt;</code></td><td style="text-align:left">终止当前进程</td></tr><tr><td style="text-align:left"><code>&lt;C-z&gt;</code></td><td style="text-align:left">挂起当前进程，可用<code>fg</code>恢复</td></tr><tr><td style="text-align:left"><code>&lt;C-d&gt;</code></td><td style="text-align:left">关闭shell，同<code>exit</code></td></tr></tbody></table></div><h2 id="屏幕控制"><a href="#屏幕控制" class="headerlink" title="屏幕控制"></a>屏幕控制</h2><div class="table-container"><table><thead><tr><th style="text-align:left">快捷键</th><th style="text-align:left">用途</th></tr></thead><tbody><tr><td style="text-align:left"><code>&lt;C-l&gt;</code></td><td style="text-align:left">清屏，同<code>clear</code></td></tr><tr><td style="text-align:left"><code>&lt;C-s&gt;</code></td><td style="text-align:left">停止屏幕输出</td></tr><tr><td style="text-align:left"><code>&lt;C-q&gt;</code></td><td style="text-align:left">恢复屏幕输出</td></tr></tbody></table></div><h2 id="大小写"><a href="#大小写" class="headerlink" title="大小写"></a>大小写</h2><div class="table-container"><table><thead><tr><th style="text-align:left">快捷键</th><th style="text-align:left">用途</th></tr></thead><tbody><tr><td style="text-align:left"><code>&lt;ALT-u&gt;</code></td><td style="text-align:left">大写光标位置到单词尾间的字母</td></tr><tr><td style="text-align:left"><code>&lt;ALT-l&gt;</code></td><td style="text-align:left">小写光标位置到单词尾间的字母</td></tr><tr><td style="text-align:left"><code>&lt;ALT-c&gt;</code></td><td style="text-align:left">大写当前单词</td></tr></tbody></table></div><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><div class="table-container"><table><thead><tr><th style="text-align:left">快捷键</th><th style="text-align:left">用途</th></tr></thead><tbody><tr><td style="text-align:left"><code>&lt;ALT-T&gt;</code></td><td style="text-align:left">当前单词和前一单词互换</td></tr><tr><td style="text-align:left"><code>&lt;C-T&gt;</code></td><td style="text-align:left">互换光标前两单词位置</td></tr><tr><td style="text-align:left"><code>&lt;C-_&gt;</code></td><td style="text-align:left">撤销</td></tr></tbody></table></div>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;使用Linux终端的一个重要的原则就是：不要让你的手指离开&lt;strong&gt;本位行&lt;/strong&gt;，这对于一个程序员来说是十分重要的，之前由于不知道Bash下的快捷键，导致经常需要去利用方向键来调整命令输入，比如：已经输入了很长一段指令，结果发现必须要用管理员来运行，没办法
+      
+    
+    </summary>
+    
+      <category term="技术探索" scheme="http://yluo.name/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/"/>
+    
+    
+      <category term="Linux" scheme="http://yluo.name/tags/Linux/"/>
+    
+      <category term="Bash" scheme="http://yluo.name/tags/Bash/"/>
+    
+  </entry>
   
   <entry>
     <title>用Microsoft To Do做待办管理</title>
@@ -521,31 +548,6 @@
       
       
         &lt;h2 id=&quot;ROS的命名&quot;&gt;&lt;a href=&quot;#ROS的命名&quot; class=&quot;headerlink&quot; title=&quot;ROS的命名&quot;&gt;&lt;/a&gt;ROS的命名&lt;/h2&gt;&lt;p&gt;命名是ROS中的基本概念。ROS中的节点、话题以及参数都必须有唯一的命名。例如机器人上的相机可以命名为cam
-      
-    
-    </summary>
-    
-      <category term="技术探索" scheme="http://yluo.name/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/"/>
-    
-    
-      <category term="ROS" scheme="http://yluo.name/tags/ROS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>机器人操作系统ROS学习笔记：自定义服务</title>
-    <link href="http://yluo.name/2019/08/06/ros_service/"/>
-    <id>http://yluo.name/2019/08/06/ros_service/</id>
-    <published>2019-08-06T07:00:00.000Z</published>
-    <updated>2020-02-05T14:23:23.766Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="ROS中的服务"><a href="#ROS中的服务" class="headerlink" title="ROS中的服务"></a>ROS中的服务</h1><p>服务（Service）是ROS节点之间同步通讯的一种方式，允许客户端（Client）节点发布请求（Request），由服务端（Server）节点处理后反馈应答（Response）。</p><h1 id="定义服务"><a href="#定义服务" class="headerlink" title="定义服务"></a>定义服务</h1><p>ROS中的服务可以通过srv文件夹下的xxx.srv文件进行语言无关的接口定义。文件包括请求与应答两个数据域，使用“—-”进行分割。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">int64 a</div><div class="line">int64 b</div><div class="line">---</div><div class="line">int64 sum</div></pre></td></tr></table></figure><h1 id="使用服务"><a href="#使用服务" class="headerlink" title="使用服务"></a>使用服务</h1><p>首先需要在package.xml文件表明对消息生成系统的依赖，即构建依赖项message_generation和运行依赖项message_runtime：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&lt;build_depend&gt;rospy&lt;/build_depend&gt;</div><div class="line">&lt;run_depend&gt;rospy&lt;/run_depend&gt;</div><div class="line"></div><div class="line">&lt;build_depend&gt;message_generation&lt;/build_depend&gt;</div><div class="line">&lt;run_depend&gt;message_runtime&lt;/run_depend&gt;</div></pre></td></tr></table></figure><p>随后在CMakeLists.txt文件中利用find_package函数增加对message_generation的依赖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">find_package(catkin REQUIRED COMPONENTS</div><div class="line">    ...</div><div class="line">    message_generation</div><div class="line">)</div></pre></td></tr></table></figure></p><p>同时，利用catkin_package函数设置运行依赖：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">catkin_package(</div><div class="line">    ...</div><div class="line">    CATKIN_DEPENDS message_runtime ...</div><div class="line">)</div></pre></td></tr></table></figure></p><p>并添加需要参与编译的srv文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">add_service_files(</div><div class="line">    FILES</div><div class="line">    xxx.srv</div><div class="line">    ...</div><div class="line">)</div></pre></td></tr></table></figure></p><p>确保CMake知道在消息文件更改后重新编译msg文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">generate_messages(</div><div class="line">    DEPENDENCIES</div><div class="line">    std_msgs</div><div class="line">)</div></pre></td></tr></table></figure></p><p>随后便可在功能包目录下运行catkin_make进行编译，成功后可使用rossrv命令检验服务的定义是否和我们想的一样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rossrv show xxx</div></pre></td></tr></table></figure></p><p>还可以使用rossrv list来查看所有可用的服务，使用rossrv packages来查看所有提供了服务的包，使用rossrv package xxx来查看xxx功能包提供的服务。</p><p>注意，ROS中还有一个命令rosservice，这个命令是用来在ROS运行时和启动的服务进行交互的命令，例如：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rosservice call /spawn 8.0 8.0 0.0 &apos;turtle2&apos;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;ROS中的服务&quot;&gt;&lt;a href=&quot;#ROS中的服务&quot; class=&quot;headerlink&quot; title=&quot;ROS中的服务&quot;&gt;&lt;/a&gt;ROS中的服务&lt;/h1&gt;&lt;p&gt;服务（Service）是ROS节点之间同步通讯的一种方式，允许客户端（Client）节点发布请求（R
       
     
     </summary>
