@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yluo.name/"/>
-  <updated>2020-02-15T05:02:53.680Z</updated>
+  <updated>2020-02-15T13:56:26.366Z</updated>
   <id>http://yluo.name/</id>
   
   <author>
@@ -17,19 +17,19 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>对学术问题的一点理解</title>
+    <title>对科学问题的一点理解</title>
     <link href="http://yluo.name/2020/02/15/scientific-problem/"/>
     <id>http://yluo.name/2020/02/15/scientific-problem/</id>
     <published>2020-02-15T04:36:13.000Z</published>
-    <updated>2020-02-15T05:02:53.680Z</updated>
+    <updated>2020-02-15T13:56:26.366Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="什么是学术问题"><a href="#什么是学术问题" class="headerlink" title="什么是学术问题"></a>什么是学术问题</h2><p>在写基金或写论文的时候，我经常会纠结于<strong>什么是科学问题？</strong>，<strong>什么是工程问题？</strong>。我相信很多科研人员都会有这种困惑：到底什么才是科学问题？我谈一谈自己对学术问题的理解吧。</p><h2 id="学术问题的启发"><a href="#学术问题的启发" class="headerlink" title="学术问题的启发"></a>学术问题的启发</h2><p>有一天参加所里的学术会议，主任讲了一个很有意思的事，他有一次和机器人行业大佬孙立宁教授在酒席上，曾听孙教授说过一个关于<strong>科学问题</strong>的比喻：</p><blockquote><p>我说我要研究“人如何用筷子？”，这不是一个科学问题；</p><p>可是我要说“多自由度冗余关节的双刚体协同运动控制”，这就是一个科学问题。</p></blockquote><h2 id="我对科学问题的理解"><a href="#我对科学问题的理解" class="headerlink" title="我对科学问题的理解"></a>我对科学问题的理解</h2><p>这个事给了我很大的启发，让我自己对科学问题有了很直观的理解。在我的理解中，科学问题是：</p><blockquote><p>能够揭示规律、原理，同时具有抽象、泛化意义，能够对一类的事物都具有应用价值。</p></blockquote><p>可能我的总结不准确，但我想表达的是，科学问题并不是对现实世界的直观描述，需要看透现象本质，找寻背后的规律原理，通过总结提炼，才可以称之为<strong>科学问题</strong>。</p><p>就以孙立宁教授的例子为例，“人如何用筷子？”之所以不是科学问题，是因为这只是现实世界的直观描述，并没有深入现象本质。如何定义人？人有什么特点？筷子又是什么？有什么特点？人和筷子只是特定事物的名字而已。人用筷子，对人来说，可以抽象成多自由度冗余关节，因为在用筷子这件事中，<strong>人</strong>对外的表现就是<strong>多自由度冗余关节</strong>，而<strong>筷子</strong>就是<strong>双刚体</strong>，<strong>用筷子</strong>就是对双刚体的<strong>协同运动控制</strong>。</p><p>于是经过提炼，可以从现象表面发现现象本质，对<strong>多自由度冗余关节的双刚体协同运动控制</strong>进行研究，是可以推广到很多其他领域，比如多机械臂协同作业等，是具有很强的泛化抽象意义的。这种问题当年就是<strong>科学问题</strong>。</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="什么是科学问题"><a href="#什么是科学问题" class="headerlink" title="什么是科学问题"></a>什么是科学问题</h2><p>在写基金或写论文的时候，我经常会纠结于<strong>什么是科学问题？</strong>，<strong>什么是工程问题？</strong>。我相信很多科研人员都会有这种困惑：到底什么才是科学问题？我谈一谈自己对科学问题的理解吧。</p><h2 id="科学问题的启发"><a href="#科学问题的启发" class="headerlink" title="科学问题的启发"></a>科学问题的启发</h2><p>有一天参加所里的学术会议，主任讲了一个很有意思的事，他有一次和机器人行业大佬孙立宁教授在酒席上，曾听孙教授说过一个关于<strong>科学问题</strong>的比喻：</p><blockquote><p>我说我要研究“人如何用筷子？”，这不是一个科学问题；</p><p>可是我要说“多自由度冗余关节的双刚体协同运动控制”，这就是一个科学问题。</p></blockquote><h2 id="我对科学问题的理解"><a href="#我对科学问题的理解" class="headerlink" title="我对科学问题的理解"></a>我对科学问题的理解</h2><p>这个事给了我很大的启发，让我自己对科学问题有了很直观的理解。在我的理解中，科学问题是：</p><blockquote><p>能够揭示规律、原理，同时具有抽象、泛化意义，能够对一类的事物都具有应用价值。</p></blockquote><p>可能我的总结不准确，但我想表达的是，科学问题并不是对现实世界的直观描述，需要看透现象本质，找寻背后的规律原理，通过总结提炼，才可以称之为<strong>科学问题</strong>。</p><p>就以孙立宁教授的例子为例，“人如何用筷子？”之所以不是科学问题，是因为这只是现实世界的直观描述，并没有深入现象本质。如何定义人？人有什么特点？筷子又是什么？有什么特点？人和筷子只是特定事物的名字而已。人用筷子，对人来说，可以抽象成多自由度冗余关节，因为在用筷子这件事中，<strong>人</strong>对外的表现就是<strong>多自由度冗余关节</strong>，而<strong>筷子</strong>就是<strong>双刚体</strong>，<strong>用筷子</strong>就是对双刚体的<strong>协同运动控制</strong>。</p><p>于是经过提炼，可以从现象表面发现现象本质，对<strong>多自由度冗余关节的双刚体协同运动控制</strong>进行研究，是可以推广到很多其他领域，比如多机械臂协同作业等，是具有很强的泛化抽象意义的。这种问题当然就是<strong>科学问题</strong>。</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;什么是学术问题&quot;&gt;&lt;a href=&quot;#什么是学术问题&quot; class=&quot;headerlink&quot; title=&quot;什么是学术问题&quot;&gt;&lt;/a&gt;什么是学术问题&lt;/h2&gt;&lt;p&gt;在写基金或写论文的时候，我经常会纠结于&lt;strong&gt;什么是科学问题？&lt;/strong&gt;，&lt;stro
+        &lt;h2 id=&quot;什么是科学问题&quot;&gt;&lt;a href=&quot;#什么是科学问题&quot; class=&quot;headerlink&quot; title=&quot;什么是科学问题&quot;&gt;&lt;/a&gt;什么是科学问题&lt;/h2&gt;&lt;p&gt;在写基金或写论文的时候，我经常会纠结于&lt;strong&gt;什么是科学问题？&lt;/strong&gt;，&lt;stro
       
     
     </summary>
@@ -39,7 +39,7 @@
     
       <category term="基金" scheme="http://yluo.name/tags/%E5%9F%BA%E9%87%91/"/>
     
-      <category term="学术问题" scheme="http://yluo.name/tags/%E5%AD%A6%E6%9C%AF%E9%97%AE%E9%A2%98/"/>
+      <category term="科学问题" scheme="http://yluo.name/tags/%E7%A7%91%E5%AD%A6%E9%97%AE%E9%A2%98/"/>
     
   </entry>
   
@@ -537,19 +537,19 @@
   </entry>
   
   <entry>
-    <title>机器人操作系统ROS学习笔记：自定义消息类型</title>
-    <link href="http://yluo.name/2019/08/06/ros_message/"/>
-    <id>http://yluo.name/2019/08/06/ros_message/</id>
+    <title>机器人操作系统ROS学习笔记：ROS命名空间及重映射</title>
+    <link href="http://yluo.name/2019/08/06/ros_namespace/"/>
+    <id>http://yluo.name/2019/08/06/ros_namespace/</id>
     <published>2019-08-06T07:00:00.000Z</published>
     <updated>2020-02-05T14:25:50.229Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="ROS消息文件"><a href="#ROS消息文件" class="headerlink" title="ROS消息文件"></a>ROS消息文件</h2><p>ROS的消息文件是一个描述ROS中所使用消息类型的简单文本，通常存放在功能包文件夹下的msg文件夹下，可以被用来生成不同语言的源代码。</p><h2 id="消息数据类型"><a href="#消息数据类型" class="headerlink" title="消息数据类型"></a>消息数据类型</h2><p>ROS中的消息可使用的基本数据类型如下：</p><ul><li>int8, int16, int32, int64 (plus uint*)</li><li>float32, float64</li><li>string</li><li>time, duration</li><li>可变长度的数组，例如int8[]，以及固定长度的数组，例如float32[10]</li></ul><p>ROS消息中还有一个特殊的数据类型：Header， 其含有时间戳和坐标系信息。通常在很多msg文件的第一行有：</p><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Header header</div></pre></td></tr></table></figure><p>个人理解（不一定准确），Header类型通常包含在频繁发送的消息中，这样订阅节点可以根据Header中的时间戳信息等做信息同步处理。</p><p>同时，msg文件中还可以包括其他消息文件类型，例如在下面xxx.msg文件中，使用了Header, string以及另外两个消息类型。</p><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Header header</div><div class="line"><span class="built_in">string</span> child_frame_id</div><div class="line">geometry_msgs/PoseWithCovariance pose</div><div class="line">geometry_msgs/TwistWithCovariance twist</div></pre></td></tr></table></figure><h2 id="使用消息"><a href="#使用消息" class="headerlink" title="使用消息"></a>使用消息</h2><p>为了使用消息，需要在package.xml中添加编译依赖和执行依赖：</p><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;build_depend&gt;message_generation&lt;/build_depend&gt;</div><div class="line">&lt;exec_depend&gt;message_runtime&lt;/exec_depend&gt;</div></pre></td></tr></table></figure><p>并且在CMakeLists.txt文件中利用find_package函数增加对message_generation的依赖：</p><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">find_package</span>(catkin REQUIRED COMPONENTS</div><div class="line">    ...</div><div class="line">    message_generation</div><div class="line">)</div></pre></td></tr></table></figure><p>同时，利用catkin_package函数设置运行依赖：</p><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">catkin_package(</div><div class="line">    ...</div><div class="line">    CATKIN_DEPENDS message_runtime ...</div><div class="line">)</div></pre></td></tr></table></figure><p>并添加需要参与编译的msg文件：</p><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">add_message_files(</div><div class="line">    FILES</div><div class="line">    xxx.msg</div><div class="line">    ...</div><div class="line">)</div></pre></td></tr></table></figure><p>确保CMake知道在消息文件更改后重新编译msg文件：</p><figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">generate_messages(</div><div class="line">    DEPENDENCIES</div><div class="line">    std_msgs</div><div class="line">)</div></pre></td></tr></table></figure><p>随后便可在功能包目录下运行catkin_make进行编译，成功后可使用rosmsg命令查看自定义的消息类型：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rosmsg show xxx</div></pre></td></tr></table></figure><h2 id="消息相关命令"><a href="#消息相关命令" class="headerlink" title="消息相关命令"></a>消息相关命令</h2><ul><li>rosmsg show xxx: 查看消息xxx类型，可以不指定功能包名。</li></ul>]]></content>
+    <content type="html"><![CDATA[<h2 id="ROS的命名"><a href="#ROS的命名" class="headerlink" title="ROS的命名"></a>ROS的命名</h2><p>命名是ROS中的基本概念。ROS中的节点、话题以及参数都必须有唯一的命名。例如机器人上的相机可以命名为camera，并且相机可以输出一个话题image，同时读取一个frame_rate的参数来控制发送图像的频率。一个有效的命名具备以下特点：</p><ul><li>首字符为字母（[a-z|A-Z]）、波浪线（～）或左斜杠（/）。（不可以为下划线_）</li><li>后续字符可以是字母或数字（[0-9|a-z|A-Z]）、下划线（_）或者左斜杠（/）</li></ul><p>当一个机器人上存在两个相机时，由于相机的功能几乎完全一样，我们没有必要为两个相机分别编写一个程序，同时，也不想让两个相机的话题都发布在image话题上，这样会导致两个相机的画面交替出现。更一般地，命名的冲突在机器人系统中非常容易发生，这是因为机器人上常常包含相同的硬件或软件来简化工作量，例如相同的左右机械臂、相同的相机以及相同的多个轮子。为了避免命名上的冲突，ROS中采用两种机制来处理这种情况：命名空间和重映射。</p><h2 id="命名空间-Namespace"><a href="#命名空间-Namespace" class="headerlink" title="命名空间 Namespace"></a>命名空间 Namespace</h2><p>命名空间是计算机科学中的一个基本概念。根据UNIX路径和网络URI的规范，ROS使用斜杠（/）来分隔命名空间。ROS可以在不同的命名空间中启动同一个节点来避免命名冲突。</p><p>例如，具有两个相机的机器人可以在不同的命名空间<code>left</code>和<code>right</code>中启动两个相机的节点，最终会有两路图像流，分别为<code>left/image</code>和<code>right/image</code>。</p><h2 id="重映射-Remap"><a href="#重映射-Remap" class="headerlink" title="重映射 Remap"></a>重映射 Remap</h2><p>命名空间避免了命名的冲突，以相机为例，左相机发布的图像流话题为<code>left/image</code>，而在ROS中存在另一个节点nodex，专门接收<code>image</code>话题，由于两个话题在不同的命名空间之下，因此无法接收到左相机的图像信息。为了解决这个问题，一种方法是在同一个命名空间下启动这个节点，即在<code>left</code>命名空间下启动节点nodex，于是节点变为<code>left/nodex</code>，此时接收的image话题也将变为<code>left/image</code>。但是在复杂的程序当中，有可能节点需要“深入”不止一个命名空间之中，十分不方便。因此ROS中还可以用重映射（remap）的方式来解决这个问题。</p><p>在ROS中，程序中任何一个用于命名的字符串都可以在运行时重映射。例如，ROS中的一个常用程序image_view将image主题实时渲染在窗口上。使用重映射，可以使image_view接收<code>left/image</code>或者<code>right/image</code>，而无需修改image_view的代码。</p><h2 id="命名空间和重映射的使用"><a href="#命名空间和重映射的使用" class="headerlink" title="命名空间和重映射的使用"></a>命名空间和重映射的使用</h2><h3 id="在命令行中使用"><a href="#在命令行中使用" class="headerlink" title="在命令行中使用"></a>在命令行中使用</h3><p>由于ROS的设计模式鼓励软件的重用，重命名在开发和部署ROS软件的时候非常普遍。为了简化操作，ROS在命令行启动节点时提供了标准语法来重命名。</p><ul><li><p>将<code>image</code>话题重映射到<code>right/image</code>可以利用重映射语法来完成：</p>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rosrun package image_view image:=right/image</div></pre></td></tr></table></figure></li><li><p>把节点放置到命名空间中可以利用<code>__ns</code>命名空间重映射语法来完成：</p>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rosrun package camera __ns:=right</div></pre></td></tr></table></figure></li><li><p>修改节点的名字可以利用<code>__name</code>重命名语法来完成：  </p>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rosrun package camera __name:=camera2</div></pre></td></tr></table></figure></li></ul><h3 id="在launch文件中使用"><a href="#在launch文件中使用" class="headerlink" title="在launch文件中使用"></a>在launch文件中使用</h3><ul><li><p>通过设置name参数来确定节点的名字：</p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;node name=&quot;turtlesim_node2&quot; pkg=&quot;turtlesim&quot; type=&quot;turtlesim_node.py&quot;/&gt;</div></pre></td></tr></table></figure></li><li><p>通过设置ns参数来确定默认命名空间：    </p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;node name=&quot;turtlesim_node&quot; pkg=&quot;turtlesim&quot; type=&quot;turtlesim_node.py&quot; ns=&quot;sim1&quot; /&gt;</div></pre></td></tr></table></figure></li><li><p>通过remap标签设置重映射：</p>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;remap from=&quot;image&quot; to=&quot;right/image&quot;/&gt;</div></pre></td></tr></table></figure></li></ul><h3 id="在ROS程序终端中使用"><a href="#在ROS程序终端中使用" class="headerlink" title="在ROS程序终端中使用"></a>在ROS程序终端中使用</h3><p>可以利用环境变量设置默认命名空间：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> ROS_NAMESPACE=default-namespace</div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h2 id=&quot;ROS消息文件&quot;&gt;&lt;a href=&quot;#ROS消息文件&quot; class=&quot;headerlink&quot; title=&quot;ROS消息文件&quot;&gt;&lt;/a&gt;ROS消息文件&lt;/h2&gt;&lt;p&gt;ROS的消息文件是一个描述ROS中所使用消息类型的简单文本，通常存放在功能包文件夹下的msg文件夹下
+        &lt;h2 id=&quot;ROS的命名&quot;&gt;&lt;a href=&quot;#ROS的命名&quot; class=&quot;headerlink&quot; title=&quot;ROS的命名&quot;&gt;&lt;/a&gt;ROS的命名&lt;/h2&gt;&lt;p&gt;命名是ROS中的基本概念。ROS中的节点、话题以及参数都必须有唯一的命名。例如机器人上的相机可以命名为cam
       
     
     </summary>

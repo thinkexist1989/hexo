@@ -1743,7 +1743,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yluo.name/2019/08/06/ros_message/">
+    <link itemprop="mainEntityOfPage" href="http://yluo.name/2019/08/06/ros_namespace/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yang Luo">
@@ -1762,7 +1762,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/08/06/ros_message/" itemprop="url">机器人操作系统ROS学习笔记：自定义消息类型</a></h1>
+                <a class="post-title-link" href="/2019/08/06/ros_namespace/" itemprop="url">机器人操作系统ROS学习笔记：ROS命名空间及重映射</a></h1>
         
 
         <div class="post-meta">
@@ -1836,15 +1836,13 @@
       
         
           
-          ROS消息文件ROS的消息文件是一个描述ROS中所使用消息类型的简单文本，通常存放在功能包文件夹下的msg文件夹下，可以被用来生成不同语言的源代码。
-消息数据类型ROS中的消息可使用的基本数据类型如下：
+          ROS的命名命名是ROS中的基本概念。ROS中的节点、话题以及参数都必须有唯一的命名。例如机器人上的相机可以命名为camera，并且相机可以输出一个话题image，同时读取一个frame_rate的参数来控制发送图像的频率。一个有效的命名具备以下特点：
 
-int8, int16, int32, int64 (plus uint*)
-float32,
+首字符为字母（[a-z|A-Z]）、波浪线（
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/08/06/ros_message/#more" rel="contents">
+            <a class="btn" href="/2019/08/06/ros_namespace/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -2091,10 +2089,10 @@ float32,
 
 
 
-  
-  
 
 
+  
+  
 
 
 
@@ -2137,7 +2135,7 @@ float32,
 
   
   
-    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+    <script type="text/javascript" src="/lib/three/canvas_sphere.min.js"></script>
   
 
 
@@ -2551,6 +2549,12 @@ float32,
 
   
 
+  
+
+  
+  
+  
+    <script src="/js/cursor/text.js"></script>
   
 
 </body>

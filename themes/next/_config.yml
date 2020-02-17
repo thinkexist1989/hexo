@@ -691,10 +691,10 @@ canvas_nest: false
 three_waves: false
 
 # canvas_lines
-canvas_lines: true
+canvas_lines: false
 
 # canvas_sphere
-canvas_sphere: false
+canvas_sphere: true
 
 # Only fit scheme Pisces
 # Canvas-ribbon
@@ -793,6 +793,10 @@ vendors:
   # https://github.com/revir/need-more-share2
   needMoreShare2:
 
+# cursor_effect yang luo added
+cursor_effect:
+  enabled: true
+  type: text  # fireworks：礼花 | explosion：爆炸 | love：浮出爱心 | text：浮出文字
 
 # Assets
 css: css
