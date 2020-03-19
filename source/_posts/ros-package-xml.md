@@ -8,11 +8,11 @@ tags:
 mathjax: false
 ---
 
-# package清单文件
+## package清单文件
 
 每一个ROS的功能包都包含一个package.xml的功能包清单文件，用于记录功能包的基本信息，包含作者信息、许可信息、依赖选项、编译标志等。
 
-# package.xml规则
+## package.xml规则
 
 package.xml文件采用xml标记语言来编写，其中的主要信息包括一下几种：
 
@@ -30,7 +30,7 @@ package.xml文件采用xml标记语言来编写，其中的主要信息包括一
 
 如果是元功能包，则还需包含一个引用标签：
 
-```
+```bash
  <export>
     <metapackage/>
  </export>
