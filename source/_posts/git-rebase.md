@@ -13,7 +13,6 @@ tags:
 
 有时我们提交到GitHub等远程仓库上的commit太多，想将多次提交的commit合并成一个commit。
 
-
 ## 解决方法
 
 可以利用rebase来压缩多次commit。
@@ -22,16 +21,16 @@ tags:
 
 输入以下命令查看master分支的提交历史：
 
-```
-$ git log
+```bash
+$git log
 ```
 
 这里会显示master分支自创立以来的所有提交历史，现在假设要合并最近的4次提交。
 
 ### 2. 压缩最近4次提交
 
-```
-$ git rebase -i HEAD~4
+```bash
+$git rebase -i HEAD~4
 ```
 
 该命令执行后，会弹出默认编辑器的编辑窗口，4次提交的信息会倒序排列，最新的提交在最下面。
@@ -42,14 +41,14 @@ $ git rebase -i HEAD~4
 
 若有冲突，则会提示需要修改，修改后输入以下命令保存此次压缩：
 
-```
-$ git add .
-$ git rebase --continue
+```bash
+$git add .
+$git rebase --continue
 ```
 
 如果想要放弃此次压缩，则输入：
 
-```
+```bash
 $git rebase --abort
 ```
 
@@ -57,12 +56,10 @@ $git rebase --abort
 
 若没有冲突处理，则会直接跳转到修改描述信息的位置，可以修改此次压缩后的commit描述。随后保存。
 
-
 ### 5. 提交到远程仓库
 
 修改完描述信息后便已经完成了提交，若想要推送的远程仓库，则需要覆盖之前的提交，需要强制推送：
 
+```bash
+$git push -f
 ```
-$ git push -f
-```
-

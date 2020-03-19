@@ -20,5 +20,3 @@ tags:
 3. 在`Custom command` 中输入`TERM=xterm-256color bash -l`
 
 随后重启Terminator，便可以看到已经支持256色，终端里显示出了更多的颜色，来区分不同的项目了。
-
-

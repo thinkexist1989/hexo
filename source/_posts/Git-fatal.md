@@ -9,21 +9,21 @@ tags:
 mathjax: false
 ---
 
-# 错误说明
+## 错误说明
 
 运行`git status`时，提示
 
-```
+```bash
 fatal: Unknown index entry format xxxxx
 ```
 
-# 解决方法
+## 解决方法
 
 进入仓库文件夹，输入以下指令：
 
-```
-rm -f .git/index
-git reset
+```bash
+$rm -f .git/index
+$git reset
 ```
 
 大功告成，喜大普奔。

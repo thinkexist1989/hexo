@@ -29,6 +29,6 @@ tags:
 ## 获取本人信息
 
 ```bash
-$ who am i
+$who am i
 think    pts/18     2020-01-19 23:35 (:0)
 ```

@@ -9,13 +9,16 @@ tags:
 mathjax: false
 ---
 
-# OpenCV是什么
+## OpenCV是什么
+
 OpenCV的中文名称是”开源计算机视觉库“（Open Source Computer Vision Library），于1999年由Intel建立，是一个基于开源发行的跨平台计算机视觉库，可以运行在Linux、Windows、Mac OS、Android、iOS、FreeBSD、OpenBSD等操作系统上。OpenCV由一系列C函数和C++类构成，轻量且高效。除了支持C/C++语言编译开发之外，还支持使用C#，Python、Ruby等语言的接口。
 
-# 为什么要编译源码
+## 为什么要编译源码
+
 在OpenCV的官网提供了许多编译好的Release版本的OpenCV二进制文件，但是由于很多人的需求不同，比如OpenCV官网提供的Windows版本是利用MSVC编译的，但是很多人却需要在Windows下使用MinGW编译代码，因此需要Windows下MinGW可以利用的二进制文件，由于OpenCV提供源码，因此可以利用OpenCV的源码编译出各种二进制文件，也可以修改官网的OpenCV源码并编译后为自己所用。
 
-# 利用CMAKE编译OpenCV源码
+## 利用CMAKE编译OpenCV源码
+
 关于什么是CMAKE可以参考我的另一篇博客[《利用CMAKE构建和管理软件项目》](http://yluo.name/2019/01/02/cmake/)。
 
 - 安装完CMAKE之后，启动cmake-gui。

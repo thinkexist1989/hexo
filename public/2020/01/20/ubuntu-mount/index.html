@@ -126,18 +126,18 @@
 
 
 
-<meta name="description" content="平时我使用Windows和Linux作为主力双系统，额外采用一块固态硬盘作为数据盘，为了在Linux下使用方便，需要开机自动便将硬盘挂在到/home目录下。 步骤1.查看硬盘信息1$ sudo fdisk -l 其显示信息大致如下： 12Device     Boot Start        End    Sectors  Size Id Type/dev/sda1        2048 10">
+<meta name="description" content="平时我使用Windows和Linux作为主力双系统，额外采用一块固态硬盘作为数据盘，为了在Linux下使用方便，需要开机自动便将硬盘挂在到/home目录下。 步骤1.查看硬盘信息1$sudo fdisk -l 其显示信息大致如下： 12Device     Boot Start        End    Sectors  Size Id Type/dev/sda1        2048 100">
 <meta name="keywords" content="小技巧,Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu开机自动挂载硬盘">
 <meta property="og:url" content="http://yluo.name/2020/01/20/ubuntu-mount/index.html">
 <meta property="og:site_name" content="DécouVerte">
-<meta property="og:description" content="平时我使用Windows和Linux作为主力双系统，额外采用一块固态硬盘作为数据盘，为了在Linux下使用方便，需要开机自动便将硬盘挂在到/home目录下。 步骤1.查看硬盘信息1$ sudo fdisk -l 其显示信息大致如下： 12Device     Boot Start        End    Sectors  Size Id Type/dev/sda1        2048 10">
+<meta property="og:description" content="平时我使用Windows和Linux作为主力双系统，额外采用一块固态硬盘作为数据盘，为了在Linux下使用方便，需要开机自动便将硬盘挂在到/home目录下。 步骤1.查看硬盘信息1$sudo fdisk -l 其显示信息大致如下： 12Device     Boot Start        End    Sectors  Size Id Type/dev/sda1        2048 100">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-20T01:46:51.954Z">
+<meta property="og:updated_time" content="2020-03-19T13:11:19.548Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu开机自动挂载硬盘">
-<meta name="twitter:description" content="平时我使用Windows和Linux作为主力双系统，额外采用一块固态硬盘作为数据盘，为了在Linux下使用方便，需要开机自动便将硬盘挂在到/home目录下。 步骤1.查看硬盘信息1$ sudo fdisk -l 其显示信息大致如下： 12Device     Boot Start        End    Sectors  Size Id Type/dev/sda1        2048 10">
+<meta name="twitter:description" content="平时我使用Windows和Linux作为主力双系统，额外采用一块固态硬盘作为数据盘，为了在Linux下使用方便，需要开机自动便将硬盘挂在到/home目录下。 步骤1.查看硬盘信息1$sudo fdisk -l 其显示信息大致如下： 12Device     Boot Start        End    Sectors  Size Id Type/dev/sda1        2048 100">
 
 
 
@@ -435,14 +435,14 @@
 
       
         <p>平时我使用Windows和Linux作为主力双系统，额外采用一块固态硬盘作为数据盘，为了在Linux下使用方便，需要开机自动便将硬盘挂在到/home目录下。</p>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="1-查看硬盘信息"><a href="#1-查看硬盘信息" class="headerlink" title="1.查看硬盘信息"></a>1.查看硬盘信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo fdisk -l</div></pre></td></tr></table></figure>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="1-查看硬盘信息"><a href="#1-查看硬盘信息" class="headerlink" title="1.查看硬盘信息"></a>1.查看硬盘信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$sudo</span> fdisk -l</div></pre></td></tr></table></figure>
 <p>其显示信息大致如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Device     Boot Start        End    Sectors  Size Id Type</div><div class="line">/dev/sda1        2048 1000212479 1000210432  477G  7 HPFS/NTFS/exFAT</div></pre></td></tr></table></figure>
 <p>如果有多个设备，则会显示多个类似信息。</p>
 <h3 id="2-创建需要挂载的目录"><a href="#2-创建需要挂载的目录" class="headerlink" title="2. 创建需要挂载的目录"></a>2. 创建需要挂载的目录</h3><p>我希望将硬盘挂载到用户目录下，因此在用户目录下建立<code>SSD/</code>文件夹。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo mkdir ~/SSD/</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$sudo</span> mkdir ~/SSD/</div></pre></td></tr></table></figure>
 <h3 id="3-查看磁盘分区的UUID"><a href="#3-查看磁盘分区的UUID" class="headerlink" title="3. 查看磁盘分区的UUID"></a>3. 查看磁盘分区的UUID</h3><p>输入以下指令查看<code>/dev/sda1</code>的信息</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo blkid</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$sudo</span> blkid</div></pre></td></tr></table></figure>
 <p>其显示信息如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/dev/sda1: LABEL=<span class="string">"SSD"</span> UUID=<span class="string">"C28070388070354F"</span> TYPE=<span class="string">"ntfs"</span> PARTUUID=<span class="string">"40ae352f-01"</span></div></pre></td></tr></table></figure>
 <p>其中<code>UUID=&quot;C28070388070354F&quot;</code>便是挂载硬盘的UUID， 其文件系统格式为ntfs。</p>
@@ -458,7 +458,7 @@
 <li><strong>磁盘检查</strong>，决定文件系统检查顺序， 0表示检查，1表示最高优先权， 2表示其他所有需要被检查的设备。</li>
 </ul>
 <h3 id="5-挂载硬盘"><a href="#5-挂载硬盘" class="headerlink" title="5. 挂载硬盘"></a>5. 挂载硬盘</h3><p>执行完之前的步骤已经可以在开机自动挂载了，若想手动挂载也很方便，只需要输入如下命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo mount -a</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$sudo</span> mount -a</div></pre></td></tr></table></figure>
 <p>这样便可根据<code>/etc/fstab</code>文件中的顺序挂载所有设备。</p>
 
       

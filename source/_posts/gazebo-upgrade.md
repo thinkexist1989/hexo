@@ -14,20 +14,19 @@ tags:
 
 输入以下命令查看当前Gazebo版本：
 
-```
-$ gazebo -v
+```bash
+$gazebo -v
 ```
 
 ## 升级方法
 
 执行以下命令升级Gazebo：
 
-```
-$ sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
-$ wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
-$ sudo apt-get update
-$ sudo apt-get install gazebo7
+```bash
+$sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
+$wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
+$sudo apt-get update
+$sudo apt-get install gazebo7
 ```
 
 以Ubuntu 16.04 + ROS Kinetic为例，默认情况下Gazebo的版本为7.0.0，在更新完之后Gazebo的版本便成为7.16.0。
-

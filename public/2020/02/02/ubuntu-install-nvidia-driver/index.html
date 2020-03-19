@@ -134,7 +134,7 @@
 <meta property="og:site_name" content="DécouVerte">
 <meta property="og:description" content="通常Ubuntu默认安装的显卡驱动是Nouveau，而为了发挥显卡的最大性能，或者为了给Nvidia显卡安装cuda驱动，都需要将显卡驱动更换为Nvidia的官方驱动。有两种方法： 简单安装若显卡较老的话一般Ubuntu自己的源便会提供驱动，在系统的Additional Driver中选择相应的驱动安装即可，一般写着tested的驱动都是经过测试的，比较稳定。 自行安装若显卡较新的话，Ubuntu">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-19T05:28:59.241Z">
+<meta property="og:updated_time" content="2020-03-19T13:11:02.677Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu安装Nvidia显卡驱动">
 <meta name="twitter:description" content="通常Ubuntu默认安装的显卡驱动是Nouveau，而为了发挥显卡的最大性能，或者为了给Nvidia显卡安装cuda驱动，都需要将显卡驱动更换为Nvidia的官方驱动。有两种方法： 简单安装若显卡较老的话一般Ubuntu自己的源便会提供驱动，在系统的Additional Driver中选择相应的驱动安装即可，一般写着tested的驱动都是经过测试的，比较稳定。 自行安装若显卡较新的话，Ubuntu">
@@ -438,16 +438,16 @@
 <h2 id="简单安装"><a href="#简单安装" class="headerlink" title="简单安装"></a>简单安装</h2><p>若显卡较老的话一般Ubuntu自己的源便会提供驱动，在系统的Additional Driver中选择相应的驱动安装即可，一般写着tested的驱动都是经过测试的，比较稳定。</p>
 <h2 id="自行安装"><a href="#自行安装" class="headerlink" title="自行安装"></a>自行安装</h2><p>若显卡较新的话，Ubuntu自己的源很多时候没有相应的驱动，这时候就需要去Nvidia的官网下载对应的驱动包，比如我现在的电脑显卡是Quadra P1000，我要去Nvidia的官网上下载Linux的驱动安装包，命名通常为NVIDIA-Linux-x86_64-440.44.run，将文件下载到系统中，随后便开始安装</p>
 <h3 id="1-禁用Nouveau"><a href="#1-禁用Nouveau" class="headerlink" title="1. 禁用Nouveau"></a>1. 禁用Nouveau</h3><p>在<code>/etc/modprobe.d/blacklist.conf</code>文件的最后一行加上一句话：<code>blacklist nouveau</code>，将Nouveau加入黑名单，保存后输入如下指令生效：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo update-initramfs -u</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$sudo</span> update-initramfs -u</div></pre></td></tr></table></figure>
 <h3 id="2-重启电脑进入命令行界面"><a href="#2-重启电脑进入命令行界面" class="headerlink" title="2. 重启电脑进入命令行界面"></a>2. 重启电脑进入命令行界面</h3><p>重启之后，可以在登录界面或者进入系统之后，按<code>ctrl</code>+<code>alt</code>+<code>F1</code>进入命令行界面</p>
 <h3 id="3-关闭桌面服务"><a href="#3-关闭桌面服务" class="headerlink" title="3. 关闭桌面服务"></a>3. 关闭桌面服务</h3><p>在命令行界面下输入以下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo service lightdm stop</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$sudo</span> service lightdm stop</div></pre></td></tr></table></figure>
 <h3 id="4-安装Nvidia驱动"><a href="#4-安装Nvidia驱动" class="headerlink" title="4. 安装Nvidia驱动"></a>4. 安装Nvidia驱动</h3><p>进入驱动安装包下载位置，首先赋予其执行权限：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ chmod +x NVIDIA-Linux-x86_64-440.44.run</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$chmod</span> +x NVIDIA-Linux-x86_64-440.44.run</div></pre></td></tr></table></figure>
 <p>随后运行并按照提示安装即可（通常用默认选项即可）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo ./NVIDIA-Linux-x86_64-440.44.run</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$sudo</span> ./NVIDIA-Linux-x86_64-440.44.run</div></pre></td></tr></table></figure>
 <h3 id="5-验证安装"><a href="#5-验证安装" class="headerlink" title="5.验证安装"></a>5.验证安装</h3><p>安装完成后输入以下指令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo nvidia-smi</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$sudo</span> nvidia-smi</div></pre></td></tr></table></figure>
 <p>若列出了GPU的信息列表则表示安装成功。</p>
 
       

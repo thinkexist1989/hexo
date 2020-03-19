@@ -80,10 +80,10 @@ XML文件必须包含一个根标签，launch文件的根标签采用`<launch>`�
 
 `<remap>`标签的目的是提供一种重映射机制，相当于给变量取别名。当在网上下载了一个功能包时，无法保证其接口和自己设计的接口一致，这时采用`<remap>`标签，可以不改动别人功能包接口的情况下，完成和自身功能包接口的通讯。
 
-比如turtlebot的控制节点发布的速度指令话题是`/turtlebot/cmd_vel`，但我们自己设计的机器人订阅的速度控制话题是`myrobot/cmd_vel`，则可以在加载turtlebot速度控制节点时，利用`<remap>`标签将话题从`/turtlebot/cmd_vel`重映射到`myrobot/cmd_vel`，便可以让自己的机器人接收速度指令了：
+比如turtlebot的控制节点发布的速度指令话题是`/turtlebot/cmd_vel`，但我们自己设计的机器人订阅的速度控制话题是`myrobot/cmd_vel`，则可以在加载turtlebot速度控制节点时，利用`<remap>`标签将话题从`/turtlebot/cmd_vel`重映射到`/myrobot/cmd_vel`，便可以让自己的机器人接收速度指令了：
 
 ```xml
-<remap from="/turtlebot/cmd_vel" to="/cmd_vel" />
+<remap from="/turtlebot/cmd_vel" to="/myrobot/cmd_vel" />
 ```
 
 **注意：ROS中重映射方式很多，使用也很广泛，也可以直接在终端进行重映射。**
@@ -108,5 +108,3 @@ XML文件必须包含一个根标签，launch文件的根标签采用`<launch>`�
 ## 其他
 
 更多roslaunch的用法和标签元素可以通过访问[https://wiki.ros.org/roslaunch](https://wiki.ros.org/roslaunch)来学习。
-
-

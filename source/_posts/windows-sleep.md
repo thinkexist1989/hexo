@@ -20,4 +20,3 @@ tags:
 1. 按`WIN`+`R`打开**运行**
 2. 输入`regedit`打开注册表编辑器
 3. 定位到**计算机\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SessionManager\Power**，在右侧找到`AwayModeEnabled`，若其值为1时表示处于离开模式，无法正常睡眠，将其值改为0即可正常睡眠。
-

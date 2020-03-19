@@ -134,7 +134,7 @@
 <meta property="og:site_name" content="DécouVerte">
 <meta property="og:description" content="问题缘由现在很多人都在电脑里安装了Ubuntu和Windows双系统，在安装完系统之后会发现，系统的显示时间经常会出问题，要么比正常时间快8个小时，要么比正常时间慢8个小时。即使利用网络同步时间之后，当切换过系统之后还是会出现时间差的问题。 这种现象是由于Windows与Ubuntu默认对时间的管理方式不同造成的。我们知道电脑的BIOS里记录着一串时间数据，操作系统就是根据这个数据得到当前时间的。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-20T01:46:33.137Z">
+<meta property="og:updated_time" content="2020-03-19T13:11:26.975Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu与Windows双系统时间设置问题">
 <meta name="twitter:description" content="问题缘由现在很多人都在电脑里安装了Ubuntu和Windows双系统，在安装完系统之后会发现，系统的显示时间经常会出问题，要么比正常时间快8个小时，要么比正常时间慢8个小时。即使利用网络同步时间之后，当切换过系统之后还是会出现时间差的问题。 这种现象是由于Windows与Ubuntu默认对时间的管理方式不同造成的。我们知道电脑的BIOS里记录着一串时间数据，操作系统就是根据这个数据得到当前时间的。">
@@ -438,7 +438,7 @@
 <p>这种现象是由于Windows与Ubuntu默认对时间的管理方式不同造成的。我们知道电脑的BIOS里记录着一串时间数据，操作系统就是根据这个数据得到当前时间的。Ubuntu系统使用的是UTC时间（世界协调时），系统会把BIOS里记录的时间看成GMT+0时间，即世界标准时。在Ubuntu系统中有一个设置，是配置当前所在时区的，在中国就会配置为东八区（GMT+8），所以Ubuntu会把BIOS中得到的时间加上8个小时显示出来，随后在系统关机的时候，将当前显示的时间减去8个小时后存入BIOS中。</p>
 <p>而在Windows中，会将BIOS中的时间看做本地时间，直接显示出来，因此，当从Ubuntu切换到Windows时，会出现时间差8个小时的情况。</p>
 <h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>最简单的方法就是将Ubuntu下的UTC时间关闭，采用和Window一样的时间管理方式。只需要在Ubuntu终端下运行一行代码：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ sudo timedatectrl <span class="built_in">set</span>-local-utc 1</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$sudo</span> timedatectrl <span class="built_in">set</span>-local-utc 1</div></pre></td></tr></table></figure>
 <p>这样便可以使Windows和Ubuntu下的时间同步了。</p>
 
       
@@ -472,7 +472,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/06/terminator_intro/" rel="next" title="分屏终端Terminator上手">
+              <a href="/2019/04/06/terminator-intro/" rel="next" title="分屏终端Terminator上手">
                 <i class="fa fa-chevron-left"></i> 分屏终端Terminator上手
               </a>
             

@@ -22,7 +22,7 @@ mathjax: false
 最简单的方法就是将Ubuntu下的UTC时间关闭，采用和Window一样的时间管理方式。只需要在Ubuntu终端下运行一行代码：
 
 ```bash
-$ sudo timedatectrl set-local-utc 1
+$sudo timedatectrl set-local-utc 1
 ```
 
 这样便可以使Windows和Ubuntu下的时间同步了。

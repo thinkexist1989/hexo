@@ -16,7 +16,7 @@ tags:
 ### 1.查看硬盘信息
 
 ```bash
-$ sudo fdisk -l
+$sudo fdisk -l
 ```
 
 其显示信息大致如下：
@@ -33,7 +33,7 @@ Device     Boot Start        End    Sectors  Size Id Type
 我希望将硬盘挂载到用户目录下，因此在用户目录下建立`SSD/`文件夹。
 
 ```bash
-$ sudo mkdir ~/SSD/
+$sudo mkdir ~/SSD/
 ```
 
 ### 3. 查看磁盘分区的UUID
@@ -41,7 +41,7 @@ $ sudo mkdir ~/SSD/
 输入以下指令查看`/dev/sda1`的信息
 
 ```bash
-$ sudo blkid
+$sudo blkid
 ```
 
 其显示信息如下：
@@ -74,7 +74,7 @@ UUID=C28070388070354F /home/think/SSD ntfs defaults 0 0
 执行完之前的步骤已经可以在开机自动挂载了，若想手动挂载也很方便，只需要输入如下命令：
 
 ```bash
-$ sudo mount -a
+$sudo mount -a
 ```
 
 这样便可根据`/etc/fstab`文件中的顺序挂载所有设备。

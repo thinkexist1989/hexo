@@ -10,37 +10,40 @@ tags:
 mathjax: false
 ---
 
-# 预备知识
+## 预备知识
 
-## Qt
+### Qt
+
 Qt是一套完整的跨平台软件开发框架，在开源世界无人不知无人不晓。
 
 官网地址：[https://qt.io](https://qt.io/)
 
-## OpenCV
+### OpenCV
+
 开源计算机视觉库，如何编译OpenCV可以参考我的另一篇博客[《利用CMAKE编译OpenCV源码》](http://yluo.name/2019/02/12/cmake_build_opencv/)
 
-## CMAKE
+### CMAKE
+
 关于什么是CMAKE可以参考我的另一篇博客[《利用CMAKE构建和管理软件项目》](http://yluo.name/2019/01/02/cmake/)。
 
-# 目录结构
+## 目录结构
 
 - 项目目录：qt_cmake
   - 源文件目录： src
-    - 文件： 
+    - 文件：
     - main.cpp
     - mainwindow.cpp
     - mainwindow.h
     - mainwindow.ui
   - 构建文件目录：build
 
-
-# 文件内容
+## 文件内容
 
 新建一个文件夹名为`qt_cmake`，在文件夹下新建两个文件夹，一个为`src`，另一个为`build`。其中`src`用来放置工程源代码文件，`build`用来存放构建生成的项目文件。
 
 在`src`文件夹下新建`main.cpp`文件，内容如下:
-```
+
+```cpp
 #include "mainwindow.h"
 #include <QApplication>
 
@@ -57,7 +60,8 @@ int main(int argc, char *argv[])
 利用Qt Creator新建一个Qt设计师界面类，会自动生成3个文件：`mainwindow.h`，`mainwindow.cpp`，`mainwindow.ui`。
 
 随后打开`mainwindow.cpp`文件，在其中填入相关的OpenCV代码做测试：
-```
+
+```cpp
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
@@ -83,7 +87,7 @@ MainWindow::~MainWindow()
 
 在`src`文件夹下建立CMakeLists.txt文件，在里面建立内容如下：
 
-```
+```cpp
 cmake_minimum_required(VERSION 3.1)
 
 project(qt_cmake)
@@ -116,11 +120,11 @@ message(STATUS "    include path: ${OpenCV_INCLUDE_DIRS}")
 include_directories(${OpenCV_INCLUDE_DIRS})
 
 set(SOURCES
-	main.cpp
-	mainwindow.cpp)
+ main.cpp
+ mainwindow.cpp)
 
 set(FORMS
-	mainwindow.ui)
+ mainwindow.ui)
 
 add_executable(main ${SOURCES} ${FORMS})
 #link_directories(${OpenCV_LIBRARY_DIRS})
@@ -134,7 +138,7 @@ target_link_libraries(main Qt5::Widgets ${OpenCV_LIBS})
     接下来是设置cmake要求的最低版本号：为3.1。CMAKE在3.1版本以上才支持Qt。
 
 2. project(qt_cmake [CXX] [C] [Java])
-   
+
     定义工程名称，并可指定工程支持的语言，支持的语言列表是可以忽略的，这个指令隐式的定义了两个cmake变量:qt_cmake_BINARY_DIR以及qt_cmake_SOURCE_DIR。前者指构建路径，后者指工程路径，即CMakeLists.txt所在的路径。
 
     同时cmake系统也帮助我们预定义了PROJECT_BINARY_DIR和PROJECT_SOURCE_DIR变量，他们的值分别跟qt_cmake_BINARY_DIR与qt_cmake_SOURCE_DIR一致。
@@ -163,7 +167,7 @@ target_link_libraries(main Qt5::Widgets ${OpenCV_LIBS})
 
     添加动态链接库
 
-# 构建
+## 构建
 
 - 进入build目录
 - 执行`cmake ../src`

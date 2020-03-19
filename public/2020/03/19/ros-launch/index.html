@@ -134,7 +134,7 @@
 <meta property="og:site_name" content="DécouVerte">
 <meta property="og:description" content="launch文件作用通过XML文件实现多节点的配置和启动。还可以自动启动ROS Master节点管理器（roscore），并可以实现每个节点的各种配置，为多个节点的操作提供便利。 launch文件格式XML是一种可扩展标记语言（EXtensible Markup Language），靠一个个元素的嵌套构成。被设计为传输和存储数据，焦点是数据的内容。 &amp;lt;launch&amp;gt;标签XML文件必须包">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-19T08:43:50.812Z">
+<meta property="og:updated_time" content="2020-03-19T13:14:41.819Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器人操作系统ROS学习笔记：launch启动文件">
 <meta name="twitter:description" content="launch文件作用通过XML文件实现多节点的配置和启动。还可以自动启动ROS Master节点管理器（roscore），并可以实现每个节点的各种配置，为多个节点的操作提供便利。 launch文件格式XML是一种可扩展标记语言（EXtensible Markup Language），靠一个个元素的嵌套构成。被设计为传输和存储数据，焦点是数据的内容。 &amp;lt;launch&amp;gt;标签XML文件必须包">
@@ -459,8 +459,8 @@
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">rosparam</span> <span class="attr">file</span>=<span class="string">"/path/to/package/config/params.yaml"</span> <span class="attr">command</span>=<span class="string">"load"</span> <span class="attr">ns</span>=<span class="string">"namespace"</span> /&gt;</span></div></pre></td></tr></table></figure>
 <p><code>&lt;rosparam&gt;</code>将<code>params.yaml</code>文件中存储的参数全部加载到ROS的参数服务器中，需要设置<code>command</code>属性设置为<code>load</code>，而且可以设置命名空间，设置后，参数名称前缀会变为<code>/namespace/</code>。</p>
 <h3 id="lt-remap-gt-标签"><a href="#lt-remap-gt-标签" class="headerlink" title="&lt;remap&gt;标签"></a><code>&lt;remap&gt;</code>标签</h3><p><code>&lt;remap&gt;</code>标签的目的是提供一种重映射机制，相当于给变量取别名。当在网上下载了一个功能包时，无法保证其接口和自己设计的接口一致，这时采用<code>&lt;remap&gt;</code>标签，可以不改动别人功能包接口的情况下，完成和自身功能包接口的通讯。</p>
-<p>比如turtlebot的控制节点发布的速度指令话题是<code>/turtlebot/cmd_vel</code>，但我们自己设计的机器人订阅的速度控制话题是<code>myrobot/cmd_vel</code>，则可以在加载turtlebot速度控制节点时，利用<code>&lt;remap&gt;</code>标签将话题从<code>/turtlebot/cmd_vel</code>重映射到<code>myrobot/cmd_vel</code>，便可以让自己的机器人接收速度指令了：</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">remap</span> <span class="attr">from</span>=<span class="string">"/turtlebot/cmd_vel"</span> <span class="attr">to</span>=<span class="string">"/cmd_vel"</span> /&gt;</span></div></pre></td></tr></table></figure>
+<p>比如turtlebot的控制节点发布的速度指令话题是<code>/turtlebot/cmd_vel</code>，但我们自己设计的机器人订阅的速度控制话题是<code>myrobot/cmd_vel</code>，则可以在加载turtlebot速度控制节点时，利用<code>&lt;remap&gt;</code>标签将话题从<code>/turtlebot/cmd_vel</code>重映射到<code>/myrobot/cmd_vel</code>，便可以让自己的机器人接收速度指令了：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">remap</span> <span class="attr">from</span>=<span class="string">"/turtlebot/cmd_vel"</span> <span class="attr">to</span>=<span class="string">"/myrobot/cmd_vel"</span> /&gt;</span></div></pre></td></tr></table></figure>
 <p><strong>注意：ROS中重映射方式很多，使用也很广泛，也可以直接在终端进行重映射。</strong></p>
 <h3 id="lt-include-gt-标签"><a href="#lt-include-gt-标签" class="headerlink" title="&lt;include&gt;标签"></a><code>&lt;include&gt;</code>标签</h3><p>在复杂系统中存在多个launch文件，互相之间也存在依赖。<code>&lt;include&gt;</code>标签可以包含其他launch文件，复用其中的内容，相当于C语言中include头文件。其使用方式如下：</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">include</span> <span class="attr">file</span>=<span class="string">"/path/to/file/other.launch"</span> /&gt;</span></div></pre></td></tr></table></figure>

@@ -134,7 +134,7 @@
 <meta property="og:site_name" content="DécouVerte">
 <meta property="og:description" content="CMAKE是什么CMake是一个跨平台的安装（编译）工具，可以用简单的语句来描述所有平台的安装(编译过程)。他能够输出各种各样的makefile或者project文件，能测试编译器所支持的C++特性,类似UNIX下的automake。只是 CMake 的组态档取名为 CMakeLists.txt。Cmake 并不直接建构出最终的软件，而是产生标准的建构档（如 Unix 的 Makefile 或 W">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-01-20T00:57:58.172Z">
+<meta property="og:updated_time" content="2020-03-19T13:22:19.845Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="利用CMAKE构建和管理软件项目">
 <meta name="twitter:description" content="CMAKE是什么CMake是一个跨平台的安装（编译）工具，可以用简单的语句来描述所有平台的安装(编译过程)。他能够输出各种各样的makefile或者project文件，能测试编译器所支持的C++特性,类似UNIX下的automake。只是 CMake 的组态档取名为 CMakeLists.txt。Cmake 并不直接建构出最终的软件，而是产生标准的建构档（如 Unix 的 Makefile 或 W">
@@ -434,9 +434,9 @@
       
 
       
-        <h1 id="CMAKE是什么"><a href="#CMAKE是什么" class="headerlink" title="CMAKE是什么"></a>CMAKE是什么</h1><p>CMake是一个跨平台的安装（编译）工具，可以用简单的语句来描述所有平台的安装(编译过程)。他能够输出各种各样的makefile或者project文件，能测试编译器所支持的C++特性,类似UNIX下的automake。只是 CMake 的组态档取名为 CMakeLists.txt。Cmake 并不直接建构出最终的软件，而是产生标准的建构档（如 Unix 的 Makefile 或 Windows Visual C++ 的 projects/workspaces），然后再依一般的建构方式使用。这使得熟悉某个集成开发环境（IDE）的开发者可以用标准的方式建构他的软件，这种可以使用各平台的原生建构系统的能力是 CMake 和 SCons 等其他类似系统的区别之处。</p>
+        <h2 id="CMAKE是什么"><a href="#CMAKE是什么" class="headerlink" title="CMAKE是什么"></a>CMAKE是什么</h2><p>CMake是一个跨平台的安装（编译）工具，可以用简单的语句来描述所有平台的安装(编译过程)。他能够输出各种各样的makefile或者project文件，能测试编译器所支持的C++特性,类似UNIX下的automake。只是 CMake 的组态档取名为 CMakeLists.txt。Cmake 并不直接建构出最终的软件，而是产生标准的建构档（如 Unix 的 Makefile 或 Windows Visual C++ 的 projects/workspaces），然后再依一般的建构方式使用。这使得熟悉某个集成开发环境（IDE）的开发者可以用标准的方式建构他的软件，这种可以使用各平台的原生建构系统的能力是 CMake 和 SCons 等其他类似系统的区别之处。</p>
 <p>对于一个大型软件，其编译、维护是一个复杂而耗时的过程。它涉及到大量的文件、目录，这些文件可能是在不同的时间、由不同的人、在不同的地方分别写的，其中一些是程序，有些是数据，有些是文档，有些是衍生文件。甚至参与开发的人员也不一定清楚所有文件的细节，包括如何处理它们。此外，构成软件的文件数目可能达到成百上千，甚至成千上万个，开发过程中当修改了少量几个文件后，往往只需要重新编译、生成少数几个文件。有效地描述这些文件之间的依赖关系以及处理命令，当个别文件改动后仅执行必要的处理，而不必重复整个编译过程，可以大大提高软件开发的效率。</p>
-<h1 id="为什么用CMAKE"><a href="#为什么用CMAKE" class="headerlink" title="为什么用CMAKE"></a>为什么用CMAKE</h1><p>如果你之前有过维护软件包的构建和安装的经验，你就会对CMake有兴趣。当前很多项目都可以在Linux下用Makefile和在Windows下用Visual Studio进行编译；这要求开发者在对应的系统下保持构建工具的更新，并且不同系统的构建行为保持一致；如果再引入XCode，这需要更多的构建工具，这样会是一个问题。如果在此基础上引入可选组件，比如如果系统上有libjpeg，项目就支援JPEG，这会造成更大的麻烦。CMake提供了一个简单的，易于理解的文件格式来解决上述问题。如果一个项目有多个开发者参与，或者这个项目有多个目标平台；那么不可避免的需要在多台PC上进行构建，不同的PC在开发环境上会有差异。</p>
+<h2 id="为什么用CMAKE"><a href="#为什么用CMAKE" class="headerlink" title="为什么用CMAKE"></a>为什么用CMAKE</h2><p>如果你之前有过维护软件包的构建和安装的经验，你就会对CMake有兴趣。当前很多项目都可以在Linux下用Makefile和在Windows下用Visual Studio进行编译；这要求开发者在对应的系统下保持构建工具的更新，并且不同系统的构建行为保持一致；如果再引入XCode，这需要更多的构建工具，这样会是一个问题。如果在此基础上引入可选组件，比如如果系统上有libjpeg，项目就支援JPEG，这会造成更大的麻烦。CMake提供了一个简单的，易于理解的文件格式来解决上述问题。如果一个项目有多个开发者参与，或者这个项目有多个目标平台；那么不可避免的需要在多台PC上进行构建，不同的PC在开发环境上会有差异。</p>
 <ul>
 <li>自动进行项目构建所需的program、library、header file的查找能力；</li>
 <li>在source tree以外进行构建的能力；</li>
@@ -446,8 +446,8 @@
 <li>配置生成静态库/动态库的能力；</li>
 <li>自动产生文件依赖，支持并行编译；</li>
 </ul>
-<h1 id="CMAKE基本语法"><a href="#CMAKE基本语法" class="headerlink" title="CMAKE基本语法"></a>CMAKE基本语法</h1><p>build的过程由每个目录下的名为<code>CMakeFileLists.txt</code>的文件组成的一系列文件列表所控制；<br><code>CMakeFileLists.txt</code>文件由CMake语句进行项目描述，CMake语句的语法为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">command(args...)</div></pre></td></tr></table></figure>
+<h2 id="CMAKE基本语法"><a href="#CMAKE基本语法" class="headerlink" title="CMAKE基本语法"></a>CMAKE基本语法</h2><p>build的过程由每个目录下的名为<code>CMakeFileLists.txt</code>的文件组成的一系列文件列表所控制；<br><code>CMakeFileLists.txt</code>文件由CMake语句进行项目描述，CMake语句的语法为：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">command(args...)</div></pre></td></tr></table></figure>
 <ul>
 <li><code>command</code>是命令的名字，CMake是不区分大小写的；</li>
 <li><p><code>args</code>是一系列由空格分隔的参数，如果参数中有空格，参数需要用双引号引起来；</p>
@@ -456,22 +456,25 @@
 </li>
 <li>多个参数可以使用<code>set</code>来使之构成一个list。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">set(Foo a b c)</div></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">set</span>(Foo a b c)</div></pre></td></tr></table></figure>
 <p>这样设置的结果是<code>Foo</code>的值是 a b c;</p>
 <p>CMake可以直接访问系统环境变量和Windows注册表；<br>访问系统环境变量的语法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$Env&#123;ARG&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$Env&#123;ARG&#125;</div></pre></td></tr></table></figure>
 <p>访问Windows注册表：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[HKEY_CURRENT_USER\\Software\\path1\\path2;key]</div></pre></td></tr></table></figure>
-<h1 id="如何运行CMAKE"><a href="#如何运行CMAKE" class="headerlink" title="如何运行CMAKE"></a>如何运行CMAKE</h1><p>举一个简单的例子，在文件夹下建立一个C语言源文件<code>main.c</code>，内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">#include &lt;stdio.h&gt;</div><div class="line"></div><div class="line">void main()</div><div class="line">&#123;</div><div class="line">  float sum;</div><div class="line">  int i;</div><div class="line"></div><div class="line">  for(int i=0;i&lt;100;i++)</div><div class="line">          sum += 0.1;</div><div class="line"></div><div class="line">  printf(&quot;sum:%f\n&quot;,sum);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[HKEY_CURRENT_USER\\Software\\path1\\path2;key]</div></pre></td></tr></table></figure>
+<h2 id="如何运行CMAKE"><a href="#如何运行CMAKE" class="headerlink" title="如何运行CMAKE"></a>如何运行CMAKE</h2><p>举一个简单的例子，在文件夹下建立一个C语言源文件<code>main.c</code>，内容如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line"><span class="function"></span>&#123;</div><div class="line">  <span class="keyword">float</span> sum;</div><div class="line">  <span class="keyword">int</span> i;</div><div class="line"></div><div class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;<span class="number">100</span>;i++)</div><div class="line">          sum += <span class="number">0.1</span>;</div><div class="line"></div><div class="line">  <span class="built_in">printf</span>(<span class="string">"sum:%f\n"</span>,sum);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>在文件夹下建立<code>CMakeLists.txt</code>文件，内容如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cmake_minimum_required(VERSION 2.8)</div><div class="line">add_executable(Main main.c)</div></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">2.8</span>)</div><div class="line"><span class="keyword">add_executable</span>(Main main.c)</div></pre></td></tr></table></figure>
 <p>在终端运行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$cmake .</div></pre></td></tr></table></figure>
-<p>则可以看到在文件夹下生成了Makefile文件，紧接着运行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$make</div></pre></td></tr></table></figure></p>
-<p>在文件夹下看到生成了可执行文件<code>Main</code>，于是在终端运行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$./Main</div></pre></td></tr></table></figure></p>
-<p>可以看到终端运行了程序并输出：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$sum:10.000002</div></pre></td></tr></table></figure></p>
-<h1 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h1><p>强烈推荐一本CMAKE圣经《Mastering CMAKE》，CMAKE的强大之处只有一点点的学习体会才能感受到，我也会在今后的学习中慢慢领悟CMAKE的精髓，用CMAKE来管理构建我自己的项目。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$cmake</span> .</div></pre></td></tr></table></figure>
+<p>则可以看到在文件夹下生成了Makefile文件，紧接着运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$make</span></div></pre></td></tr></table></figure>
+<p>在文件夹下看到生成了可执行文件<code>Main</code>，于是在终端运行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$./Main</div></pre></td></tr></table></figure>
+<p>可以看到终端运行了程序并输出：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$sum</span>:10.000002</div></pre></td></tr></table></figure>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>强烈推荐一本CMAKE圣经《Mastering CMAKE》，CMAKE的强大之处只有一点点的学习体会才能感受到，我也会在今后的学习中慢慢领悟CMAKE的精髓，用CMAKE来管理构建我自己的项目。</p>
 
       
     </div>
@@ -504,7 +507,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/29/network_4/" rel="next" title="计算机网络初探（四）：网络里的中间商—正向代理与反向代理">
+              <a href="/2018/12/29/network-4/" rel="next" title="计算机网络初探（四）：网络里的中间商—正向代理与反向代理">
                 <i class="fa fa-chevron-left"></i> 计算机网络初探（四）：网络里的中间商—正向代理与反向代理
               </a>
             
@@ -514,7 +517,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/24/terminal_via_ss/" rel="prev" title="Ubuntu下Shadowsocks代理及终端使用ss">
+              <a href="/2019/01/24/terminal-via-ss/" rel="prev" title="Ubuntu下Shadowsocks代理及终端使用ss">
                 Ubuntu下Shadowsocks代理及终端使用ss <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -675,7 +678,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CMAKE是什么"><span class="nav-number">1.</span> <span class="nav-text">CMAKE是什么</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么用CMAKE"><span class="nav-number">2.</span> <span class="nav-text">为什么用CMAKE</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CMAKE基本语法"><span class="nav-number">3.</span> <span class="nav-text">CMAKE基本语法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何运行CMAKE"><span class="nav-number">4.</span> <span class="nav-text">如何运行CMAKE</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#后记"><span class="nav-number">5.</span> <span class="nav-text">后记</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CMAKE是什么"><span class="nav-number">1.</span> <span class="nav-text">CMAKE是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么用CMAKE"><span class="nav-number">2.</span> <span class="nav-text">为什么用CMAKE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CMAKE基本语法"><span class="nav-number">3.</span> <span class="nav-text">CMAKE基本语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何运行CMAKE"><span class="nav-number">4.</span> <span class="nav-text">如何运行CMAKE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#后记"><span class="nav-number">5.</span> <span class="nav-text">后记</span></a></li></ol></div>
             
 
           </div>

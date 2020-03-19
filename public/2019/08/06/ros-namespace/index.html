@@ -134,7 +134,7 @@
 <meta property="og:site_name" content="DécouVerte">
 <meta property="og:description" content="ROS的命名命名是ROS中的基本概念。ROS中的节点、话题以及参数都必须有唯一的命名。例如机器人上的相机可以命名为camera，并且相机可以输出一个话题image，同时读取一个frame_rate的参数来控制发送图像的频率。一个有效的命名具备以下特点：  首字符为字母（[a-z|A-Z]）、波浪线（～）或左斜杠（/）。（不可以为下划线_） 后续字符可以是字母或数字（[0-9|a-z|A-Z]）、下">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-19T05:38:22.836Z">
+<meta property="og:updated_time" content="2020-03-19T13:14:13.386Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器人操作系统ROS学习笔记：ROS命名空间及重映射">
 <meta name="twitter:description" content="ROS的命名命名是ROS中的基本概念。ROS中的节点、话题以及参数都必须有唯一的命名。例如机器人上的相机可以命名为camera，并且相机可以输出一个话题image，同时读取一个frame_rate的参数来控制发送图像的频率。一个有效的命名具备以下特点：  首字符为字母（[a-z|A-Z]）、波浪线（～）或左斜杠（/）。（不可以为下划线_） 后续字符可以是字母或数字（[0-9|a-z|A-Z]）、下">
@@ -447,28 +447,29 @@
 <h2 id="命名空间和重映射的使用"><a href="#命名空间和重映射的使用" class="headerlink" title="命名空间和重映射的使用"></a>命名空间和重映射的使用</h2><h3 id="在命令行中使用"><a href="#在命令行中使用" class="headerlink" title="在命令行中使用"></a>在命令行中使用</h3><p>由于ROS的设计模式鼓励软件的重用，重命名在开发和部署ROS软件的时候非常普遍。为了简化操作，ROS在命令行启动节点时提供了标准语法来重命名。</p>
 <ul>
 <li><p>将<code>image</code>话题重映射到<code>right/image</code>可以利用重映射语法来完成：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rosrun package image_view image:=right/image</div></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$rosrun</span> package image_view image:=right/image</div></pre></td></tr></table></figure>
 </li>
 <li><p>把节点放置到命名空间中可以利用<code>__ns</code>命名空间重映射语法来完成：</p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rosrun package camera __ns:=right</div></pre></td></tr></table></figure>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$rosrun</span> package camera __ns:=right</div></pre></td></tr></table></figure>
 </li>
-<li><p>修改节点的名字可以利用<code>__name</code>重命名语法来完成：  </p>
-  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ rosrun package camera __name:=camera2</div></pre></td></tr></table></figure>
+<li><p>修改节点的名字可以利用<code>__name</code>重命名语法来完成：</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$rosrun</span> package camera __name:=camera2</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="在launch文件中使用"><a href="#在launch文件中使用" class="headerlink" title="在launch文件中使用"></a>在launch文件中使用</h3><ul>
 <li><p>通过设置name参数来确定节点的名字：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;node name=&quot;turtlesim_node2&quot; pkg=&quot;turtlesim&quot; type=&quot;turtlesim_node.py&quot;/&gt;</div></pre></td></tr></table></figure>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">node</span> <span class="attr">name</span>=<span class="string">"turtlesim_node2"</span> <span class="attr">pkg</span>=<span class="string">"turtlesim"</span> <span class="attr">type</span>=<span class="string">"turtlesim_node.py"</span>/&gt;</span></div></pre></td></tr></table></figure>
 </li>
-<li><p>通过设置ns参数来确定默认命名空间：    </p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;node name=&quot;turtlesim_node&quot; pkg=&quot;turtlesim&quot; type=&quot;turtlesim_node.py&quot; ns=&quot;sim1&quot; /&gt;</div></pre></td></tr></table></figure>
+<li><p>通过设置ns参数来确定默认命名空间：</p>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">node</span> <span class="attr">name</span>=<span class="string">"turtlesim_node"</span> <span class="attr">pkg</span>=<span class="string">"turtlesim"</span> <span class="attr">type</span>=<span class="string">"turtlesim_node.py"</span> <span class="attr">ns</span>=<span class="string">"sim1"</span> /&gt;</span></div></pre></td></tr></table></figure>
 </li>
 <li><p>通过remap标签设置重映射：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;remap from=&quot;image&quot; to=&quot;right/image&quot;/&gt;</div></pre></td></tr></table></figure>
+  <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">remap</span> <span class="attr">from</span>=<span class="string">"image"</span> <span class="attr">to</span>=<span class="string">"right/image"</span>/&gt;</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="在ROS程序终端中使用"><a href="#在ROS程序终端中使用" class="headerlink" title="在ROS程序终端中使用"></a>在ROS程序终端中使用</h3><p>可以利用环境变量设置默认命名空间：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> ROS_NAMESPACE=default-namespace</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$export</span> ROS_NAMESPACE=default-namespace</div></pre></td></tr></table></figure>
+
       
     </div>
     

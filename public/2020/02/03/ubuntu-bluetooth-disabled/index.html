@@ -126,18 +126,18 @@
 
 
 
-<meta name="description" content="问题描述之前在Ubuntu下不小心删除了/var/lib/bluetooth/下的文件夹，导致蓝牙界面一直显示disabled。 解决方法在终端里输入以下命令： 1rfkill unblock bluetooth 随后重启系统并打开蓝牙，蓝牙便显示enabled了。">
+<meta name="description" content="问题描述之前在Ubuntu下不小心删除了/var/lib/bluetooth/下的文件夹，导致蓝牙界面一直显示disabled。 解决方法在终端里输入以下命令： 1$rfkill unblock bluetooth 随后重启系统并打开蓝牙，蓝牙便显示enabled了。">
 <meta name="keywords" content="Linux,Bluetooth">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu蓝牙不可用">
 <meta property="og:url" content="http://yluo.name/2020/02/03/ubuntu-bluetooth-disabled/index.html">
 <meta property="og:site_name" content="DécouVerte">
-<meta property="og:description" content="问题描述之前在Ubuntu下不小心删除了/var/lib/bluetooth/下的文件夹，导致蓝牙界面一直显示disabled。 解决方法在终端里输入以下命令： 1rfkill unblock bluetooth 随后重启系统并打开蓝牙，蓝牙便显示enabled了。">
+<meta property="og:description" content="问题描述之前在Ubuntu下不小心删除了/var/lib/bluetooth/下的文件夹，导致蓝牙界面一直显示disabled。 解决方法在终端里输入以下命令： 1$rfkill unblock bluetooth 随后重启系统并打开蓝牙，蓝牙便显示enabled了。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-19T05:28:59.241Z">
+<meta property="og:updated_time" content="2020-03-19T13:10:24.473Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ubuntu蓝牙不可用">
-<meta name="twitter:description" content="问题描述之前在Ubuntu下不小心删除了/var/lib/bluetooth/下的文件夹，导致蓝牙界面一直显示disabled。 解决方法在终端里输入以下命令： 1rfkill unblock bluetooth 随后重启系统并打开蓝牙，蓝牙便显示enabled了。">
+<meta name="twitter:description" content="问题描述之前在Ubuntu下不小心删除了/var/lib/bluetooth/下的文件夹，导致蓝牙界面一直显示disabled。 解决方法在终端里输入以下命令： 1$rfkill unblock bluetooth 随后重启系统并打开蓝牙，蓝牙便显示enabled了。">
 
 
 
@@ -436,7 +436,7 @@
       
         <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>之前在Ubuntu下不小心删除了<code>/var/lib/bluetooth/</code>下的文件夹，导致蓝牙界面一直显示disabled。</p>
 <h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>在终端里输入以下命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">rfkill unblock bluetooth</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$rfkill</span> unblock bluetooth</div></pre></td></tr></table></figure>
 <p>随后重启系统并打开蓝牙，蓝牙便显示enabled了。</p>
 
       

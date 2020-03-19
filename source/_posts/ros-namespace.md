@@ -36,33 +36,40 @@ mathjax: false
 由于ROS的设计模式鼓励软件的重用，重命名在开发和部署ROS软件的时候非常普遍。为了简化操作，ROS在命令行启动节点时提供了标准语法来重命名。
 
 - 将`image`话题重映射到`right/image`可以利用重映射语法来完成：
+  
     ```bash
-    $ rosrun package image_view image:=right/image
+    $rosrun package image_view image:=right/image
     ```
 
 - 把节点放置到命名空间中可以利用`__ns`命名空间重映射语法来完成：
+
     ```bash
-    $ rosrun package camera __ns:=right
+    $rosrun package camera __ns:=right
     ```
 
-- 修改节点的名字可以利用`__name`重命名语法来完成：  
+- 修改节点的名字可以利用`__name`重命名语法来完成：
+
     ```bash
-    $ rosrun package camera __name:=camera2
+    $rosrun package camera __name:=camera2
     ```
 
 ### 在launch文件中使用
 
 - 通过设置name参数来确定节点的名字：
-    ```
+
+    ```xml
     <node name="turtlesim_node2" pkg="turtlesim" type="turtlesim_node.py"/>
     ```
 
-- 通过设置ns参数来确定默认命名空间：    
-    ```
+- 通过设置ns参数来确定默认命名空间：
+
+    ```xml
     <node name="turtlesim_node" pkg="turtlesim" type="turtlesim_node.py" ns="sim1" />
     ```
+
 - 通过remap标签设置重映射：
-    ```
+
+    ```xml
     <remap from="image" to="right/image"/>
     ```
 
@@ -71,5 +78,5 @@ mathjax: false
 可以利用环境变量设置默认命名空间：
 
 ```bash
-export ROS_NAMESPACE=default-namespace
+$export ROS_NAMESPACE=default-namespace
 ```

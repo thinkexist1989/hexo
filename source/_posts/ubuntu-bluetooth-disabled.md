@@ -17,8 +17,8 @@ tags:
 
 在终端里输入以下命令：
 
-```
-rfkill unblock bluetooth
+```bash
+$rfkill unblock bluetooth
 ```
 
 随后重启系统并打开蓝牙，蓝牙便显示enabled了。

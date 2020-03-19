@@ -23,8 +23,8 @@ tags:
 
 在`/etc/modprobe.d/blacklist.conf`文件的最后一行加上一句话：`blacklist nouveau`，将Nouveau加入黑名单，保存后输入如下指令生效：
 
-```
-$ sudo update-initramfs -u
+```bash
+$sudo update-initramfs -u
 ```
 
 ### 2. 重启电脑进入命令行界面
@@ -35,31 +35,30 @@ $ sudo update-initramfs -u
 
 在命令行界面下输入以下命令：
 
-```
-$ sudo service lightdm stop
+```bash
+$sudo service lightdm stop
 ```
 
 ### 4. 安装Nvidia驱动
 
 进入驱动安装包下载位置，首先赋予其执行权限：
 
-```
-$ chmod +x NVIDIA-Linux-x86_64-440.44.run
+```bash
+$chmod +x NVIDIA-Linux-x86_64-440.44.run
 ```
 
 随后运行并按照提示安装即可（通常用默认选项即可）
 
-```
-$ sudo ./NVIDIA-Linux-x86_64-440.44.run
+```bash
+$sudo ./NVIDIA-Linux-x86_64-440.44.run
 ```
 
 ### 5.验证安装
 
 安装完成后输入以下指令：
 
-```
-$ sudo nvidia-smi
+```bash
+$sudo nvidia-smi
 ```
 
 若列出了GPU的信息列表则表示安装成功。
-

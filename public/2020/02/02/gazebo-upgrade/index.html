@@ -126,18 +126,18 @@
 
 
 
-<meta name="description" content="由于Gazebo随ROS一起安装的版本通常不是当前ROS版本下最新的，因此可以通过手动升级的方式来将Gazebo更新为当前ROS版本下对应的最新版本。 查看当前Gazebo版本输入以下命令查看当前Gazebo版本： 1$ gazebo -v 升级方法执行以下命令升级Gazebo： 1234$ sudo sh -c &amp;apos;echo &amp;quot;deb http://packages.osrfo">
+<meta name="description" content="由于Gazebo随ROS一起安装的版本通常不是当前ROS版本下最新的，因此可以通过手动升级的方式来将Gazebo更新为当前ROS版本下对应的最新版本。 查看当前Gazebo版本输入以下命令查看当前Gazebo版本： 1$gazebo -v 升级方法执行以下命令升级Gazebo： 1234$sudo sh -c &apos;echo &quot;deb http://packages.osrfoundation.org">
 <meta name="keywords" content="ROS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="机器人操作系统ROS学习笔记：Gazebo的更新与配置">
 <meta property="og:url" content="http://yluo.name/2020/02/02/gazebo-upgrade/index.html">
 <meta property="og:site_name" content="DécouVerte">
-<meta property="og:description" content="由于Gazebo随ROS一起安装的版本通常不是当前ROS版本下最新的，因此可以通过手动升级的方式来将Gazebo更新为当前ROS版本下对应的最新版本。 查看当前Gazebo版本输入以下命令查看当前Gazebo版本： 1$ gazebo -v 升级方法执行以下命令升级Gazebo： 1234$ sudo sh -c &amp;apos;echo &amp;quot;deb http://packages.osrfo">
+<meta property="og:description" content="由于Gazebo随ROS一起安装的版本通常不是当前ROS版本下最新的，因此可以通过手动升级的方式来将Gazebo更新为当前ROS版本下对应的最新版本。 查看当前Gazebo版本输入以下命令查看当前Gazebo版本： 1$gazebo -v 升级方法执行以下命令升级Gazebo： 1234$sudo sh -c &apos;echo &quot;deb http://packages.osrfoundation.org">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-19T05:28:59.241Z">
+<meta property="og:updated_time" content="2020-03-19T13:22:39.728Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器人操作系统ROS学习笔记：Gazebo的更新与配置">
-<meta name="twitter:description" content="由于Gazebo随ROS一起安装的版本通常不是当前ROS版本下最新的，因此可以通过手动升级的方式来将Gazebo更新为当前ROS版本下对应的最新版本。 查看当前Gazebo版本输入以下命令查看当前Gazebo版本： 1$ gazebo -v 升级方法执行以下命令升级Gazebo： 1234$ sudo sh -c &amp;apos;echo &amp;quot;deb http://packages.osrfo">
+<meta name="twitter:description" content="由于Gazebo随ROS一起安装的版本通常不是当前ROS版本下最新的，因此可以通过手动升级的方式来将Gazebo更新为当前ROS版本下对应的最新版本。 查看当前Gazebo版本输入以下命令查看当前Gazebo版本： 1$gazebo -v 升级方法执行以下命令升级Gazebo： 1234$sudo sh -c &apos;echo &quot;deb http://packages.osrfoundation.org">
 
 
 
@@ -436,9 +436,9 @@
       
         <p>由于Gazebo随ROS一起安装的版本通常不是当前ROS版本下最新的，因此可以通过手动升级的方式来将Gazebo更新为当前ROS版本下对应的最新版本。</p>
 <h2 id="查看当前Gazebo版本"><a href="#查看当前Gazebo版本" class="headerlink" title="查看当前Gazebo版本"></a>查看当前Gazebo版本</h2><p>输入以下命令查看当前Gazebo版本：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ gazebo -v</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$gazebo</span> -v</div></pre></td></tr></table></figure>
 <h2 id="升级方法"><a href="#升级方法" class="headerlink" title="升级方法"></a>升级方法</h2><p>执行以下命令升级Gazebo：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ sudo sh -c &apos;echo &quot;deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main&quot; &gt; /etc/apt/sources.list.d/gazebo-stable.list&apos;</div><div class="line">$ wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -</div><div class="line">$ sudo apt-get update</div><div class="line">$ sudo apt-get install gazebo7</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$sudo</span> sh -c <span class="string">'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" &gt; /etc/apt/sources.list.d/gazebo-stable.list'</span></div><div class="line"><span class="variable">$wget</span> http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -</div><div class="line"><span class="variable">$sudo</span> apt-get update</div><div class="line"><span class="variable">$sudo</span> apt-get install gazebo7</div></pre></td></tr></table></figure>
 <p>以Ubuntu 16.04 + ROS Kinetic为例，默认情况下Gazebo的版本为7.0.0，在更新完之后Gazebo的版本便成为7.16.0。</p>
 
       
