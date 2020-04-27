@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yluo.name/"/>
-  <updated>2020-03-20T07:39:19.608Z</updated>
+  <updated>2020-04-27T01:53:05.191Z</updated>
   <id>http://yluo.name/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>利用CMake编译OpenCV</title>
+    <link href="http://yluo.name/2020/04/27/opencv-cmake/"/>
+    <id>http://yluo.name/2020/04/27/opencv-cmake/</id>
+    <published>2020-04-27T01:53:05.000Z</published>
+    <updated>2020-04-27T01:53:05.191Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近需要自己编译OpenCV主要有两个出发点：</p><ul><li>想用OpenCV调用Kinect摄像头，发现需要OpenCV支持OpenNI；</li><li>目前的SIFT，SURF算法都从OpenCV源码中移除，放到了opencv_contrib里面，需要一起编译才可以；</li><li>希望OpenCV支持C++11特性。</li></ul><p>基于以上目的，开始利用CMake编译OpenCV。</p><h2 id="系统要求"><a href="#系统要求" class="headerlink" title="系统要求"></a>系统要求</h2><ul><li>opencv-3.4.5源码</li><li>opencv_contrib-3.4.5源码</li><li>openni库</li><li>cmake-gui</li></ul><h2 id="文件夹结构"><a href="#文件夹结构" class="headerlink" title="文件夹结构"></a>文件夹结构</h2><p>本次编译创建的文件夹结构如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">└──opencv 根文件夹</div><div class="line">   ├── src</div><div class="line">   │   ├── opencv-3.4.5 解压后的opencv源码</div><div class="line">   │   └── opencv_contrib-3.4.5 解压后的opencv_contrib源码</div><div class="line">   └── build 创建一个build空文件夹，放置编译的文件</div></pre></td></tr></table></figure><h2 id="配置及编译"><a href="#配置及编译" class="headerlink" title="配置及编译"></a>配置及编译</h2><h3 id="CMake-GUI初配置"><a href="#CMake-GUI初配置" class="headerlink" title="CMake GUI初配置"></a>CMake GUI初配置</h3><ol><li>打开cmake-gui软件，点击<code>Browse Source...</code>，选择<code>opencv/src/opencv-3.4.5</code>文件夹，点击确定；</li><li>点击<code>Browse Build</code>，选择<code>opencv/build</code>文件夹，点击确定；</li><li>点击<code>Configure</code>，等待初次配置完成</li></ol><h3 id="配置CMake选项"><a href="#配置CMake选项" class="headerlink" title="配置CMake选项"></a>配置CMake选项</h3><ol><li><strong>启用C++11特性</strong>，在cmake-gui中查找<code>ENABLE_CXX11</code>，启用；</li><li><strong>配置opencv_contrib</strong>，查找<code>OPENCV_EXTRA_MODULES_PATH</code>，设置值为<code>/path/to/opencv/src/opencv_contrib-3.4.5/modules</code>，随后查找<code>OPENCV_ENABLE_NONFREE</code>，启用；</li><li><strong>支持OPENNI</strong>，查找<code>WITH_OPENNI</code>以及<code>WITH_OPENNI2</code>，根据需要启用；</li></ol><h3 id="生成"><a href="#生成" class="headerlink" title="生成"></a>生成</h3><p>多点击几次<code>Configure</code>，直到没有错误提示，若提示找不到openni之类的，就是库没装好。随后点击<code>Generate</code>，便在build文件夹下生成对应的工程文件</p><h3 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h3><p>根据不同的工程文件采用对应的编译方式编译即可，在Linux下生成的Makefile，可以直接<code>make</code>编译，然后<code>make install</code>安装即可。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;最近需要自己编译OpenCV主要有两个出发点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;想用OpenCV调用Kinect摄像头，发现需要OpenCV支持OpenNI；&lt;/li&gt;
+&lt;li&gt;目前的SIFT，SURF算法都从OpenCV源码中移除，放到了opencv_contrib里面，需要一
+      
+    
+    </summary>
+    
+      <category term="技术探索" scheme="http://yluo.name/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/"/>
+    
+    
+      <category term="cmake" scheme="http://yluo.name/tags/cmake/"/>
+    
+      <category term="OpenCV" scheme="http://yluo.name/tags/OpenCV/"/>
+    
+  </entry>
   
   <entry>
     <title>机器人操作系统ROS学习笔记：TF坐标变换</title>
@@ -508,34 +538,6 @@
         &lt;p&gt;&lt;code&gt;who&lt;/code&gt;命令用于显示系统中有哪些使用者正在上面，显示的资料包含了使用者 ID、使用的终端机、从哪边连上来的、上线时间、呆滞时间、CPU 使用量、动作等等。&lt;/p&gt;
 &lt;p&gt;经常使用的参数如下：&lt;/p&gt;
 &lt;div class=&quot;table-contain
-      
-    
-    </summary>
-    
-      <category term="技术探索" scheme="http://yluo.name/categories/%E6%8A%80%E6%9C%AF%E6%8E%A2%E7%B4%A2/"/>
-    
-    
-      <category term="Linux" scheme="http://yluo.name/tags/Linux/"/>
-    
-      <category term="Shell" scheme="http://yluo.name/tags/Shell/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Shell编程：date指令</title>
-    <link href="http://yluo.name/2020/01/19/shell-date/"/>
-    <id>http://yluo.name/2020/01/19/shell-date/</id>
-    <published>2020-01-19T13:37:54.000Z</published>
-    <updated>2020-01-20T01:21:26.529Z</updated>
-    
-    <content type="html"><![CDATA[<p><code>date</code>命令用于显示当前的日期及时间，直接运行可得到如下格式的显示：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ date</div><div class="line">Sun Jan 19 21:42:52 CST 2020</div></pre></td></tr></table></figure><p>可以在命令后添加参数以设定输出格式(<code>date [OPTION]... [+FORMAT]</code>)，例如：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ date +%Y%m%d</div><div class="line">20200119</div></pre></td></tr></table></figure><p>常用的格式参数如下所示：</p><div class="table-container"><table><thead><tr><th style="text-align:left">参数</th><th style="text-align:left">说明</th></tr></thead><tbody><tr><td style="text-align:left">%H</td><td style="text-align:left">小时(00~23)</td></tr><tr><td style="text-align:left">%I</td><td style="text-align:left">小时(01~12)</td></tr><tr><td style="text-align:left">%M</td><td style="text-align:left">分(00~59)</td></tr><tr><td style="text-align:left">%m</td><td style="text-align:left">月(01~12)</td></tr><tr><td style="text-align:left">%p</td><td style="text-align:left">显示AM或PM</td></tr><tr><td style="text-align:left">%r</td><td style="text-align:left">时间(hh:mm:ss)</td></tr><tr><td style="text-align:left">%S</td><td style="text-align:left">秒(00~59)</td></tr><tr><td style="text-align:left">%s</td><td style="text-align:left">从1970-01-01 00:00:00 UTC开始到现在的秒数</td></tr><tr><td style="text-align:left">%T</td><td style="text-align:left">24小时制时间 %H:%M:%S</td></tr><tr><td style="text-align:left">%X</td><td style="text-align:left">按照当前系统时间格式显示当前时间</td></tr><tr><td style="text-align:left">%x</td><td style="text-align:left">按照当前系统日期格式显示当前日期</td></tr><tr><td style="text-align:left">%Z</td><td style="text-align:left">时区</td></tr><tr><td style="text-align:left">%a</td><td style="text-align:left">星期简称(Sun)</td></tr><tr><td style="text-align:left">%A</td><td style="text-align:left">星期全称(Sunday)</td></tr><tr><td style="text-align:left">%b</td><td style="text-align:left">月的简称(Dec)</td></tr><tr><td style="text-align:left">%B</td><td style="text-align:left">月的全称(December)</td></tr><tr><td style="text-align:left">%c</td><td style="text-align:left">日期和时间(Sun 19 Jan 2020 10:06:36 PM CST)</td></tr><tr><td style="text-align:left">%d</td><td style="text-align:left">一个月的第几天(01~31)</td></tr><tr><td style="text-align:left">%D</td><td style="text-align:left">日期(mm/dd/yy)</td></tr><tr><td style="text-align:left">%w</td><td style="text-align:left">一个星期的第几天(0代表Sunday)</td></tr><tr><td style="text-align:left">%W</td><td style="text-align:left">一年的第几个星期(01~53)，星期一为第一天</td></tr><tr><td style="text-align:left">%y</td><td style="text-align:left">年的最后两位(20)</td></tr><tr><td style="text-align:left">%Y</td><td style="text-align:left">年(2020)</td></tr></tbody></table></div>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;&lt;code&gt;date&lt;/code&gt;命令用于显示当前的日期及时间，直接运行可得到如下格式的显示：&lt;/p&gt;
-&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1
       
     
     </summary>
