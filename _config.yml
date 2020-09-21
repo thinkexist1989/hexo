@@ -3,9 +3,9 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: DécouVerte  #法语：探索
+title: ROBOTer Yang.LUO #法语：探索
 subtitle: 生命不息 折腾不止
-description: 一头专注科研的猪 
+description: 一头专注科研的猪
 author: Yang Luo
 language: zh-Hans
 timezone:
@@ -42,16 +42,16 @@ highlight:
   line_number: true
   auto_detect: false
   tab_replace:
-  
+
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
-  path: ''
+  path: ""
   per_page: 10
   order_by: -date
-  
+
 # Category & Tag
 default_category: uncategorized
 category_map:
@@ -94,10 +94,10 @@ search:
 
 #github: git@github.com:thinkexist1989/hexo.git,origin
 backup:
-    type: git
-    theme: landscape,next
-    repository:
-       origin: git@github.com:thinkexist1989/hexo.git,master
+  type: git
+  theme: landscape,next
+  repository:
+    origin: git@github.com:thinkexist1989/hexo.git,master
 
 live2d:
   enable: false
